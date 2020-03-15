@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
+@import 'theme';
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+html {
+  @include fullscreen;
+}
+
+body {
+  @include fullscreen;
+  font-family: 'Quicksand', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: $blueBlack;
+}
+
+#root {
+  @include fullscreen;
+}
