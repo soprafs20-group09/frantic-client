@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
 @import 'theme';
 
 a {
@@ -12,10 +11,12 @@ html {
 
 body {
   @include fullscreen;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: $blueBlack;
+  font-size: 18px;
+  font-weight: 300;
 }
 
 #root {
