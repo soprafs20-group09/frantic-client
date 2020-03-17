@@ -1,5 +1,35 @@
 @import 'theme';
 
 .window-container {
+    color: white;
+    background-color: $blueGray;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: $dropShadow;
+    padding: 0;
+}
 
+$headerHeight: 85px;
+
+.window-header {
+  background-color: $terracotta;
+  color: $blueGray;
+  height: $headerHeight;
+  margin: 0;
+}
+
+.window-title {
+  margin: 0 40px;
+  font-size: 48px;
+  height: 100%;
+  width: 100%;
+  line-height: $headerHeight;
+  font-weight: 600;
+  text-transform: lowercase;
+  text-align: left;
+}
+
+.window-content {
+  min-height: 50px;
+  margin: 40px;
 }
