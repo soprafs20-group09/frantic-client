@@ -10,7 +10,7 @@ import 'styles/ui/UiElements.scss';
  * width: string (optional) - a width override
  * type: string: 'primary' or 'secondary'. default: primary
  *                          - defines the button-style
- * disabled: bool            - sets whether the button should be enabled.
+ * disabled: bool           - sets whether the button should be enabled.
  *
  */
 class Button extends Component {
@@ -19,10 +19,16 @@ class Button extends Component {
             <button
                 className={`button-container ${this.props.type || 'primary'} button-text ${this.props.disabled && 'disabled'}`}
                 style={{width: this.props.width}}
-                onClick={this.props.onClick}>
+                onClick={() => this.handleClick()}>
                 {this.props.children}
             </button>
         );
+    }
+
+    handleClick() {
+        if (this.props.onClick && !this.props.disabled) {
+            this.props.onClick();
+        }
     }
 }
 

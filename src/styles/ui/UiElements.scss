@@ -3,11 +3,15 @@
 
 .input-container {
   width: 100%;
+  display: flex;
+  justify-content: flex-end;
 }
+.input-input.action {
+  border-radius: 5px 0 0 5px;
+ }
 
 .input-title {
-  margin: 0;
-  margin-bottom: 5px;
+  margin: 0 0 5px;
 }
 
 .input-input {
@@ -24,6 +28,26 @@
   font-size: 16px;
 }
 
+.input-action {
+  cursor: pointer;
+  padding: 0 10px;
+  min-width: 100px;
+  border: none;
+  background-color: $terracotta;
+  color: $blueGray;
+  font-family: $themeFont;
+  font-size: 18px;
+  border-radius: 0 5px 5px 0;
+  transition: 0.3s;
+  flex-shrink: 0;
+}
+.input-action:hover {
+  filter: brightness(110%);
+}
+.input-action:active {
+  transform: scale(0.95);
+}
+
 $buttonHeight: 35px;
 
 .button-container {
@@ -32,13 +56,15 @@ $buttonHeight: 35px;
   border-radius: 5px;
   font-size: 20px;
   text-transform: lowercase;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding: 0 10px;
   cursor: pointer;
   transition: 0.3s;
 }
 .button-container:hover {
   filter: brightness(110%);
+}
+.button-container:active {
+  transform: scale(0.95);
 }
 
 .button-container.primary {
@@ -59,10 +85,9 @@ $buttonHeight: 35px;
   line-height: $buttonHeight;
   margin: 0;
   position: relative;
-  text-align: center;
 }
 
-.button-container.disabled {
+.disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }

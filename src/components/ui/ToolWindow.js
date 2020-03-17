@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {withRouter} from "react-router-dom";
 
 import 'styles/ui/ToolWindow.scss';
 
@@ -23,4 +24,4 @@ class ToolWindow extends Component {
     }
 }
 
-export default ToolWindow;
+export default withRouter(ToolWindow);
