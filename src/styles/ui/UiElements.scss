@@ -1,5 +1,16 @@
 @import 'theme';
 
+@mixin clickableMixin {
+  cursor: pointer;
+  transition: 0.3s;
+  &:hover {
+    filter: brightness(110%);
+  }
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
 // Input
 
 .input-container {
@@ -7,9 +18,6 @@
   display: flex;
   justify-content: flex-end;
 }
-.input-input.action {
-  border-radius: 5px 0 0 5px;
- }
 
 .input-title {
   margin: 0 0 5px;
@@ -28,10 +36,12 @@
   font-family: $themeFont;
   font-weight: 300;
   font-size: 16px;
-}
 
+  &.action {
+    border-radius: 5px 0 0 5px;
+  }
+}
 .input-action {
-  cursor: pointer;
   padding: 0 10px;
   min-width: 100px;
   border: none;
@@ -40,14 +50,8 @@
   font-family: $themeFont;
   font-size: 18px;
   border-radius: 0 5px 5px 0;
-  transition: 0.3s;
   flex-shrink: 0;
-}
-.input-action:hover {
-  filter: brightness(110%);
-}
-.input-action:active {
-  transform: scale(0.95);
+  @include clickableMixin;
 }
 
 // Button
@@ -61,27 +65,20 @@ $buttonHeight: 35px;
   font-size: 20px;
   text-transform: lowercase;
   padding: 0 10px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-.button-container:hover {
-  filter: brightness(110%);
-}
-.button-container:active {
-  transform: scale(0.95);
-}
+  @include clickableMixin;
 
-.button-container.primary {
-  background-color: $terracotta;
-  color: $blueGray;
-  font-weight: 600;
-  box-shadow: $dropShadow;
-}
+  &.primary {
+    background-color: $terracotta;
+    color: $blueGray;
+    font-weight: 600;
+    box-shadow: $dropShadow;
+  }
 
-.button-container.secondary {
-  background-color: transparent;
-  color: $terracotta;
-  font-weight: 300;
+  &.secondary {
+    background-color: transparent;
+    color: $terracotta;
+    font-weight: 300;
+  }
 }
 
 .button-text {
@@ -117,4 +114,30 @@ $buttonHeight: 35px;
   display: flex;
   justify-content: center;
   align-content: center;
+}
+
+.singleselect-item {
+  background-color: $blueLightGray;
+  border: none;
+  color: white;
+  height: 30px;
+  width: 100%;
+  font-family: $themeFont;
+  font-weight: 300;
+  font-size: 18px;
+  text-transform: lowercase;
+  @include clickableMixin;
+  transition: all 0.3s, font-weight 0s;
+
+  &:first-child {
+    border-radius: 5px 0 0 5px;
+  }
+  &:last-child {
+    border-radius: 0 5px 5px 0;
+  }
+  &.active {
+    background-color: $terracotta;
+    color: $blueGray;
+    font-weight: 400;
+  }
 }
