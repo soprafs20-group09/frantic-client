@@ -41,6 +41,7 @@
     border-radius: 5px 0 0 5px;
   }
 }
+
 .input-action {
   padding: 0 10px;
   min-width: 100px;
@@ -129,15 +130,72 @@ $buttonHeight: 35px;
   @include clickableMixin;
   transition: all 0.3s, font-weight 0s;
 
-  &:first-child {
+  &:first-of-type {
     border-radius: 5px 0 0 5px;
   }
-  &:last-child {
+
+  &:last-of-type {
     border-radius: 0 5px 5px 0;
   }
+
   &.active {
     background-color: $terracotta;
     color: $blueGray;
     font-weight: 400;
+  }
+}
+
+//Switch
+
+.switch-title {
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  margin: 0;
+  text-transform: lowercase;
+}
+
+.switch-description {
+  color: $terracotta;
+  flex-shrink: 0;
+  height: 30px;
+  line-height: 30px;
+  margin: 0;
+  text-transform: lowercase;
+  font-weight: 300;
+
+  &:first-of-type {
+    margin-right: 15px;
+  }
+  &:last-of-type {
+    margin-left: 15px;
+  }
+}
+
+.switch-container {
+  display: flex;
+  justify-content: flex-end;
+  align-content: center;
+}
+
+.switch-rail {
+  cursor: pointer;
+  flex-shrink: 0;
+  width: 60px;
+  height: 30px;
+  border-radius: 15px;
+  background-color: $blueLightGray;
+}
+
+.switch-nob {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  background-color: $terracotta;
+  box-shadow: $dropShadow;
+  transition: filter 0.3s;
+
+  &:hover {
+    filter: brightness(110%);
   }
 }

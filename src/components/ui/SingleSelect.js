@@ -10,6 +10,7 @@ import React, {Component} from 'react';
  * -value: string              - the value of the item that is returned on change.
  * initialValue: string        - value of the item that is to be selected first.
  * onValueChanged: func(value) - function to be called when a new value has been set.
+ * style: object               - allows you to override the container styling.
  */
 class SingleSelect extends Component {
 
@@ -36,7 +37,7 @@ class SingleSelect extends Component {
         }
 
         return (
-            <div>
+            <div style={this.props.style}>
                 <p className="input-title">{this.props.title}</p>
                 <div className="singleselect-container">
                     {items}
