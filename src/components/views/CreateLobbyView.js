@@ -39,7 +39,7 @@ class CreateLobbyView extends Component {
         ];
 
         return (
-            <AppContainer showBack={true} showHelp={true}>
+            <AppContainer withBack withHelp>
                 <Window title="Create Lobby" width="870px">
                     <div className="createlobby-container">
                         <div className="createlobby-column">

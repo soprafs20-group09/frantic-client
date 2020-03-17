@@ -15,7 +15,7 @@ class MainMenu extends React.Component {
         };
 
         return (
-            <AppContainer showHelp={true}>
+            <AppContainer withHelp>
                 <div className="mainmenu-container">
                     <div className="mainmenu-logo-shadow-container">
                         <InlineSVG src={Logo} className="mainmenu-logo"/>

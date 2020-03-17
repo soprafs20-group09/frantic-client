@@ -12,6 +12,7 @@ import 'styles/ui/AppContainer.scss'
  * PROPS:
  * showHelp: bool               - whether to show the help button
  * showBack: bool               - whether to show the back button
+ * disableAnimation: bool       - disables transition animations if true
  * backRoute: (optional) string - where the back button should point to, default: ".."
  */
 class AppContainer extends Component {
@@ -35,10 +36,12 @@ class AppContainer extends Component {
             opacity: 0
         };
 
-        return (
-            <div className="app-container">
-                {this.props.showBack && backButton}
-                {this.props.showHelp && helpButton}
+        let body;
+        if (this.props.disableAnimation) {
+            body = this.props.children;
+        }
+        else {
+            body =
                 <Transition
                     items={[this.props.children]}
                     from={fromStyle}
@@ -48,7 +51,14 @@ class AppContainer extends Component {
                     {item => style =>
                         <animated.div className="app-container" style={style}>{this.props.children}</animated.div>
                     }
-                </Transition>
+                </Transition>;
+        }
+
+        return (
+            <div className="app-container">
+                {this.props.withBack && backButton}
+                {this.props.withHelp && helpButton}
+                {body}
             </div>
         );
     }
