@@ -11,6 +11,7 @@ import 'styles/ui/UiElements.scss';
  * readOnly: bool        - whether the input should be readonly
  * type: string          - the type of the input, see html docs (e.g. password)
  * onChange: func(value) - a function to be called every time the input value changes.
+ * style: object         - this allows you to add style overrides in react-manner.
  *
  * OPTIONAL:
  * action: string        - if set, a button is added with the given text.
@@ -41,7 +42,7 @@ class Input extends Component {
         return (
             <div>
                 <p className="input-title">{this.props.title}</p>
-                <div className="input-container">
+                <div className="input-container" style={this.props.style}>
                     <input
                         className={`input-input  ${action && 'action'}`}
                         type={this.props.type}

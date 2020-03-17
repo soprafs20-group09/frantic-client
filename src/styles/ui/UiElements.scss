@@ -1,5 +1,6 @@
 @import 'theme';
 
+// Input
 
 .input-container {
   width: 100%;
@@ -12,6 +13,7 @@
 
 .input-title {
   margin: 0 0 5px;
+  text-transform: lowercase;
 }
 
 .input-input {
@@ -47,6 +49,8 @@
 .input-action:active {
   transform: scale(0.95);
 }
+
+// Button
 
 $buttonHeight: 35px;
 
@@ -90,4 +94,27 @@ $buttonHeight: 35px;
 .disabled {
   opacity: 0.6;
   cursor: not-allowed;
+}
+
+// Header
+
+.header {
+  display: block;
+  margin-top: 0;
+  margin-bottom: 25px;
+  color: $terracotta;
+  font-family: $themeFont;
+  font-size: 36px;
+  height: 50px;
+  font-weight: 600;
+  border-bottom: 3px solid $blueLightGray;
+  text-transform: lowercase;
+}
+
+// SingleSelect
+
+.singleselect-container {
+  display: flex;
+  justify-content: center;
+  align-content: center;
 }
