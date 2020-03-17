@@ -1,0 +1,35 @@
+@import 'theme';
+
+.toolwindow-container {
+  color: white;
+  background-color: $blueGray;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: $dropShadow;
+  padding: 0;
+}
+
+$headerHeight: 50px;
+
+.toolwindow-header {
+  background-color: $terracotta;
+  color: $blueGray;
+  height: $headerHeight;
+  margin: 0;
+}
+
+.toolwindow-title {
+  margin: 0 20px;
+  font-size: 24px;
+  height: 100%;
+  width: 100%;
+  line-height: $headerHeight;
+  font-weight: 600;
+  text-transform: lowercase;
+  text-align: left;
+}
+
+.toolwindow-content {
+  min-height: 50px;
+  margin: 20px;
+}

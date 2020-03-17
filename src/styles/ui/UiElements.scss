@@ -1,0 +1,68 @@
+@import 'theme';
+
+
+.input-container {
+  width: 100%;
+}
+
+.input-title {
+  margin: 0;
+  margin-bottom: 5px;
+}
+
+.input-input {
+  background-color: $blueLightGray;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  height: 30px;
+  width: 100%;
+  padding: 0 8px;
+  box-sizing: border-box;
+  font-family: $themeFont;
+  font-weight: 300;
+  font-size: 16px;
+}
+
+$buttonHeight: 35px;
+
+.button-container {
+  height: $buttonHeight;
+  border: none;
+  border-radius: 5px;
+  font-size: 20px;
+  text-transform: lowercase;
+  padding-left: 10px;
+  padding-right: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.button-container:hover {
+  filter: brightness(110%);
+}
+
+.button-container.primary {
+  background-color: $terracotta;
+  color: $blueGray;
+  font-weight: 600;
+  box-shadow: $dropShadow;
+}
+
+.button-container.secondary {
+  background-color: transparent;
+  color: $terracotta;
+  font-weight: 300;
+}
+
+.button-text {
+  font-family: $themeFont;
+  line-height: $buttonHeight;
+  margin: 0;
+  position: relative;
+  text-align: center;
+}
+
+.button-container.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
