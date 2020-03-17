@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import {withRouter} from "react-router-dom";
+import MainMenuItem from "components/ui/MainMenuItem";
+import {animated, Transition} from "react-spring/renderprops";
 
 import 'styles/ui/AppContainer.scss'
-import MainMenuItem from "components/ui/MainMenuItem";
 
 /**
  * This is a container that holds most app contents,
@@ -24,11 +25,30 @@ class AppContainer extends Component {
                 <MainMenuItem>?</MainMenuItem>
             </div>;
 
+        const fromStyle = {
+            opacity: 0
+        };
+        const enterStyle = {
+            opacity: 1
+        };
+        const leaveStyle = {
+            opacity: 0
+        };
+
         return (
             <div className="app-container">
                 {this.props.showBack && backButton}
                 {this.props.showHelp && helpButton}
-                {this.props.children}
+                <Transition
+                    items={[this.props.children]}
+                    from={fromStyle}
+                    enter={enterStyle}
+                    leave={leaveStyle}
+                >
+                    {item => style =>
+                        <animated.div className="app-container" style={style}>{this.props.children}</animated.div>
+                    }
+                </Transition>
             </div>
         );
     }

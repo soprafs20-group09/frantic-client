@@ -5,6 +5,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow-x: hidden;
+}
+.app-container.animated {
+  pointer-events: none;
 }
 
 .back-button {
