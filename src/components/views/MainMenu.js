@@ -3,7 +3,7 @@ import {withRouter} from "react-router-dom";
 import Logo from 'assets/frantic/logo-hollow.svg';
 import InlineSVG from "react-inlinesvg";
 
-import "styles/MainMenu.scss";
+import "styles/views/MainMenu.scss";
 import MainMenuItem from "components/ui/MainMenuItem";
 import AppContainer from "components/ui/AppContainer";
 

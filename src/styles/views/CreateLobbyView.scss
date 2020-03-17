@@ -1,0 +1,13 @@
+@import 'theme';
+
+.createlobby-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.createlobby-column {
+  width: 45%;
+  display: block;
+}
