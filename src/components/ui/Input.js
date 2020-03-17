@@ -24,8 +24,13 @@ class Input extends Component {
         this.state = {value: this.props.value};
     }
 
-    componentWillReceiveProps(nextProps, nextContext) {
-        this.setState({value: nextProps.value});
+    // UNSAFE_componentWillReceiveProps(nextProps, nextContext) {
+    //     this.setState({value: nextProps.value});
+    // }
+
+    //TODO: check if this really works...
+    static getDerivedStateFromProps(nextProps, prevState) {
+        return {value: nextProps.value};
     }
 
     render() {

@@ -1,0 +1,52 @@
+@import 'theme';
+
+.player-list {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.player-item {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: $blueMediumGray;
+  box-shadow: $dropShadow;
+  margin: 10px 0;
+  padding: 10px 15px 10px 10px;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.player-item-text {
+  width: 100%;
+  text-transform: none;
+  font-weight: 500;
+}
+
+.player-item-avatar {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  padding: 5px;
+  box-sizing: border-box;
+  background-color: $blueLightGray;
+  margin-right: 10px;
+}
+
+.player-item-decor {
+  fill: $terracotta;
+  width: 30px;
+  height: 30px;
+
+  &.clickable {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    @include clickable;
+  }
+}

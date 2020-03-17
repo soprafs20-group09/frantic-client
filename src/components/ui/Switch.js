@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Spring, config} from "react-spring/renderprops";
+import {Spring} from "react-spring/renderprops";
 
 /**
  * This component renders a simple on/off switch.

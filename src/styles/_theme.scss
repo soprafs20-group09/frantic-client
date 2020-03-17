@@ -2,6 +2,7 @@
 $terracotta: #E0745C;
 $blueBlack: #333840;
 $blueGray: #484D59;
+$blueMediumGray: #5B6171;
 $blueLightGray: #676E80;
 
 /* Font stuff */
@@ -15,4 +16,15 @@ $dropShadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   width: 100%;
   height: 100%;
   margin: 0;
+}
+
+@mixin clickable {
+  cursor: pointer;
+  transition: 0.3s;
+  &:hover {
+    filter: brightness(110%);
+  }
+  &:active {
+    transform: scale(0.95);
+  }
 }

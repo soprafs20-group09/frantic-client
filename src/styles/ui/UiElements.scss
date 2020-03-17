@@ -1,16 +1,5 @@
 @import 'theme';
 
-@mixin clickableMixin {
-  cursor: pointer;
-  transition: 0.3s;
-  &:hover {
-    filter: brightness(110%);
-  }
-  &:active {
-    transform: scale(0.95);
-  }
-}
-
 // Input
 
 .input-container {
@@ -50,9 +39,10 @@
   color: $blueGray;
   font-family: $themeFont;
   font-size: 18px;
+  text-transform: lowercase;
   border-radius: 0 5px 5px 0;
   flex-shrink: 0;
-  @include clickableMixin;
+  @include clickable;
 }
 
 // Button
@@ -64,7 +54,7 @@ $buttonHeight: 35px;
   border: none;
   border-radius: 5px;
   padding: 0 10px;
-  @include clickableMixin;
+  @include clickable;
 
   &.primary {
     background-color: $terracotta;
@@ -127,7 +117,7 @@ $buttonHeight: 35px;
   font-weight: 300;
   font-size: 18px;
   text-transform: lowercase;
-  @include clickableMixin;
+  @include clickable;
   transition: all 0.3s, font-weight 0s;
 
   &:first-of-type {
