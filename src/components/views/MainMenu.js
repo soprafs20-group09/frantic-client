@@ -59,7 +59,7 @@ class MainMenu extends React.Component {
                             from={down}
                             enter={neutral}
                             leave={down}
-                            trail={200}
+                            trail={400}
                         >
                             {item => style => <animated.div style={style}>{item}</animated.div>}
                         </Transition>
