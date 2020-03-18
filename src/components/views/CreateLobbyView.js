@@ -122,13 +122,18 @@ class CreateLobbyView extends Component {
                                     off="no"
                                     initialValue={true}
                                 />
-                                <Button disabled width="100%">Start Game</Button>
+                                <Button
+                                    disabled={true}
+                                    width="100%"
+                                >
+                                    Start Game
+                                </Button>
                             </div>
                             <div className="createlobby-window-column">
                                 <Header>Players</Header>
                                 <PlayerList
                                     players={players}
-                                    adminMode={false}
+                                    adminMode={true}
                                 />
                             </div>
                         </div>

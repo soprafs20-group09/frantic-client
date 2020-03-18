@@ -15,7 +15,7 @@ import 'styles/ui/PlayerList.scss';
  *  - admin: bool   (optional) - shows a crown icon next to this user if true.
  *  adminMode: bool          - sets whether to show player kick icons
  *  onKick: func(player) - a function that is called when a player is to be kicked.
- *  avatarType: string       - the type of DiceBear avatar that should be used, see https://avatars.dicebear.com/ (default: 'botts')
+ *  avatarType: string       - the type of DiceBear avatar that should be used, see https://avatars.dicebear.com/ (default: 'bottts')
  */
 class PlayerList extends Component {
     render() {
@@ -100,7 +100,7 @@ class PlayerItem extends Component {
                 <img
                     className="player-item-avatar"
                     src={`https://avatars.dicebear.com/v2/${this.props.avatarType}/${this.props.name}.svg`}/>
-                <p className="player-item-text">{this.props.name}</p>
+                <p className="player-item-text" style={{color: this.props.color}}>{this.props.name}</p>
                 {decor}
             </animated.li>
         );
