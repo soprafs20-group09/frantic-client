@@ -19,7 +19,11 @@ class ChooseUsernameWindow extends Component {
         return (
             <ToolWindow title="Choose Username" width="420px">
                 <p>please choose a username to proceed!</p>
-                <Input title="username:" onChange={v => this.handleChange(v)}/>
+                <Input
+                    title="username:"
+                    onChange={v => this.handleChange(v)}
+                    onEnter={() => this.handleConfirm()}
+                />
                 <div className="horizontal-buttons-container">
                     <Button
                         type="primary"
@@ -41,7 +45,7 @@ class ChooseUsernameWindow extends Component {
     }
 
     handleConfirm() {
-        if (this.props.onConfirm) {
+        if (this.state.username && this.props.onConfirm) {
             this.props.onConfirm(this.state.username);
         }
     }

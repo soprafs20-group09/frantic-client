@@ -11,6 +11,7 @@ import 'styles/ui/UiElements.scss';
  * readOnly: bool        - whether the input should be readonly
  * type: string          - the type of the input, see html docs (e.g. password)
  * onChange: func(value) - a function to be called every time the input value changes.
+ * onEnter: func()       - a function to be called every time the enter key is pressed.
  * style: object         - this allows you to add style overrides in react-manner.
  *
  * OPTIONAL:
@@ -53,7 +54,8 @@ class Input extends Component {
                         type={this.props.type}
                         value={this.props.initialValue}
                         readOnly={this.props.readOnly}
-                        onChange={(e) => this.handleInputChange(e)}
+                        onChange={e => this.handleInputChange(e)}
+                        onKeyUp={e => this.handleKeyUp(e)}
                     />
                     {action}
                 </div>
@@ -65,6 +67,12 @@ class Input extends Component {
         this.setState({value: e.target.value});
         if (this.props.onChange) {
             this.props.onChange(e.target.value);
+        }
+    }
+
+    handleKeyUp(e) {
+        if (this.props.onEnter && e.key === 'Enter') {
+            this.props.onEnter();
         }
     }
 
