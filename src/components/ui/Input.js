@@ -7,7 +7,7 @@ import 'styles/ui/UiElements.scss';
  * A themed input component with integrated title.
  * PROPS:
  * title: string         - a title to be displayed above the input.
- * value: string         - an initial value to be set for the input.
+ * initialValue: string  - an initial value to be set for the input.
  * readOnly: bool        - whether the input should be readonly
  * type: string          - the type of the input, see html docs (e.g. password)
  * onChange: func(value) - a function to be called every time the input value changes.
@@ -51,7 +51,7 @@ class Input extends Component {
                     <input
                         className={`input-input  ${action && 'action'}`}
                         type={this.props.type}
-                        value={this.state.value}
+                        value={this.props.initialValue}
                         readOnly={this.props.readOnly}
                         onChange={(e) => this.handleInputChange(e)}
                     />
@@ -64,7 +64,7 @@ class Input extends Component {
     handleInputChange(e) {
         this.setState({value: e.target.value});
         if (this.props.onChange) {
-            this.props.onChange(e);
+            this.props.onChange(e.target.value);
         }
     }
 
