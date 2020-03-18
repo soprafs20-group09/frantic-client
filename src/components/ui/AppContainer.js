@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {withRouter} from "react-router-dom";
 import MainMenuItem from "components/ui/MainMenuItem";
-import {animated, Transition} from "react-spring/renderprops";
 
 import 'styles/ui/AppContainer.scss'
 
@@ -10,9 +9,8 @@ import 'styles/ui/AppContainer.scss'
  * and has the ability to show a help and back button.
  *
  * PROPS:
- * showHelp: bool               - whether to show the help button
- * showBack: bool               - whether to show the back button
- * disableAnimation: bool       - disables transition animations if true
+ * withHelp: bool               - whether to show the help button
+ * withBack: bool               - whether to show the back button
  * backRoute: (optional) string - where the back button should point to, default: ".."
  */
 class AppContainer extends Component {
@@ -26,39 +24,11 @@ class AppContainer extends Component {
                 <MainMenuItem>?</MainMenuItem>
             </div>;
 
-        const fromStyle = {
-            opacity: 0
-        };
-        const enterStyle = {
-            opacity: 1
-        };
-        const leaveStyle = {
-            opacity: 0
-        };
-
-        let body;
-        if (this.props.disableAnimation) {
-            body = this.props.children;
-        }
-        else {
-            body =
-                <Transition
-                    items={[this.props.children]}
-                    from={fromStyle}
-                    enter={enterStyle}
-                    leave={leaveStyle}
-                >
-                    {item => style =>
-                        <animated.div className="app-container" style={style}>{this.props.children}</animated.div>
-                    }
-                </Transition>;
-        }
-
         return (
             <div className="app-container">
+                {this.props.children}
                 {this.props.withBack && backButton}
                 {this.props.withHelp && helpButton}
-                {body}
             </div>
         );
     }

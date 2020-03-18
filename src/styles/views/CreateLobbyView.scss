@@ -2,12 +2,29 @@
 
 .createlobby-container {
   display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.createlobby-column {
+  &.main {
+    flex-grow: 2;
+  }
+  &.chat {
+    align-self: stretch;
+    flex-grow: 1;
+    margin-left: 5%;
+  }
+}
+
+.createlobby-window-container {
+  display: flex;
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
 }
 
-.createlobby-column {
+.createlobby-window-column {
   width: 45%;
   display: block;
 }

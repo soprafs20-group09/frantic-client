@@ -1,6 +1,7 @@
 @import 'theme';
 
 .app-container {
+  position: absolute;
   @include fullscreen;
   display: flex;
   align-items: center;
