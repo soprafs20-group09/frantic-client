@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {animated, Transition} from "react-spring/renderprops";
+import {ChatItemTransition} from "components/ui/Transitions";
 import "styles/ui/Chat.scss";
 
 const animationTrail = 200;
@@ -10,27 +10,11 @@ const animationTrail = 200;
  */
 class ChatBox extends Component {
     render() {
-        const fromStyle = {
-            opacity: 0,
-            transform: 'translateY(50%) scale(0.7)'
-        };
-        const toStyle = {
-            opacity: 1,
-            transform: 'translateY(0%) scale(1)'
-        };
-
-
         return (
             <div className="chat-box">
-                <Transition
-                    items={this.props.children}
-                    keys={item => item.key}
-                    from={fromStyle}
-                    enter={toStyle}
-                    leave={fromStyle}
-                    trail={animationTrail}>
-                    {item => style => <animated.div style={style}>{item}</animated.div>}
-                </Transition>
+               <ChatItemTransition trail={animationTrail}>
+                   {this.props.children}
+               </ChatItemTransition>
                 <div ref={e => this.msgDummy = e}/>
             </div>
         );

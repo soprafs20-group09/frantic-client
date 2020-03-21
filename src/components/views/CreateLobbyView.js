@@ -10,7 +10,7 @@ import Switch from "components/ui/Switch";
 import Button from "components/ui/Button";
 import PlayerList from "components/ui/PlayerList";
 import ChooseUsernameWindow from "components/ChooseUsernameWindow";
-import {animated, Transition} from "react-spring/renderprops";
+import {WindowTransition} from "components/ui/Transitions";
 import ChatWindow from "components/ui/ChatWindow";
 import ChatItem from "components/ui/chat/ChatItem";
 import {getPlayerAvatar} from "utils/api";
@@ -31,36 +31,11 @@ class CreateLobbyView extends Component {
     }
 
     render() {
-        const fromStyle = {
-            position: 'absolute',
-            opacity: 0,
-            transform: 'translateX(20%)'
-        };
-        const enterStyle = {
-            position: 'absolute',
-            opacity: 1,
-            transform: 'translateX(0%)'
-        };
-        const leaveStyle = {
-            position: 'absolute',
-            opacity: 0,
-            transform: 'translateX(-20%)'
-        };
-
-        let content = this.state.username ? this.getMainWindow() : this.getUsernameWindow();
-
         return (
             <AppContainer withBack withHelp>
-                <Transition
-                    items={content}
-                    keys={item => item.key}
-                    from={fromStyle}
-                    enter={enterStyle}
-                    leave={leaveStyle}
-                    trail={200}
-                >
-                    {item => style => <animated.div style={style}>{item}</animated.div>}
-                </Transition>
+                <WindowTransition>
+                    {this.state.username ? this.getMainWindow() : this.getUsernameWindow()}
+                </WindowTransition>
             </AppContainer>
         );
     }
