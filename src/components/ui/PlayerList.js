@@ -38,7 +38,6 @@ class PlayerList extends Component {
                 <Transition
                     items={this.props.players}
                     keys={item => item.name}
-                    unique={true}
                     from={fromStyle}
                     enter={toStyle}
                     leave={fromStyle}

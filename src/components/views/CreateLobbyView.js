@@ -20,12 +20,12 @@ class CreateLobbyView extends Component {
         super(props);
         this.state = {
             chatItems: [
-                <ChatItem sender="sina" icon={getPlayerAvatar('sina')}>is everyone ready?</ChatItem>,
-                <ChatItem sender="kyrill" icon={getPlayerAvatar('kyrill')}>yee</ChatItem>,
-                <ChatItem sender="jan" icon={getPlayerAvatar('jan')}>ofc</ChatItem>,
-                <ChatItem sender="joe" icon={getPlayerAvatar('joe')}>1 min pls</ChatItem>,
-                <ChatItem style="event">Game starting in 30 seconds.</ChatItem>,
-                <ChatItem sender="joe" icon={getPlayerAvatar('joe')}>ok ready!</ChatItem>
+                <ChatItem key={Math.random() + "a"} sender="sina" icon={getPlayerAvatar('sina')}>is everyone ready?</ChatItem>,
+                <ChatItem key={Math.random() + "b"} sender="kyrill" icon={getPlayerAvatar('kyrill')}>yee</ChatItem>,
+                <ChatItem key={Math.random() + "c"} sender="jan" icon={getPlayerAvatar('jan')}>ofc</ChatItem>,
+                <ChatItem key={Math.random() + "d"} sender="joe" icon={getPlayerAvatar('joe')}>1 min pls</ChatItem>,
+                <ChatItem key={Math.random() + "e"} style="event">Game starting in 30 seconds.</ChatItem>,
+                <ChatItem key={Math.random() + "f"} sender="joe" icon={getPlayerAvatar('joe')}>ok ready!</ChatItem>
             ]
         };
     }
@@ -165,6 +165,7 @@ class CreateLobbyView extends Component {
             <ChatItem
                 sender="you"
                 icon={getPlayerAvatar("you")}
+                key={new Date().getTime()}
             >
                 {msg}
             </ChatItem>;
