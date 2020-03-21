@@ -28,7 +28,12 @@ const handleError = error => {
     }
 };
 
+const getPlayerAvatar = (name, style) => {
+    return `https://avatars.dicebear.com/v2/${style || 'bottts'}/${name}.svg`;
+};
+
 export {
     api,
-    handleError
-}
+    handleError,
+    getPlayerAvatar
+};

@@ -3,7 +3,7 @@ import {animated, Transition} from "react-spring/renderprops";
 import InlineSVG from "react-inlinesvg";
 import Crown from "assets/icons/crown.svg";
 import Cross from "assets/icons/cross.svg";
-
+import {getPlayerAvatar} from "utils/api";
 import 'styles/ui/PlayerList.scss';
 
 /**
@@ -99,7 +99,7 @@ class PlayerItem extends Component {
             <animated.li className="player-item" style={this.props.style}>
                 <img
                     className="player-item-avatar"
-                    src={`https://avatars.dicebear.com/v2/${this.props.avatarType}/${this.props.name}.svg`}/>
+                    src={getPlayerAvatar(this.props.name, this.props.avatarType)}/>
                 <p className="player-item-text" style={{color: this.props.color}}>{this.props.name}</p>
                 {decor}
             </animated.li>
