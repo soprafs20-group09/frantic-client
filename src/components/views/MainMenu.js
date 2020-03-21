@@ -12,20 +12,26 @@ class MainMenu extends React.Component {
         const up = {
             height: 0,
             opacity: 0,
-            transform: 'translateY(-100%)'
+            transform: 'translateY(-100%) rotate(0deg) scale(1)'
         };
         const neutral = {
             height: '300px',
             opacity: 1,
-            transform: 'translateY(0%)',
+            transform: 'translateY(0%) rotate(0deg) scale(1)',
             marginBottom: '15px'
         };
         const down = {
             height: 0,
             opacity: 0,
-            transform: 'translateY(20%)',
+            transform: 'translateY(20%) rotate(0deg) scale(1)',
             marginbottom: 0
         };
+        const logoFrom = {
+            height: 0,
+            opacity: 0,
+            transform: 'translateY(-100%) rotate(-180deg) scale(1.5)'
+        };
+
 
         const itemStyle = {
             marginBottom: '15px'
@@ -41,7 +47,7 @@ class MainMenu extends React.Component {
                 <div className="mainmenu-container">
                     <Transition
                         items={this.props.children}
-                        from={up}
+                        from={logoFrom}
                         enter={neutral}
                         leave={up}
                         trail={200}
