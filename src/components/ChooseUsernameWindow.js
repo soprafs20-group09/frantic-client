@@ -2,12 +2,14 @@ import React, {Component} from 'react';
 import ToolWindow from "components/ui/ToolWindow";
 import Input from "components/ui/Input";
 import Button from "components/ui/Button";
+import {withRouter} from "react-router-dom";
 import 'styles/ChooseUsernameWindow.scss';
 
 /**
  * This is a small window that asks the user to enter a username.
  * PROPS:
  * onConfirm: func(username) - a function that is called when the user has entered a valid username and clicks the confirm button.
+ * closeRoute: string        - where the user should be navigated to, if they decide to click 'cancel'. default: '..'
  */
 class ChooseUsernameWindow extends Component {
     constructor(props) {
@@ -33,7 +35,13 @@ class ChooseUsernameWindow extends Component {
                     >
                         Confirm
                     </Button>
-                    <Button type="secondary" width="50%">Cancel</Button>
+                    <Button
+                        type="secondary"
+                        width="50%"
+                        onClick={() => this.handleCancel()}
+                    >
+                        Cancel
+                    </Button>
                 </div>
             </ToolWindow>
         );
@@ -49,6 +57,11 @@ class ChooseUsernameWindow extends Component {
             this.props.onConfirm(this.state.username);
         }
     }
+
+    handleCancel() {
+        this.props.history.push(this.props.closeRoute || '..');
+    }
+
 }
 
-export default ChooseUsernameWindow;
+export default withRouter(ChooseUsernameWindow);
