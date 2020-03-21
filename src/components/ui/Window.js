@@ -5,13 +5,14 @@ import 'styles/ui/Window.scss';
 /**
  * This component serves as a base-container for larger windows.
  * PROPS:
- * title: string - the window's title.
- * width: string (optional) - a custom width property to override the window width.
+ * title: string               - the window's title.
+ * width: string (optional)    - a custom width property to override the window width.
+ * maxHeight: string(optional) - a custom height property to override the max window height.
  */
 class Window extends Component {
     render() {
         return (
-            <div className="window-container" style={{width: this.props.width}}>
+            <div className="window-container" style={{width: this.props.width, maxHeight: this.props.maxHeight}}>
                 <div className="window-header">
                     <p className="window-title">{this.props.title}</p>
                 </div>

@@ -29,6 +29,18 @@
   &.action {
     border-radius: 5px 0 0 5px;
   }
+
+  &.search {
+    height: 40px;
+    font-size: 18px;
+    padding: 0 15px;
+    box-shadow: $dropShadow;
+
+    &::placeholder {
+      text-transform: lowercase;
+      color: rgba(229, 229, 229, 0.44);
+    }
+  }
 }
 
 .input-action {
@@ -42,6 +54,21 @@
   text-transform: lowercase;
   border-radius: 0 5px 5px 0;
   flex-shrink: 0;
+  @include clickable;
+
+  &.search {
+    box-shadow: $dropShadow;
+  }
+}
+
+// Search Bar
+.search-refresh {
+  width: 40px;
+  height: 40px;
+  fill: $terracotta;
+  margin-left: 20px;
+  filter: drop-shadow($dropShadow);
+
   @include clickable;
 }
 
@@ -152,6 +179,7 @@ $buttonHeight: 35px;
   &:first-of-type {
     margin-right: 15px;
   }
+
   &:last-of-type {
     margin-left: 15px;
   }
