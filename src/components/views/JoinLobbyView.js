@@ -24,31 +24,31 @@ class JoinLobbyView extends Component {
                         name: "ueli's lobby",
                         creator: "ueli",
                         players: "3/8",
-                        link: "https://frant.ic/join?id=2103"
+                        link: "/join?id=2103"
                     },
                     {
                         name: "crocodiles",
                         creator: "schnappi",
                         players: "5/8",
-                        link: "https://frant.ic/join?id=1234"
+                        link: "/join?id=1234"
                     },
                     {
                         name: "happy place :)",
                         creator: "niceGuyTM",
                         players: "7/8",
-                        link: "https://frant.ic/join?id=0124"
+                        link: "/join?id=0124"
                     },
                     {
                         name: "tryhards only!",
                         creator: "DarkKnight98",
                         players: "6/8",
-                        link: "https://frant.ic/join?id=3564"
+                        link: "/join?id=3564"
                     },
                     {
                         name: "cats are awesome :3",
                         creator: "Karen",
                         players: "8/8",
-                        link: "https://frant.ic/join?id=1398"
+                        link: "/join?id=1398"
                     },
                 ]
             });
