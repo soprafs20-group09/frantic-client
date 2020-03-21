@@ -14,11 +14,13 @@ import {animated, Transition} from "react-spring/renderprops";
 class LobbyList extends Component {
     render() {
         const fromStyle = {
+            margin: '0px 0',
             height: 0,
             opacity: 0,
             transform: 'translateX(100%)'
         };
         const toStyle = {
+            margin: '15px 0',
             height: 55,
             opacity: 1,
             transform: 'translateX(0%)'
@@ -68,13 +70,13 @@ class LobbyList extends Component {
 class LobbyItem extends Component {
     render() {
         return (
-            <animated.a href={this.props.link}>
+            <a href={this.props.link}>
                 <animated.li className="lobby-item" style={this.props.style}>
                     <p className="lobby-item-text c1">{this.props.name}</p>
                     <p className="lobby-item-text c2">{this.props.creator}</p>
                     <p className="lobby-item-text c3">{this.props.players}</p>
                 </animated.li>
-            </animated.a>
+            </a>
         );
     }
 }

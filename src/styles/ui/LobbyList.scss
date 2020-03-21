@@ -35,20 +35,24 @@
 .lobby-list {
   list-style-type: none;
   padding: 0;
+  min-height: 25vh;
 }
 
 .lobby-item {
   display: flex;
   align-items: center;
-  height: 60px;
   background-color: $blueMediumGray;
   border-radius: 5px;
   box-shadow: $dropShadow;
-  margin-top: 15px;
   padding: 0 20px;
   overflow: hidden;
   box-sizing: border-box;
-  @include clickable;
+
+  transition: filter 0.3s;
+
+  &:hover {
+    filter: brightness(110%);
+  }
 }
 
 .lobby-item-text {
