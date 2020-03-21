@@ -1,0 +1,100 @@
+@import 'theme';
+@import 'ui/Window';
+
+$inputHeight: 30px;
+
+.window-container.chat {
+  width: 260px;
+  height: 100%;
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  @include scrollbar;
+}
+
+.chat-box {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 10px;
+  @include scrollbar;
+}
+
+.chat-input-container {
+  flex: 0;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: $blueLightGray;
+}
+
+
+.chat-input {
+  display: block;
+  border: none;
+  background-color: transparent;
+  height: $inputHeight;
+  width: 100%;
+  color: white;
+  font-family: $themeFont;
+  font-weight: 300;
+  font-size: 16px;
+  padding-left: 10px;
+}
+
+.chat-send-button {
+  fill: $terracotta;
+  height: 20px;
+  width: 20px;
+  margin: 0 5px;
+  flex-shrink: 0;
+
+  @include clickable;
+}
+
+// Chat Items
+
+$chatItemSize: 14px;
+
+.chat-item {
+  width: 100%;
+  padding: 5px 5px;
+  display: flex;
+  align-items: flex-start;
+  font-family: $themeFont;
+  font-size: $chatItemSize;
+
+  &:first-of-type {
+    margin-top: auto;
+  }
+
+  &.msg {
+
+  }
+  &.event {
+    font-weight: 500;
+    background-color: $blueMediumGray;
+  }
+}
+
+.chat-item-icon {
+  width: $chatItemSize;
+  height: $chatItemSize;
+  margin: 0 5px 0 0;
+}
+
+.chat-item-sender {
+  margin: 0 5px 0 0;
+  font-weight: 500;
+  line-height: $chatItemSize;
+}
+
+.chat-item-text {
+  margin: 0;
+  line-height: $chatItemSize;
+  word-break: break-all;
+}

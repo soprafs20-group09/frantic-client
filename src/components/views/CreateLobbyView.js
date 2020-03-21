@@ -12,11 +12,22 @@ import PlayerList from "components/ui/PlayerList";
 import ChooseUsernameWindow from "components/ChooseUsernameWindow";
 import {animated, Transition} from "react-spring/renderprops";
 import ChatWindow from "components/ui/ChatWindow";
+import ChatItem from "components/ui/chat/ChatItem";
+import {getPlayerAvatar} from "utils/api";
 
 class CreateLobbyView extends Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            chatItems: [
+                <ChatItem sender="sina" icon={getPlayerAvatar('sina')}>is everyone ready?</ChatItem>,
+                <ChatItem sender="kyrill" icon={getPlayerAvatar('kyrill')}>yee</ChatItem>,
+                <ChatItem sender="jan" icon={getPlayerAvatar('jan')}>ofc</ChatItem>,
+                <ChatItem sender="joe" icon={getPlayerAvatar('joe')}>1 min pls</ChatItem>,
+                <ChatItem style="event">Game starting in 30 seconds.</ChatItem>,
+                <ChatItem sender="joe" icon={getPlayerAvatar('joe')}>ok ready!</ChatItem>
+            ]
+        };
     }
 
     render() {
@@ -140,11 +151,26 @@ class CreateLobbyView extends Component {
                     </Window>
                 </div>
                 <div className="createlobby-column chat">
-                    <ChatWindow/>
+                    <ChatWindow onSend={msg => this.handleSend(msg)}>
+                        {this.state.chatItems}
+                    </ChatWindow>
                 </div>
             </div>
 
         );
+    }
+
+    handleSend(msg) {
+        let newItem =
+            <ChatItem
+                sender="you"
+                icon={getPlayerAvatar("you")}
+            >
+                {msg}
+            </ChatItem>;
+        this.setState({
+            chatItems: this.state.chatItems.concat(newItem)
+        });
     }
 
     confirmUsername(username) {
