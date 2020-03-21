@@ -68,13 +68,13 @@ class LobbyList extends Component {
 class LobbyItem extends Component {
     render() {
         return (
-            <a href={this.props.link}>
+            <animated.a href={this.props.link}>
                 <animated.li className="lobby-item" style={this.props.style}>
                     <p className="lobby-item-text c1">{this.props.name}</p>
                     <p className="lobby-item-text c2">{this.props.creator}</p>
                     <p className="lobby-item-text c3">{this.props.players}</p>
                 </animated.li>
-            </a>
+            </animated.a>
         );
     }
 }
