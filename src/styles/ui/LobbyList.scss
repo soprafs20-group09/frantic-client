@@ -1,0 +1,58 @@
+@import 'theme';
+
+.lobby-list-container {
+  width: 100%;
+  margin-top: 25px;
+}
+
+@mixin captionWidth {
+  &.c1 {
+    width: 60%;
+  }
+  &.c2 {
+    width: 30%;
+  }
+  &.c3 {
+    width: 10%;
+    text-align: right;
+  }
+}
+
+.lobby-list-caption-container {
+  padding: 0 20px;
+}
+
+.lobby-list-caption {
+  display: inline-block;
+  font-family: $themeFont;
+  font-size: 30px;
+  font-weight: 500;
+  text-transform: lowercase;
+  margin: 20px 0 0;
+  @include captionWidth;
+}
+
+.lobby-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.lobby-item {
+  display: flex;
+  align-items: center;
+  height: 60px;
+  background-color: $blueMediumGray;
+  border-radius: 5px;
+  box-shadow: $dropShadow;
+  margin-top: 15px;
+  padding: 0 20px;
+  overflow: hidden;
+  box-sizing: border-box;
+  @include clickable;
+}
+
+.lobby-item-text {
+  font-size: 20px;
+  font-weight: 500;
+  @include captionWidth;
+}
