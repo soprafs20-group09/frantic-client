@@ -39,10 +39,12 @@ class ChatInput extends Component {
     }
 
     handleSend() {
-        if (this.props.onSend) {
-            this.props.onSend(this.state.value);
+        if ( this.state.value) {
+            if (this.props.onSend) {
+                this.props.onSend(this.state.value);
+            }
+            this.setState({value: ''});
         }
-        this.setState({value: ''});
     }
 }
 
