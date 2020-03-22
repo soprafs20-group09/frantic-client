@@ -9,9 +9,5 @@
   text-align: center;
   text-transform: lowercase;
   text-shadow: $dropShadow;
-  transition: 0.3s;
-}
-
-.mainmenu-item:hover {
-  filter: brightness(125%);
+  @include clickable;
 }

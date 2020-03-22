@@ -1,10 +1,10 @@
 @import 'theme';
 @import 'ui/Window';
 
-$inputHeight: 30px;
+$inputHeight: 1.9em;
 
 .window-container.chat {
-  width: 260px;
+  width: 14.5em;
   height: 100%;
   max-height: 100%;
   display: flex;
@@ -19,7 +19,7 @@ $inputHeight: 30px;
   flex-direction: column;
   overflow-y: auto;
   overflow-x: hidden;
-  padding-right: 10px;
+  padding-right: 0.5em;
   @include scrollbar;
 }
 
@@ -43,14 +43,14 @@ $inputHeight: 30px;
   font-family: $themeFont;
   font-weight: 300;
   font-size: $fontSizeInput;
-  padding-left: 10px;
+  padding-left: 0.5em;
 }
 
 .chat-send-button {
   fill: $terracotta;
-  height: 20px;
-  width: 20px;
-  margin: 0 5px;
+  height: 1.4em;
+  width: 1.4em;
+  margin: 0 0.2em;
   flex-shrink: 0;
 
   @include clickable;
@@ -62,7 +62,7 @@ $chatItemSize: $fontSizeChat;
 
 .chat-item {
   width: 100%;
-  padding: 5px 5px;
+  padding: 0.35em;
   display: flex;
   align-items: flex-start;
   font-family: $themeFont;
@@ -84,11 +84,11 @@ $chatItemSize: $fontSizeChat;
 .chat-item-icon {
   width: $chatItemSize;
   height: $chatItemSize;
-  margin: 0 5px 0 0;
+  margin: 0 0.35em 0 0;
 }
 
 .chat-item-sender {
-  margin: 0 5px 0 0;
+  margin: 0 0.35em 0 0;
   font-weight: 500;
   line-height: $chatItemSize;
 }

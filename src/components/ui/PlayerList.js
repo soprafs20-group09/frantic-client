@@ -21,13 +21,13 @@ class PlayerList extends Component {
     render() {
         const fromStyle = {
             margin: 0,
-            height: 0,
+            height: '0em',
             opacity: 0,
             transform: 'translateX(100%)'
         };
         const toStyle = {
-            margin: '10px 0',
-            height: 55,
+            margin: '0.6em 0',
+            height: '2.9em',
             opacity: 1,
             transform: 'translateX(0%)'
         };

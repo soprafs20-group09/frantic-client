@@ -9,19 +9,20 @@
 
 .player-item {
   width: 100%;
-  height: 50px;
+  height: 2.8em; // see transition in PlayerList.js!
   display: flex;
   justify-content: flex-start;
   align-items: center;
   background-color: $blueMediumGray;
   box-shadow: $dropShadow;
-  margin: 10px 0;
-  padding: 10px 15px 10px 10px;
-  border-radius: 5px;
+  margin: 0.6em 0;
+  padding: 0.6em 0.9em 0.6em 0.6em;
+  border-radius: 0.3em;
   box-sizing: border-box;
 }
 
 .player-item-text {
+  margin: 0;
   width: 100%;
   text-transform: none;
   font-weight: 500;
@@ -29,24 +30,24 @@
 
 .player-item-avatar {
   flex-shrink: 0;
-  width: 40px;
-  height: 40px;
+  width: 2.2em;
+  height: 2.2em;
   border-radius: 50%;
-  padding: 5px;
+  padding: 0.2em;
   box-sizing: border-box;
   background-color: $blueLightGray;
-  margin-right: 10px;
+  margin-right: 0.5em;
 }
 
 .player-item-decor {
   fill: $terracotta;
-  width: 30px;
-  height: 30px;
+  width: 1.7em;
+  height: 1.7em;
 
   &.clickable {
-    width: 20px;
-    height: 20px;
-    margin-right: 5px;
+    width: 1.2em;
+    height: 1.2em;
+    margin-right: 0.2em;
     @include clickable;
   }
 }

@@ -3,33 +3,32 @@
 .window-container {
     color: white;
     background-color: $blueGray;
-    border-radius: 15px;
+    border-radius: 0.8em;
     overflow: hidden;
     box-shadow: $dropShadow;
     padding: 0;
 }
 
-$headerHeight: 85px;
-
 .window-header {
   background-color: $terracotta;
+  font-size: $fontSizeHeader;
   color: $blueGray;
-  height: $headerHeight;
+  height: 1.8em;
   margin: 0;
 }
 
 .window-title {
-  margin: 0 40px;
+  margin: 0 0.7em;
   font-size: $fontSizeHeader;
   height: 100%;
   width: 100%;
-  line-height: $headerHeight;
+  line-height: 2em;
   font-weight: 600;
   text-transform: lowercase;
   text-align: left;
 }
 
 .window-content {
-  min-height: 50px;
-  margin: 40px;
+  min-height: 5em;
+  margin: 2em;
 }

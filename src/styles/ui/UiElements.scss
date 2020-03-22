@@ -1,5 +1,7 @@
 @import 'theme';
 
+$uiBorderRadius: 0.3em;
+
 // Input
 
 .input-container {
@@ -9,31 +11,31 @@
 }
 
 .input-title {
-  margin: 0 0 5px;
+  margin: 0 0 0.2em;
   text-transform: lowercase;
 }
 
 .input-input {
   background-color: $blueLightGray;
   border: none;
-  border-radius: 5px;
+  border-radius: $uiBorderRadius;
   color: white;
-  height: 30px;
+  height: 1.9em;
   width: 100%;
-  padding: 0 8px;
+  padding: 0 0.5em;
   box-sizing: border-box;
   font-family: $themeFont;
   font-weight: 300;
   font-size: $fontSizeInput;
 
   &.action {
-    border-radius: 5px 0 0 5px;
+    border-radius: $uiBorderRadius 0 0 $uiBorderRadius;
   }
 
   &.search {
-    height: 40px;
+    height: 2.2em;
     font-size: $fontSizeDefault;
-    padding: 0 15px;
+    padding: 0 1em;
     box-shadow: $dropShadow;
 
     &::placeholder {
@@ -44,15 +46,15 @@
 }
 
 .input-action {
-  padding: 0 10px;
-  min-width: 100px;
+  padding: 0 0.5em;
+  min-width: 5.5em;
   border: none;
   background-color: $terracotta;
   color: $blueGray;
   font-family: $themeFont;
   font-size: $fontSizeDefault;
   text-transform: lowercase;
-  border-radius: 0 5px 5px 0;
+  border-radius: 0 $uiBorderRadius $uiBorderRadius 0;
   flex-shrink: 0;
   @include clickable;
 
@@ -63,10 +65,10 @@
 
 // Search Bar
 .search-refresh {
-  width: 40px;
-  height: 40px;
+  width: 2.2em;
+  height: 2.2em;
   fill: $terracotta;
-  margin-left: 20px;
+  margin-left: 1em;
   filter: drop-shadow($dropShadow);
 
   @include clickable;
@@ -79,8 +81,8 @@ $buttonHeight: 35px;
 .button-container {
   height: $buttonHeight;
   border: none;
-  border-radius: 5px;
-  padding: 0 10px;
+  border-radius: $uiBorderRadius;
+  padding: 0 0.5em;
   @include clickable;
 
   &.primary {
@@ -111,13 +113,13 @@ $buttonHeight: 35px;
 .header {
   display: block;
   margin-top: 0;
-  margin-bottom: 25px;
+  margin-bottom: 0.7em;
   color: $terracotta;
   font-family: $themeFont;
   font-size: $fontSizeDefault * 2;
-  height: 50px;
+  height: 1.4em;
   font-weight: 600;
-  border-bottom: 3px solid $blueLightGray;
+  border-bottom: 0.09em solid $blueLightGray;
   text-transform: lowercase;
 }
 
@@ -133,7 +135,7 @@ $buttonHeight: 35px;
   background-color: $blueLightGray;
   border: none;
   color: white;
-  height: 30px;
+  height: 1.65em;
   width: 100%;
   font-family: $themeFont;
   font-weight: 300;
@@ -143,11 +145,11 @@ $buttonHeight: 35px;
   transition: all 0.3s, font-weight 0s;
 
   &:first-of-type {
-    border-radius: 5px 0 0 5px;
+    border-radius: $uiBorderRadius 0 0 $uiBorderRadius;
   }
 
   &:last-of-type {
-    border-radius: 0 5px 5px 0;
+    border-radius: 0 $uiBorderRadius $uiBorderRadius 0;
   }
 
   &.active {
@@ -161,8 +163,8 @@ $buttonHeight: 35px;
 
 .switch-title {
   width: 100%;
-  height: 30px;
-  line-height: $fontSizeCaption;
+  height: 1.5em;
+  line-height: 1.5em;
   margin: 0;
   text-transform: lowercase;
 }
@@ -170,18 +172,18 @@ $buttonHeight: 35px;
 .switch-description {
   color: $terracotta;
   flex-shrink: 0;
-  height: 30px;
-  line-height: 30px;
+  height: 1.5em;
+  line-height: 1.5em;
   margin: 0;
   text-transform: lowercase;
   font-weight: 300;
 
   &:first-of-type {
-    margin-right: 15px;
+    margin-right: 1em;
   }
 
   &:last-of-type {
-    margin-left: 15px;
+    margin-left: 1em;
   }
 }
 
@@ -194,15 +196,15 @@ $buttonHeight: 35px;
 .switch-rail {
   cursor: pointer;
   flex-shrink: 0;
-  width: 60px;
-  height: 30px;
-  border-radius: 15px;
+  width: 3em;
+  height: 1.5em;
+  border-radius: 1.5em;
   background-color: $blueLightGray;
 }
 
 .switch-nob {
-  height: 30px;
-  width: 30px;
+  height: 1.5em;
+  width: 1.5em;
   border-radius: 50%;
   background-color: $terracotta;
   box-shadow: $dropShadow;

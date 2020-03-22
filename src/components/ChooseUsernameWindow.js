@@ -19,7 +19,7 @@ class ChooseUsernameWindow extends Component {
 
     render() {
         return (
-            <ToolWindow title="Choose Username" width="420px">
+            <ToolWindow title="Choose Username" width="23em">
                 <p>please choose a username to proceed!</p>
                 <Input
                     title="username:"

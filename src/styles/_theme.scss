@@ -10,19 +10,19 @@ $themeFont: 'Montserrat', sans-serif;
 $fontSizeDefault: 18px;
 $fontSizeInput: 16px;
 $fontSizeHeader: 48px;
-$fontSizeSmallHeader: 24px;
+$fontSizeSmallHeader: 25px;
 $fontSizeCaption: 30px;
 $fontSizeChat: 14px;
 $fontSizeButton: 20px;
 
 
 /* Our standard drop-shadow */
-$dropShadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+$dropShadow: 0 0.25em 0.25em rgba(0, 0, 0, 0.25);
 
 /* some common css stuff */
 @mixin fullscreen {
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   margin: 0;
 }
 
@@ -39,13 +39,13 @@ $dropShadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
 @mixin scrollbar {
   &::-webkit-scrollbar {
-    width: 6px;
+    width: 0.36rem;
   }
   &::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    -webkit-box-shadow: inset 0 0 0.36rem rgba(0,0,0,.3);
   }
   &::-webkit-scrollbar-thumb {
-    border-radius: 3px;
+    border-radius: 0.18rem;
     background-color: $blueMediumGray;
   }
 }
