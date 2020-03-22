@@ -20,7 +20,7 @@ $headerHeight: 85px;
 
 .window-title {
   margin: 0 40px;
-  font-size: 48px;
+  font-size: $fontSizeHeader;
   height: 100%;
   width: 100%;
   line-height: $headerHeight;

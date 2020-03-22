@@ -42,7 +42,7 @@ $inputHeight: 30px;
   color: white;
   font-family: $themeFont;
   font-weight: 300;
-  font-size: 16px;
+  font-size: $fontSizeInput;
   padding-left: 10px;
 }
 
@@ -58,7 +58,7 @@ $inputHeight: 30px;
 
 // Chat Items
 
-$chatItemSize: 14px;
+$chatItemSize: $fontSizeChat;
 
 .chat-item {
   width: 100%;

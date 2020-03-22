@@ -20,7 +20,7 @@ $headerHeight: 50px;
 
 .toolwindow-title {
   margin: 0 20px;
-  font-size: 24px;
+  font-size: $fontSizeSmallHeader;
   height: 100%;
   width: 100%;
   line-height: $headerHeight;

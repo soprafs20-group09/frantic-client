@@ -24,7 +24,7 @@
   box-sizing: border-box;
   font-family: $themeFont;
   font-weight: 300;
-  font-size: 16px;
+  font-size: $fontSizeInput;
 
   &.action {
     border-radius: 5px 0 0 5px;
@@ -32,7 +32,7 @@
 
   &.search {
     height: 40px;
-    font-size: 18px;
+    font-size: $fontSizeDefault;
     padding: 0 15px;
     box-shadow: $dropShadow;
 
@@ -50,7 +50,7 @@
   background-color: $terracotta;
   color: $blueGray;
   font-family: $themeFont;
-  font-size: 18px;
+  font-size: $fontSizeDefault;
   text-transform: lowercase;
   border-radius: 0 5px 5px 0;
   flex-shrink: 0;
@@ -99,7 +99,7 @@ $buttonHeight: 35px;
 
 .button-text {
   text-transform: lowercase;
-  font-size: 20px;
+  font-size: $fontSizeButton;
   font-family: $themeFont;
   line-height: $buttonHeight;
   margin: 0;
@@ -114,7 +114,7 @@ $buttonHeight: 35px;
   margin-bottom: 25px;
   color: $terracotta;
   font-family: $themeFont;
-  font-size: 36px;
+  font-size: $fontSizeDefault * 2;
   height: 50px;
   font-weight: 600;
   border-bottom: 3px solid $blueLightGray;
@@ -137,7 +137,7 @@ $buttonHeight: 35px;
   width: 100%;
   font-family: $themeFont;
   font-weight: 300;
-  font-size: 18px;
+  font-size: $fontSizeDefault;
   text-transform: lowercase;
   @include clickable;
   transition: all 0.3s, font-weight 0s;
@@ -162,7 +162,7 @@ $buttonHeight: 35px;
 .switch-title {
   width: 100%;
   height: 30px;
-  line-height: 30px;
+  line-height: $fontSizeCaption;
   margin: 0;
   text-transform: lowercase;
 }
