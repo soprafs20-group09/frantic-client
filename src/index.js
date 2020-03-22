@@ -5,8 +5,8 @@ import App from 'components/App';
 
 import "typeface-montserrat";
 
-// if the screen is smaller than 47 default rem
-if (!window.matchMedia("(min-height: 47rem)").matches) {
+// if the screen is smaller than what I deem usable with normal scale
+if (window.innerHeight < 860) {
     calibrateFontSize();
 }
 
