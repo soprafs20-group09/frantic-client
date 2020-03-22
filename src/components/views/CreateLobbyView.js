@@ -80,7 +80,7 @@ class CreateLobbyView extends Component {
         return (
             <div className="createlobby-container">
                 <div className="createlobby-column main">
-                    <Window key="LobbyWindow" title={this.state.lobbyName} width="48em" height="41em" maxHeight="90vh">
+                    <Window key="LobbyWindow" title={this.state.lobbyName} width="48em" height="41em">
                         <div className="createlobby-window-container">
                             <div className="createlobby-window-column">
                                 <Header>Settings</Header>
