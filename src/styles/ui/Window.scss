@@ -1,12 +1,12 @@
 @import 'theme';
 
 .window-container {
-    color: white;
-    background-color: $blueGray;
-    border-radius: 0.8em;
-    overflow: hidden;
-    box-shadow: $dropShadow;
-    padding: 0;
+  color: white;
+  background-color: $blueGray;
+  border-radius: 0.8em;
+  overflow: hidden;
+  box-shadow: $dropShadow;
+  padding: 0;
 }
 
 .window-header {
@@ -26,6 +26,16 @@
   font-weight: 600;
   text-transform: lowercase;
   text-align: left;
+}
+
+.window-body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: calc(100% - 1.8em);
+  max-height: calc(100% - 1.8em);
+  overflow-y: auto;
+  @include scrollbar;
 }
 
 .window-content {

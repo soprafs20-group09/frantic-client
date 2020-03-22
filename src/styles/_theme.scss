@@ -7,7 +7,9 @@ $blueLightGray: #676E80;
 
 /* Font stuff */
 $themeFont: 'Montserrat', sans-serif;
-$fontSizeDefault: 18px; // this is rem
+$rootFontSize: 18px; // this is rem
+
+$fontSizeDefault: 1rem;
 $fontSizeInput: 0.89rem; // 16px
 $fontSizeHeader: 2.66rem; // 48px
 $fontSizeSmallHeader: 1.38rem; // 25px

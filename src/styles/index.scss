@@ -7,7 +7,7 @@ a {
 
 html {
   @include fullscreen;
-  font-size: $fontSizeDefault;
+  font-size: $rootFontSize;
   font-weight: 300;
 }
 
