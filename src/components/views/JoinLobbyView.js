@@ -68,7 +68,7 @@ class JoinLobbyView extends Component {
     getMainWindow() {
 
         return (
-            <Window title="Join a Lobby" width="70vw" maxHeight="90vh">
+            <Window title="Join a Lobby" width="70vw" height="70vh" maxHeight="90vh">
                 <SearchBar withRefresh/>
                 <LobbyList lobbies={this.state.lobbies}/>
             </Window>
