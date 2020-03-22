@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="5.4998055mm"
+   height="3.331986mm"
+   viewBox="0 0 5.4998055 3.331986"
+   version="1.1"
+   id="svg3847"
+   inkscape:version="0.92.4 5da689c313, 2019-01-14"
+   sodipodi:docname="earthquake.svg">
+  <defs
+     id="defs3841" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="53.207185"
+     inkscape:cx="10.393331"
+     inkscape:cy="6.2966512"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="1269"
+     inkscape:window-height="1064"
+     inkscape:window-x="1511"
+     inkscape:window-y="258"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata3844">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-72.845336,-141.87567)">
+    <g
+       id="g1718"
+       transform="matrix(0.35277777,0,0,-0.35277777,78.345141,145.20766)">
+      <path
+         d="m 0,0 v 8.084 l -4.792,1.361 v -0.73 l -2.142,-1.116 2.607,-1.027 0.825,-0.037 0.7,-0.72 1.176,0.432 0.55,-0.18 0.376,0.072 -0.376,-0.378 -0.5,0.216 -1,-0.357 0.425,-0.183 -0.075,-0.775 0.65,-0.343 -0.7,-0.324 0.425,0.378 -0.625,0.163 V 5.222 L -2.876,5.62 -3.977,6.273 -6.404,6.698 -7.126,6.273 -8.06,5.422 -6.55,4.908 -5.671,4.235 -6.495,3.919 V 3.365 L -7.923,2.02 -7.648,3.879 -8.582,4.671 -8.747,4.315 -9.626,4.394 -10.643,3.82 -10.45,2.91 -11.302,2.574 -11.329,2.02 l -0.192,0.573 0.576,0.317 0.083,0.969 -0.797,-0.118 -0.247,-0.495 0.055,0.653 1.153,0.237 1.484,0.891 V 5.64 l -0.138,0.534 -0.714,-0.198 0.714,0.574 -0.302,0.95 -1.236,-0.218 -0.631,-0.494 -1.621,-0.04 0.302,-0.673 -0.714,-0.296 0.467,0.257 -0.275,0.732 -0.659,-0.712 -0.879,-0.277 0.577,0.336 0.879,0.811 1.867,0.138 0.33,0.277 1.099,0.475 0.788,1.39 L -10.752,8.912 -13.581,8.301 -15.284,8.4 -15.59,7.414 -15.408,0 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="path1720"
+         inkscape:connector-curvature="0" />
+    </g>
+  </g>
+</svg>
