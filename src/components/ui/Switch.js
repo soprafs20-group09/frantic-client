@@ -20,8 +20,8 @@ class Switch extends Component {
     }
 
     render() {
-        const from = {x: this.isOn() ? '30px' : '0px'};
-        const to = {x: this.isOn() ? '0px' : '30px'};
+        const from = {x: this.isOn() ? '1.5em' : '0em'};
+        const to = {x: this.isOn() ? '0em' : '1.5em'};
 
         return (
             <div className="switch-container" style={this.props.style}>

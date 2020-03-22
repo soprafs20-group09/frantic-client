@@ -64,18 +64,20 @@ class MainMenuLogoTransition extends Component {
         const fromStyle = {
             height: 0,
             opacity: 0,
-            transform: 'translateY(-100%) rotate(-180deg) scale(1.5)'
+            transform: 'translateY(-100%) rotate(-180deg) scale(1.5)',
+            marginBottom: '1em'
         };
         const leaveStyle = {
             height: 0,
             opacity: 0,
-            transform: 'translateY(-100%) rotate(0deg) scale(1)'
+            transform: 'translateY(-100%) rotate(0deg) scale(1)',
+            marginBottom: '1em'
         };
         const enterStyle = {
-            height: '300px',
+            height: '16em',
             opacity: 1,
             transform: 'translateY(0%) rotate(0deg) scale(1)',
-            marginBottom: '15px'
+            marginBottom: '1em'
         };
 
         return (
@@ -102,13 +104,13 @@ class MainMenuItemTransition extends Component {
             height: 0,
             opacity: 0,
             transform: 'translateY(20%) scale(1)',
-            margin: "0 0 15px"
+            marginBottom: '1em'
         };
         const neutral = {
-            height: '300px',
+            height: '16em',
             opacity: 1,
             transform: 'translateY(0%) scale(1)',
-            margin: "0 0 15px"
+            marginBottom: '1em'
         };
 
         return (

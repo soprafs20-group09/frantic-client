@@ -14,14 +14,14 @@ import {animated, Transition} from "react-spring/renderprops";
 class LobbyList extends Component {
     render() {
         const fromStyle = {
-            margin: '0px 0',
-            height: 0,
+            margin: '0em 0',
+            height: '0em',
             opacity: 0,
             transform: 'translateX(100%)'
         };
         const toStyle = {
-            margin: '15px 0',
-            height: 55,
+            margin: '0.8em 0',
+            height: '3em',
             opacity: 1,
             transform: 'translateX(0%)'
         };

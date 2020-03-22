@@ -7,13 +7,13 @@ $blueLightGray: #676E80;
 
 /* Font stuff */
 $themeFont: 'Montserrat', sans-serif;
-$fontSizeDefault: 18px;
-$fontSizeInput: 16px;
-$fontSizeHeader: 48px;
-$fontSizeSmallHeader: 25px;
-$fontSizeCaption: 30px;
-$fontSizeChat: 14px;
-$fontSizeButton: 20px;
+$fontSizeDefault: 18px; // this is rem
+$fontSizeInput: 0.89rem; // 16px
+$fontSizeHeader: 2.66rem; // 48px
+$fontSizeSmallHeader: 1.38rem; // 25px
+$fontSizeCaption: 1.66rem; // 30px
+$fontSizeChat: 0.77rem; // 14px
+$fontSizeButton: 1.11rem; // 20px
 
 
 /* Our standard drop-shadow */

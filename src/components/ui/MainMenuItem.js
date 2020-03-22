@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link, withRouter} from "react-router-dom";
 
-import "styles/ui/MainMenuItem.scss";
+import "styles/views/MainMenu.scss";
 
 /**
  * This component shows a label in the style of the main menu entries.

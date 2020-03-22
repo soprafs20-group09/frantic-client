@@ -50,7 +50,7 @@ class CreateLobbyView extends Component {
     }
 
     getMainWindow() {
-        const spacingStyle = {marginBottom: '30px'};
+        const spacingStyle = {marginBottom: '1.8em'};
 
         const durationItems = [
             {

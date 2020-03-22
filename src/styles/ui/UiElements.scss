@@ -64,6 +64,7 @@ $uiBorderRadius: 0.3em;
 }
 
 // Search Bar
+
 .search-refresh {
   width: 2.2em;
   height: 2.2em;
@@ -76,9 +77,10 @@ $uiBorderRadius: 0.3em;
 
 // Button
 
-$buttonHeight: 35px;
+$buttonHeight: 1.75em;
 
 .button-container {
+  font-size: $fontSizeButton;
   height: $buttonHeight;
   border: none;
   border-radius: $uiBorderRadius;
@@ -101,7 +103,6 @@ $buttonHeight: 35px;
 
 .button-text {
   text-transform: lowercase;
-  font-size: $fontSizeButton;
   font-family: $themeFont;
   line-height: $buttonHeight;
   margin: 0;

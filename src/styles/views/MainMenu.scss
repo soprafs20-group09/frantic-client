@@ -10,8 +10,8 @@
 }
 
 .mainmenu-logo {
-  width: 300px;
-  height: 300px;
+  width: 16em;
+  height: 16em;
   fill: $terracotta;
   animation: mainmenu-logo-spin infinite 20s linear;
 }
@@ -21,11 +21,23 @@
 }
 
 .mainmenu-items-container {
-  height: 30%;
+  height: 16em;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.mainmenu-item {
+  margin: 0;
+  color: $terracotta;
+  font-size: $fontSizeDefault * 2;
+  font-weight: 300;
+  font-style: normal;
+  text-align: center;
+  text-transform: lowercase;
+  text-shadow: $dropShadow;
+  @include clickable;
 }
 
 @keyframes mainmenu-logo-spin {
