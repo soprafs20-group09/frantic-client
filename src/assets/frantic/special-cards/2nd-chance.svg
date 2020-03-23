@@ -59,12 +59,12 @@
      transform="translate(-81.410755,-135.75004)">
     <path
        d="m 86.410674,138.9649 h -4.999919 v -1.42945 h 4.999919 z"
-       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277775"
+       style="fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277775"
        id="path1062"
        inkscape:connector-curvature="0" />
     <path
        d="m 84.625618,140.74996 h -1.429455 v -4.99992 h 1.429455 z"
-       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277775"
+       style="fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277775"
        id="path1064"
        inkscape:connector-curvature="0" />
   </g>

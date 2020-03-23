@@ -93,7 +93,7 @@
            transform="translate(164.6456,527.9526)">
           <path
              d="m 0,0 c -3.908,0 -7.087,3.179 -7.087,7.087 0,3.907 3.179,7.086 7.087,7.086 3.908,0 7.087,-3.179 7.087,-7.086 C 7.087,3.179 3.908,0 0,0 m 0,12.271 c -2.858,0 -5.184,-2.326 -5.184,-5.184 0,-2.859 2.326,-5.184 5.184,-5.184 2.858,0 5.184,2.325 5.184,5.184 0,2.858 -2.326,5.184 -5.184,5.184"
-             style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             style="fill-opacity:1;fill-rule:nonzero;stroke:none"
              id="path1076"
              inkscape:connector-curvature="0" />
         </g>
@@ -104,7 +104,7 @@
        transform="matrix(0.35277777,0,0,-0.35277777,71.739517,191.06505)">
       <path
          d="M 0,0 -9.485,9.485 -8.14,10.83 1.345,1.345 Z"
-         style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         style="fill-opacity:1;fill-rule:nonzero;stroke:none"
          id="path1080"
          inkscape:connector-curvature="0" />
     </g>
@@ -113,7 +113,7 @@
        transform="matrix(0.35277777,0,0,-0.35277777,68.890038,191.06505)">
       <path
          d="M 0,0 -1.345,1.345 8.14,10.83 9.485,9.485 Z"
-         style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         style="fill-opacity:1;fill-rule:nonzero;stroke:none"
          id="path1084"
          inkscape:connector-curvature="0" />
     </g>

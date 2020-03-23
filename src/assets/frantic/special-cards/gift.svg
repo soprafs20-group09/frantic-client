@@ -85,7 +85,7 @@
            transform="translate(165.2285,473.502)">
           <path
              d="m 0,0 -0.581,-7.541 c 0,-0.002 -0.001,-0.003 -0.002,-0.002 h -0.001 l -5.744,4.922 c -1.61,1.38 -1.797,3.804 -0.417,5.415 1.38,1.61 3.804,1.797 5.415,0.417 C -0.37,2.388 0.083,1.172 0,0"
-             style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             style="fill-opacity:1;fill-rule:nonzero;stroke:none"
              id="path1096"
              inkscape:connector-curvature="0" />
         </g>
@@ -94,7 +94,7 @@
            transform="translate(170.391,470.881)">
           <path
              d="m 0,0 -5.743,-4.922 c -10e-4,-0.001 -0.003,-0.001 -0.003,0 -10e-4,10e-4 -10e-4,10e-4 -10e-4,0.002 L -6.328,2.621 C -6.491,4.736 -4.909,6.582 -2.794,6.745 -0.679,6.908 1.167,5.326 1.33,3.211 1.427,1.95 0.887,0.77 0,0"
-             style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             style="fill-opacity:1;fill-rule:nonzero;stroke:none"
              id="path1100"
              inkscape:connector-curvature="0" />
         </g>

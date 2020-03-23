@@ -62,7 +62,7 @@
        transform="matrix(0.35277777,0,0,-0.35277777,101.43475,110.76342)">
       <path
          d="m 0,0 c 1.36,-0.83 4.752,-3.677 4.752,-6.901 0,-3.128 -1.783,-4.465 -4.394,-4.465 -2.136,0 -3.941,1.417 -4.527,3.362 0.163,-2.807 2.491,-5.034 5.339,-5.034 2.954,0 5.349,2.395 5.349,5.349 C 6.519,-3.677 2.148,-0.695 0,0"
-         style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         style="fill-opacity:1;fill-rule:nonzero;stroke:none"
          id="path1548"
          inkscape:connector-curvature="0" />
     </g>
@@ -71,7 +71,7 @@
        transform="matrix(0.35277777,0,0,-0.35277777,100.11254,114.21821)">
       <path
          d="m 0,0 -0.56,-0.56 h -0.48 l -0.107,-0.5 -2.269,-2.268 c 0,0 -0.298,-0.454 0,-0.824 0.299,-0.37 1.099,0 1.099,0 l 2.191,2.191 0.352,0.125 0.101,0.359 0.394,0.394 z"
-         style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         style="fill-opacity:1;fill-rule:nonzero;stroke:none"
          id="path1552"
          inkscape:connector-curvature="0" />
     </g>
@@ -80,7 +80,7 @@
        transform="matrix(0.35277777,0,0,-0.35277777,99.775249,112.97043)">
       <path
          d="M 0,0 4.226,4.035 1.528,4.8 -1.624,1.719 Z"
-         style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         style="fill-opacity:1;fill-rule:nonzero;stroke:none"
          id="path1556"
          inkscape:connector-curvature="0" />
     </g>
@@ -89,7 +89,7 @@
        transform="matrix(0.35277777,0,0,-0.35277777,100.16828,112.40214)">
       <path
          d="m 0,0 9.273,-9.61 c 0,0 0.526,0.071 0.836,0.501 0.31,0.43 0.358,0.717 0.358,0.717 l -9.384,9.36 z"
-         style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         style="fill-opacity:1;fill-rule:nonzero;stroke:none"
          id="path1568"
          inkscape:connector-curvature="0" />
     </g>

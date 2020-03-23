@@ -59,7 +59,7 @@
      id="layer1"
      transform="translate(-108.88093,-69.128158)">
     <path
-       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.33333337"
+       style="fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.33333337"
        d="M 11.337891 0 L 0 19.638672 L 22.677734 19.638672 L 11.337891 0 z M 11.339844 8.5292969 C 13.59316 8.5292969 17.148438 11.589844 17.148438 11.589844 C 17.148438 11.589844 13.59316 14.648438 11.339844 14.648438 C 9.0851666 14.648438 5.5292969 11.589844 5.5292969 11.589844 C 5.5292969 11.589844 9.0851666 8.5292969 11.339844 8.5292969 z "
        transform="matrix(0.26458333,0,0,0.26458333,108.88093,69.128158)"
        id="path1616" />
@@ -68,7 +68,7 @@
        transform="matrix(0.35277777,0,0,-0.35277777,111.15172,72.194395)">
       <path
          d="M 0,0 C 0,1.142 0.925,2.067 2.067,2.067 3.209,2.067 4.134,1.142 4.134,0 4.134,-1.142 3.209,-2.067 2.067,-2.067 0.925,-2.067 0,-1.142 0,0"
-         style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         style="fill-opacity:1;fill-rule:nonzero;stroke:none"
          id="path1632"
          inkscape:connector-curvature="0" />
     </g>

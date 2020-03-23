@@ -65,7 +65,7 @@
          transform="translate(154.7244,300.0349)">
         <path
            d="m 0,0 v 0.291 h 1.391 c 0,0 0.032,0.307 0.679,0.275 0.647,-0.032 4.124,-3.823 6.082,-2.302 1.956,1.52 3.072,1.342 3.946,0.711 0.873,-0.63 5.45,-4.819 0,-6.227 0,0 -3.3,-0.986 -6.89,2.087 C 1.617,-2.092 1.941,-0.065 0,0"
-           style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           style="fill-opacity:1;fill-rule:nonzero;stroke:none"
            id="path1032"
            inkscape:connector-curvature="0" />
       </g>
@@ -74,7 +74,7 @@
          transform="translate(168.4558,291.0528)">
         <path
            d="M 0,0 C 0,0 -0.162,0.032 -1.391,1.003 -2.512,1.888 -3.189,1.665 -3.299,1.619 -3.41,1.665 -4.087,1.888 -5.208,1.003 -6.437,0.032 -6.599,0 -6.599,0 c 0,0 -0.226,-0.016 -0.21,-0.34 0.016,-0.322 1.752,-0.307 3.51,-0.307 1.757,0 3.493,-0.015 3.509,0.307 C 0.226,-0.016 0,0 0,0"
-           style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           style="fill-opacity:1;fill-rule:nonzero;stroke:none"
            id="path1036"
            inkscape:connector-curvature="0" />
       </g>
@@ -83,7 +83,7 @@
          transform="translate(169.199,296.0594)">
         <path
            d="m 0,0 c 0,0 -1.035,3.183 2.502,3.183 3.536,0 2.803,-1.592 2.803,-1.592 0,0 -0.043,-1.233 -3.343,-2.031 0,0 -1.358,-0.237 -1.337,-0.863 0,0 0.043,0.798 1.057,0.453 1.014,-0.345 0.194,-1.531 -0.367,-1.531 -0.56,0 -1.897,0.819 -0.539,1.919 1.359,1.1 3.602,1.769 2.998,2.911 C 3.17,3.592 -0.057,0.66 0.202,-0.548 Z"
-           style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           style="fill-opacity:1;fill-rule:nonzero;stroke:none"
            id="path1040"
            inkscape:connector-curvature="0" />
       </g>
@@ -92,7 +92,7 @@
          transform="translate(165.4834,302.1222)">
         <path
            d="m 0,0 c -0.567,-0.271 -0.959,-0.849 -0.959,-1.519 0,-0.67 0.392,-1.248 0.959,-1.519 0.567,0.271 0.959,0.849 0.959,1.519 C 0.959,-0.849 0.567,-0.271 0,0"
-           style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           style="fill-opacity:1;fill-rule:nonzero;stroke:none"
            id="path1044"
            inkscape:connector-curvature="0" />
       </g>
