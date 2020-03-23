@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import "styles/ui/cards/Card.scss";
 import InlineSVG from "react-inlinesvg";
+import LogoText from "assets/frantic/logo-text.svg";
 
 const multicolorCards = [
     'fantastic',
@@ -60,13 +61,17 @@ class Card extends Component {
                         </span>
                     </div>;
                 break;
+                
+            case 'back':
+                center = <InlineSVG src={LogoText} className="card-logo-back"/>;
+                color = 'black';
+                break;
         }
 
         return (
             <div className={"card-container " + color}>
                 <div className="card-glare"/>
                 <div className="card-border-icon top">{border}</div>
-                {banner}
                 {center}
                 {banner}
                 <div className="card-border-icon bottom">{border}</div>
