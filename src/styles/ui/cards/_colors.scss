@@ -1,0 +1,45 @@
+$red: #d0250d;
+$green: #78b917;
+$blue: #0861a9;
+$yellow: #ffcd2a;
+$black: #282c34;
+
+.red {
+  background-color: $red;
+}
+
+.green {
+  background-color: $green;
+}
+
+.blue {
+  background-color: $blue;
+}
+
+.yellow {
+  background-color: $yellow;
+}
+
+.black {
+  background-color: $black;
+}
+
+.multicolor {
+  background-size: 1800% 1800%;
+  animation: rainbow 5s infinite;
+}
+
+@keyframes rainbow {
+  0%, 100% {
+    background-color: $red;
+  }
+  25% {
+    background-color: $yellow;
+  }
+  50% {
+    background-color: $blue;
+  }
+  75% {
+    background-color: $green;
+  }
+}

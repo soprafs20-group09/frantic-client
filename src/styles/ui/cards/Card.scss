@@ -1,0 +1,152 @@
+@import 'theme';
+@import 'ui/cards/colors';
+
+.card-container {
+  width: 124px;
+  height: 176px;
+  border-radius: 6px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  font-weight: lighter;
+  color: white;
+}
+
+.card-glare {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2));
+  position: absolute;
+  z-index: 10;
+}
+
+.card-border-icon {
+  width: 50px;
+  height: 50px;
+  color: white;
+  display: block;
+  position: absolute;
+  line-height: 50px;
+  font-size: 50px;
+  margin: 5px 10px;
+
+  &.top {
+    top: 0;
+    left: 0;
+    transform: scale(0.4) translate(-35px, -25px);
+  }
+  &.bottom {
+    bottom: 0;
+    right: 0;
+    transform: scale(-0.4) translate(-35px, -25px);
+  }
+}
+
+.card-center {
+  width: 50px;
+  height: 50px;
+  font-size: 50px;
+  line-height: 50px;
+  text-align: center;
+  fill: white;
+}
+
+.card-banner {
+  font-size: 0.8rem;
+  margin: 0.5em 0;
+  height: 1em;
+  line-height: 1em;
+  text-align: center;
+  padding: 0.1em 0.3em;
+  background-color: white;
+  color: black;
+  font-weight: 500;
+  mix-blend-mode: screen;
+
+  &:first-of-type {
+    transform: rotate(180deg);
+  }
+}
+
+$ribbonColor: darken(white, 20);
+
+.ribbon {
+  font-size: 0.4rem;
+  position: relative;
+  display: inline-block;
+  font-family: $themeFont;
+  font-weight: 500;
+  letter-spacing: 0.11em;
+  white-space: nowrap;
+  text-align: center;
+  mix-blend-mode: screen;
+  margin: 1em 0;
+
+  &:nth-child(3) {
+    transform: rotate(180deg);
+  }
+
+  &:after,
+  &:before {
+    content: " ";
+    display: block;
+    position: absolute;
+    bottom: -.5em;
+    width: 1em;
+    height: 100%;
+    background-color: lighten($ribbonColor,10);
+    pointer-events:none;
+  }
+
+  &:after {
+    right: -.57em;
+    z-index: -1;
+  }
+
+  &:before {
+    bottom: auto;
+    top: -.5em;
+    left: -.57em;
+    z-index: -1;
+  }
+
+  .ribbon-inner {
+    display: inline-block;
+    position: relative;
+    padding: .15em .75em;
+    text-decoration: none;
+    color: black;
+    background-color: lighten($ribbonColor,20);
+
+
+    &:after,
+    &:before {
+      content: " ";
+      display: block;
+      position: absolute;
+      width: 0;
+      height: 0;
+      bottom: -.5em;
+      left: -.05em;
+      pointer-events: none;
+      -webkit-mask: none;
+    }
+
+    &:before {
+      bottom: auto;
+      top: -.5em;
+      border-bottom: .5em solid darken($ribbonColor,10);
+      border-left: .5em solid transparent;
+    }
+
+    &:after {
+      left:  auto;
+      right: -.05em;
+      border-top: .5em solid darken($ribbonColor,10);
+      border-right: .5em solid transparent;
+    }
+  }
+}
