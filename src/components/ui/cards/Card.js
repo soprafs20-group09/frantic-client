@@ -47,6 +47,9 @@ class Card extends Component {
                             {this.props.value.replace('-', ' ')}
                         </span>
                     </div>;
+                if (this.props.value === 'fuck-you') {
+                    color = 'black';
+                }
                 break;
 
             case 'event':
