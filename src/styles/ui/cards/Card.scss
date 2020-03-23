@@ -2,16 +2,17 @@
 @import 'ui/cards/colors';
 
 .card-container {
-  width: 124px;
-  height: 176px;
-  border-radius: 6px;
+  font-size: 2.8rem;
+  width: 3.1em;
+  height: 4.4em;
+  border-radius: 0.2em;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  font-weight: lighter;
+  font-weight: 300;
   color: white;
 }
 
@@ -29,52 +30,41 @@
   color: white;
   display: block;
   position: absolute;
-  line-height: 50px;
-  font-size: 50px;
-  margin: 5px 10px;
+  line-height: 1em;
+  margin: 0.1em 0.2em;
 
   &.top {
     top: 0;
     left: 0;
-    transform: scale(0.4) translate(-35px, -25px);
+    transform: scale(0.4) translate(-0.6em, -0.5em);
   }
   &.bottom {
     bottom: 0;
     right: 0;
-    transform: scale(-0.4) translate(-35px, -25px);
+    transform: scale(-0.4) translate(-0.6em, -0.5em);
   }
 }
 
 .card-center {
-  width: 50px;
-  height: 50px;
-  font-size: 50px;
-  line-height: 50px;
+  width: 1em;
+  height: 1em;
+  font-size: 1.2em;
+  line-height: 1em;
   text-align: center;
   fill: white;
 }
 
-.card-banner {
-  font-size: 0.8rem;
-  margin: 0.5em 0;
-  height: 1em;
-  line-height: 1em;
-  text-align: center;
-  padding: 0.1em 0.3em;
-  background-color: white;
-  color: black;
-  font-weight: 500;
-  mix-blend-mode: screen;
-
-  &:first-of-type {
-    transform: rotate(180deg);
-  }
+.card-logo-back {
+  width: 2.5em;
+  height: 2.5em;
+  fill: white;
+  transform: rotate(90deg);
 }
 
 $ribbonColor: darken(white, 20);
 
 .ribbon {
-  font-size: 0.4rem;
+  font-size: 0.5rem;
   position: relative;
   display: inline-block;
   font-family: $themeFont;
@@ -83,7 +73,7 @@ $ribbonColor: darken(white, 20);
   white-space: nowrap;
   text-align: center;
   mix-blend-mode: screen;
-  margin: 1em 0;
+  margin: 1.5em 0;
 
   &:nth-child(3) {
     transform: rotate(180deg);
