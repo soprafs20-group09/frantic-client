@@ -1,7 +1,7 @@
 $red: #d0250d;
+$yellow: #ffcd2a;
 $green: #78b917;
 $blue: #0861a9;
-$yellow: #ffcd2a;
 $black: #282c34;
 
 .red {
@@ -25,8 +25,9 @@ $black: #282c34;
 }
 
 .multicolor {
+  background: linear-gradient($red, $yellow, $green, $blue, $red);
   background-size: 1800% 1800%;
-  animation: rainbow 5s infinite;
+  animation: rainbow-3 10s infinite;
 }
 
 @keyframes rainbow {
@@ -37,9 +38,24 @@ $black: #282c34;
     background-color: $yellow;
   }
   50% {
-    background-color: $blue;
+    background-color: $green;
   }
   75% {
-    background-color: $green;
+    background-color: $blue;
+  }
+}
+
+@keyframes rainbow-3 {
+  0%, 100% {
+    background-position: 50% 0%;
+  }
+  25% {
+    background-position: 25% 50%;
+  }
+  50% {
+    background-position: 50% 100%;
+  }
+  25% {
+    background-position: 75% 50%;
   }
 }
