@@ -67,16 +67,16 @@ class MainMenuLogoTransition extends Component {
             transform: 'translateY(-100%) rotate(-180deg) scale(1.5)',
             marginBottom: '1em'
         };
-        const leaveStyle = {
-            height: 0,
-            opacity: 0,
-            transform: 'translateY(-100%) rotate(0deg) scale(1)',
-            marginBottom: '1em'
-        };
         const enterStyle = {
             height: '16em',
             opacity: 1,
             transform: 'translateY(0%) rotate(0deg) scale(1)',
+            marginBottom: '1em'
+        };
+        const leaveStyle = {
+            height: 0,
+            opacity: 0,
+            transform: 'translateY(-100%) rotate(0deg) scale(1)',
             marginBottom: '1em'
         };
 
@@ -128,9 +128,44 @@ class MainMenuItemTransition extends Component {
     }
 }
 
+class CardRandomNumberTransition extends Component {
+    render() {
+        const fromStyle = {
+            opacity: 0,
+            // transform: 'translateY(-100%)'
+        };
+        const enterStyle = {
+            opacity: 1,
+            // transform: 'translateY(0%)'
+        };
+        const leaveStyle = {
+            opacity: 0,
+            // transform: 'translateY(100%%)'
+        };
+
+        return (
+            <Transition
+                items={this.props.children}
+                from={fromStyle}
+                enter={enterStyle}
+                leave={leaveStyle}
+                trail={0}
+            >
+                {item => style =>
+                    <animated.p className={this.props.className}>
+                        <div style={style}>
+                            {item}
+                        </div>
+                    </animated.p>}
+            </Transition>
+        );
+    }
+}
+
 export {
     WindowTransition,
     ChatItemTransition,
     MainMenuLogoTransition,
-    MainMenuItemTransition
+    MainMenuItemTransition,
+    CardRandomNumberTransition,
 };

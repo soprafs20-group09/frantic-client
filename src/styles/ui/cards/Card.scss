@@ -24,34 +24,50 @@
   z-index: 10;
 }
 
-.card-border-icon {
-  width: 50px;
-  height: 50px;
-  color: white;
-  display: block;
-  position: absolute;
-  line-height: 1em;
-  margin: 0.1em 0.2em;
+$borderMargin: 0.5em;
 
-  &.top {
-    top: 0;
-    left: 0;
-    transform: scale(0.4) translate(-0.6em, -0.5em);
-  }
-  &.bottom {
-    bottom: 0;
-    right: 0;
-    transform: scale(-0.4) translate(-0.6em, -0.5em);
-  }
-}
-
-.card-center {
-  width: 1em;
-  height: 1em;
-  font-size: 1.2em;
-  line-height: 1em;
+.card-icon {
   text-align: center;
   fill: white;
+  color: white;
+  display: block;
+  width: 1em;
+  height: 1em;
+  line-height: 1em;
+  margin: 0;
+
+  &.center {
+    font-size: 1.2em;
+  }
+
+  &.border {
+    font-size: 0.4em;
+    position: absolute;
+
+    &.top:not(.multinumber) {
+      top: $borderMargin;
+      left: $borderMargin;
+    }
+
+    &.bottom:not(.multinumber) {
+      bottom: $borderMargin;
+      right: $borderMargin;
+      transform: rotate(180deg);
+    }
+
+    &.multinumber {
+      &.top {
+        top: $borderMargin;
+        right: $borderMargin;
+      }
+
+      &.bottom {
+        bottom: $borderMargin;
+        left: $borderMargin;
+        transform: rotate(180deg);
+      }
+    }
+  }
 }
 
 .card-logo-back {
@@ -61,7 +77,7 @@
   transform: rotate(90deg);
 }
 
-$ribbonColor: darken(white, 20);
+$ribbonColor: white;
 
 .ribbon {
   font-size: 0.5rem;
@@ -87,8 +103,8 @@ $ribbonColor: darken(white, 20);
     bottom: -.5em;
     width: 1em;
     height: 100%;
-    background-color: lighten($ribbonColor,10);
-    pointer-events:none;
+    background-color: darken($ribbonColor, 10);
+    pointer-events: none;
   }
 
   &:after {
@@ -109,7 +125,7 @@ $ribbonColor: darken(white, 20);
     padding: .15em .75em;
     text-decoration: none;
     color: black;
-    background-color: lighten($ribbonColor,20);
+    background-color: $ribbonColor;
 
 
     &:after,
@@ -128,14 +144,14 @@ $ribbonColor: darken(white, 20);
     &:before {
       bottom: auto;
       top: -.5em;
-      border-bottom: .5em solid darken($ribbonColor,10);
+      border-bottom: .5em solid darken($ribbonColor, 30);
       border-left: .5em solid transparent;
     }
 
     &:after {
-      left:  auto;
+      left: auto;
       right: -.05em;
-      border-top: .5em solid darken($ribbonColor,10);
+      border-top: .5em solid darken($ribbonColor, 30);
       border-right: .5em solid transparent;
     }
   }
