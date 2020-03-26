@@ -4,6 +4,7 @@ import {BrowserRouter, Route, Switch} from "react-router-dom";
 import MainMenu from "components/views/MainMenu";
 import CreateLobbyView from "components/views/CreateLobbyView";
 import JoinLobbyView from "components/views/JoinLobbyView";
+import CardDisplay from "components/views/CardDisplay";
 
 class AppRouter extends React.Component {
     render() {
@@ -18,6 +19,9 @@ class AppRouter extends React.Component {
                     </Route>
                     <Route exact path="/browse">
                         <JoinLobbyView/>
+                    </Route>
+                    <Route exact path="/cards">
+                        <CardDisplay/>
                     </Route>
                 </Switch>
             </BrowserRouter>

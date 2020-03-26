@@ -1,0 +1,14 @@
+@import 'theme';
+
+.card-display-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card-overlay-container {
+  transform: rotate(0deg);
+  margin: 15px;
+  border-radius: 15px;
+  overflow: visible;
+  box-shadow: 10px 10px 15px -5px rgba(0,0,0,0.75);
+}

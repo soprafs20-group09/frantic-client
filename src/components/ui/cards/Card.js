@@ -8,16 +8,16 @@ import FranticUtils from "utils/franticUtils";
 // standard playing card size:
 // 62mm x 82mm
 
-class RandomNumberDisplay extends Component {
+class MultiNumber extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {number: this.getRandomNumber()};
+        this.state = {number: this.getNextNumber()};
     }
 
     componentDidMount() {
         this.interval = setInterval(() => {
-            this.setState({number: this.getRandomNumber()});
+            this.setState({number: this.getNextNumber()});
         }, 700);
     }
 
@@ -35,8 +35,18 @@ class RandomNumberDisplay extends Component {
         clearInterval(this.interval);
     }
 
-    getRandomNumber() {
-        return this.getRandomInt(1, this.props.max || 9);
+    getNextNumber() {
+        if (this.props.random) {
+            let newNum = this.state.number;
+            while (this.state.number === newNum) {
+                newNum = this.getRandomInt(1, this.props.max || 9)
+            }
+            return newNum;
+        } else if (!this.state) {
+            return 1;
+        } else {
+            return this.state.number % (this.props.max || 9) + 1;
+        }
     }
 
     getRandomInt(min, max) {
@@ -106,11 +116,11 @@ class Card extends Component {
             <div className={"card-container " + color}>
                 <div className="card-glare"/>
                 <div className="card-icon border top">{border}</div>
-                {multinumber && <RandomNumberDisplay className="card-icon border multinumber top"/>}
+                {multinumber && <MultiNumber className="card-icon border multinumber top"/>}
                 {center}
                 {banner}
                 <div className="card-icon border bottom">{border}</div>
-                {multinumber && <RandomNumberDisplay className="card-icon border multinumber bottom"/>}
+                {multinumber && <MultiNumber className="card-icon border multinumber bottom"/>}
             </div>
         );
     }
