@@ -7,6 +7,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
 .mainmenu-logo {
@@ -38,6 +39,19 @@
   text-transform: lowercase;
   text-shadow: $dropShadow;
   @include clickable;
+}
+
+.madewith {
+  font-family: $themeFont;
+  color: $terracotta;
+  margin: 0;
+  overflow: visible;
+
+  &.label {
+    display: flex;
+    position: absolute;
+    bottom: 0.5em;
+  }
 }
 
 @keyframes mainmenu-logo-spin {

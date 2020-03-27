@@ -128,7 +128,33 @@ class MainMenuItemTransition extends Component {
     }
 }
 
-class CardRandomNumberTransition extends Component {
+class MainMenuMadeWithTransition extends Component {
+    render() {
+        const down = {
+            opacity: 0,
+            transform: 'translateY(1em)'
+        };
+        const neutral = {
+            opacity: 1,
+            transform: 'translateY(0em)'
+        };
+
+        return (
+            <Transition
+                items={this.props.children}
+                keys={item => item}
+                from={down}
+                enter={neutral}
+                leave={down}
+                trail={1000}
+            >
+                {item => style => <animated.span style={style}>{item}</animated.span>}
+            </Transition>
+        );
+    }
+}
+
+class CardMultinumberTransition extends Component {
     render() {
         const fromStyle = {
             opacity: 0,
@@ -167,5 +193,6 @@ export {
     ChatItemTransition,
     MainMenuLogoTransition,
     MainMenuItemTransition,
-    CardRandomNumberTransition,
+    MainMenuMadeWithTransition,
+    CardMultinumberTransition,
 };

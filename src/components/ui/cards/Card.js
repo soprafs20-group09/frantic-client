@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import "styles/ui/cards/Card.scss";
 import InlineSVG from "react-inlinesvg";
 import LogoText from "assets/frantic/logo-text.svg";
-import {CardRandomNumberTransition} from "components/ui/Transitions";
+import {CardMultinumberTransition} from "components/ui/Transitions";
 import FranticUtils from "utils/franticUtils";
 
 // standard playing card size:
@@ -22,12 +22,10 @@ class MultiNumber extends Component {
     }
 
     render() {
-
-
         return (
-            <CardRandomNumberTransition className={this.props.className}>
+            <CardMultinumberTransition className={this.props.className}>
                 {this.state.number}
-            </CardRandomNumberTransition>
+            </CardMultinumberTransition>
         );
     }
 
