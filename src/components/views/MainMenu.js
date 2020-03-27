@@ -10,6 +10,8 @@ import {MainMenuItemTransition, MainMenuLogoTransition, MainMenuMadeWithTransiti
 
 const madeWithIcons = [
     ':heart:',
+    ':heart:',
+    ':heart:',
     ':avocado:',
     ':microbe:',
     ':beers:',
