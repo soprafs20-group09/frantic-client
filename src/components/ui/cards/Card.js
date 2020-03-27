@@ -67,9 +67,15 @@ class Card extends Component {
     render() {
         let center;
         let border;
-        let color = FranticUtils.isMulticolor(this.props.value) ? 'multicolor' : this.props.color;
+        let color = this.props.color;
+        let innerColor;
         let banner;
         let multinumber = FranticUtils.isMultinumber(this.props.value);
+
+        if (FranticUtils.isMulticolor(this.props.value)) {
+            color = 'multicolor-2';
+            innerColor = 'black';
+        }
 
         switch (this.props.type) {
             case 'number':
@@ -89,6 +95,7 @@ class Card extends Component {
                     </div>;
                 if (this.props.value === 'fuck-you') {
                     color = 'black';
+                    innerColor = undefined;
                 }
                 break;
 
@@ -111,14 +118,15 @@ class Card extends Component {
         }
 
         return (
-            <div className={"card-container " + color}>
+            <div className={`card-container ${color}`}>
                 <div className="card-glare"/>
+                <div className={`card-inner ${innerColor}`}/>
                 <div className="card-icon border top">{border}</div>
-                {multinumber && <MultiNumber className="card-icon border multinumber top"/>}
+                {multinumber && <div className="card-icon border multinumber top">#</div>}
                 {center}
                 {banner}
                 <div className="card-icon border bottom">{border}</div>
-                {multinumber && <MultiNumber className="card-icon border multinumber bottom"/>}
+                {multinumber && <div className="card-icon border multinumber bottom">#</div>}
             </div>
         );
     }

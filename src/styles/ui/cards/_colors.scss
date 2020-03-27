@@ -30,6 +30,29 @@ $black: #282c34;
   animation: rainbow-3 10s infinite;
 }
 
+.multicolor-2 {
+  &::before {
+    content: '';
+    position: absolute;
+    width: 170%;
+    height: 170%;
+    background: conic-gradient($red, $yellow, $green, $blue, $red);
+    animation: rainbow-rotate 4s linear infinite;
+  }
+}
+
+.multicolor-3 {
+  &::before {
+    content: '';
+    position: absolute;
+    top: -120%;
+    width: 800%;
+    height: 800%;
+    background: conic-gradient($red, $yellow, $green, $blue, $red);
+    animation: rainbow-rotate 4s linear infinite;
+  }
+}
+
 @keyframes rainbow {
   0%, 100% {
     background-color: $red;
@@ -57,5 +80,14 @@ $black: #282c34;
   }
   25% {
     background-position: 75% 50%;
+  }
+}
+
+@keyframes rainbow-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }

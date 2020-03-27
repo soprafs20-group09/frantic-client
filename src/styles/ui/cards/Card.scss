@@ -14,6 +14,14 @@
   overflow: hidden;
   font-weight: 300;
   color: white;
+  fill: white;
+}
+
+.card-inner {
+  width: calc(100% - 0.1em);
+  height: calc(100% - 0.1em);
+  border-radius: inherit;
+  position: absolute;
 }
 
 .card-glare {
@@ -28,13 +36,12 @@ $borderMargin: 0.5em;
 
 .card-icon {
   text-align: center;
-  fill: white;
-  color: white;
   display: block;
   width: 1em;
   height: 1em;
   line-height: 1em;
   margin: 0;
+  z-index: 0;
 
   &.center {
     font-size: 1.2em;
@@ -73,7 +80,6 @@ $borderMargin: 0.5em;
 .card-logo-back {
   width: 2.5em;
   height: 2.5em;
-  fill: white;
   transform: rotate(90deg);
 }
 
