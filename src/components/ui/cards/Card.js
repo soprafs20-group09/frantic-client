@@ -73,8 +73,7 @@ class Card extends Component {
         let multinumber = FranticUtils.isMultinumber(this.props.value);
 
         if (FranticUtils.isMulticolor(this.props.value)) {
-            color = 'multicolor-2';
-            innerColor = 'black';
+            color = 'multicolor';
         }
 
         switch (this.props.type) {
@@ -115,6 +114,10 @@ class Card extends Component {
                 center = <InlineSVG src={LogoText} className="card-logo-back"/>;
                 color = 'black';
                 break;
+        }
+
+        if (color === 'multicolor') {
+            innerColor = 'black';
         }
 
         return (

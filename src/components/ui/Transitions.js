@@ -157,16 +157,13 @@ class MainMenuMadeWithTransition extends Component {
 class CardMultinumberTransition extends Component {
     render() {
         const fromStyle = {
-            opacity: 0,
-            // transform: 'translateY(-100%)'
+            opacity: 0
         };
         const enterStyle = {
-            opacity: 1,
-            // transform: 'translateY(0%)'
+            opacity: 1
         };
         const leaveStyle = {
-            opacity: 0,
-            // transform: 'translateY(100%%)'
+            opacity: 0
         };
 
         return (
@@ -175,7 +172,6 @@ class CardMultinumberTransition extends Component {
                 from={fromStyle}
                 enter={enterStyle}
                 leave={leaveStyle}
-                trail={0}
             >
                 {item => style =>
                     <animated.p className={this.props.className}>
@@ -188,6 +184,40 @@ class CardMultinumberTransition extends Component {
     }
 }
 
+class TabSwitcherTransition extends Component {
+    render() {
+        const fromStyle = {
+            opacity: 0,
+            transform: "translateX(-10%)"
+        };
+        const enterStyle = {
+            opacity: 1,
+            transform: "translateX(0%)"
+        };
+        const leaveStyle = {
+            opacity: 0,
+            transform: "translateX(10%)"
+        };
+
+        return (
+            <Transition
+                items={this.props.children}
+                keys={item => this.props.key}
+                from={fromStyle}
+                enter={enterStyle}
+                leave={leaveStyle}
+            >
+                {item => style =>
+                    <animated.div
+                        className={this.props.className}
+                        style={style}>
+                        {item}
+                    </animated.div>}
+            </Transition>
+        );
+    }
+}
+
 export {
     WindowTransition,
     ChatItemTransition,
@@ -195,4 +225,5 @@ export {
     MainMenuItemTransition,
     MainMenuMadeWithTransition,
     CardMultinumberTransition,
+    TabSwitcherTransition
 };
