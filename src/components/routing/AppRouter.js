@@ -5,6 +5,7 @@ import MainMenu from "components/views/MainMenu";
 import CreateLobbyView from "components/views/CreateLobbyView";
 import JoinLobbyView from "components/views/JoinLobbyView";
 import CardDisplay from "components/views/CardDisplay";
+import HelpView from "components/views/HelpView";
 
 class AppRouter extends React.Component {
     render() {
@@ -22,6 +23,9 @@ class AppRouter extends React.Component {
                     </Route>
                     <Route exact path="/cards">
                         <CardDisplay/>
+                    </Route>
+                    <Route exact path="/help">
+                        <HelpView/>
                     </Route>
                 </Switch>
             </BrowserRouter>

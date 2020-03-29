@@ -1,0 +1,106 @@
+@import "theme";
+
+.help-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1em;
+}
+
+.help-logo {
+  fill: $terracotta;
+  filter: drop-shadow($dropShadow);
+  height: 10em;
+  width: 20em;
+  margin-bottom: 2em;
+}
+
+h3 {
+  color: $terracotta;
+  font-size: $fontSizeCaption;
+  font-weight: 500;
+  margin: 0;
+}
+
+.help-container p {
+  width: 35em;
+  margin: 1em 5em;
+  text-align: center;
+}
+
+// Icons
+
+.icon-container {
+  position: relative;
+  padding: 0;
+  margin: 0.1em 0.3em 0 0;
+  width: 1em;
+  height: 1em;
+  display: flex;
+  align-items: center;
+
+  &.rules {
+    height: 0.7em;
+    width: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+  }
+
+  &.cards {
+    width: 0.6em;
+  }
+
+  &.event {
+  }
+}
+
+.rules-icon-lines {
+  width: 75%;
+  height: 0.12em;
+  margin-left: 25%;
+  background-color: currentColor;
+  overflow: visible;
+
+  &:before {
+    content: '';
+    height: 0.12em;
+    width: 0.12em;
+    background-color: currentColor;
+    z-index: 10;
+    display: block;
+    position: absolute;
+    transform: translateX(-0.2em);
+
+  }
+}
+
+.cards-icon-cards {
+  position: absolute;
+  height: 0.45em;
+  width: 0.3em;
+  border: 0.1em solid currentColor;
+  border-radius: 0.1em;
+
+  &.n1 {
+    top: 0.25em;
+  }
+  &.n2 {
+    top: 0.05em;
+    left: 0.2em;
+  }
+  &.n3 {
+    top: 0;
+    left: 0.6em;
+  }
+}
+
+.event-icon-lightning {
+  height: 1em;
+  width: 1em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 0.1em;
+}
