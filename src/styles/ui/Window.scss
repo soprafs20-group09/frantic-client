@@ -33,7 +33,7 @@
   padding: 2em;
   box-sizing: border-box;
   width: 100%;
-  height: calc(100% - 1.8em);
+  height: calc(100% - 2.66rem * 1.8);
   overflow-y: auto;
   overflow-x: hidden;
   @include scrollbar;

@@ -28,6 +28,12 @@
 }
 
 .toolwindow-content {
+  height: calc(100% - 2em);
+  max-height: calc(100% - 2em);
   min-height: 4em;
-  margin: 1.1em;
+  margin: 0;
+  padding: 1.1em;
+  overflow: auto;
+  @include scrollbar;
+  box-sizing: border-box;
 }

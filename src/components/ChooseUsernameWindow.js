@@ -19,8 +19,8 @@ class ChooseUsernameWindow extends Component {
 
     render() {
         return (
-            <ToolWindow title="Choose Username" width="23em">
-                <p>please choose a username to proceed!</p>
+            <ToolWindow title="Choose Username" style={{width: "23em"}}>
+                <p style={{marginTop: '0'}}>please choose a username to proceed!</p>
                 <Input
                     title="username:"
                     onChange={v => this.handleChange(v)}

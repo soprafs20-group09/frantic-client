@@ -14,6 +14,7 @@ const madeWithIcons = [
     ':heart:',
     ':avocado:',
     ':microbe:',
+    ':mask:',
     ':beers:',
     ':alien:',
     ':brain:',

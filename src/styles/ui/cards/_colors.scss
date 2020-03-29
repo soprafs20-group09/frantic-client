@@ -24,18 +24,18 @@ $black: #282c34;
   background-color: $black;
 }
 
-.multicolor {
+.multicolor-old {
   background: linear-gradient($red, $yellow, $green, $blue, $red);
   background-size: 1800% 1800%;
   animation: rainbow-3 10s infinite;
 }
 
-.multicolor-2 {
+.multicolor {
   &::before {
     content: '';
     position: absolute;
-    width: 170%;
-    height: 170%;
+    width: 175%;
+    height: 175%;
     background: conic-gradient($red, $yellow, $green, $blue, $red);
     animation: rainbow-rotate 4s linear infinite;
   }

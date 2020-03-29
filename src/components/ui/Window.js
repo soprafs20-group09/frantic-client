@@ -23,9 +23,7 @@ class Window extends Component {
                     <p className="window-title">{this.props.title}</p>
                 </div>
                 <div className="window-body">
-                    <div className="window-content">
                         {this.props.children}
-                    </div>
                 </div>
             </div>
         );
