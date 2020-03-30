@@ -186,17 +186,19 @@ class CardMultinumberTransition extends Component {
 
 class TabSwitcherTransition extends Component {
     render() {
-        const fromStyle = {
+        const left = {
             opacity: 0,
             transform: "translateX(-10%)"
         };
+        const right = {
+            opacity: 0,
+            transform: "translateX(10%)"
+        };
+        const fromStyle = this.props.direction === 'left' ? left : right;
+        const leaveStyle = this.props.direction === 'left' ? right : left;
         const enterStyle = {
             opacity: 1,
             transform: "translateX(0%)"
-        };
-        const leaveStyle = {
-            opacity: 0,
-            transform: "translateX(10%)"
         };
 
         return (

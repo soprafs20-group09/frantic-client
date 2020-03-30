@@ -41,7 +41,7 @@ class TabSwitcher extends Component {
                     {this.generateHeaders()}
                 </div>
                 <div className="tab-content">
-                    <TabSwitcherTransition key={this.state.selected}>
+                    <TabSwitcherTransition key={this.state.selected} direction={this.state.direction}>
                         {content}
                     </TabSwitcherTransition>
                 </div>
@@ -67,7 +67,10 @@ class TabSwitcher extends Component {
     }
 
     onSwitch(i) {
-        this.setState({selected: i});
+        this.setState({
+            selected: i,
+            direction: i >= this.state.selected ? 'right' : 'left'
+        });
     }
 }
 

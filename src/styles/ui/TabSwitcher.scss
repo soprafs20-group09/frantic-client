@@ -29,14 +29,6 @@
   align-items: center;
   justify-content: center;
 
-  //&:first-child {
-  //  border-radius: 1em 0 0 1em;
-  //}
-  //
-  //&:last-child {
-  //  border-radius: 0 1em 1em 0;
-  //}
-
   &.selected {
     fill: $blueGray;
     color: $blueGray;
