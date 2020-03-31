@@ -1,7 +1,7 @@
 @import "theme";
 
 .help-container {
-  width: 100%;
+  width: 45em;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -16,17 +16,47 @@
   margin-bottom: 2em;
 }
 
-h3 {
+.help-container h3 {
+  text-align: left;
   color: $terracotta;
-  font-size: $fontSizeCaption;
+  font-size: $fontSizeDefault * 2;
   font-weight: 500;
   margin: 0;
+  text-transform: lowercase;
 }
 
 .help-container p {
+  max-width: 100%;
+  margin: 1em 0;
+  text-align: justify;
+
+  .help-section.rules {
+    width: 35em;
+  }
+}
+
+.help-container th {
+  text-align: left;
+  font-weight: 500;
+  color: $terracotta;
+}
+
+.switcher-container {
+  width: 100%;
+  margin-bottom: 1em;
+}
+
+.help-section {
   width: 35em;
-  margin: 1em 5em;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  &.rules {
+  }
+  &.cards {
+  }
+  &.events {
+
+  }
 }
 
 // Icons

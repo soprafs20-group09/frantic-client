@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import AppContainer from "components/ui/AppContainer";
 import {withRouter} from "react-router-dom";
-import HelpWindow from "components/ui/HelpWindow";
+import HelpWindow from "components/ui/help/HelpWindow";
 
 class HelpView extends Component {
     render() {

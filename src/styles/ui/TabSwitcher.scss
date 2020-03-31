@@ -38,4 +38,11 @@
 }
 
 .tab-content {
+  max-width: 100%;
+  //max-height: calc(100% - 4.8em);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow: auto;
+  @include scrollbar;
 }

@@ -1,0 +1,47 @@
+@import 'theme';
+@import 'ui/cards/colors';
+
+.card-help-container {
+  display: flex;
+  padding: 1em;
+  box-sizing: border-box;
+  background-color: $blueMediumGray;
+  border-radius: 0.3em;
+  margin-bottom: 2em;
+  box-shadow: $dropShadow;
+}
+
+.card-help-container p {
+  text-align: left;
+}
+
+.card-help-container strong {
+  font-weight: 500;
+  color: $terracotta;
+}
+
+.card-shadow-container {
+  margin-top: 0.5em;
+  font-size: 0.8em;
+  border-radius: 1em;
+  overflow: visible;
+  box-shadow: 0.5em 0.5em 1em -0.3em rgba(0,0,0,0.75);
+  margin-bottom: auto;
+}
+
+.card-info-container {
+  margin-left: 1em;
+  flex-grow: 1;
+}
+
+.card-info-header {
+  font-size: $fontSizeCaption;
+  font-weight: 600;
+  //padding: 0.3em 1em;
+  margin: 0;
+  width: 100%;
+  color: $terracotta;
+  border-radius: 0.3em;
+  box-sizing: border-box;
+  text-transform: lowercase;
+}

@@ -6,6 +6,9 @@ import Logo from "assets/frantic/logo-text.svg";
 import InlineSVG from "react-inlinesvg";
 import TabSwitcher from "components/ui/TabSwitcher";
 import {animated, Spring} from "react-spring/renderprops";
+import RulesSection from "components/ui/help/RulesSection";
+import CardsSection from "components/ui/help/CardsSection";
+import EventsSection from "components/ui/help/EventsSection";
 
 class RulesIcon extends Component {
     render() {
@@ -71,7 +74,8 @@ class EventIcon extends Component {
                     config={{tension: 100, friction: 50}}
                 >
                     {props =>
-                        <svg className="event-icon-lightning" viewBox="0 0 32 32" strokeDasharray={100} strokeDashoffset={props.offset}>
+                        <svg className="event-icon-lightning" viewBox="0 0 32 32" strokeDasharray={100}
+                             strokeDashoffset={props.offset}>
                             <animated.path
                                 d="M18 13 L26 2 8 13 14 19 6 30 24 19 Z"
                             />
@@ -94,26 +98,26 @@ class HelpWindow extends Component {
             {
                 icon: <RulesIcon reset={this.state.reset[0]}/>,
                 title: "Rules",
-                content: <div style={{textAlign: "center"}}>Hello world!</div>,
+                content: <RulesSection/>,
                 onHover: () => this.onTabHover(0)
             },
             {
                 icon: <CardsIcon reset={this.state.reset[1]}/>,
                 title: "Cards",
-                content: <div style={{textAlign: "center"}}>Hello world 2!</div>,
+                content: <CardsSection/>,
                 onHover: () => this.onTabHover(1)
             },
             {
                 icon: <EventIcon reset={this.state.reset[2]}/>,
                 title: "Events",
-                content: <div style={{textAlign: "center"}}>Hello world 3!</div>,
+                content: <EventsSection/>,
                 onHover: () => this.onTabHover(2)
             }
         ];
 
         return (
-            <div className="toolwindow-container" style={{eight: "80vh"}}>
-                <div className="toolwindow-content">
+            <div className="toolwindow-container" style={{height: "90vh"}}>
+                <div className="toolwindow-content" style={{height: "100%", maxHeight: "100%"}}>
                     <div className="help-container">
                         <InlineSVG src={Logo} className="help-logo"/>
                         <h3>
@@ -123,7 +127,8 @@ class HelpWindow extends Component {
                             Please click one of the sections below to learn about the game.
                         </p>
 
-                        <TabSwitcher>
+                        {/*height="calc(90vh - 21em)"*/}
+                        <TabSwitcher selected={1}>
                             {tabs}
                         </TabSwitcher>
                     </div>
