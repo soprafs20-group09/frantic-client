@@ -2,6 +2,14 @@ import React, {Component} from 'react';
 import "styles/ui/TabSwitcher.scss";
 import {TabSwitcherTransition} from "components/ui/Transitions";
 
+/**
+ * PROPS:
+ * selected: bool
+ * icon: JSX
+ * title: string
+ * onClick: func
+ * onHover: func
+ */
 class TabHeader extends Component {
     constructor(props) {
         super(props);
@@ -22,6 +30,21 @@ class TabHeader extends Component {
     }
 }
 
+/**
+ * This component renders multiple clickable tabs with customizable content in each one of them.
+ *
+ * PROPS:
+ * height: string (optional) - a maxHeight override for the whole component.
+ * selected: int (optional)  - which tab should be selected by default.
+ *
+ * CHILREN:
+ * array of objects
+ * object structure:
+ * icon: JSX (optional)         - an icon to be displayed in front of the title.
+ * title: string                - the tab's title
+ * content: JSX                 - the content that should be displayed when this tab is active
+ * onHover: func (optional)     - a function to be called on MouseEnter of the tab header.
+ */
 class TabSwitcher extends Component {
     constructor(props) {
         super(props);
@@ -36,7 +59,7 @@ class TabSwitcher extends Component {
         }
 
         return (
-            <div className="tab-container">
+            <div className="tab-container" style={{height: this.props.height}}>
                 <div className="tab-header-container">
                     {this.generateHeaders()}
                 </div>
@@ -55,6 +78,7 @@ class TabSwitcher extends Component {
             i = parseInt(i);
             headers.push(
                 <TabHeader
+                    key={i}
                     icon={this.props.children[i].icon}
                     title={this.props.children[i].title}
                     selected={this.state.selected === i}

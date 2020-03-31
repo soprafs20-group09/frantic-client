@@ -7,8 +7,9 @@
 
 .card-overlay-container {
   transform: rotate(0deg);
-  margin: 15px;
-  border-radius: 15px;
+  margin: 1em;
+  border-radius: 1em;
   overflow: visible;
-  box-shadow: 10px 10px 15px -5px rgba(0,0,0,0.75);
+  //box-shadow: 10px 10px 15px -5px rgba(0,0,0,0.75);
+  box-shadow: 0.5em 0.5em 1em -0.3em rgba(0,0,0,0.75);
 }

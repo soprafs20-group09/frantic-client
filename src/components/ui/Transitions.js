@@ -204,7 +204,6 @@ class TabSwitcherTransition extends Component {
         return (
             <Transition
                 items={this.props.children}
-                keys={item => this.props.key}
                 from={fromStyle}
                 enter={enterStyle}
                 leave={leaveStyle}
