@@ -215,3 +215,11 @@ $buttonHeight: 1.75em;
     filter: brightness(110%);
   }
 }
+
+// Spinner
+
+.spinner {
+  width: 5em;
+  height: 5em;
+  fill: $terracotta;
+}

@@ -13,14 +13,17 @@ import ChooseUsernameWindow from "components/ChooseUsernameWindow";
 import {WindowTransition} from "components/ui/Transitions";
 import ChatWindow from "components/ui/ChatWindow";
 import ChatItem from "components/ui/chat/ChatItem";
-import {getPlayerAvatar} from "utils/api";
+import {api, getPlayerAvatar} from "utils/api";
+import Spinner from "components/ui/Spinner";
+import SockClient from "utils/sockClient";
 
 class CreateLobbyView extends Component {
     constructor(props) {
         super(props);
         this.state = {
             chatItems: [
-                <ChatItem key={Math.random() + "a"} sender="sina" icon={getPlayerAvatar('sina')}>is everyone ready?</ChatItem>,
+                <ChatItem key={Math.random() + "a"} sender="sina" icon={getPlayerAvatar('sina')}>is everyone
+                    ready?</ChatItem>,
                 <ChatItem key={Math.random() + "b"} sender="kyrill" icon={getPlayerAvatar('kyrill')}>yee</ChatItem>,
                 <ChatItem key={Math.random() + "c"} sender="jan" icon={getPlayerAvatar('jan')}>ofc</ChatItem>,
                 <ChatItem key={Math.random() + "d"} sender="joe" icon={getPlayerAvatar('joe')}>1 min pls</ChatItem>,
@@ -34,7 +37,9 @@ class CreateLobbyView extends Component {
         return (
             <AppContainer withBack withHelp>
                 <WindowTransition>
-                    {this.state.username ? this.getMainWindow() : this.getUsernameWindow()}
+                    {
+                        this.state.loading ? <Spinner key="spinner"/> :
+                            (this.state.username ? this.getMainWindow() : this.getUsernameWindow())}
                 </WindowTransition>
             </AppContainer>
         );
@@ -136,21 +141,46 @@ class CreateLobbyView extends Component {
     }
 
     handleSend(msg) {
+        try {
+            if (SockClient.isConnected()) {
+                SockClient.send(`/app/lobby/${this.state.lobbyId}/chat`, {message: msg});
+            }
+        }
+        catch (ignored) {
+        }
+    }
+
+    handleChatMessage(msg) {
         let newItem =
             <ChatItem
-                sender="you"
-                icon={getPlayerAvatar("you")}
+                style={msg.type}
+                sender={msg.username}
+                icon={getPlayerAvatar(msg.username)}
                 key={new Date().getTime()}
             >
-                {msg}
+                {msg.message}
             </ChatItem>;
         this.setState({
             chatItems: this.state.chatItems.concat(newItem)
         });
     }
 
-    confirmUsername(username) {
-        this.setState({username: username, lobbyName: `${username}'s lobby`});
+    async confirmUsername(username) {
+        this.setState({loading: true});
+        try {
+            let response = await api.post('/lobbies', {username: username});
+            this.setState({username: response.data.username, lobbyName: response.data.name, authToken: response.data.token});
+            SockClient.onRegister(r => this.onSocketRegistered(r));
+            SockClient.connectAndRegister(response.data.token);
+            SockClient.onLobbyMessage('/chat', r => this.handleChatMessage(r));
+        }
+        catch (ignore) {
+            console.error(ignore);
+        }
+    }
+
+    onSocketRegistered(response) {
+        this.setState({loading: false, lobbyId: response.lobbyId});
     }
 }
 
