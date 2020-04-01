@@ -21,7 +21,10 @@ class CardDisplay extends Component {
                         <Card type="special" value="fantastic-four"/>
                     </div>
                     <div className="card-overlay-container">
-                        <Card type="event" value="finish-line"/>
+                        <Card type="special" value="skip" color="red"/>
+                    </div>
+                    <div className="card-overlay-container">
+                        <Card type="special" value="exchange" color="blue"/>
                     </div>
                     <div className="card-overlay-container">
                         <Card type="event" value="friday-the-13th"/>

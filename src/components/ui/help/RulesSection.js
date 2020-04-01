@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
+import Header from "components/ui/Header";
 
 class RulesSection extends Component {
     render() {
         return (
             <div className="help-section rules">
-                <h3>Object of the game</h3>
+                <Header>Object of the game</Header>
                 <p>
                     The object of the game is to get rid of your cards as fast
                     as possible. If a player has discarded all his cards, the
@@ -13,7 +14,7 @@ class RulesSection extends Component {
                     the lowest score wins.
                 </p>
 
-                <h3>Setup & Process</h3>
+                <Header>Setup & Process</Header>
                 <p>
                     In the middle of your screen you find the deck (all unused, remaining cards)
                     and the discard pile right next to it.
@@ -29,7 +30,7 @@ class RulesSection extends Component {
                     from the player's hand.
                 </p>
 
-                <h3>End of the Round</h3>
+                <Header>End of the Round</Header>
                 <p style={{marginBottom: 0}}>
                     The game round is over as soon as
 
@@ -51,7 +52,7 @@ class RulesSection extends Component {
                     cards and add them to their existing score. (See Scoring)
                 </p>
 
-                <h3>End of the Game</h3>
+                <Header>End of the Game</Header>
                 <p style={{marginBottom: 0}}>
                     There are going to be as many rounds, until a player reaches
                     the maximum score:
@@ -84,7 +85,7 @@ class RulesSection extends Component {
                 </table>
                 <br/>
 
-                <h3>Scoring</h3>
+                <Header>Scoring</Header>
                 <p>
                     All Numeral Cards, both coloured and black, result in 1 to 9
                     points, according to their number. The Special Cards count

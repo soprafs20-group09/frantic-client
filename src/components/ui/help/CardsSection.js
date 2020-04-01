@@ -4,16 +4,11 @@ import franticUtils from "utils/franticUtils";
 import Header from "components/ui/Header";
 
 const specialCards = franticUtils.getAllSpecialCards();
-const eventCards = franticUtils.getAllEventCards();
+const colorCard = franticUtils.getRandomNumberCard();
+const blackCard = franticUtils.getRandomNumberCard('black');
 
 class CardsSection extends Component {
     render() {
-        const card = {
-            type: 'number',
-            value: 7,
-            color: 'blue'
-        };
-
         let specialHelps = [];
 
         for (let specialCard of specialCards) {
@@ -24,7 +19,8 @@ class CardsSection extends Component {
         return (
             <div className="help-section cards">
                 <Header>Number Cards</Header>
-                <CardHelp card={card}/>
+                <CardHelp card={colorCard}/>
+                <CardHelp card={blackCard}/>
                 <Header>Special Cards</Header>
                 {specialHelps}
             </div>

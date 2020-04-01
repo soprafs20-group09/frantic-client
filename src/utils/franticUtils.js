@@ -41,7 +41,7 @@ const specialCardHelp = {
             Chance". The same game rules apply (colour on
             colour, colourless Special Cards etc.). If he cannot
             play a card from his hand, he has to draw one from
-            the deck
+            the deck.
         </p>,
     "counterattack":
         <p>
@@ -84,12 +84,12 @@ const specialCardHelp = {
         <p>
             The player of this card chooses a person, who in return has to draw four cards from the deck. It is also
             possible to determine multiple players and divide
-            the four cards between them
+            the four cards between them.
         </p>,
     "fuck-you":
         <p>
             You can only dismiss the "Fuck You" card, when
-            you have <i>exactly ten cards</i> in your hand,
+            you have <strong>exactly ten cards</strong> in your hand,
             including "Fuck You". The round continues with the card
             played before "Fuck You".
             <br/>
@@ -235,7 +235,7 @@ const eventCardHelp = {
         </p>,
     "third-time-lucky":
         <p>
-            Every player has to draw three cards
+            Every player has to draw three cards.
         </p>,
     "time-bomb":
         <p>
@@ -263,10 +263,12 @@ const eventCardHelp = {
             event is ineffective.
         </p>
 };
-const numberHelp =
+const colorNumberHelp =
     <p>
         Number Cards can be played on number and colour on colour.
-        <br/>
+    </p>;
+const blackNumberHelp =
+    <p>
         Black Cards are not Coloured Cards. Black Cards cannot be
         played on each other. They can only be played on the same
         number or if said number has been wished for. Black cannot
@@ -298,6 +300,17 @@ function getAllEventCards() {
     return cards;
 }
 
+function getRandomNumberCard(optionalColor) {
+    let number = Math.floor(Math.random() * 8) + 1;
+    let color = optionalColor || getRandomColor();
+
+    return {
+        type: 'number',
+        value: number,
+        color: color
+    }
+}
+
 function getRandomColor() {
     return colors[Math.floor(Math.random() * colors.length)]
 }
@@ -318,13 +331,20 @@ function getHelpFromCard(card) {
 
     switch (card.type) {
         case 'number':
-            help.title = "Number Cards";
-            help.description = numberHelp;
+            if (card.color === 'black') {
+                help.title = "Black Number Cards";
+                help.description = blackNumberHelp;
+            } else {
+                help.title = "Coloured Number Cards";
+                help.description = colorNumberHelp;
+            }
             break;
+
         case 'special':
             help.title = card.value.replace(/-/g, ' ');
             help.description = specialCardHelp[card.value];
             break;
+
         case 'event':
             help.title = card.value.replace(/-/g, ' ');
             help.description = eventCardHelp[card.value];
@@ -337,6 +357,7 @@ function getHelpFromCard(card) {
 export default {
     getAllSpecialCards,
     getAllEventCards,
+    getRandomNumberCard,
     isMulticolor,
     isMultinumber,
     getHelpFromCard

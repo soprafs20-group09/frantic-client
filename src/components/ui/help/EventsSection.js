@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import CardHelp from "components/ui/help/CardHelp";
 import franticUtils from "utils/franticUtils";
 import Header from "components/ui/Header";
+import EventHelp from "components/ui/help/EventHelp";
 
 const eventCards = franticUtils.getAllEventCards();
 
@@ -9,7 +9,7 @@ class EventsSection extends Component {
     render() {
         let eventHelps = [];
         for (let event of eventCards) {
-            eventHelps.push(<CardHelp card={event}/>);
+            eventHelps.push(<EventHelp card={event}/>);
         }
 
         return (

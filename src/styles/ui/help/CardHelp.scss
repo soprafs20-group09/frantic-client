@@ -38,10 +38,16 @@
   font-size: $fontSizeCaption;
   font-weight: 600;
   //padding: 0.3em 1em;
-  margin: 0;
+  margin: 0 0 0.2em;
   width: 100%;
   color: $terracotta;
   border-radius: 0.3em;
   box-sizing: border-box;
   text-transform: lowercase;
+}
+
+.card-event-icon {
+  width: 3em;
+  height: 3em;
+  fill: $terracotta;
 }
