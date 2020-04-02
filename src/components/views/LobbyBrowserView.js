@@ -5,6 +5,9 @@ import {WindowTransition} from "components/ui/Transitions";
 import Window from "components/ui/Window";
 import SearchBar from "components/ui/SearchBar";
 import LobbyList from "components/ui/LobbyList";
+import Spinner from "components/ui/Spinner";
+import "styles/views/LobbyBrowserView.scss";
+import {api} from "utils/api";
 
 /**
  * Renders a list of available lobbies.
@@ -13,66 +16,57 @@ import LobbyList from "components/ui/LobbyList";
 class LobbyBrowserView extends Component {
     constructor(props) {
         super(props);
-        this.state = {lobbies: []}
+        this.state = {loading: true, lobbies: [], filter: ''};
     }
 
     componentDidMount() {
-        setTimeout(() => {
-            this.setState({
-                lobbies: [
-                    {
-                        name: "ueli's lobby",
-                        creator: "ueli",
-                        players: "3/8",
-                        link: "/join?id=2103"
-                    },
-                    {
-                        name: "crocodiles",
-                        creator: "schnappi",
-                        players: "5/8",
-                        link: "/join?id=1234"
-                    },
-                    {
-                        name: "happy place :)",
-                        creator: "niceGuyTM",
-                        players: "7/8",
-                        link: "/join?id=0124"
-                    },
-                    {
-                        name: "tryhards only!",
-                        creator: "DarkKnight98",
-                        players: "6/8",
-                        link: "/join?id=3564"
-                    },
-                    {
-                        name: "cats are awesome :3",
-                        creator: "Karen",
-                        players: "8/8",
-                        link: "/join?id=1398"
-                    },
-                ]
-            });
-        }, 1000);
+        this.refreshLobbies(this.state.filter);
     }
 
     render() {
+        let content;
+
+        if (this.state.loading) {
+            content = <Spinner center key="spinner"/>;
+        } else {
+            content = <LobbyList key="lobby-list" lobbies={this.state.lobbies}/>
+        }
+
         return (
             <AppContainer withBack withHelp>
                 <WindowTransition>
-                    {this.getMainWindow()}
+                    <Window title="Join a Lobby" width="70vw" height="80vh">
+                        <SearchBar
+                            withRefresh
+                            onRefresh={() => this.handleRefresh()}
+                            onSearch={q => this.handleSearch(q)}
+                        />
+                        <div className="lobbies-container">
+                            {content}
+                        </div>
+                    </Window>
                 </WindowTransition>
             </AppContainer>
         );
     }
 
-    getMainWindow() {
+    async refreshLobbies(filter) {
+        try {
+            let response = await api.get(`/lobbies?filter=${filter || ''}`);
+            this.setState({loading: false, lobbies: response.data});
+        } catch (ignored) {
+            console.error(ignored);
+        }
+    }
 
-        return (
-            <Window title="Join a Lobby" width="70vw" height="70vh" maxHeight="90vh">
-                <SearchBar withRefresh/>
-                <LobbyList lobbies={this.state.lobbies}/>
-            </Window>
-        );
+    handleRefresh() {
+        this.setState({loading: true});
+        this.refreshLobbies(this.state.filter);
+    }
+
+    handleSearch(query) {
+        this.setState({filter: query});
+        this.refreshLobbies(query);
     }
 }
 

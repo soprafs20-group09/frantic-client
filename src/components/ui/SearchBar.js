@@ -6,7 +6,8 @@ import ReloadArrow from "assets/icons/reload-arrow.svg";
 /**
  * Renders a Search Bar.
  * PROPS:
- * onRefresh: func()      - a function that is called when the user clicks on the refresh-button
+ * withRefresh: bool      - will render a refresh button if true.
+ * onRefresh: func()      - a function that is called when the user clicks on the refresh-button.
  * onSearch: func(string) - a function that is called when the user searches for a query.
  */
 class SearchBar extends Component {
