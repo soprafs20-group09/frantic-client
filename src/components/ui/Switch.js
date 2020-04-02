@@ -9,6 +9,7 @@ import {Spring} from "react-spring/renderprops";
  * off: string              - a custom title for "off".
  * initialValue: bool       - sets the value when first loaded.
  * onSwitch: func(newValue) - a function that is called whenever the value changes.
+ * readOnly: boolean        - makes this component read only.
  * style: object            - an optional style override for the container.
  */
 class Switch extends Component {
@@ -48,6 +49,10 @@ class Switch extends Component {
     }
 
     switch() {
+        if (this.props.readOnly) {
+            return;
+        }
+
         this.setState({value: !this.state.value});
 
         if (this.props.onSwitch) {
