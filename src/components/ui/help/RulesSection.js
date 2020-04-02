@@ -8,9 +8,12 @@ class RulesSection extends Component {
                 <Header>Object of the game</Header>
                 <p>
                     The object of the game is to get rid of your cards as fast
-                    as possible. If a player has discarded all his cards, the
-                    remaining players count the points in their hand. When a
-                    player reaches the agreed maximum score, the player with
+                    as possible.
+                    <br/>
+                    If a player has discarded all his cards, the
+                    points of the remaining players are calculated according to their hand .
+                    <br/>
+                    When a player reaches the maximum score, which is defined by the game duration, the player with
                     the lowest score wins.
                 </p>
 
@@ -25,7 +28,7 @@ class RulesSection extends Component {
                     The direction of the game is counter-clockwise.
                     <br/>
                     However, the players have the opportunity to not play a valid
-                    card, but in return draw one from the deck instead (by clicking the deck).
+                    card, but to draw one from the deck instead (by clicking the deck).
                     It is possible to then play the drawn card – or any other valid card
                     from the player's hand.
                 </p>
@@ -48,8 +51,8 @@ class RulesSection extends Component {
                     It is possible for multiple players to end the round simultaneously due to an Event Card.
                 </p>
                 <p>
-                    If the round is over, the fellow players have to count their
-                    cards and add them to their existing score. (See Scoring)
+                    If the round is over, the points of each players hand is calculated
+                    and added to their existing score. (See Scoring)
                 </p>
 
                 <Header>End of the Game</Header>
@@ -87,7 +90,7 @@ class RulesSection extends Component {
 
                 <Header>Scoring</Header>
                 <p>
-                    All Numeral Cards, both coloured and black, result in 1 to 9
+                    All Number Cards, both coloured and black, result in 1 to 9
                     points, according to their number. The Special Cards count
                     as 7 points. With the exception of the "Fuck You" card, it
                     counts as 42 points.
