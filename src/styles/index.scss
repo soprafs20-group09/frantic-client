@@ -19,6 +19,11 @@ body {
   background-color: $blueBlack;
 }
 
+code {
+  display: block;
+  white-space: pre-wrap;
+}
+
 #root {
   @include fullscreen;
 }

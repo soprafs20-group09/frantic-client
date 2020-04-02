@@ -3,10 +3,11 @@ import AppContainer from "components/ui/AppContainer";
 import 'styles/views/CreateLobbyView.scss';
 import ChooseUsernameWindow from "components/ChooseUsernameWindow";
 import {WindowTransition} from "components/ui/Transitions";
-import {api} from "utils/api";
+import {api, parseCommonErrors} from "utils/api";
 import Spinner from "components/ui/Spinner";
 import LobbyWindow from "components/ui/LobbyWindow";
 import sessionManager from "utils/sessionManager";
+import ErrorBox from "components/ui/ErrorBox";
 
 /**
  * Asks the user for a username, then sends a request
@@ -23,19 +24,28 @@ class LobbyView extends Component {
 
     render() {
         let content;
-        if (this.state.loading) {
+        if (this.state.error) {
+            content =
+                <ErrorBox
+                    key="error-box"
+                    title={this.state.error.title}
+                    maxWidth="50vw"
+                >
+                    {this.state.error.description}
+                </ErrorBox>;
+        } else if (this.state.loading) {
             content = <Spinner key="spinner"/>;
         } else if (this.state.authToken) {
             content =
                 <LobbyWindow
-                    key="LobbyWindow"
+                    key="lobby-window"
                     adminMode={this.props.mode === 'create'}
                     authToken={this.state.authToken}
                 />;
         } else {
             content =
                 <ChooseUsernameWindow
-                    key="UsernameWindow"
+                    key="username-window"
                     onConfirm={u => this.confirmUsername(u)}
                 />;
         }
@@ -55,13 +65,12 @@ class LobbyView extends Component {
             let response;
             if (this.props.mode === 'create') {
                 response = await api.post('/lobbies', {username: username});
-            }
-            else if (this.props.mode === 'join') {
+            } else if (this.props.mode === 'join') {
                 response = await api.put(`/lobbies/${sessionManager.lobbyId}`, {username: username});
             }
             this.setState({authToken: response.data.token});
-        } catch (ignore) {
-            console.error(ignore);
+        } catch (err) {
+            this.setState({error: parseCommonErrors(err)})
         }
     }
 }

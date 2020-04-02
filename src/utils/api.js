@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { getDomain } from 'utils/DomainUtils';
+import React from "react";
 
 const api = axios.create({
     baseURL: getDomain(),
@@ -28,6 +29,24 @@ const handleError = error => {
     }
 };
 
+function parseCommonErrors(error) {
+    if (error.message === 'Network Error') {
+        return {
+            title: "I couldn't talk to the server!",
+            description:
+                <p>
+                    I couldn't reach the backend, is it running?
+                    <br/>
+                    Here's some more info:
+                    <br/>
+                    <code>
+                        {error.stack}
+                    </code>
+                </p>
+        }
+    }
+}
+
 const getPlayerAvatar = (name, style) => {
     return `https://avatars.dicebear.com/v2/${style || 'bottts'}/${name}.svg`;
 };
@@ -35,5 +54,6 @@ const getPlayerAvatar = (name, style) => {
 export {
     api,
     handleError,
+    parseCommonErrors,
     getPlayerAvatar
 };

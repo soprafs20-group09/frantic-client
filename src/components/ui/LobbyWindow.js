@@ -9,10 +9,11 @@ import PlayerList from "components/ui/PlayerList";
 import ChatWindow from "components/ui/ChatWindow";
 import Spinner from "components/ui/Spinner";
 import sessionManager from "utils/sessionManager";
-import SockClient from "utils/sockClient";
+import sockClient from "utils/sockClient";
 import ChatItem from "components/ui/chat/ChatItem";
 import {getPlayerAvatar} from "utils/api";
 import {withRouter} from "react-router-dom";
+import ErrorBox from "components/ui/ErrorBox";
 
 /**
  * This component renders the lobby settings window,
@@ -48,16 +49,34 @@ class LobbyWindow extends Component {
     }
 
     componentDidMount() {
-        SockClient.onLobbyMessage('/chat', r => this.handleChatMessage(r));
-        SockClient.onLobbyMessage('/lobby-state', r => this.handleLobbyUpdate(r));
-        SockClient.onRegister(r => this.handleSocketRegister(r));
-        SockClient.connectAndRegister(this.props.authToken);
+        sockClient.onLobbyMessage('/chat', r => this.handleChatMessage(r));
+        sockClient.onLobbyMessage('/lobby-state', r => this.handleLobbyUpdate(r));
+        sockClient.onLobbyMessage('/disconnect', r => this.handleDisconnect(r.reason));
+        sockClient.onDisconnect(() => this.handleDisconnect("Socket closed."));
+        sockClient.onRegister(r => this.handleSocketRegister(r));
+        sockClient.connectAndRegister(this.props.authToken);
         sessionManager.token = undefined;
+    }
+
+    componentWillUnmount() {
+        sockClient.clearDisconnectSubscriptions();
+        sockClient.clearMessageSubscriptions();
     }
 
     render() {
         const spacingStyle = {marginBottom: '1.8em'};
 
+        if (this.state.error) {
+            return (
+                <ErrorBox
+                    key="error-box"
+                    title={this.state.error.title}
+                    maxWidth="50vw"
+                >
+                    {this.state.error.description}
+                </ErrorBox>
+            );
+        }
         if (this.state.loading) {
             return <Spinner/>;
         }
@@ -125,8 +144,8 @@ class LobbyWindow extends Component {
 
     handleSend(msg) {
         try {
-            if (SockClient.isConnected()) {
-                SockClient.send(`/app/lobby/${this.state.lobbyId}/chat`, {message: msg});
+            if (sockClient.isConnected()) {
+                sockClient.sendToLobby('/chat', {message: msg});
             }
         } catch (ignored) {
         }
@@ -156,6 +175,22 @@ class LobbyWindow extends Component {
             loading: false,
             ...update
         });
+    }
+
+    handleDisconnect(reason) {
+        this.setState({
+            error: {
+                title: "Disconnected!",
+                description:
+                <p>
+                    Connection to the server was disrupted.
+                    <br/>
+                    <strong>Reason:</strong>
+                    {reason}
+                </p>
+            }
+        });
+        sockClient.clearDisconnectSubscriptions();
     }
 }
 

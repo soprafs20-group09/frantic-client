@@ -14,6 +14,7 @@ import "styles/ui/ErrorBox.scss";
 class ErrorBox extends Component {
     render() {
         return (
+            <div className={this.props.center && "error-center"}>
             <div className="error-box" style={{maxHeight: this.props.maxHeight || '', maxWidth: this.props.maxWidth || ''}}>
                 <div className="error-icon">:(</div>
                 <div className="error-content-container">
@@ -23,6 +24,7 @@ class ErrorBox extends Component {
                     </div>
 
                 </div>
+            </div>
             </div>
         );
     }

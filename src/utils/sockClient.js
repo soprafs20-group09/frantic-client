@@ -1,6 +1,7 @@
 import SockJS from 'sockjs-client';
 import Stomp from 'stompjs';
 import {getDomain} from "utils/DomainUtils";
+import sessionManager from "utils/sessionManager";
 
 class SockClient {
     constructor() {
@@ -36,6 +37,10 @@ class SockClient {
         this.sock.onclose(this._handleDisconnect);
     }
 
+    disconnect() {
+        this.stomp.disconnect(() => this._handleDisconnect(),{});
+    }
+
     connectAndRegister(token) {
         this.connect(() => {
             this.register(token);
@@ -52,6 +57,10 @@ class SockClient {
 
     send(destination, body) {
         this.stomp.send(destination, {}, JSON.stringify(body));
+    }
+
+    sendToLobby(channel, body) {
+        this.send(`/app/lobby/${sessionManager.lobbyId}${channel}`, body);
     }
 
     onRegister(callback) {
@@ -86,6 +95,7 @@ class SockClient {
 
     _handleRegister(response) {
         this._registered = true;
+        sessionManager.lobbyId = response.lobbyId;
 
         this.stomp.subscribe(`/topic/lobby/${response.lobbyId}/*`, r => this._handleMessage(r));
         this.stomp.subscribe(`/topic/lobby/${response.lobbyId}/*/*`, r => this._handleMessage(r));
