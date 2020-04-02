@@ -62,19 +62,16 @@ class ChatItemTransition extends Component {
 class MainMenuLogoTransition extends Component {
     render() {
         const fromStyle = {
-            height: '0em',
             opacity: 0,
             transform: 'translateY(-100%) rotate(-180deg) scale(1.5)',
             marginBottom: '1em'
         };
         const enterStyle = {
-            height: '16em',
             opacity: 1,
             transform: 'translateY(0%) rotate(0deg) scale(1)',
             marginBottom: '1em'
         };
         const leaveStyle = {
-            height: '0em',
             opacity: 0,
             transform: 'translateY(-100%) rotate(0deg) scale(1)',
             marginBottom: '1em'
@@ -101,13 +98,11 @@ class MainMenuLogoTransition extends Component {
 class MainMenuItemTransition extends Component {
     render() {
         const down = {
-            height: '0em',
             opacity: 0,
             transform: 'translateY(20%) scale(1)',
             marginBottom: '1em'
         };
         const neutral = {
-            height: '16em',
             opacity: 1,
             transform: 'translateY(0%) scale(1)',
             marginBottom: '1em'
