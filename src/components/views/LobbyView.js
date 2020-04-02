@@ -68,7 +68,7 @@ class LobbyView extends Component {
             } else if (this.props.mode === 'join') {
                 response = await api.put(`/lobbies/${sessionManager.lobbyId}`, {username: username});
             }
-            this.setState({authToken: response.data.token});
+            this.setState({loading: false, authToken: response.data.token});
         } catch (err) {
             this.setState({error: parseCommonErrors(err)})
         }
