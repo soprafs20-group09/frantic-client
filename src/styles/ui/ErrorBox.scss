@@ -28,8 +28,10 @@
 }
 
 .error-content {
+  box-sizing: border-box;
   font-weight: 500;
   max-height: calc(100% - 2.3em);
+  max-width: calc(100% - 3.3em);
   overflow: auto;
   @include scrollbar;
 
@@ -49,6 +51,8 @@
 }
 
 .error-content code {
+  float: left;
+  box-sizing: border-box;
   background-color: $blueGray;
   color: $terracotta;
   border-radius: 0.3em;

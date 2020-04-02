@@ -54,6 +54,7 @@ $dropShadow: 0 0.25em 0.25em rgba(0, 0, 0, 0.25);
 @mixin scrollbar {
   &::-webkit-scrollbar {
     width: 0.36rem;
+    height: 0.36rem;
   }
   &::-webkit-scrollbar-track {
     border-radius: 0.18rem;

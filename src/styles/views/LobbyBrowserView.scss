@@ -11,8 +11,18 @@
   @include scrollbar;
 }
 
-.no-lobbies-msg {
-  .container {
+.lobbies-centerer {
+  @include fillCenter;
+}
+
+.no-lobbies {
+  &.container {
     @include fillCenter;
+  }
+
+  &.msg {
+    text-align: center;
+    font-size: $fontSizeCaption;
+    color: $terracotta;
   }
 }

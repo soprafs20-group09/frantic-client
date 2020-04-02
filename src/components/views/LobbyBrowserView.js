@@ -10,6 +10,18 @@ import "styles/views/LobbyBrowserView.scss";
 import {api, parseCommonErrors} from "utils/api";
 import ErrorBox from "components/ui/ErrorBox";
 
+class NoLobbiesMessage extends Component {
+    render() {
+        return (
+            <div className="no-lobbies container">
+                <p className="no-lobbies msg">
+                    looks like no one is playing right now :(
+                </p>
+            </div>
+        );
+    }
+}
+
 /**
  * Renders a list of available lobbies.
  *
@@ -28,19 +40,25 @@ class LobbyBrowserView extends Component {
         let content;
 
         if (this.state.error) {
-            content =
+            content = this.getCenterTransition(
                 <ErrorBox
-                    center
-                    maxWidth="50%"
+                    maxWidth="40vw"
                     title={this.state.error.title}
                     key="error-box"
                 >
                     {this.state.error.description}
-                </ErrorBox>;
+                </ErrorBox>
+            );
         } else if (this.state.loading) {
-            content = <Spinner center key="spinner"/>;
+            content = this.getCenterTransition(
+                <Spinner key="spinner"/>
+            );
+        } else if (this.state.lobbies.length === 0) {
+            content = this.getCenterTransition(
+                <NoLobbiesMessage key="no-lobbies"/>
+            );
         } else {
-            content = <LobbyList key="lobby-list" lobbies={this.state.lobbies}/>
+            content = <LobbyList key="lobby-list" lobbies={this.state.lobbies}/>;
         }
 
         return (
@@ -58,6 +76,16 @@ class LobbyBrowserView extends Component {
                     </Window>
                 </WindowTransition>
             </AppContainer>
+        );
+    }
+
+    getCenterTransition(component) {
+        return (
+            <div className="lobbies-centerer">
+                <WindowTransition>
+                    {component}
+                </WindowTransition>
+            </div>
         );
     }
 
