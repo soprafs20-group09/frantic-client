@@ -1,0 +1,44 @@
+@import 'theme';
+
+.error-box {
+  color: $blueGray;
+  background-color: $terracotta;
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
+  box-sizing: border-box;
+  border-radius: 0.5em;
+  box-shadow: $dropShadow;
+}
+
+.error-icon {
+  margin: 0;
+  font-size: 5em;
+  line-height: 1em;
+  font-weight: 500;
+}
+
+.error-content-container {
+  margin-left: 1em;
+}
+
+.error-content {
+  font-weight: 500;
+  max-height: calc(100% - 2.3em);
+  overflow: auto;
+  @include scrollbar;
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $blueGray;
+  }
+}
+
+.error-title {
+  margin: 0 0 0.2em;
+  font-size: $fontSizeCaption;
+  text-transform: lowercase;
+}
+
+.error-content p {
+  margin: 0;
+}
