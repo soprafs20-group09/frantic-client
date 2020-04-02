@@ -48,7 +48,7 @@ const specialCardHelp = {
             As soon as a Special Card is played against a player,
             this card can be thrown in instantly by the victim.
             The effect is cancelled and the player of "Counterattack"
-            can redirect it to another player. The target
+            can redirect the effect to another player. The target
             of the freshly obtained effect is freely choosable.
             The game round continues with the player of the
             initial Special Card.
@@ -60,14 +60,14 @@ const specialCardHelp = {
         <p>
             The player of this card chooses a fellow player who
             holds fewer cards than himself in his hands. This
-            player has to draw as many cards until their number
+            player gets as many cards as needed until their number
             of cards is equal.
         </p>,
     "exchange":
         <p>
             The player of this card gives another player two
             cards of his choice from his hand and in exchange
-            has to blindly draw two cards from his opponent.
+            gets two random cards from his opponent.
             <br/>
             <strong>Exception:</strong> If the player of this card or his opponent
             holds less than two cards in their hands, then less
@@ -82,18 +82,18 @@ const specialCardHelp = {
         </p>,
     "fantastic-four":
         <p>
-            The player of this card chooses a person, who in return has to draw four cards from the deck. It is also
+            The player of this card chooses a person, who has to draw four cards from the deck. It is also
             possible to determine multiple players and divide
             the four cards between them.
         </p>,
     "fuck-you":
         <p>
-            You can only dismiss the "Fuck You" card, when
+            You can only play the "Fuck You" card, when
             you have <strong>exactly ten cards</strong> in your hand,
             including "Fuck You". The round continues with the card
             played before "Fuck You".
             <br/>
-            <strong>Important:</strong> The "Fuck You" card can only be blindly
+            <strong>Important:</strong> The "Fuck You" card can only be randomly
             obtained by an opponent and not be willingly given.
             <br/>
             <strong>Exception:</strong> During certain Event Cards it can be
@@ -111,11 +111,9 @@ const specialCardHelp = {
         </p>,
     "nice-try":
         <p>
-            As soon as a player got rid of all his hand cards and
-            therefore ends the current round, this card can be
+            As soon as a player got rid of all his hand cards and would end the round, this card can be
             thrown in immediately. Even if a player has just received this card (e.g. "Gift").
-            The player who ended the round then needs
-            to draw three cards and the game round continues.
+            The player who ended the round then gets three cards and the game round continues.
             <br/>
             <strong>Important:</strong> If multiple players finish off their cards
             (e.g. Event Card "Recession") and "Nice Try" is
@@ -134,17 +132,17 @@ const specialCardHelp = {
 const eventCardHelp = {
     "charity":
         <p>
-            Every player has to pick one card from the player
+            Every player gets one random card from the player
             with the most hand cards.
             <br/>
             <strong>Important:</strong> If two or more players have an equal
-            amount of most cards, cards are picked from all of
-            them. These players don't have to draw cards from
+            amount of most cards, cards are given out randomly from all of
+            them. These players don't get cards from
             each other.
         </p>,
     "communism":
         <p>
-            Everyone has to draw as many cards to equal the
+            Everyone gets as many cards to equal the
             player, who holds the most cards in his hand.
         </p>,
     "doomsday":
@@ -164,8 +162,8 @@ const eventCardHelp = {
         </p>,
     "finish-line":
         <p>
-            The game round is immediately over and the players
-            count their points according to their hand cards.
+            The game round is immediately over and the the players points according are counted accoring
+            to their hand cards.
         </p>,
     "friday-the-13th":
         <p>
@@ -178,26 +176,26 @@ const eventCardHelp = {
         </p>,
     "gambling-man":
         <p>
-            Every player has to place a preferably low Numeral
-            Card of the last played colour face down. All cards
-            are simultaneously turned around. The player with
+            Every player has to choose a preferably low Numeral
+            Card of the last played colour. All cards
+            are simultaneously made visible to everyone. The player with
             the highest digit has to take the other cards in.
-            Players without Numeral Cards of said colour have
-            to draw two cards as penalty.
+            <br/>
+            Players without Numeral Cards of said colour get two cards as penalty.
             <br/>
             <strong>Important:</strong> If no colour has been played so far, the
             event is ineffective.
         </p>,
     "market":
         <p>
-            As many cards as there are players, the top cards
+            As many cards as there are players,
             from the deck are turned face up in front of the
             players. The players then pick in turn one card to
             take in their hands.
         </p>,
     "mating-season":
         <p>
-            Every combination that can be achieved with Numeral Cards have to be disposed of. Combinations
+            Every combination that can be achieved with Numeral Cards are disposed of. Combinations
             would be pairs, three of a kind, four of a kind and so
             on. The colour of the cards doesn't matter.
         </p>,
@@ -208,7 +206,7 @@ const eventCardHelp = {
         </p>,
     "mexican-standoff":
         <p>
-            All players dispose of their cards and draw in turn
+            All players dispose of their cards and get in turn
             three new cards from the deck.
         </p>,
     "recession":
@@ -230,7 +228,7 @@ const eventCardHelp = {
         </p>,
     "the-all-seeing-eye":
         <p>
-            Every player has to show their cards. The cards are
+            The cards of all players are turned face up. The cards are
             exposed until every player gives his OK to continue.
         </p>,
     "third-time-lucky":
@@ -256,8 +254,8 @@ const eventCardHelp = {
         </p>,
     "vandalism":
         <p>
-            Every player has to dispose of every card (Numeral
-            and Special Cards) of the last played colour.
+            Every card of the last played color gets removed from each players hand (Numeral
+            and Special Cards).
             <br/>
             <strong>Important:</strong> If no colour has been played so far, the
             event is ineffective.
