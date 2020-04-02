@@ -1,3 +1,5 @@
+[![Heroku](https://heroku-badge.herokuapp.com/?app=sopra-fs20-group-09-client)]
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
