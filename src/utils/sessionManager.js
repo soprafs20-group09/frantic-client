@@ -7,6 +7,19 @@ export default {
         return sessionStorage.getItem('token');
     },
     set token(value) {
-        sessionStorage.setItem('token');
+        if (value === undefined) {
+            sessionStorage.removeItem('token');
+        }
+        sessionStorage.setItem('token', value);
+    },
+    get lobbyId() {
+        return sessionStorage.getItem('lobbyId');
+    },
+    set lobbyId(value) {
+        if (value === undefined) {
+            sessionStorage.removeItem('lobbyId');
+        }
+        sessionStorage.setItem('lobbyId', value);
     }
+
 };

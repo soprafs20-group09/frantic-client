@@ -2,10 +2,11 @@ import React from 'react';
 import 'components/routing/AppRouter';
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import MainMenu from "components/views/MainMenu";
-import CreateLobbyView from "components/views/CreateLobbyView";
-import JoinLobbyView from "components/views/JoinLobbyView";
+import LobbyView from "components/views/LobbyView";
+import LobbyBrowserView from "components/views/LobbyBrowserView";
 import CardDisplay from "components/views/CardDisplay";
 import HelpView from "components/views/HelpView";
+import JoinLobbyView from "components/views/JoinLobbyView";
 
 class AppRouter extends React.Component {
     render() {
@@ -16,10 +17,16 @@ class AppRouter extends React.Component {
                         <MainMenu/>
                     </Route>
                     <Route exact path="/create">
-                        <CreateLobbyView/>
+                        <LobbyView mode="create"/>
+                    </Route>
+                    <Route exact path="/join">
+                        <LobbyView mode="join"/>
+                    </Route>
+                    <Route exact path="/join/:id">
+                        <JoinLobbyView/>
                     </Route>
                     <Route exact path="/browse">
-                        <JoinLobbyView/>
+                        <LobbyBrowserView mode="join"/>
                     </Route>
                     <Route exact path="/cards">
                         <CardDisplay/>
