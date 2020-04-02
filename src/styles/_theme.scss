@@ -28,6 +28,18 @@ $dropShadow: 0 0.25em 0.25em rgba(0, 0, 0, 0.25);
   margin: 0;
 }
 
+@mixin fillCenter {
+  width: 100%;
+  height: 100%;
+  @include center;
+}
+
+@mixin center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 @mixin clickable {
   cursor: pointer;
   transition: 0.3s;

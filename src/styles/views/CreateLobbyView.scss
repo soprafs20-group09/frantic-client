@@ -2,9 +2,7 @@
 
 .createlobby-container {
   max-height: 41.2em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include center;
 }
 
 .createlobby-column {

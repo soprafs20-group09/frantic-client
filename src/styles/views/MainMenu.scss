@@ -3,10 +3,8 @@
 .mainmenu-container {
   width: 100%;
   height: 100%;
-  display: flex;
+  @include center;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   overflow: hidden;
 }
 
@@ -23,10 +21,8 @@
 
 .mainmenu-items-container {
   height: 16em;
-  display: flex;
+  @include center;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
 .mainmenu-item {

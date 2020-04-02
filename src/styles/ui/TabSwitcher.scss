@@ -24,10 +24,8 @@
   margin: 0 0.5em;
   border-radius: 1em;
   flex-grow: 1;
+  @include center;
   @include clickable;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 
   &.selected {
     fill: $blueGray;
