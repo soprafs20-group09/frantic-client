@@ -1,6 +1,6 @@
 ![Logo](src/assets/frantic/logo-hollow.svg)
 
-# Frantic
+# Frantic-Client
 ![Heroku](https://heroku-badge.herokuapp.com/?app=sopra-fs20-group-09-client)
 
 Frantic is a chaotic card game created by [Rulefactory](https://rulefactory.ch). This repository is the front-end part of an online implementation for this card game. 
