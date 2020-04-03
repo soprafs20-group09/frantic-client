@@ -1,10 +1,10 @@
 import axios from 'axios';
-import { getDomain } from 'utils/DomainUtils';
+import {getDomain} from 'utils/DomainUtils';
 import React from "react";
 
 const api = axios.create({
     baseURL: getDomain(),
-    headers: { 'Content-Type': 'application/json' }
+    headers: {'Content-Type': 'application/json'}
 });
 
 const handleError = error => {
@@ -29,22 +29,32 @@ const handleError = error => {
     }
 };
 
-function parseCommonErrors(error) {
+function parseCommonErrors(error, title) {
+    let response = {};
     if (error.message === 'Network Error') {
-        return {
+        response = {
             title: "I couldn't talk to the server!",
             description:
                 <p>
                     I couldn't reach the backend, is it running?
                     <br/>
-                    Here's some more info:
-                    <br/>
-                    <code>
-                        {error.stack}
-                    </code>
+                </p>
+        }
+    } else if (error.response) {
+        response = {
+            title: "Something went wrong!",
+            description:
+                <p>
+                    {error.response.data.message} <br/><br/>
+                    <code>{error.response.data.status} {error.response.data.error}</code>
                 </p>
         }
     }
+    if (title) {
+        response.title = title;
+    }
+
+    return response;
 }
 
 const getPlayerAvatar = (name, style) => {

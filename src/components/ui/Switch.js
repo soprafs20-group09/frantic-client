@@ -20,6 +20,12 @@ class Switch extends Component {
         this.state = {value: this.props.initialValue || false};
     }
 
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (this.props.initialValue !== prevProps.initialValue) {
+            this.setState({value: this.props.initialValue || false});
+        }
+    }
+
     render() {
         const from = {x: this.isOn() ? '1.5em' : '0em'};
         const to = {x: this.isOn() ? '0em' : '1.5em'};

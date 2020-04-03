@@ -1,11 +1,11 @@
 @import 'theme';
 
-.createlobby-container {
+.lobby-container {
   max-height: 41.2em;
   @include center;
 }
 
-.createlobby-column {
+.lobby-column {
   &.main {
     flex-grow: 2;
   }
@@ -16,14 +16,14 @@
   }
 }
 
-.createlobby-window-container {
+.lobby-window-container {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
 }
 
-.createlobby-window-column {
+.lobby-window-column {
   width: 45%;
   display: block;
 }

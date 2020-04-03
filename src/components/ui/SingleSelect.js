@@ -21,6 +21,12 @@ class SingleSelect extends Component {
         this.state = {value: this.props.initialValue};
     }
 
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (this.props.initialValue !== prevProps.initialValue) {
+            this.setState({value: this.props.initialValue});
+        }
+    }
+
     render() {
         let items = [];
 

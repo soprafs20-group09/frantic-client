@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import AppContainer from "components/ui/AppContainer";
-import 'styles/views/CreateLobbyView.scss';
+import 'styles/views/LobbyView.scss';
 import ChooseUsernameWindow from "components/ChooseUsernameWindow";
 import {WindowTransition} from "components/ui/Transitions";
 import {api, parseCommonErrors} from "utils/api";
@@ -50,11 +50,16 @@ class LobbyView extends Component {
                 />;
         }
 
-        return (
-            <AppContainer withBack withHelp>
+        if (!this.state.authToken) {
+            content =
                 <WindowTransition>
                     {content}
-                </WindowTransition>
+                </WindowTransition>;
+        }
+
+        return (
+            <AppContainer withBack withHelp>
+                {content}
             </AppContainer>
         );
     }
@@ -70,7 +75,7 @@ class LobbyView extends Component {
             }
             this.setState({loading: false, authToken: response.data.token});
         } catch (err) {
-            this.setState({error: parseCommonErrors(err)})
+            this.setState({error: parseCommonErrors(err, "I couldn't join the lobby!")})
         }
     }
 }

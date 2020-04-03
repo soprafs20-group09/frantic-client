@@ -82,6 +82,7 @@ $chatItemSize: $fontSizeChat;
 }
 
 .chat-item-icon {
+  fill: currentColor;
   width: $chatItemSize;
   height: $chatItemSize;
   margin: 0 0.35em 0 0;

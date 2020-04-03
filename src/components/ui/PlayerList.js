@@ -20,7 +20,7 @@ import 'styles/ui/PlayerList.scss';
 class PlayerList extends Component {
     render() {
         const fromStyle = {
-            margin: 0,
+            margin: '0em 0',
             height: '0em',
             opacity: 0,
             transform: 'translateX(100%)'
@@ -44,8 +44,8 @@ class PlayerList extends Component {
                     trail={200}>
                     {player => style => (
                         <PlayerItem
-                            key={player.name}
-                            name={player.name}
+                            key={player.username}
+                            name={player.username}
                             color={player.color}
                             admin={player.admin}
                             kickable={this.props.adminMode}

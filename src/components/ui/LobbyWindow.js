@@ -14,6 +14,7 @@ import ChatItem from "components/ui/chat/ChatItem";
 import {getPlayerAvatar} from "utils/api";
 import {withRouter} from "react-router-dom";
 import ErrorBox from "components/ui/ErrorBox";
+import {WindowTransition} from "components/ui/Transitions";
 
 /**
  * This component renders the lobby settings window,
@@ -29,22 +30,8 @@ class LobbyWindow extends Component {
             loading: true,
             chatItems: [],
             players: [],
-            settings: {
-                durationItems: [
-                    {
-                        name: 'Short',
-                        value: 'short'
-                    },
-                    {
-                        name: 'Medium',
-                        value: 'medium'
-                    },
-                    {
-                        name: 'Long',
-                        value: 'long'
-                    }
-                ]
-            }
+            settings: {},
+            joinLink: `${window.location.origin}/join/${sessionManager.lobbyId}`
         };
     }
 
@@ -61,13 +48,15 @@ class LobbyWindow extends Component {
     componentWillUnmount() {
         sockClient.clearDisconnectSubscriptions();
         sockClient.clearMessageSubscriptions();
+        sockClient.disconnect();
     }
 
     render() {
         const spacingStyle = {marginBottom: '1.8em'};
+        let content;
 
         if (this.state.error) {
-            return (
+            content = (
                 <ErrorBox
                     key="error-box"
                     title={this.state.error.title}
@@ -76,70 +65,117 @@ class LobbyWindow extends Component {
                     {this.state.error.description}
                 </ErrorBox>
             );
-        }
-        if (this.state.loading) {
-            return <Spinner/>;
+        } else if (this.state.loading) {
+            content = <Spinner key="spinner"/>;
+        } else {
+            content = (
+                <div className="lobby-container" key="lobby-window">
+                    <div className="lobby-column main">
+                        <Window key="LobbyWindow" title={this.state.settings.lobbyName} width="48em" height="41.2em">
+                            <div className="lobby-window-container">
+                                <div className="lobby-window-column">
+                                    <Header>Settings</Header>
+                                    <Input
+                                        style={spacingStyle}
+                                        title="Join Link"
+                                        action="Copy"
+                                        readOnly={true}
+                                        initialValue={this.state.joinLink}
+                                        onActionClick={() => this.handleLinkCopy()}
+                                    />
+                                    <Input
+                                        style={spacingStyle}
+                                        title="Lobby Name"
+                                        readOnly={!this.props.adminMode}
+                                        initialValue={this.state.settings.lobbyName}
+                                        onChange={v => this.handleSettingsUpdate({lobbyName: v})}
+                                    />
+                                    <SingleSelect
+                                        style={spacingStyle}
+                                        title="Game Duration"
+                                        items={this.state.settings.durationItems}
+                                        readOnly={!this.props.adminMode}
+                                        initialValue={this.state.settings.duration}
+                                        onValueChanged={v => this.handleSettingsUpdate({duration: v})}
+                                    />
+                                    <Switch
+                                        style={spacingStyle}
+                                        title="Public"
+                                        on="yes"
+                                        off="no"
+                                        readOnly={!this.props.adminMode}
+                                        initialValue={this.state.settings.publicLobby}
+                                        onSwitch={v => this.handleSettingsUpdate({publicLobby: v})}
+                                    />
+                                    <Button
+                                        disabled={this.state.players.length < 2}
+                                        width="100%"
+                                    >
+                                        Start Game
+                                    </Button>
+                                </div>
+                                <div className="lobby-window-column">
+                                    <Header>Players</Header>
+                                    <PlayerList
+                                        players={this.state.players}
+                                        adminMode={this.props.adminMode}
+                                        onKick={p => this.handleKick(p)}
+                                    />
+                                </div>
+                            </div>
+                        </Window>
+                    </div>
+                    <div className="lobby-column chat">
+                        <ChatWindow onSend={msg => this.handleSend(msg)}>
+                            {this.state.chatItems}
+                        </ChatWindow>
+                    </div>
+                </div>
+            );
         }
 
         return (
-            <div className="createlobby-container">
-                <div className="createlobby-column main">
-                    <Window key="LobbyWindow" title={this.state.settings.lobbyName} width="48em" height="41.2em">
-                        <div className="createlobby-window-container">
-                            <div className="createlobby-window-column">
-                                <Header>Settings</Header>
-                                <Input
-                                    style={spacingStyle}
-                                    title="Join Link"
-                                    action="Copy"
-                                    readOnly={true}
-                                    initialValue={this.state.joinLink}
-                                />
-                                <Input
-                                    style={spacingStyle}
-                                    title="Lobby Name"
-                                    readOnly={!this.props.adminMode}
-                                    initialValue={this.state.settings.lobbyName}
-                                />
-                                <SingleSelect
-                                    style={spacingStyle}
-                                    title="Game Duration"
-                                    items={this.state.settings.durationItems}
-                                    readOnly={!this.props.adminMode}
-                                    initialValue="short"
-                                />
-                                <Switch
-                                    style={spacingStyle}
-                                    title="Public"
-                                    on="yes"
-                                    off="no"
-                                    readOnly={!this.props.adminMode}
-                                    initialValue={this.state.settings.public}
-                                />
-                                <Button
-                                    disabled={this.state.players.length < 2}
-                                    width="100%"
-                                >
-                                    Start Game
-                                </Button>
-                            </div>
-                            <div className="createlobby-window-column">
-                                <Header>Players</Header>
-                                <PlayerList
-                                    players={this.state.players}
-                                    adminMode={this.props.adminMode}
-                                />
-                            </div>
-                        </div>
-                    </Window>
-                </div>
-                <div className="createlobby-column chat">
-                    <ChatWindow onSend={msg => this.handleSend(msg)}>
-                        {this.state.chatItems}
-                    </ChatWindow>
-                </div>
-            </div>
+            <WindowTransition>
+                {content}
+            </WindowTransition>
         );
+    }
+
+    handleKick(player) {
+        try {
+            sockClient.sendToLobby('/kick', {username: player});
+        } catch {
+        }
+    }
+
+    handleSettingsUpdate(settingsChanges) {
+        if (this.timeout) {
+            clearTimeout(this.timeout);
+        }
+
+        this.timeout = setTimeout(() => this.handleSettingsTimeout(), 1000);
+        this.setState({settings: {...this.state.settings, ...settingsChanges}});
+    }
+
+    handleSettingsTimeout() {
+        try {
+            // console.log(this.state.settings);
+            sockClient.sendToLobby('/settings', {
+                lobbyName: this.state.settings.lobbyName,
+                duration: this.state.settings.duration,
+                publicLobby: this.state.settings.publicLobby
+            });
+        } catch {
+        }
+    }
+
+    handleLinkCopy() {
+        let dummy = document.createElement("textarea");
+        document.body.appendChild(dummy);
+        dummy.value = this.state.joinLink;
+        dummy.select();
+        document.execCommand("copy");
+        document.body.removeChild(dummy);
     }
 
     handleSend(msg) {
@@ -147,23 +183,62 @@ class LobbyWindow extends Component {
             if (sockClient.isConnected()) {
                 sockClient.sendToLobby('/chat', {message: msg});
             }
-        } catch (ignored) {
+        } catch {
         }
     }
 
     handleChatMessage(msg) {
-        let newItem =
-            <ChatItem
-                style={msg.type}
-                sender={msg.username}
-                icon={getPlayerAvatar(msg.username)}
-                key={new Date().getTime()}
-            >
-                {msg.message}
-            </ChatItem>;
-        this.setState({
-            chatItems: this.state.chatItems.concat(newItem)
-        });
+        let newItem;
+        switch (msg.type) {
+            case 'msg':
+                newItem =
+                    <ChatItem
+                        style={msg.type}
+                        sender={msg.username}
+                        icon={getPlayerAvatar(msg.username)}
+                        key={new Date().getTime()}
+                    >
+                        {msg.message}
+                    </ChatItem>;
+                break;
+
+            case 'event':
+                let icon;
+
+                if (msg.icon) {
+                    let iconType = msg.icon.substr(0, msg.icon.indexOf(':'));
+                    let iconValue = msg.icon.substr(msg.icon.indexOf(':') + 1);
+
+                    switch (iconType) {
+                        case 'avatar':
+                            icon = getPlayerAvatar(iconValue);
+                            break;
+
+                        case 'event':
+                            icon = require("assets/frantic/event-cards/" + iconValue + ".svg");
+                            break;
+
+                        case 'special':
+                            icon = require("assets/frantic/special-cards/" + iconValue + ".svg");
+                            break;
+                    }
+                }
+
+                newItem =
+                    <ChatItem
+                        style={msg.type}
+                        icon={icon}
+                        key={new Date().getTime()}
+                    >
+                        {msg.message}
+                    </ChatItem>;
+                break;
+        }
+        if (newItem) {
+            this.setState({
+                chatItems: this.state.chatItems.concat(newItem)
+            });
+        }
     }
 
     handleSocketRegister(response) {
@@ -182,12 +257,12 @@ class LobbyWindow extends Component {
             error: {
                 title: "Disconnected!",
                 description:
-                <p>
-                    Connection to the server was disrupted.
-                    <br/>
-                    <strong>Reason:</strong>
-                    {reason}
-                </p>
+                    <p>
+                        Connection to the server was disrupted.
+                        <br/>
+                        <strong>Reason:</strong>
+                        {reason}
+                    </p>
             }
         });
         sockClient.clearDisconnectSubscriptions();

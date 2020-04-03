@@ -36,7 +36,7 @@ class LobbyList extends Component {
                 <ul className="lobby-list">
                     <Transition
                         items={this.props.lobbies}
-                        keys={lobby => lobby.id}
+                        keys={lobby => lobby.lobbyId}
                         from={fromStyle}
                         enter={toStyle}
                         leave={fromStyle}
@@ -44,11 +44,11 @@ class LobbyList extends Component {
                     >
                         {lobby => style =>
                             <LobbyItem
-                                key={lobby.id}
+                                key={lobby.lobbyId}
                                 name={lobby.name}
                                 creator={lobby.creator}
                                 players={lobby.players}
-                                link={`/join/${lobby.id}`}
+                                link={`/join/${lobby.lobbyId}`}
                                 style={style}
                             />
                         }
