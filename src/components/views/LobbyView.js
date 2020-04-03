@@ -23,6 +23,8 @@ class LobbyView extends Component {
     }
 
     render() {
+        let closeRoute = this.props.mode === 'join' ? '/browse' : '/';
+
         let content;
         if (this.state.error) {
             content =
@@ -47,6 +49,7 @@ class LobbyView extends Component {
                 <ChooseUsernameWindow
                     key="username-window"
                     onConfirm={u => this.confirmUsername(u)}
+                    closeRoute={closeRoute}
                 />;
         }
 
@@ -75,7 +78,7 @@ class LobbyView extends Component {
             }
             this.setState({loading: false, authToken: response.data.token});
         } catch (err) {
-            this.setState({error: parseCommonErrors(err, "I couldn't join the lobby!")})
+            this.setState({error: parseCommonErrors(err, "couldn't join the lobby!")})
         }
     }
 }

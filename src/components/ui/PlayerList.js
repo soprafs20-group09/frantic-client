@@ -20,13 +20,15 @@ import 'styles/ui/PlayerList.scss';
 class PlayerList extends Component {
     render() {
         const fromStyle = {
-            margin: '0em 0',
+            marginBottom: '0em',
+            padding: '0em 0em 0em 0em',
             height: '0em',
             opacity: 0,
             transform: 'translateX(100%)'
         };
         const toStyle = {
-            margin: '0.6em 0',
+            marginBottom: '0.6em',
+            padding: '0.6em 0.9em 0.6em 0.6em',
             height: '2.9em',
             opacity: 1,
             transform: 'translateX(0%)'
@@ -49,7 +51,7 @@ class PlayerList extends Component {
                             color={player.color}
                             admin={player.admin}
                             kickable={this.props.adminMode}
-                            onKick={() => this.handleKick(player)}
+                            onKick={() => this.handleKick(player.username)}
                             avatarType={avatarType}
                             style={style}
                         />

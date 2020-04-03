@@ -38,8 +38,7 @@ class LobbyWindow extends Component {
     componentDidMount() {
         sockClient.onLobbyMessage('/chat', r => this.handleChatMessage(r));
         sockClient.onLobbyMessage('/lobby-state', r => this.handleLobbyUpdate(r));
-        sockClient.onLobbyMessage('/disconnect', r => this.handleDisconnect(r.reason));
-        sockClient.onDisconnect(() => this.handleDisconnect("Socket closed."));
+        sockClient.onDisconnect( r => this.handleDisconnect(r));
         sockClient.onRegister(r => this.handleSocketRegister(r));
         sockClient.connectAndRegister(this.props.authToken);
         sessionManager.token = undefined;
@@ -261,6 +260,7 @@ class LobbyWindow extends Component {
                         Connection to the server was disrupted.
                         <br/>
                         <strong>Reason:</strong>
+                        <br/>
                         {reason}
                     </p>
             }
