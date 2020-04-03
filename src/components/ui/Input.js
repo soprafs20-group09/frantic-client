@@ -22,7 +22,7 @@ import 'styles/ui/UiElements.scss';
 class Input extends Component {
     constructor(props) {
         super(props);
-        this.state = {value: this.props.value};
+        this.state = {value: this.props.value || ''};
     }
 
     // UNSAFE_componentWillReceiveProps(nextProps, nextContext) {

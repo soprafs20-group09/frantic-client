@@ -5,7 +5,7 @@ import Send from "assets/icons/send.svg";
 class ChatInput extends Component {
     constructor(props) {
         super(props);
-        this.state = {value: this.props.value};
+        this.state = {value: this.props.value || ''};
     }
 
     render() {
