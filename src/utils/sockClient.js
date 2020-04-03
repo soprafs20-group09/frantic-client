@@ -23,7 +23,7 @@ class SockClient {
     connect(callback) {
         try {
             this.sock.close();
-        } catch (ignored) {
+        } catch {
         }
         this.sock = new SockJS(`${getDomain()}/ws`);
         this.stomp = Stomp.over(this.sock);
@@ -38,7 +38,10 @@ class SockClient {
     }
 
     disconnect() {
-        this.stomp.disconnect(() => this._handleDisconnect(),{});
+        try {
+            this.stomp.disconnect(() => this._handleDisconnect(), {});
+        } catch {
+        }
     }
 
     connectAndRegister(token) {
@@ -108,7 +111,7 @@ class SockClient {
     _handleMessage(response) {
         let msg = JSON.parse(response.body);
         let channel = response.headers.destination;
-        let lobbyChannel = channel.replace(/.+\/lobby\/\d+/i, '');
+        let lobbyChannel = channel.replace(/.+\/lobby\/.+\//i, '/');
 
         if (!this._messageCallbacks.hasOwnProperty(lobbyChannel)) {
             return
