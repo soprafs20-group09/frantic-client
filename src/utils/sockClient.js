@@ -30,16 +30,21 @@ class SockClient {
         this.stomp.connect({}, () => {
             this._connected = true;
             this.subscribe('/user/queue/register', r => this._handleRegister(r));
+            this.subscribe('/user/queue/disconnect', r => this.disconnect(r.reason));
             if (callback) {
                 callback();
             }
         });
-        this.sock.onclose(this._handleDisconnect);
+        this.sock.onclose = r => {
+            console.log("Socket closed!", r);
+            this._handleDisconnect("Socket closed.");
+        };
+        this.sock.onerror = e => this._handleError(e);
     }
 
-    disconnect() {
+    disconnect(reason) {
         try {
-            this.stomp.disconnect(() => this._handleDisconnect(), {});
+            this.stomp.disconnect(() => this._handleDisconnect(reason), {});
         } catch {
         }
     }
@@ -89,10 +94,15 @@ class SockClient {
         this._messageCallbacks[channel].push(callback);
     }
 
-    _handleDisconnect() {
+    _handleError(error) {
+        console.error(error);
+        this._handleDisconnect("Socket error.");
+    }
+
+    _handleDisconnect(reason) {
         this._connected = false;
         for (let callback of this._disconnectCallbacks) {
-            callback();
+            callback(reason);
         }
     }
 
