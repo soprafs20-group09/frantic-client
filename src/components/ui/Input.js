@@ -9,6 +9,7 @@ import 'styles/ui/UiElements.scss';
  * title: string         - a title to be displayed above the input.
  * initialValue: string  - an initial value to be set for the input.
  * readOnly: bool        - whether the input should be readonly
+ * disabled: bool        - renders the component as disabled.  (overrides readOnly)
  * type: string          - the type of the input, see html docs (e.g. password)
  * onChange: func(value) - a function to be called every time the input value changes.
  * onEnter: func()       - a function to be called every time the enter key is pressed.
@@ -39,7 +40,7 @@ class Input extends Component {
         if (this.props.action) {
             action =
                 <button
-                    className={`input-action ${this.props.disableAction && 'disabled'}`}
+                    className={`input-action ${(this.props.disabled || this.props.disableAction) && 'disabled'}`}
                     onClick={() => this.handleActionClick()}>
                     {this.props.action}
                 </button>;
@@ -48,12 +49,12 @@ class Input extends Component {
         return (
             <div>
                 <p className="input-title">{this.props.title}</p>
-                <div className="input-container" style={this.props.style}>
+                <div className={`input-container ${this.props.disabled && 'disabled'}`} style={this.props.style}>
                     <input
                         className={`input-input  ${action && 'action'}`}
                         type={this.props.type}
                         value={this.props.initialValue}
-                        readOnly={this.props.readOnly}
+                        readOnly={this.props.readOnly || this.props.disabled}
                         onChange={e => this.handleInputChange(e)}
                         onKeyUp={e => this.handleKeyUp(e)}
                     />
@@ -77,7 +78,7 @@ class Input extends Component {
     }
 
     handleActionClick() {
-        if (this.props.onActionClick && !this.props.disableAction) {
+        if (this.props.onActionClick && !(this.props.disabled || this.props.disableAction)) {
             this.props.onActionClick();
         }
     }

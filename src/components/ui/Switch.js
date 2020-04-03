@@ -10,6 +10,7 @@ import {Spring} from "react-spring/renderprops";
  * initialValue: bool       - sets the value when first loaded.
  * onSwitch: func(newValue) - a function that is called whenever the value changes.
  * readOnly: boolean        - makes this component read only.
+ * disabled: boolean        - renders this component as disabled. (overrides readOnly)
  * style: object            - an optional style override for the container.
  */
 class Switch extends Component {
@@ -34,14 +35,17 @@ class Switch extends Component {
             <div className="switch-container" style={this.props.style}>
                 <p className="switch-title">{this.props.title}</p>
                 <div className="switch-description">{this.props.on || 'on'}</div>
-                <div className="switch-rail"
+                <div className={`switch-rail ${this.props.disabled && 'disabled'}`}
                      onClick={() => this.switch()}>
                     <Spring
                         config={{tension: 200, friction: 15}}
                         from={from}
                         to={to}>
                         {props =>
-                            <div className="switch-nob" style={{transform: `translateX(${props.x})`}}/>
+                            <div
+                                className={`switch-nob ${this.props.disabled && 'disabled'}`}
+                                style={{transform: `translateX(${props.x})`}}
+                            />
                         }
                     </Spring>
                 </div>
@@ -55,7 +59,7 @@ class Switch extends Component {
     }
 
     switch() {
-        if (this.props.readOnly) {
+        if (this.props.readOnly || this.props.disabled) {
             return;
         }
 

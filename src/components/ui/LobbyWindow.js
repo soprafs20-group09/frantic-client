@@ -86,7 +86,7 @@ class LobbyWindow extends Component {
                                     <Input
                                         style={spacingStyle}
                                         title="Lobby Name"
-                                        readOnly={!this.props.adminMode}
+                                        disabled={!this.props.adminMode}
                                         initialValue={this.state.settings.lobbyName}
                                         onChange={v => this.handleSettingsUpdate({lobbyName: v})}
                                     />
@@ -94,7 +94,7 @@ class LobbyWindow extends Component {
                                         style={spacingStyle}
                                         title="Game Duration"
                                         items={this.state.settings.durationItems}
-                                        readOnly={!this.props.adminMode}
+                                        disabled={!this.props.adminMode}
                                         initialValue={this.state.settings.duration}
                                         onValueChanged={v => this.handleSettingsUpdate({duration: v})}
                                     />
@@ -103,12 +103,12 @@ class LobbyWindow extends Component {
                                         title="Public"
                                         on="yes"
                                         off="no"
-                                        readOnly={!this.props.adminMode}
+                                        disabled={!this.props.adminMode}
                                         initialValue={this.state.settings.publicLobby}
                                         onSwitch={v => this.handleSettingsUpdate({publicLobby: v})}
                                     />
                                     <Button
-                                        disabled={this.state.players.length < 2}
+                                        disabled={!this.props.adminMode || this.state.players.length < 2}
                                         width="100%"
                                     >
                                         Start Game

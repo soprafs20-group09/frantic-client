@@ -10,6 +10,7 @@ import React, {Component} from 'react';
  * -value: string              - the value of the item that is returned on change.
  * initialValue: string        - value of the item that is to be selected first.
  * readOnly: boolean           - makes this component read only.
+ * disabled: boolean           - renders this component as disabled (overrides readOnly)
  * onValueChanged: func(value) - function to be called when a new value has been set.
  * style: object               - allows you to override the container styling.
  */
@@ -35,7 +36,7 @@ class SingleSelect extends Component {
             const active = this.state.value === item.value;
             items.push(
                 <button
-                    className={`singleselect-item ${active && 'active'}`}
+                    className={`singleselect-item ${active && 'active'} ${this.props.disabled && 'disabled'}`}
                     key={i + item.name}
                     onClick={() => this.itemClicked(i)}>
                     {item.name}
@@ -54,7 +55,7 @@ class SingleSelect extends Component {
     }
 
     itemClicked(index) {
-        if (this.props.readOnly) {
+        if (this.props.readOnly || this.props.disabled) {
             return;
         }
 
