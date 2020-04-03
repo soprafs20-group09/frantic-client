@@ -100,8 +100,8 @@ class SockClient {
         this._registered = true;
         sessionManager.lobbyId = response.lobbyId;
 
-        this.stomp.subscribe(`/topic/lobby/${response.lobbyId}/*`, r => this._handleMessage(r));
-        this.stomp.subscribe(`/topic/lobby/${response.lobbyId}/*/*`, r => this._handleMessage(r));
+        this.stomp.subscribe(`/user/queue/lobby/${response.lobbyId}/*`, r => this._handleMessage(r));
+        this.stomp.subscribe(`/user/queue/lobby/${response.lobbyId}/*/*`, r => this._handleMessage(r));
 
         for (let callback of this._registerCallbacks) {
             callback(response);
