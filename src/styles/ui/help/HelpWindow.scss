@@ -63,6 +63,30 @@
   }
 }
 
+.help-nav-container {
+  position: absolute;
+  top: 1em;
+  right: 1.2em;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.help-nav-button {
+  height: 1em;
+  width: 1em;
+  fill: $terracotta;
+  @include clickable;
+  margin-left: 0.5em;
+
+  &.new-tab {
+    width: 1.2em;
+    height: 1.2em;
+    margin: 0;
+  }
+}
+
 // Icons
 
 .icon-container {

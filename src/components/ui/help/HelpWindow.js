@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import {withRouter} from "react-router-dom";
-import 'styles/ui/HelpWindow.scss';
+import 'styles/ui/help/HelpWindow.scss';
 import 'styles/ui/ToolWindow.scss';
 import Logo from "assets/frantic/logo-text.svg";
+import Cross from "assets/icons/cross.svg";
+import NewTab from "assets/icons/external-link.svg";
 import InlineSVG from "react-inlinesvg";
 import TabSwitcher from "components/ui/TabSwitcher";
 import {animated, Spring} from "react-spring/renderprops";
@@ -87,6 +89,13 @@ class EventIcon extends Component {
     }
 }
 
+/**
+ * Shows a Help Window.
+ * PROPS:
+ * withNewTab: boolean  - will display a button to open help in a new page.
+ * withClose: boolean   - will display a close button if true.
+ * onClose: func        - a function to be called when the close button has been clicked.
+ */
 class HelpWindow extends Component {
     constructor(props) {
         super(props);
@@ -117,6 +126,18 @@ class HelpWindow extends Component {
 
         return (
             <div className="toolwindow-container" style={{height: "90vh"}}>
+                <div className="help-nav-container">
+                    {this.props.withClose &&
+                    <InlineSVG
+                        src={Cross}
+                        className="help-nav-button"
+                        onClick={() => this.onClose()}
+                    />}
+                    {this.props.withNewTab &&
+                    <a target="_blank" href="/help" className="help-nav-button new-tab">
+                        <InlineSVG src={NewTab} className="help-nav-button new-tab"/>
+                    </a>}
+                </div>
                 <div className="toolwindow-content" style={{height: "100%", maxHeight: "100%"}}>
                     <div className="help-container">
                         <InlineSVG src={Logo} className="help-logo"/>
@@ -135,6 +156,12 @@ class HelpWindow extends Component {
                 </div>
             </div>
         );
+    }
+
+    onClose() {
+        if (this.props.onClose) {
+            this.props.onClose();
+        }
     }
 
     onTabHover(i) {

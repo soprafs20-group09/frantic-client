@@ -1,6 +1,7 @@
 @import 'theme';
 
 .toolwindow-container {
+  position: relative;
   color: white;
   background-color: $blueGray;
   border-radius: 0.6em;
