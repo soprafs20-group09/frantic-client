@@ -122,10 +122,19 @@ class PlayerHand extends Component {
         // this checks if we are hovering over the last card
         try {
             return (parseInt(e.target.parentNode.parentNode.parentNode.classList[1]) === this.state.hover.length - 1);
+        } catch {
         }
-        catch {}
 
         return false;
+    }
+
+    getFormattedSmallerValueW(vw, em) {
+        vw = parseFloat(vw.replace('vw', ''));
+        em = parseFloat(em.replace('em', ''));
+        let vwPx = (document.documentElement.clientWidth / 100) * vw;
+        let emPx = parseFloat(getComputedStyle(document.getElementsByTagName('html')[0]).fontSize) * em;
+
+        return (vwPx < emPx) ? vw + 'vw' : em + 'em';
     }
 }
 
