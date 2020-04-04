@@ -57,11 +57,13 @@ class MultiNumber extends Component {
 /**
  * This component renders a single frantic playing card.
  * PROPS:
- * type: string  - the type of playing card.
- *                 possible values: 'number', 'special', 'event'
- * value: string - the number, special function or event the card should display.
- * color: string - the color of the card. will be disregarded by certain cards.
- *                 possible values: 'red', 'blue', 'green', 'yellow', 'black'
+ * type: string                 - the type of playing card.
+ *                                possible values: 'number', 'special', 'event'
+ * value: string                - the number, special function or event the card should display.
+ * color: string                - the color of the card. will be disregarded by certain cards.
+ *                                possible values: 'red', 'blue', 'green', 'yellow', 'black'
+ * onHover: func(boolean enter) - a function that is called whenever the card is hovered,
+ *                                the boolean indicates whether the mouse entered or left the card.
  */
 class Card extends Component {
     render() {
@@ -121,7 +123,11 @@ class Card extends Component {
         }
 
         return (
-            <div className={`card-container ${color}`}>
+            <div
+                className={`card-container ${color}`}
+                onMouseEnter={() => this.handleHover(true)}
+                onMouseLeave={() => this.handleHover(false)}
+            >
                 <div className={`card-inner ${innerColor}`}/>
                 <div className="card-icon border top">{border}</div>
                 {multinumber && <div className="card-icon border multinumber top">#</div>}
@@ -132,6 +138,12 @@ class Card extends Component {
                 <div className="card-glare"/>
             </div>
         );
+    }
+
+    handleHover(enter) {
+        if (this.props.onHover) {
+            this.props.onHover(enter);
+        }
     }
 }
 

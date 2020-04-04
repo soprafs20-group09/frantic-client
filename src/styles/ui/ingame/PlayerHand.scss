@@ -3,14 +3,30 @@
 .hand-container {
   position: relative;
   width: 50vw;
-  height: 10em;
+  height: 10vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  pointer-events: none;
 }
 
 .hand-card {
   position: relative;
   transform-origin: center;
   @include center;
+  transition: 0s;
+  pointer-events: all;
+
+  &:last-child {
+    margin-right: 0 !important;
+  }
+
+  &:hover {
+    margin-right: 5em;
+  }
+}
+
+.card-shadow {
+  box-shadow: $dropShadow;
+  border-radius: 0.5em;
 }
