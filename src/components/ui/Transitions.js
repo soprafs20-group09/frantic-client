@@ -26,13 +26,17 @@ class WindowTransition extends Component {
                 from={fromStyle}
                 enter={enterStyle}
                 leave={leaveStyle}
-                trail={200}
+                trail={this.props.trail}
             >
                 {item => style => <animated.div style={style}>{item}</animated.div>}
             </Transition>
         );
     }
 }
+
+WindowTransition.defaultProps = {
+    trail: 200
+};
 
 class ChatItemTransition extends Component {
     render() {

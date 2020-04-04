@@ -5,7 +5,13 @@
   @include fullscreen;
   @include center;
   overflow: hidden;
+  transition: 0.3s;
+
+  &.blur {
+    filter: blur(0.3em);
+  }
 }
+
 .app-container.animated {
   pointer-events: none;
 }
