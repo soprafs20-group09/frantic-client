@@ -122,7 +122,6 @@ class Card extends Component {
 
         return (
             <div className={`card-container ${color}`}>
-                <div className="card-glare"/>
                 <div className={`card-inner ${innerColor}`}/>
                 <div className="card-icon border top">{border}</div>
                 {multinumber && <div className="card-icon border multinumber top">#</div>}
@@ -130,6 +129,7 @@ class Card extends Component {
                 {banner}
                 <div className="card-icon border bottom">{border}</div>
                 {multinumber && <div className="card-icon border multinumber bottom">#</div>}
+                <div className="card-glare"/>
             </div>
         );
     }

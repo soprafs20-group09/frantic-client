@@ -309,8 +309,12 @@ function getRandomNumberCard(optionalColor) {
     }
 }
 
+function getRandomElement(array) {
+    return array[Math.floor(Math.random() * array.length)]
+}
+
 function getRandomColor() {
-    return colors[Math.floor(Math.random() * colors.length)]
+    return getRandomElement(colors);
 }
 
 function isMulticolor(value) {
@@ -352,11 +356,36 @@ function getHelpFromCard(card) {
     return help;
 }
 
+function generateRandomCards(amount) {
+    let cards = [];
+    if (!amount) {
+        amount = 5;
+    }
+
+    for (let i = 0; i < amount; i++) {
+        switch (getRandomElement(['number', 'special'])) {
+            case 'number':
+                cards.push(getRandomNumberCard());
+                break;
+            case 'special':
+                cards.push({
+                    type: 'special',
+                    value: getRandomElement(specialCards),
+                    color: getRandomColor()
+                });
+                break;
+        }
+    }
+
+    return cards;
+}
+
 export default {
     getAllSpecialCards,
     getAllEventCards,
     getRandomNumberCard,
     isMulticolor,
     isMultinumber,
-    getHelpFromCard
+    getHelpFromCard,
+    generateRandomCards
 }

@@ -1,0 +1,16 @@
+@import 'theme';
+
+.hand-container {
+  position: relative;
+  width: 50vw;
+  height: 10em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hand-card {
+  position: relative;
+  transform-origin: center;
+  @include center;
+}
