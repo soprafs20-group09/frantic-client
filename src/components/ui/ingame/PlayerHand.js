@@ -92,7 +92,7 @@ class PlayerHand extends Component {
     }
 
     handleHover(index, enter) {
-        if (this.state.hovering && index === this.state.hover.length - 1) {
+        if (this.state.hovering && index === this.props.cards.length - 1) {
             this.setState({hovering: false});
         }
     }
