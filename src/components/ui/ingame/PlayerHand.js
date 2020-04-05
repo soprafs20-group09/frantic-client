@@ -2,26 +2,26 @@ import React, {Component} from 'react';
 import Card from "components/ui/cards/Card";
 import "styles/ui/ingame/PlayerHand.scss";
 
+/**
+ * Render the current hand of the player.
+ * PROPS:
+ * cards: array     - array of card objects (type, value, color)
+ * available: array - array of indices to be displayed as available (all others will not be clickable)
+ */
 class PlayerHand extends Component {
     constructor(props) {
         super(props);
-
-        let hover = [];
-        for (let i = 0; i < this.props.cards.length; i++) {
-            hover.push(false);
-        }
-
-        this.state = {hover: hover, animate: true, hovering: false};
+        this.state = {hovering: false};
     }
 
     render() {
         let cards = [];
 
         let degChange = 10;
-        const maxDegrees = 100;
-        const maxWidth = 50; //in vw
+        const maxDegrees = 60;
+        const maxWidth = 40; //in vw
         const maxIndividualWidth = '3.1em';
-        const maxHeight = Math.min(this.props.cards.length / 2, 10); // in vh
+        const maxHeight = Math.min(this.props.cards.length / 3, 6); // in vh
 
         // calculate total degree change with all cards if each is degChange° tilted from the others
         let totalDegrees = degChange * this.props.cards.length;
@@ -42,31 +42,32 @@ class PlayerHand extends Component {
 
         for (let i = 0; i < this.props.cards.length; i++) {
             const c = this.props.cards[i];
+            let available;
+            let hoverFunc;
 
             let cardStyle = {
                 width: `min(${itemWidth}, ${maxIndividualWidth})`,
-                transform: `translateY(${-Math.sin(currentYOffset) * maxHeight}vh) rotate(${currentDegrees}deg)`,
-                marginRight: '0em'
+                transform: `translateY(${-Math.sin(currentYOffset) * maxHeight}em) rotate(${currentDegrees}deg)`
             };
-            if (!this.state.hovering) {
-                cardStyle.transition = '0.3s';
+
+            if (this.props.available) {
+                available = this.isAvailable(i) ? 'available' : 'unavailable';
             }
-            const hoverStyle = Object.assign({}, cardStyle);
-            hoverStyle.transform = `translateY(${-Math.sin(currentYOffset) * maxHeight}vh) rotate(${currentDegrees}deg)`;
-            hoverStyle.marginRight = '5em';
+            if (i === this.props.cards.length - 1) {
+                hoverFunc = e => this.handleHover(i, e);
+            }
 
             cards.push(
                 <div
                     key={i}
-
-                    className={"hand-card " + i} // this is to identify the last card in the mouseOver-event
-                    style={this.state.hover[i] ? hoverStyle : cardStyle}>
-                    <div className="card-shadow">
+                    className={"hand-card " + available + " " + i} // this is to identify the last card in the mouseOver-event
+                    style={cardStyle}>
+                    <div className={"card-shadow " + available}>
                         <Card
                             type={c.type}
                             value={c.value}
                             color={c.color}
-                            onHover={e => this.handleHover(i, e)}
+                            onHover={hoverFunc}
                         />
                     </div>
                 </div>
@@ -77,7 +78,7 @@ class PlayerHand extends Component {
         }
 
         return (
-            <div className="hand-container"
+            <div className={"hand-container" + (this.state.hovering ? "" : " transition")}
                  onMouseOver={e => this.handleMouseOver(e)}
                  onMouseLeave={e => this.handleMouseLeave(e)}
             >
@@ -86,19 +87,14 @@ class PlayerHand extends Component {
         );
     }
 
+    isAvailable(index) {
+        return this.props.available && this.props.available.indexOf(index) >= 0;
+    }
+
     handleHover(index, enter) {
-        if (index === this.state.hover.length - 1) {
+        if (this.state.hovering && index === this.state.hover.length - 1) {
             this.setState({hovering: false});
-            return;
         }
-
-        let hover = [];
-        for (let i = 0; i < this.props.cards.length; i++) {
-            hover.push(false);
-        }
-        hover[index] = enter;
-
-        this.setState({hover: hover});
     }
 
     handleAnimateTimeout() {

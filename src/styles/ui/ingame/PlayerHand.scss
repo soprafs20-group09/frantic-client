@@ -2,31 +2,53 @@
 
 .hand-container {
   position: relative;
-  width: 50vw;
-  height: 10vh;
   display: flex;
   justify-content: center;
   align-items: center;
   pointer-events: none;
+
+  &.transition {
+    transition: 0.3s;
+  }
 }
 
 .hand-card {
   position: relative;
   transform-origin: center;
   @include center;
-  transition: 0s;
   pointer-events: all;
+  transition: inherit;
 
   &:last-child {
     margin-right: 0 !important;
   }
 
+  //&.available {
+  //  transition: 0.3s;
+  //}
+
   &:hover {
     margin-right: 5em;
   }
+
+  //&:not(.unavailable):hover {
+  //  margin-right: 5em;
+  //}
 }
 
 .card-shadow {
   box-shadow: $dropShadow;
-  border-radius: 0.5em;
+  border-radius: 0.7em;
+  box-sizing: border-box;
+
+  &.available {
+    cursor: pointer;
+    border: 0.15em solid $terracotta;
+    box-shadow: 0 0 0.5em 0 $terracotta;
+  }
+
+  &.unavailable {
+    filter: grayscale(0.8);
+    cursor: not-allowed;
+  }
 }

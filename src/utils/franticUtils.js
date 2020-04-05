@@ -356,7 +356,7 @@ function getHelpFromCard(card) {
     return help;
 }
 
-function generateRandomCards(amount) {
+function generateRandomCards(amount, sort) {
     let cards = [];
     if (!amount) {
         amount = 5;
@@ -368,13 +368,26 @@ function generateRandomCards(amount) {
                 cards.push(getRandomNumberCard());
                 break;
             case 'special':
+                let value = getRandomElement(specialCards);
                 cards.push({
                     type: 'special',
-                    value: getRandomElement(specialCards),
-                    color: getRandomColor()
+                    value: value,
+                    color: isMulticolor(value) ? 'multicolor' : getRandomColor()
                 });
                 break;
         }
+    }
+
+    if (sort) {
+        cards.sort((a, b) => {
+            if (a.color === b.color) {
+                if (a.type === b.type) {
+                    return (a.value > b.value) ? 1 : -1;
+                }
+                return (a.type < b.type) ? 1 : -1;
+            }
+            return (a.color > b.color) ? 1 : -1;
+        });
     }
 
     return cards;
