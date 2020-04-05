@@ -54,13 +54,6 @@
   width: 35em;
   display: flex;
   flex-direction: column;
-  &.rules {
-  }
-  &.cards {
-  }
-  &.events {
-
-  }
 }
 
 .help-nav-container {
@@ -109,9 +102,6 @@
 
   &.cards {
     width: 0.6em;
-  }
-
-  &.event {
   }
 }
 

@@ -96,7 +96,6 @@ class Card extends Component {
                     </div>;
                 if (this.props.value === 'fuck-you') {
                     color = 'black';
-                    innerColor = undefined;
                 }
                 break;
 
