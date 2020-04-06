@@ -32,6 +32,11 @@
   position: absolute;
 }
 
+.card-shadow {
+  box-shadow: $dropShadow;
+  box-sizing: border-box;
+}
+
 $borderMargin: 0.5em;
 
 .card-icon {

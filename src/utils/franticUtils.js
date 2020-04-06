@@ -303,6 +303,7 @@ function getRandomNumberCard(optionalColor) {
     let color = optionalColor || getRandomColor();
 
     return {
+        key: Math.random(),
         type: 'number',
         value: number,
         color: color
@@ -370,6 +371,7 @@ function generateRandomCards(amount, sort) {
             case 'special':
                 let value = getRandomElement(specialCards);
                 cards.push({
+                    key: Math.random(),
                     type: 'special',
                     value: value,
                     color: isMulticolor(value) ? 'multicolor' : getRandomColor()

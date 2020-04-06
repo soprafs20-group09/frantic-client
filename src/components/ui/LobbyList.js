@@ -40,7 +40,7 @@ class LobbyList extends Component {
                         from={fromStyle}
                         enter={toStyle}
                         leave={fromStyle}
-                        trail={200}
+                        trail={100}
                     >
                         {lobby => style =>
                             <LobbyItem

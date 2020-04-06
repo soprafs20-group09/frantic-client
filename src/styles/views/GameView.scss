@@ -1,0 +1,36 @@
+@import 'theme';
+
+.game-table {
+  position: absolute;
+  @include fullscreen;
+  @include center;
+  pointer-events: none;
+}
+
+.game-player {
+  //may be needed for more space...
+  //font-size: 0.8em;
+  position: absolute;
+  bottom: -4em;
+}
+
+.game-opponent-container {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+
+  .top {
+    top: 0;
+    flex-direction: row;
+  }
+
+  .left {
+    left: 0;
+    flex-direction: column;
+  }
+
+  .right {
+    right: 0;
+    flex-direction: column;
+  }
+}

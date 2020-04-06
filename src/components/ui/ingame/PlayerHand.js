@@ -1,12 +1,14 @@
 import React, {Component} from 'react';
 import Card from "components/ui/cards/Card";
 import "styles/ui/ingame/PlayerHand.scss";
+import {PlayerHandTransition} from "components/ui/Transitions";
 
 /**
  * Render the current hand of the player.
  * PROPS:
- * cards: array     - array of card objects (type, value, color)
- * available: array - array of indices to be displayed as available (all others will not be clickable)
+ * cards: array      - array of card objects (type, value, color)
+ * available: array  - array of indices to be displayed as available (all others will not be clickable)
+ * onCardClick(card) - function that is called when the user clicks on an (available) card.
  */
 class PlayerHand extends Component {
     constructor(props) {
@@ -59,15 +61,17 @@ class PlayerHand extends Component {
 
             cards.push(
                 <div
-                    key={i}
+                    key={c.key}
                     className={"hand-card " + available + " " + i} // this is to identify the last card in the mouseOver-event
                     style={cardStyle}>
-                    <div className={"card-shadow " + available}>
+                    <div className={"card-border " + available}>
                         <Card
+                            withShadow
                             type={c.type}
                             value={c.value}
                             color={c.color}
                             onHover={hoverFunc}
+                            onClick={() => this.handleClick(i)}
                         />
                     </div>
                 </div>
@@ -82,13 +86,24 @@ class PlayerHand extends Component {
                  onMouseOver={e => this.handleMouseOver(e)}
                  onMouseLeave={e => this.handleMouseLeave(e)}
             >
-                {cards}
+                <PlayerHandTransition>
+                    {cards}
+                </PlayerHandTransition>
             </div>
         );
     }
 
+    handleClick(index) {
+        if (this.props.onCardClick && this.isAvailable(index)) {
+            this.props.onCardClick(this.props.cards[index]);
+        }
+    }
+
     isAvailable(index) {
-        return this.props.available && this.props.available.indexOf(index) >= 0;
+        if (!this.props.available) {
+            return true;
+        }
+        return this.props.available.indexOf(index) >= 0;
     }
 
     handleHover(index, enter) {
@@ -124,7 +139,7 @@ class PlayerHand extends Component {
         return false;
     }
 
-    getFormattedSmallerValueW(vw, em) {
+    getFormattedSmallerValue(vw, em) {
         vw = parseFloat(vw.replace('vw', ''));
         em = parseFloat(em.replace('em', ''));
         let vwPx = (document.documentElement.clientWidth / 100) * vw;

@@ -6,49 +6,48 @@
   justify-content: center;
   align-items: center;
   pointer-events: none;
+}
 
-  &.transition {
+// this actually is in the flexbox
+// and acts as the spring transition div
+.hand-card-container {
+  pointer-events: none;
+  transition: 0s;
+
+  .transition > & > .hand-card {
     transition: 0.3s;
+  }
+
+  & > .hand-card:hover {
+    margin-right: 5em;
+  }
+
+  &:last-child > .hand-card:hover {
+    margin-right: 0 !important;
   }
 }
 
+// this holds the card and get the hover events
+// from the -container
 .hand-card {
   position: relative;
   transform-origin: center;
   @include center;
   pointer-events: all;
-  transition: inherit;
-
-  &:last-child {
-    margin-right: 0 !important;
-  }
-
-  //&.available {
-  //  transition: 0.3s;
-  //}
-
-  &:hover {
-    margin-right: 5em;
-  }
-
-  //&:not(.unavailable):hover {
-  //  margin-right: 5em;
-  //}
 }
 
-.card-shadow {
-  box-shadow: $dropShadow;
-  border-radius: 0.7em;
-  box-sizing: border-box;
+.card-border {
+  border-radius: 0.8em;
+  transition: 0.3s;
 
   &.available {
     cursor: pointer;
-    border: 0.15em solid $terracotta;
-    box-shadow: 0 0 0.5em 0 $terracotta;
+    border: 0.2em solid $availableCardColor;
+    box-shadow: 0 0 0.5em 0 $availableCardColor;
   }
 
   &.unavailable {
-    filter: grayscale(0.8);
+    //filter: grayscale(0.5);
     cursor: not-allowed;
   }
 }
