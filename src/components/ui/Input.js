@@ -13,6 +13,7 @@ import 'styles/ui/UiElements.scss';
  * type: string          - the type of the input, see html docs (e.g. password)
  * onChange: func(value) - a function to be called every time the input value changes.
  * onEnter: func()       - a function to be called every time the enter key is pressed.
+ * initialFocus: bool    - if true, this input will focus when first mounted.
  * style: object         - this allows you to add style overrides in react-manner.
  *
  * OPTIONAL:
@@ -57,6 +58,7 @@ class Input extends Component {
                         readOnly={this.props.readOnly || this.props.disabled}
                         onChange={e => this.handleInputChange(e)}
                         onKeyUp={e => this.handleKeyUp(e)}
+                        autoFocus={this.props.initialFocus}
                     />
                     {action}
                 </div>
