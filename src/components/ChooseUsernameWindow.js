@@ -25,6 +25,7 @@ class ChooseUsernameWindow extends Component {
                     title="username:"
                     onChange={v => this.handleChange(v)}
                     onEnter={() => this.handleConfirm()}
+                    initialFocus={true}
                 />
                 <div className="horizontal-buttons-container">
                     <Button
