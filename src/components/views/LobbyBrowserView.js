@@ -15,7 +15,11 @@ class NoLobbiesMessage extends Component {
         return (
             <div className="no-lobbies container">
                 <p className="no-lobbies msg">
-                    looks like no one is playing right now :(
+                    {
+                        this.props.withQuery ?
+                            "no lobbies matched your search." :
+                            "looks like no one is playing right now :("
+                    }
                 </p>
             </div>
         );
@@ -29,7 +33,7 @@ class NoLobbiesMessage extends Component {
 class LobbyBrowserView extends Component {
     constructor(props) {
         super(props);
-        this.state = {loading: true, lobbies: [], filter: ''};
+        this.state = {loading: true, lobbies: [], query: ''};
     }
 
     componentDidMount() {
@@ -55,7 +59,7 @@ class LobbyBrowserView extends Component {
             );
         } else if (this.state.lobbies.length === 0) {
             content = this.getCenterTransition(
-                <NoLobbiesMessage key="no-lobbies"/>
+                <NoLobbiesMessage key="no-lobbies" withQuery={this.state.query}/>
             );
         } else {
             content = <LobbyList key="lobby-list" lobbies={this.state.lobbies}/>;
@@ -89,9 +93,9 @@ class LobbyBrowserView extends Component {
         );
     }
 
-    async refreshLobbies(filter) {
+    async refreshLobbies(query) {
         try {
-            let response = await api.get(`/lobbies?filter=${filter || ''}`);
+            let response = await api.get(`/lobbies?q=${query || ''}`);
             this.setState({loading: false, lobbies: response.data});
         } catch (err) {
             this.setState({error: parseCommonErrors(err)});
@@ -100,11 +104,11 @@ class LobbyBrowserView extends Component {
 
     handleRefresh() {
         this.setState({error: null, loading: true});
-        this.refreshLobbies(this.state.filter);
+        this.refreshLobbies(this.state.query);
     }
 
     handleSearch(query) {
-        this.setState({error: null, loading: true, filter: query});
+        this.setState({error: null, loading: true, query: query});
         this.refreshLobbies(query);
     }
 }

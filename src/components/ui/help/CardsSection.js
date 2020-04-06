@@ -10,10 +10,11 @@ const blackCard = franticUtils.getRandomNumberCard('black');
 class CardsSection extends Component {
     render() {
         let specialHelps = [];
+        let key = 0;
 
         for (let specialCard of specialCards) {
             specialHelps.push(
-                <CardHelp card={specialCard}/>);
+                <CardHelp card={specialCard} key={key++}/>);
         }
 
         return (

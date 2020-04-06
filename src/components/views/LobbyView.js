@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import AppContainer from "components/ui/AppContainer";
 import 'styles/views/LobbyView.scss';
-import ChooseUsernameWindow from "components/ChooseUsernameWindow";
+import ChooseUsernameWindow from "components/ui/ChooseUsernameWindow";
 import {WindowTransition} from "components/ui/Transitions";
 import {api, parseCommonErrors} from "utils/api";
 import Spinner from "components/ui/Spinner";

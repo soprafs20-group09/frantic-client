@@ -13,12 +13,20 @@ import "styles/views/MainMenu.scss";
 class MainMenuItem extends Component {
     render() {
         return (
-            <Link className="mainmenu-item"
-                  style={this.props.style}
-                  to={this.props.to}
-                  onClick={this.props.onClick}>
-                {this.props.children}
-            </Link>
+            this.props.to ?
+                <Link
+                    className="mainmenu-item"
+                    style={this.props.style}
+                    to={this.props.to}
+                    onClick={this.props.onClick}>
+                    {this.props.children}
+                </Link> :
+                <a
+                    className="mainmenu-item"
+                    style={this.props.style}
+                    onClick={this.props.onClick}>
+                    {this.props.children}
+                </a>
         );
     }
 }

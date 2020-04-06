@@ -13,7 +13,7 @@ import ReloadArrow from "assets/icons/reload-arrow.svg";
 class SearchBar extends Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {value: ''};
     }
 
     render() {
@@ -28,17 +28,10 @@ class SearchBar extends Component {
         return (
             <div className="input-container">
                 <input
-                    className="action search input-input"
-                    placeholder="Search by lobby or creator..."
+                    className="search input-input"
+                    placeholder="Search by name or creator..."
                     onChange={e => this.handleInputChange(e)}
-                    onKeyUp={e => this.handleKeyUp(e)}
                 />
-                <button
-                    className="search input-action"
-                    onClick={() => this.handleSearch()}
-                >
-                    Search
-                </button>
                 {this.props.withRefresh && refreshButton}
             </div>
         );
@@ -46,6 +39,16 @@ class SearchBar extends Component {
 
     handleInputChange(e) {
         this.setState({value: e.target.value});
+        this.resetTimeout();
+    }
+
+    resetTimeout() {
+        if (this.timeout) {
+            clearTimeout(this.timeout);
+            this.timeout = null;
+        }
+
+        this.timeout = setTimeout(() => this.handleSearch(), 500);
     }
 
     handleKeyUp(e) {
@@ -61,7 +64,7 @@ class SearchBar extends Component {
     }
 
     handleSearch() {
-        if (this.props.onSearch && this.state.value) {
+        if (this.props.onSearch) {
             this.props.onSearch(this.state.value);
         }
     }
