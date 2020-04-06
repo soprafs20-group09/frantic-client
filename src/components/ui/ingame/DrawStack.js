@@ -6,6 +6,8 @@ import Card from "components/ui/cards/Card";
  * This component displays a discard stack of cards.
  * animated: boolean - whether drawing cards should be animated.
  * drawAmount: int   - amount of cards that should be drawn in the animation.
+ * stackSize: int    - amount of cards in the stack. (default 5)
+ * onClick: func     - a function to be called when the DrawStack is clicked.
  */
 class DrawStack extends Component {
 
@@ -27,12 +29,10 @@ class DrawStack extends Component {
     }
 
     render() {
-        const stackSize = 5;
-
         let baseStack = [];
         let animatedCards = [];
 
-        for (let i = 0; i < stackSize; i++) {
+        for (let i = 0; i < this.props.stackSize; i++) {
             baseStack.push(
                 <div className="card-stack-card" key={'placeholder-' + i}>
                     <Card withShadow type="back"/>
@@ -56,12 +56,16 @@ class DrawStack extends Component {
     }
 
     handleClick() {
+        if (this.props.onClick) {
+            this.props.onClick();
+        }
         this.setState({cardsToDraw: 1});
     }
 }
 
 DrawStack.defaultProps = {
-    drawAmount: 0
+    drawAmount: 0,
+    stackSize: 5
 };
 
 export default DrawStack;

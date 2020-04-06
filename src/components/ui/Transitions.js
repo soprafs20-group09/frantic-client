@@ -256,6 +256,74 @@ class PlayerHandTransition extends Component {
     }
 }
 
+class DiscardPileTransition extends Component {
+    render() {
+        const fromStyle = {
+            opacity: 0,
+            transform: 'translateX(200%) rotate(-180deg) scale(1.5)'
+        };
+        const enterStyle = {
+            opacity: 1,
+            transform: 'translateX(0%) rotate(0deg) scale(1)'
+        };
+        const leaveStyle = {
+            opacity: 0.99,
+            transform: 'translateX(0%) rotate(0deg) scale(1)'
+        };
+
+        return (
+            <Transition
+                items={this.props.children}
+                keys={item => item.key}
+                from={fromStyle}
+                enter={enterStyle}
+                leave={leaveStyle}
+                trail={200}
+            >
+                {item => style =>
+                    <animated.div className={this.props.containerClass} style={style}>
+                        {item}
+                    </animated.div>
+                }
+            </Transition>
+        );
+    }
+}
+
+class BaseStackTransition extends Component {
+    render() {
+        const fromStyle = {
+            opacity: 0,
+            width: '0em'
+        };
+        const enterStyle = {
+            opacity: 1,
+            width: '0.15em'
+        };
+        const leaveStyle = {
+            opacity: 0,
+            width: '0em'
+        };
+
+        return (
+            <Transition
+                items={this.props.children}
+                keys={item => item.key}
+                from={fromStyle}
+                enter={enterStyle}
+                leave={leaveStyle}
+                trail={200}
+            >
+                {item => style =>
+                    <animated.div className={this.props.containerClass} style={style}>
+                        {item}
+                    </animated.div>
+                }
+            </Transition>
+        );
+    }
+}
+
 export {
     WindowTransition,
     ChatItemTransition,
@@ -264,5 +332,7 @@ export {
     MainMenuMadeWithTransition,
     CardMultinumberTransition,
     TabSwitcherTransition,
-    PlayerHandTransition
+    PlayerHandTransition,
+    DiscardPileTransition,
+    BaseStackTransition
 };

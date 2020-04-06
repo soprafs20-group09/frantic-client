@@ -26,17 +26,18 @@ class GameView extends Component {
     render() {
         return (
             <AppContainer withHelp>
-                <div className="game-opponent-container top">
-                </div>
-                <div className="game-opponent-container left">
-                </div>
-                <div className="game-opponent-container right">
-                </div>
-
-                <DrawStack animated drawAmount={5}/>
-                <DiscardPile/>
-
                 <div className="game-table">
+                    <div className="game-opponent-container top">
+                    </div>
+                    <div className="game-opponent-container left">
+                    </div>
+                    <div className="game-opponent-container right">
+                    </div>
+
+                    <DrawStack animated drawAmount={5}/>
+                    <div className="game-stack-spacer"/>
+                    <DiscardPile/>
+
                     <div className="game-player">
                         <PlayerHand
                             cards={this.state.playerCards}

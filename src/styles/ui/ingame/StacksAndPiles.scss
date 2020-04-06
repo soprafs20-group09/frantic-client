@@ -8,10 +8,13 @@
   flex-direction: row-reverse;
   justify-content: flex-end;
   width: 2.8 * 3.1em + 0.5em;
+  transition: 0.3s;
 }
 
 .card-stack-card {
-  width: 0.1em;
+  width: 0.15em;
+  // see BaseStackTransition for
+  // DiscardPile BaseStack width
 }
 
 .draw-stack-animation {
@@ -33,6 +36,6 @@
 
 // Discard Pile
 
-.discard-pile {
-
+.discard-pile-top-card {
+  position: absolute;
 }

@@ -4,7 +4,10 @@
   position: absolute;
   @include fullscreen;
   @include center;
-  pointer-events: none;
+}
+
+.game-stack-spacer {
+  width: 20vw;
 }
 
 .game-player {
