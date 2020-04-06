@@ -134,7 +134,10 @@ class HelpWindow extends Component {
                         onClick={() => this.onClose()}
                     />}
                     {this.props.withNewTab &&
-                    <a target="_blank" href="/help" className="help-nav-button new-tab">
+                    <a target="_blank" href="/help"
+                       className="help-nav-button new-tab"
+                       onClick={() => this.onClose()}
+                    >
                         <InlineSVG src={NewTab} className="help-nav-button new-tab"/>
                     </a>}
                 </div>

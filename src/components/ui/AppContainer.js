@@ -24,8 +24,9 @@ class AppContainer extends Component {
     render() {
         const backButton =
             <div className="back-button">
-                <MainMenuItem to={this.props.backRoute || '..'} style={{fontSize: "1.33rem"}}>◀ Back to
-                    Menu</MainMenuItem>
+                <MainMenuItem to={this.props.backRoute || '..'} style={{fontSize: "1.33rem"}}>
+                    ◀ Back to Menu
+                </MainMenuItem>
             </div>;
         const helpButton =
             <div className="help-button">
