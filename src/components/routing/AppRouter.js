@@ -7,6 +7,7 @@ import LobbyBrowserView from "components/views/LobbyBrowserView";
 import CardDisplay from "components/views/CardDisplay";
 import HelpView from "components/views/HelpView";
 import JoinLobbyView from "components/views/JoinLobbyView";
+import GameView from "components/views/GameView";
 
 class AppRouter extends React.Component {
     render() {
@@ -28,11 +29,14 @@ class AppRouter extends React.Component {
                     <Route exact path="/browse">
                         <LobbyBrowserView mode="join"/>
                     </Route>
-                    <Route exact path="/cards">
-                        <CardDisplay/>
+                    <Route exact path="/game">
+                        <GameView/>
                     </Route>
                     <Route exact path="/help">
                         <HelpView/>
+                    </Route>
+                    <Route exact path="/cards">
+                        <CardDisplay/>
                     </Route>
                 </Switch>
             </BrowserRouter>

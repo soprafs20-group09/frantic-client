@@ -62,8 +62,10 @@ class MultiNumber extends Component {
  * value: string                - the number, special function or event the card should display.
  * color: string                - the color of the card. will be disregarded by certain cards.
  *                                possible values: 'red', 'blue', 'green', 'yellow', 'black'
+ * withShadow: bool             - if true, the card will render a shadow with itself.
  * onHover: func(boolean enter) - a function that is called whenever the card is hovered,
  *                                the boolean indicates whether the mouse entered or left the card.
+ * onClick: func                - the default onClick function for the topmost container.
  */
 class Card extends Component {
     render() {
@@ -123,9 +125,10 @@ class Card extends Component {
 
         return (
             <div
-                className={`card-container ${color}`}
+                className={`card-container ${color} ${this.props.withShadow ? 'card-shadow' : ''}`}
                 onMouseEnter={() => this.handleHover(true)}
                 onMouseLeave={() => this.handleHover(false)}
+                onClick={this.props.onClick}
             >
                 <div className={`card-inner ${innerColor}`}/>
                 <div className="card-icon border top">{border}</div>

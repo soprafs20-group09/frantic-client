@@ -24,6 +24,10 @@ $black: #282c34;
   background-color: $black;
 }
 
+.white {
+  background-color: white;
+}
+
 .multicolor-old {
   background: linear-gradient($red, $yellow, $green, $blue, $red);
   background-size: 1800% 1800%;

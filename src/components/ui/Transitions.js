@@ -218,6 +218,44 @@ class TabSwitcherTransition extends Component {
     }
 }
 
+class PlayerHandTransition extends Component {
+    render() {
+        const fromStyle = {
+            width: 0,
+            opacity: 0,
+            transform: 'scale(0.8) translateY(100%)'
+        };
+        const enterStyle = {
+            width: 'auto',
+            opacity: 1,
+            transform: 'scale(1) translateY(0%)'
+        };
+        const leaveStyle = {
+            width: '0',
+            opacity: 0,
+            transform: 'scale(0.8) translateY(-100%)'
+        };
+
+        return (
+            <Transition
+                items={this.props.children}
+                keys={item => item.key}
+                from={fromStyle}
+                enter={enterStyle}
+                leave={leaveStyle}
+                trail={100}
+            >
+                {item => style =>
+                    <animated.div
+                        className="hand-card-container"
+                        style={style}>
+                        {item}
+                    </animated.div>}
+            </Transition>
+        );
+    }
+}
+
 export {
     WindowTransition,
     ChatItemTransition,
@@ -225,5 +263,6 @@ export {
     MainMenuItemTransition,
     MainMenuMadeWithTransition,
     CardMultinumberTransition,
-    TabSwitcherTransition
+    TabSwitcherTransition,
+    PlayerHandTransition
 };
