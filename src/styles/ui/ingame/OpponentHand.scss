@@ -1,0 +1,149 @@
+@import 'theme';
+
+.opponent-hand {
+  @include center;
+  font-size: 0.9rem;
+  position: relative;
+  min-width: 10em;
+
+  &.top {
+    margin-top: -5em;
+  }
+
+  &.left {
+    margin-left: -5em;
+  }
+
+  &.right {
+    margin-right: -5em;
+  }
+
+  &.bottom {
+    margin-bottom: -5em;
+  }
+}
+
+.opponent-hand-cards {
+  @include center;
+
+  &.top {
+    transform: rotate(180deg);
+  }
+
+  &.left {
+    transform: rotate(90deg);
+  }
+
+  &.right {
+    transform: rotate(-90deg);
+  }
+}
+
+.opponent-card {
+  @include center;
+  position: relative;
+  transform-origin: center;
+}
+
+$infoSize: 10em;
+
+.opponent-info {
+  position: absolute;
+  @include center;
+  padding: 1em;
+  box-sizing: border-box;
+  pointer-events: none;
+
+  $screenMargin: 3em;
+
+  &.top {
+    top: $screenMargin;
+    flex-direction: column;
+  }
+
+  &.bottom {
+    bottom: $screenMargin;
+    flex-direction: column-reverse;
+  }
+
+  &.left {
+    left: $screenMargin;
+    flex-direction: row;
+  }
+
+  &.right {
+    right: $screenMargin;
+    flex-direction: row-reverse;
+  }
+}
+
+.opponent-avatar {
+  width: 4em;
+  height: 4em;
+  border-radius: 50%;
+  padding: 0.5em;
+  background-color: $blueLightGray;
+  pointer-events: all;
+}
+
+.opponent-stats-container {
+  @include center;
+  flex-direction: column;
+  flex-shrink: 0;
+  flex-grow: 1;
+  max-width: 10em;
+  width: 10em;
+  background-color: $blueGray;
+  border-radius: 0.3em;
+  box-shadow: $dropShadow;
+  pointer-events: all;
+
+  $avatarMargin: 1em;
+
+  &.top {
+    margin-top: $avatarMargin;
+  }
+
+  &.bottom {
+    margin-bottom: $avatarMargin;
+  }
+
+  &.left {
+    margin-left: $avatarMargin;
+  }
+
+  &.right {
+    margin-right: $avatarMargin;
+  }
+}
+
+.opponent-username {
+  margin: 0;
+  width: 100%;
+  padding: 0.1em;
+  box-sizing: border-box;
+  border-radius: 0.3em 0.3em 0 0;
+  background-color: $terracotta;
+  color: $blueGray;
+  font-weight: 600;
+  text-align: center;
+  word-break: break-all;
+}
+
+.opponent-stats {
+  color: white;
+  width: 100%;
+  padding: 0.5em 1em;
+  box-sizing: border-box;
+
+  th {
+    color: $terracotta;
+    font-weight: 500;
+    text-align: left;
+  }
+
+  td {
+    font-weight: 300;
+    text-align: left;
+  }
+}

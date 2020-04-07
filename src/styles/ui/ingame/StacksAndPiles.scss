@@ -38,4 +38,20 @@
 
 .discard-pile-top-card {
   position: absolute;
+  //animation: play-card 0.5s 1;
+}
+
+.card-stack-dummy {
+  height: 4.4 * 2.8em;
+}
+
+@keyframes play-card {
+  0% {
+    opacity: 0;
+    transform: translateX(200%) rotate(180deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0%) rotate(0deg);
+  }
 }

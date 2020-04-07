@@ -20,20 +20,32 @@
 .game-opponent-container {
   position: absolute;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+  align-items: flex-end;
 
-  .top {
-    top: 0;
-    flex-direction: row;
+  &.top, &.bottom {
+    width: 80vw;
+    height: 10em;
   }
 
-  .left {
-    left: 0;
+  &.left, &.right {
+    height: 80vh;
+    width: 10em;
+  }
+
+  &.top {
+    top: -2.5em;
+    flex-direction: row-reverse;
+  }
+
+  &.left {
+    left: -3em;
     flex-direction: column;
   }
 
-  .right {
-    right: 0;
-    flex-direction: column;
+  &.right {
+    right: -3em;
+    flex-direction: column-reverse;
+    align-items: flex-start;
   }
 }

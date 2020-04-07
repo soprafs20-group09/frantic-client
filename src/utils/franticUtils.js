@@ -395,6 +395,16 @@ function generateRandomCards(amount, sort) {
     return cards;
 }
 
+function generateBackCards(amount) {
+    let cards = [];
+
+    for (let i = 0; i < amount; i++) {
+        cards.push({type: 'back', key: i});
+    }
+
+    return cards;
+}
+
 export default {
     getAllSpecialCards,
     getAllEventCards,
@@ -402,5 +412,6 @@ export default {
     isMulticolor,
     isMultinumber,
     getHelpFromCard,
-    generateRandomCards
+    generateRandomCards,
+    generateBackCards
 }

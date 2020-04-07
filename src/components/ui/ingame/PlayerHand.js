@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Card from "components/ui/cards/Card";
 import "styles/ui/ingame/PlayerHand.scss";
-import {PlayerHandTransition} from "components/ui/Transitions";
+import {HandTransition} from "components/ui/Transitions";
 
 /**
  * Render the current hand of the player.
@@ -86,9 +86,9 @@ class PlayerHand extends Component {
                  onMouseOver={e => this.handleMouseOver(e)}
                  onMouseLeave={e => this.handleMouseLeave(e)}
             >
-                <PlayerHandTransition>
+                <HandTransition containerClass="hand-card-container">
                     {cards}
-                </PlayerHandTransition>
+                </HandTransition>
             </div>
         );
     }

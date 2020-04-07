@@ -1,20 +1,24 @@
 import React, {Component} from 'react';
 import {animated, Transition} from "react-spring/renderprops";
 
+/**
+ * PROPS:
+ * mode: string - relative or absolute (sets container position style)
+ */
 class WindowTransition extends Component {
     render() {
         const fromStyle = {
-            position: 'absolute',
+            position: this.props.mode,
             opacity: 0,
             transform: 'scale(0.8)'
         };
         const enterStyle = {
-            position: 'absolute',
+            position: this.props.mode,
             opacity: 1,
             transform: 'scale(1)'
         };
         const leaveStyle = {
-            position: 'absolute',
+            position: this.props.mode,
             opacity: 0,
             transform: 'scale(0.8)'
         };
@@ -35,7 +39,8 @@ class WindowTransition extends Component {
 }
 
 WindowTransition.defaultProps = {
-    trail: 200
+    trail: 200,
+    mode: 'absolute'
 };
 
 class ChatItemTransition extends Component {
@@ -218,7 +223,7 @@ class TabSwitcherTransition extends Component {
     }
 }
 
-class PlayerHandTransition extends Component {
+class HandTransition extends Component {
     render() {
         const fromStyle = {
             width: 0,
@@ -243,11 +248,11 @@ class PlayerHandTransition extends Component {
                 from={fromStyle}
                 enter={enterStyle}
                 leave={leaveStyle}
-                trail={100}
+                trail={500}
             >
                 {item => style =>
                     <animated.div
-                        className="hand-card-container"
+                        className={this.props.containerClass}
                         style={style}>
                         {item}
                     </animated.div>}
@@ -332,7 +337,7 @@ export {
     MainMenuMadeWithTransition,
     CardMultinumberTransition,
     TabSwitcherTransition,
-    PlayerHandTransition,
+    HandTransition,
     DiscardPileTransition,
     BaseStackTransition
 };

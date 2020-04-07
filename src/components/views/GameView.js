@@ -5,6 +5,7 @@ import franticUtils from "utils/franticUtils";
 import PlayerHand from "components/ui/ingame/PlayerHand";
 import DrawStack from "components/ui/ingame/DrawStack";
 import DiscardPile from "components/ui/ingame/DiscardPile";
+import OpponentHand from "components/ui/ingame/OpponentHand";
 
 class GameView extends Component {
     constructor(props) {
@@ -12,13 +13,20 @@ class GameView extends Component {
         this.state = {
             playerCards: [],
             availableCards: [],
-            opponents: {}
+            opponents: [
+                {
+                    username: "jan",
+                    points: 12,
+                    skipped: false,
+                    cards: franticUtils.generateBackCards(7)
+                }
+            ]
         };
     }
 
     componentDidMount() {
         this.setState({
-            playerCards: franticUtils.generateRandomCards(20, true),
+            playerCards: franticUtils.generateRandomCards(7, true),
             availableCards: [0, 2, 6, 4, 6, 24, 11, 16]
         });
     }
@@ -27,11 +35,18 @@ class GameView extends Component {
         return (
             <AppContainer withHelp>
                 <div className="game-table">
+                    <div className="game-opponent-container right">
+                        <OpponentHand mode='right' opponent={this.state.opponents[0]}/>
+                        <OpponentHand mode='right' opponent={this.state.opponents[0]}/>
+                    </div>
                     <div className="game-opponent-container top">
+                        <OpponentHand mode='top' opponent={this.state.opponents[0]}/>
+                        <OpponentHand mode='top' opponent={this.state.opponents[0]}/>
+                        <OpponentHand mode='top' opponent={this.state.opponents[0]}/>
                     </div>
                     <div className="game-opponent-container left">
-                    </div>
-                    <div className="game-opponent-container right">
+                        <OpponentHand mode='left' opponent={this.state.opponents[0]}/>
+                        <OpponentHand mode='left' opponent={this.state.opponents[0]}/>
                     </div>
 
                     <DrawStack animated drawAmount={5}/>
@@ -51,7 +66,6 @@ class GameView extends Component {
     }
 
     handleCardClick(i) {
-
     }
 }
 
