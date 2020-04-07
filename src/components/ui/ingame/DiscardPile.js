@@ -18,12 +18,7 @@ class DiscardPile extends Component {
     }
 
     componentDidMount() {
-        let baseStack = [];
-        for (let i = 0; i < this.props.stackSize; i++) {
-            baseStack.push(franticUtils.getRandomNumberCard());
-        }
-
-        this.setState({baseCards: baseStack, topCard: franticUtils.generateRandomCards(1)[0]});
+        this.setState({topCard: franticUtils.generateRandomCards(1)[0]});
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -60,6 +55,7 @@ class DiscardPile extends Component {
 
         return (
             <div className="card-stack" onClick={() => this.addNewCard(franticUtils.generateRandomCards()[0])}>
+                <div className="card-stack-dummy" key="dummy"/>
                 <BaseStackTransition containerClass="card-stack-card">
                     {baseStack}
                 </BaseStackTransition>
@@ -71,7 +67,7 @@ class DiscardPile extends Component {
     }
 
     addNewCard(card) {
-        let cards = this.state.baseCards.slice(0, this.state.baseCards.length - 1);
+        let cards = this.state.baseCards.slice(0, this.props.stackSize - 1);
         cards.splice(0, 0, this.state.topCard);
         this.setState({baseCards: cards, topCard: card});
     }
