@@ -61,30 +61,32 @@ class RulesSection extends Component {
                     the maximum score:
                 </p>
                 <table style={{marginTop: "1em"}}>
-                    <tr>
-                        <th>Player count</th>
-                        <th>short</th>
-                        <th>medium</th>
-                        <th>long</th>
-                    </tr>
-                    <tr>
-                        <td>2 to 4 players</td>
-                        <td>137 Pt.</td>
-                        <td>154 Pt.</td>
-                        <td>179 Pt.</td>
-                    </tr>
-                    <tr>
-                        <td>5 to 8 players</td>
-                        <td>113 Pt.</td>
-                        <td>137 Pt.</td>
-                        <td>154 Pt.</td>
-                    </tr>
-                    <tr>
-                        <th>approximate game duration</th>
-                        <td>~35min</td>
-                        <td>~60min</td>
-                        <td>~90min</td>
-                    </tr>
+                    <tbody>
+                        <tr>
+                            <th>Player count</th>
+                            <th>short</th>
+                            <th>medium</th>
+                            <th>long</th>
+                        </tr>
+                        <tr>
+                            <td>2 to 4 players</td>
+                            <td>137 Pt.</td>
+                            <td>154 Pt.</td>
+                            <td>179 Pt.</td>
+                        </tr>
+                        <tr>
+                            <td>5 to 8 players</td>
+                            <td>113 Pt.</td>
+                            <td>137 Pt.</td>
+                            <td>154 Pt.</td>
+                        </tr>
+                        <tr>
+                            <th>approximate game duration</th>
+                            <td>~35min</td>
+                            <td>~60min</td>
+                            <td>~90min</td>
+                        </tr>
+                    </tbody>
                 </table>
                 <br/>
 

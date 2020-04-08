@@ -23,6 +23,19 @@ class CardsSection extends Component {
                 <CardHelp card={colorCard}/>
                 <CardHelp card={blackCard}/>
                 <Header>Special Cards</Header>
+                    <p>
+                        The multicolour Special Cards can be played on any
+                        card.
+                        The coloured Special Cards can only be played on said
+                        colour or symbol.
+                        <br/>
+                        All cards that have an additional colour wish function, can
+                        just be played as a colour wish, without unfolding the actual
+                        effect of the Special Card.
+                        <br/>
+                        <th>Important:</th> A player cannot punish himself. (e.g. let himself
+                        draw two cards when playing “Fantastic Four”)
+                    </p>
                 {specialHelps}
             </div>
         );
