@@ -42,7 +42,6 @@ class LobbyWindow extends Component {
         sockClient.onRegister(r => this.handleSocketRegister(r));
         sockClient.connectAndRegister(this.props.authToken);
         sessionManager.token = undefined;
-        this.setState({joinLink: `${window.location.origin}/join/${sessionManager.lobbyId}`});
     }
 
     componentWillUnmount() {
@@ -243,6 +242,7 @@ class LobbyWindow extends Component {
 
     handleSocketRegister(response) {
         sessionManager.lobbyId = response.lobbyId;
+        this.setState({joinLink: `${window.location.origin}/join/${sessionManager.lobbyId}`});
     }
 
     handleLobbyUpdate(update) {
