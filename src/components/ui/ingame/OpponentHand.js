@@ -3,6 +3,8 @@ import "styles/ui/ingame/OpponentHand.scss";
 import Card from "components/ui/cards/Card";
 import {getPlayerAvatar} from "utils/api";
 import {HandTransition, WindowTransition} from "components/ui/Transitions";
+import Skip from "assets/frantic/special-cards/skip.svg";
+import InlineSVG from "react-inlinesvg";
 
 /**
  * This component renders the hand (cards) of an opponent.
@@ -77,6 +79,7 @@ class OpponentHand extends Component {
                     username={this.props.opponent.username}
                     cards={this.props.opponent.cards.length}
                     points={this.props.opponent.points}
+                    skipped={this.props.opponent.skipped}
                 />
             </div>
         );
@@ -116,10 +119,13 @@ class OpponentInfo extends Component {
                 onMouseOver={() => this.handleMouseOver()}
                 onMouseLeave={() => this.handleMouseLeave()}
             >
-                <img
-                    className="opponent-avatar"
-                    src={getPlayerAvatar(this.props.username)}
-                />
+                <div className="opponent-avatar-container">
+                    <img
+                        className="opponent-avatar"
+                        src={getPlayerAvatar(this.props.username)}
+                    />
+                    {this.props.skipped && <InlineSVG className="opponent-skip" src={Skip}/>}
+                </div>
                 <WindowTransition mode='relative' trail={0}>
                     {this.state.showStats && stats}
                 </WindowTransition>

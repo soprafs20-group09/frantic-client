@@ -77,6 +77,10 @@ $infoSize: 10em;
   }
 }
 
+.opponent-avatar-container {
+  position: relative;
+}
+
 .opponent-avatar {
   width: 4em;
   height: 4em;
@@ -84,6 +88,17 @@ $infoSize: 10em;
   padding: 0.5em;
   background-color: $blueLightGray;
   pointer-events: all;
+}
+
+.opponent-skip {
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 5em;
+  height: 5em;
+  fill: $terracotta;
+  pointer-events: none;
+  filter: drop-shadow($dropShadow);
 }
 
 .opponent-stats-container {

@@ -17,7 +17,7 @@ class GameView extends Component {
                 {
                     username: "jan",
                     points: 12,
-                    skipped: false,
+                    skipped: true,
                     cards: franticUtils.generateBackCards(7)
                 }
             ]
