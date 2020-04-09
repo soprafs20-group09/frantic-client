@@ -6,6 +6,7 @@ import PlayerHand from "components/ui/ingame/PlayerHand";
 import DrawStack from "components/ui/ingame/DrawStack";
 import DiscardPile from "components/ui/ingame/DiscardPile";
 import OpponentHand from "components/ui/ingame/OpponentHand";
+import TurnTimer from "components/ui/ingame/TurnTimer";
 
 class GameView extends Component {
     constructor(props) {
@@ -59,6 +60,10 @@ class GameView extends Component {
                             available={this.state.availableCards}
                             onCardClick={i => this.handleCardClick(i)}
                         />
+                    </div>
+
+                    <div className="timer-container">
+                        <TurnTimer start seconds={10}/>
                     </div>
                 </div>
             </AppContainer>

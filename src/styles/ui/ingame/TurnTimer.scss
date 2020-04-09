@@ -1,0 +1,31 @@
+@import 'theme';
+
+.turn-timer-container {
+  display: flex;
+  justify-content: center;
+  text-shadow: $dropShadow;
+}
+
+$timerSize: 2em;
+
+.turn-timer {
+  height: $timerSize;
+  width: $timerSize;
+  display: block;
+  position: relative;
+  border-radius: 50%;
+  filter: drop-shadow($dropShadow);
+  //transform: scaleX(-1);
+}
+
+.turn-timer-spinner {
+  fill: $terracotta;
+}
+
+.turn-timer-seconds {
+  color: $terracotta;
+  margin: 0 0 0 0.5em;
+  font-size: 1.5em;
+  line-height: 1.5em;
+  font-weight: 500;
+}
