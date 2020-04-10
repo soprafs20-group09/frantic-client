@@ -279,6 +279,7 @@ function getAllSpecialCards() {
     let cards = [];
     for (let sc of specialCards) {
         cards.push({
+            key: Math.random(),
             type: 'special',
             value: sc,
             color: getRandomColor()
@@ -291,6 +292,7 @@ function getAllEventCards() {
     let cards = [];
     for (let e of events) {
         cards.push({
+            key: Math.random(),
             type: 'event',
             value: e
         });

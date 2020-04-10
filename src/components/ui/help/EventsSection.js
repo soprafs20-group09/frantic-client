@@ -9,7 +9,7 @@ class EventsSection extends Component {
     render() {
         let eventHelps = [];
         for (let event of eventCards) {
-            eventHelps.push(<EventHelp card={event}/>);
+            eventHelps.push(<EventHelp card={event} key={event.key}/>);
         }
 
         return (
@@ -24,7 +24,7 @@ class EventsSection extends Component {
                     who is in counter-clockwise direction closest to the player of
                     the Black Card. Unless it is declared otherwise.
                     <br/>
-                    <th>Important:</th> The current round will not be over, until the event
+                    <strong>Important:</strong> The current round will not be over, until the event
                     has been executed completely. And even if a player loses all
                     of his hand cards due to an event, “Nice Try“ can be played!
                 </p>

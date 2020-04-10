@@ -33,7 +33,7 @@ class CardsSection extends Component {
                         just be played as a colour wish, without unfolding the actual
                         effect of the Special Card.
                         <br/>
-                        <th>Important:</th> A player cannot punish himself. (e.g. let himself
+                        <strong>Important:</strong> A player cannot punish himself. (e.g. let himself
                         draw two cards when playing “Fantastic Four”)
                     </p>
                 {specialHelps}
