@@ -2,6 +2,11 @@ import React, {Component} from 'react';
 import InlineSVG from "react-inlinesvg";
 import Send from "assets/icons/send.svg";
 
+/**
+ * Displays a chat-input.
+ * PROPS:
+ * onSend: function(string) - a function to be called whenever the user tries to send a message.
+ */
 class ChatInput extends Component {
     constructor(props) {
         super(props);

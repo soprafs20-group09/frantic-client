@@ -4,6 +4,9 @@
   position: absolute;
   @include fullscreen;
   @include center;
+  top: 0;
+  left: 0;
+  overflow: hidden;
 }
 
 .game-stack-spacer {
@@ -54,4 +57,10 @@
   position: absolute;
   bottom: 1em;
   left: 25vh;
+}
+
+.game-chat-container {
+  position: absolute;
+  bottom: 0;
+  right: 10vw;
 }

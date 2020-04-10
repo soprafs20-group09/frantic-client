@@ -7,6 +7,9 @@ import DrawStack from "components/ui/ingame/DrawStack";
 import DiscardPile from "components/ui/ingame/DiscardPile";
 import OpponentHand from "components/ui/ingame/OpponentHand";
 import TurnTimer from "components/ui/ingame/TurnTimer";
+import ChatLogBox from "components/ui/ingame/ChatLogBox";
+import {getPlayerAvatar} from "utils/api";
+import ChatItem from "components/ui/chat/ChatItem";
 
 class GameView extends Component {
     constructor(props) {
@@ -21,7 +24,8 @@ class GameView extends Component {
                     skipped: true,
                     cards: franticUtils.generateBackCards(7)
                 }
-            ]
+            ],
+            chatItems: []
         };
     }
 
@@ -65,9 +69,29 @@ class GameView extends Component {
                     <div className="timer-container">
                         <TurnTimer start seconds={10}/>
                     </div>
+
+                    <div className="game-chat-container">
+                        <ChatLogBox onSend={msg => this.handleChatSend(msg)}>
+                            {this.state.chatItems}
+                        </ChatLogBox>
+                    </div>
                 </div>
             </AppContainer>
         );
+    }
+
+    handleChatSend(msg) {
+        let newItem =
+            <ChatItem
+                sender="you"
+                icon={getPlayerAvatar("you")}
+                key={new Date().getTime()}
+            >
+                {msg}
+            </ChatItem>;
+        this.setState({
+            chatItems: this.state.chatItems.concat(newItem)
+        });
     }
 
     handleCardClick(i) {

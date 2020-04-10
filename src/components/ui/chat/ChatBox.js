@@ -12,9 +12,9 @@ class ChatBox extends Component {
     render() {
         return (
             <div className="chat-box">
-               <ChatItemTransition trail={animationTrail}>
-                   {this.props.children}
-               </ChatItemTransition>
+                <ChatItemTransition trail={animationTrail}>
+                    {this.props.children}
+                </ChatItemTransition>
                 <div ref={e => this.msgDummy = e}/>
             </div>
         );
@@ -26,7 +26,10 @@ class ChatBox extends Component {
 
     scrollToBottom() {
         //this timeout is needed because of the animation trail
-        setTimeout(() => this.msgDummy.scrollIntoView({behavior: "smooth"}), animationTrail);
+        setTimeout(() => this.msgDummy.scrollIntoView({
+            behavior: 'smooth',
+            block: 'nearest'
+        }), animationTrail);
     }
 }
 

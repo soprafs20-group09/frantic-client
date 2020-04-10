@@ -10,11 +10,10 @@ import ChatWindow from "components/ui/ChatWindow";
 import Spinner from "components/ui/Spinner";
 import sessionManager from "utils/sessionManager";
 import sockClient from "utils/sockClient";
-import ChatItem from "components/ui/chat/ChatItem";
-import {getPlayerAvatar} from "utils/api";
 import {withRouter} from "react-router-dom";
 import ErrorBox from "components/ui/ErrorBox";
 import {WindowTransition} from "components/ui/Transitions";
+import uiUtils from "utils/uiUtils";
 
 /**
  * This component renders the lobby settings window,
@@ -125,7 +124,7 @@ class LobbyWindow extends Component {
                         </Window>
                     </div>
                     <div className="lobby-column chat">
-                        <ChatWindow onSend={msg => this.handleSend(msg)}>
+                        <ChatWindow onSend={msg => this.handleChatSend(msg)}>
                             {this.state.chatItems}
                         </ChatWindow>
                     </div>
@@ -177,7 +176,7 @@ class LobbyWindow extends Component {
         document.body.removeChild(dummy);
     }
 
-    handleSend(msg) {
+    handleChatSend(msg) {
         try {
             if (sockClient.isConnected()) {
                 sockClient.sendToLobby('/chat', {message: msg});
@@ -187,52 +186,7 @@ class LobbyWindow extends Component {
     }
 
     handleChatMessage(msg) {
-        let newItem;
-        switch (msg.type) {
-            case 'msg':
-                newItem =
-                    <ChatItem
-                        style={msg.type}
-                        sender={msg.username}
-                        icon={getPlayerAvatar(msg.username)}
-                        key={new Date().getTime()}
-                    >
-                        {msg.message}
-                    </ChatItem>;
-                break;
-
-            case 'event':
-                let icon;
-
-                if (msg.icon) {
-                    let iconType = msg.icon.substr(0, msg.icon.indexOf(':'));
-                    let iconValue = msg.icon.substr(msg.icon.indexOf(':') + 1);
-
-                    switch (iconType) {
-                        case 'avatar':
-                            icon = getPlayerAvatar(iconValue);
-                            break;
-
-                        case 'event':
-                            icon = require("assets/frantic/event-cards/" + iconValue + ".svg");
-                            break;
-
-                        case 'special':
-                            icon = require("assets/frantic/special-cards/" + iconValue + ".svg");
-                            break;
-                    }
-                }
-
-                newItem =
-                    <ChatItem
-                        style={msg.type}
-                        icon={icon}
-                        key={new Date().getTime()}
-                    >
-                        {msg.message}
-                    </ChatItem>;
-                break;
-        }
+        let newItem = uiUtils.parseChatObject(msg);
         if (newItem) {
             this.setState({
                 chatItems: this.state.chatItems.concat(newItem)

@@ -1,0 +1,48 @@
+@import 'theme';
+
+.chat-log-container {
+  //see ChatLogBox.js for height
+  width: 15vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  background-color: $blueGray;
+  border-radius: 0.3em 0.3em 0 0;
+}
+
+.chat-log-content {
+  position: relative;
+  width: 15vw;
+  //height: 100%;
+  flex-grow: 1;
+  max-height: calc(100% - 1.5em);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  @include scrollbar;
+
+  &.expanded {
+    //max-height: calc(100% - 3.4em);
+  }
+}
+
+.chat-log-input-container {
+  overflow: hidden;
+}
+
+.chat-expand-icon {
+  $arrowSize: 0.5em;
+  margin: 0.5em;
+  box-sizing: border-box;
+  width: $arrowSize;
+  height: $arrowSize;
+  border-left: $arrowSize solid transparent;
+  border-right: $arrowSize solid transparent;
+  border-bottom: $arrowSize solid $terracotta;
+  @include clickable;
+
+  &.expanded {
+    transform: rotate(180deg);
+  }
+}
