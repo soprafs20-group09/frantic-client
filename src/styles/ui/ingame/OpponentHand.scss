@@ -82,12 +82,18 @@ $infoSize: 10em;
 }
 
 .opponent-avatar {
-  width: 4em;
-  height: 4em;
+  width: 3.5em;
+  height: 3.5em;
   border-radius: 50%;
   padding: 0.5em;
   background-color: $blueLightGray;
   pointer-events: all;
+  transition: 0.3s;
+
+  &.active {
+    border: 0.2em solid $terracotta;
+    box-shadow: 0 0 1em $terracotta;
+  }
 }
 
 .opponent-skip {

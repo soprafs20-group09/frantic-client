@@ -80,6 +80,7 @@ class OpponentHand extends Component {
                     cards={this.props.opponent.cards.length}
                     points={this.props.opponent.points}
                     skipped={this.props.opponent.skipped}
+                    active={this.props.active}
                 />
             </div>
         );
@@ -121,7 +122,7 @@ class OpponentInfo extends Component {
             >
                 <div className="opponent-avatar-container">
                     <img
-                        className="opponent-avatar"
+                        className={"opponent-avatar" + (this.props.active ? ' active' : '')}
                         src={getPlayerAvatar(this.props.username)}
                     />
                     {this.props.skipped && <InlineSVG className="opponent-skip" src={Skip}/>}
