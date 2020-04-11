@@ -35,18 +35,20 @@ class LobbyWindow extends Component {
     }
 
     componentDidMount() {
+        sockClient.onRegister(r => this.handleSocketRegister(r));
+        sockClient.onDisconnect(r => this.handleDisconnect(r));
         sockClient.onLobbyMessage('/chat', r => this.handleChatMessage(r));
         sockClient.onLobbyMessage('/lobby-state', r => this.handleLobbyUpdate(r));
-        sockClient.onDisconnect( r => this.handleDisconnect(r));
-        sockClient.onRegister(r => this.handleSocketRegister(r));
+        sockClient.onLobbyMessage('/start-game', () => this.handleGameStart());
         sockClient.connectAndRegister(this.props.authToken);
-        sessionManager.token = undefined;
     }
 
     componentWillUnmount() {
         sockClient.clearDisconnectSubscriptions();
         sockClient.clearMessageSubscriptions();
-        sockClient.disconnect();
+        if (!sessionManager.inGame) {
+            sockClient.disconnect();
+        }
     }
 
     render() {
@@ -108,6 +110,7 @@ class LobbyWindow extends Component {
                                     <Button
                                         disabled={!this.props.adminMode || this.state.players.length < 2}
                                         width="100%"
+                                        onClick={() => this.handleStartClick()}
                                     >
                                         Start Game
                                     </Button>
@@ -196,6 +199,7 @@ class LobbyWindow extends Component {
 
     handleSocketRegister(response) {
         sessionManager.lobbyId = response.lobbyId;
+        sessionManager.username = response.username;
         this.setState({joinLink: `${window.location.origin}/join/${sessionManager.lobbyId}`});
     }
 
@@ -220,7 +224,23 @@ class LobbyWindow extends Component {
                     </p>
             }
         });
+        sockClient.clearMessageSubscriptions();
         sockClient.clearDisconnectSubscriptions();
+        sessionManager.clear();
+    }
+
+    handleStartClick() {
+        try {
+            if (sockClient.isConnected()) {
+                sockClient.sendToLobby('/start-game');
+            }
+        } catch {
+        }
+    }
+
+    handleGameStart() {
+        sessionManager.inGame = true;
+        this.props.history.push('/game');
     }
 }
 
