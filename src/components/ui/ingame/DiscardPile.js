@@ -14,11 +14,7 @@ class DiscardPile extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {baseCards: [], topCard: {}};
-    }
-
-    componentDidMount() {
-        this.setState({topCard: franticUtils.generateRandomCards(1)[0]});
+        this.state = {baseCards: [], topCard: {key: 'a'}};
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {

@@ -9,6 +9,16 @@
   justify-content: flex-end;
   width: 2.8 * 3.1em + 0.5em;
   transition: 0.3s;
+
+  &.draw.active {
+    cursor: pointer;
+    transition: 0.3s;
+    user-select: none;
+
+    &:hover {
+      filter: brightness(110%);
+    }
+  }
 }
 
 .card-stack-card {

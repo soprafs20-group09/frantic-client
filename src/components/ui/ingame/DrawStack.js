@@ -6,7 +6,10 @@ import Card from "components/ui/cards/Card";
  * This component displays a discard stack of cards.
  * animated: boolean - whether drawing cards should be animated.
  * drawAmount: int   - amount of cards that should be drawn in the animation.
+ * drawKey: any      - a key that is compared on each update,
+ *                     and animation is only done if a new key is present.
  * stackSize: int    - amount of cards in the stack. (default 5)
+ * interactive: bool - will allow clicks and light up on hover if true.
  * onClick: func     - a function to be called when the DrawStack is clicked.
  */
 class DrawStack extends Component {
@@ -23,8 +26,10 @@ class DrawStack extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        if (this.props.drawAmount && this.props.drawAmount !== prevProps.drawAmount) {
+        if (this.props.drawKey !== prevProps.drawKey) {
             this.setState({cardsToDraw: this.props.drawAmount});
+        } else if (this.state.cardsToDraw) {
+            this.setState({cardsToDraw: 0});
         }
     }
 
@@ -48,7 +53,10 @@ class DrawStack extends Component {
         }
 
         return (
-            <div className="card-stack" onClick={() => this.handleClick()}>
+            <div
+                className={"draw card-stack" + (this.props.interactive ? ' active' : '')}
+                onClick={() => this.handleClick()}
+            >
                 {baseStack}
                 {animatedCards}
             </div>
@@ -56,7 +64,7 @@ class DrawStack extends Component {
     }
 
     handleClick() {
-        if (this.props.onClick) {
+        if (this.props.interactive && this.props.onClick) {
             this.props.onClick();
         }
         this.setState({cardsToDraw: 1});
@@ -64,6 +72,7 @@ class DrawStack extends Component {
 }
 
 DrawStack.defaultProps = {
+    interactive: false,
     drawAmount: 0,
     stackSize: 5
 };
