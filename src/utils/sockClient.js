@@ -64,7 +64,7 @@ class SockClient {
     }
 
     send(destination, body) {
-        this.stomp.send(destination, {}, JSON.stringify(body));
+        this.stomp.send(destination, {}, body ? JSON.stringify(body) : '');
     }
 
     sendToLobby(channel, body) {
