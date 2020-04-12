@@ -236,7 +236,7 @@ class HandTransition extends Component {
             transform: 'scale(1) translateY(0%)'
         };
         const leaveStyle = {
-            width: '0',
+            width: 0,
             opacity: 0,
             transform: 'scale(0.8) translateY(-100%)'
         };
