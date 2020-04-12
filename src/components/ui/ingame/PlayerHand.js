@@ -95,7 +95,7 @@ class PlayerHand extends Component {
 
     handleClick(index) {
         if (this.props.onCardClick && this.isAvailable(index)) {
-            this.props.onCardClick(this.props.cards[index]);
+            this.props.onCardClick(index);
         }
     }
 
