@@ -6,6 +6,7 @@ import "styles/ui/ingame/TurnTimer.scss";
  * PROPS:
  * start: bool     - timer will start on mount if true.
  * seconds: number - how much time should be on the timer.
+ * turn: any       - a turn number or key that causes the timer to reste on change
  */
 class TurnTimer extends Component {
     constructor(props) {
@@ -14,16 +15,25 @@ class TurnTimer extends Component {
     }
 
     componentDidMount() {
-        if (this.props.start) {
+        if (this.props.start && this.props.seconds) {
             this.reset();
             this.start();
         }
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        if (JSON.stringify(prevProps) !== JSON.stringify(this.props) && this.props.start) {
+        if (prevProps.turn !== this.props.turn && this.props.start && this.props.seconds) {
             this.reset();
             this.start();
+        }
+    }
+
+    componentWillUnmount() {
+        if (this.spinnerInterval) {
+            clearInterval(this.spinnerInterval);
+        }
+        if (this.secondInterval) {
+            clearInterval(this.secondInterval);
         }
     }
 
