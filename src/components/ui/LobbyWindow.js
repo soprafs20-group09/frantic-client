@@ -226,7 +226,7 @@ class LobbyWindow extends Component {
         });
         sockClient.clearMessageSubscriptions();
         sockClient.clearDisconnectSubscriptions();
-        sessionManager.clear();
+        sessionManager.reset();
     }
 
     handleStartClick() {

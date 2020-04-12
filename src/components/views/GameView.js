@@ -26,6 +26,8 @@ class GameView extends Component {
             drawAmount: 0,
             drawKey: 0,
             activePlayer: undefined,
+            turnTime: 0,
+            turnNumber: 0,
             chatItems: []
         };
     }
@@ -53,9 +55,16 @@ class GameView extends Component {
         sockClient.onDisconnect(r => this.handleDisconnect(r));
         sockClient.onLobbyMessage('/chat', r => this.handleChatMessage(r));
         sockClient.onLobbyMessage('/game-state', s => this.handleGameState(s));
+        sockClient.onLobbyMessage('/start-turn', t => this.handleTurnStart(t));
         sockClient.onLobbyMessage('/hand', h => this.handleNewHand(h));
         sockClient.onLobbyMessage('/playable-cards', pc => this.handlePlayableCards(pc));
         sockClient.onLobbyMessage('/draw', a => this.handleNewDraw(a));
+    }
+
+    componentWillUnmount() {
+        sockClient.clearMessageSubscriptions();
+        sockClient.clearDisconnectSubscriptions();
+        sessionManager.inGame = false;
     }
 
     render() {
@@ -81,7 +90,7 @@ class GameView extends Component {
 
         const isPlayerTurn = sessionManager.username === this.state.activePlayer;
 
-        let remaining = this.state.opponents.splice(0);
+        let remaining = this.state.opponents.slice();
         let topOpps = [];
         let leftOpps = [];
         let rightOpps = [];
@@ -158,7 +167,11 @@ class GameView extends Component {
                     </div>
 
                     <div className="timer-container">
-                        <TurnTimer start seconds={10}/>
+                        <TurnTimer
+                            start
+                            seconds={this.state.turnTime}
+                            turn={this.state.turnNumber}
+                        />
                     </div>
 
                     <div className="game-chat-container">
@@ -181,16 +194,23 @@ class GameView extends Component {
     }
 
     handleGameState(newState) {
+        let opps = newState.players;
+        for (let i = 0; i < opps.length; i++) {
+            if (opps[i].username === sessionManager.username) {
+                opps.splice(i, 1);
+                break;
+            }
+        }
         this.setState({
             loading: false,
             discardPileTopCard: newState.discardPile,
-            opponents: newState.players
+            opponents: opps
         });
     }
 
     handleNewHand(newHand) {
         this.setState({
-            playerHand: newHand.cards
+            playerCards: newHand.cards
         });
     }
 
@@ -205,6 +225,15 @@ class GameView extends Component {
             drawAmount: newAmount.amount,
             drawKey: this.state.drawKey + 1
         });
+    }
+
+    handleTurnStart(t) {
+        this.setState({
+            activePlayer: t.currentPlayer,
+            turnTime: t.time,
+            turnNumber: Math.random()
+        });
+        //TODO: turnNumber: t.turn
     }
 
     handleChatSend(msg) {
