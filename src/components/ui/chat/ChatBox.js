@@ -26,10 +26,14 @@ class ChatBox extends Component {
 
     scrollToBottom() {
         //this timeout is needed because of the animation trail
-        setTimeout(() => this.msgDummy.scrollIntoView({
-            behavior: 'smooth',
-            block: 'nearest'
-        }), animationTrail);
+        setTimeout(() => {
+            if (this.msgDummy) {
+                this.msgDummy.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'nearest'
+                });
+            }
+        }, animationTrail);
     }
 }
 
