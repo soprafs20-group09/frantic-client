@@ -3,6 +3,7 @@
 // Draw Stack
 
 .card-stack {
+  flex-shrink: 0;
   position: relative;
   display: flex;
   flex-direction: row-reverse;

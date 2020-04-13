@@ -86,6 +86,7 @@ $buttonHeight: 1.75em;
   border-radius: $uiBorderRadius;
   padding: 0 0.5em;
   @include clickable;
+  outline: none;
 
   &.primary {
     background-color: $terracotta;
@@ -98,6 +99,13 @@ $buttonHeight: 1.75em;
     background-color: transparent;
     color: $terracotta;
     font-weight: 300;
+  }
+
+  &.end-turn {
+    background-color: $terracotta;
+    color: $blueBlack;
+    font-weight: 600;
+    box-shadow: $dropShadow;
   }
 }
 

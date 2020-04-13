@@ -8,7 +8,7 @@ import 'styles/ui/UiElements.scss';
  * PROPS:
  * onClick: func            - called when button is clicked
  * width: string (optional) - a width override
- * type: string: 'primary' or 'secondary'. default: primary
+ * type: string: 'primary', secondary' or 'end-turn'. default: primary
  *                          - defines the button-style
  * disabled: bool           - sets whether the button should be enabled.
  *
