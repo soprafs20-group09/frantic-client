@@ -29,12 +29,7 @@ class TurnTimer extends Component {
     }
 
     componentWillUnmount() {
-        if (this.spinnerInterval) {
-            clearInterval(this.spinnerInterval);
-        }
-        if (this.secondInterval) {
-            clearInterval(this.secondInterval);
-        }
+        this.clearIntervals();
     }
 
     render() {
@@ -67,7 +62,17 @@ class TurnTimer extends Component {
         }, 1000);
     }
 
+    clearIntervals() {
+        if (this.spinnerInterval) {
+            clearInterval(this.spinnerInterval);
+        }
+        if (this.secondInterval) {
+            clearInterval(this.secondInterval);
+        }
+    }
+
     reset() {
+        this.clearIntervals();
         this.setState({
             currentAngle: 359,
             remainingSeconds: this.props.seconds
