@@ -1,6 +1,7 @@
 ![Logo](src/assets/frantic/logo-hollow.svg)
 
 # Frantic-Client
+[![Deployment Status](https://github.com/soprafs20-group09/frantic-client/workflows/Deploy%20Project/badge.svg)](https://github.com/soprafs20-group09/frantic-client/actions)
 ![Heroku](https://heroku-badge.herokuapp.com/?app=sopra-fs20-group-09-client)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=soprafs20-group09_frantic-client&metric=alert_status)](https://sonarcloud.io/dashboard?id=soprafs20-group09_frantic-client)
 
