@@ -161,7 +161,7 @@ class GameView extends Component {
                     <div className="game-player">
                         <PlayerHand
                             cards={this.state.playerCards}
-                            available={this.state.availableCards}
+                            available={isPlayerTurn ? this.state.availableCards : []}
                             onCardClick={i => this.handleCardClick(i)}
                         />
                     </div>
