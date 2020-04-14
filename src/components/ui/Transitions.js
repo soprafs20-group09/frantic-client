@@ -283,7 +283,7 @@ class DiscardPileTransition extends Component {
                 from={fromStyle}
                 enter={enterStyle}
                 leave={leaveStyle}
-                trail={200}
+                trail={500}
             >
                 {item => style =>
                     <animated.div className={this.props.containerClass} style={style}>
@@ -329,6 +329,40 @@ class BaseStackTransition extends Component {
     }
 }
 
+class EndTurnTransition extends Component {
+    render() {
+        const fromStyle = {
+            opacity: 0,
+            transform: 'rotateX(-180deg)'
+        };
+        const enterStyle = {
+            opacity: 1,
+            transform: 'rotateX(0deg)'
+        };
+        const leaveStyle = {
+            opacity: 0,
+            transform: 'rotateX(180deg)'
+        };
+
+        return (
+            <Transition
+                items={this.props.children}
+                from={fromStyle}
+                enter={enterStyle}
+                leave={leaveStyle}
+                trail={200}
+            >
+                {item => style =>
+                    <animated.div
+                        className={this.props.containerClass}
+                        style={style}>
+                        {item}
+                    </animated.div>}
+            </Transition>
+        );
+    }
+}
+
 export {
     WindowTransition,
     ChatItemTransition,
@@ -339,5 +373,6 @@ export {
     TabSwitcherTransition,
     HandTransition,
     DiscardPileTransition,
-    BaseStackTransition
+    BaseStackTransition,
+    EndTurnTransition
 };

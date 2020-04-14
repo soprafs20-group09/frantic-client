@@ -13,6 +13,8 @@ import Spinner from "components/ui/Spinner";
 import uiUtils from "utils/uiUtils";
 import ErrorBox from "components/ui/ErrorBox";
 import sessionManager from "utils/sessionManager";
+import Button from "components/ui/Button";
+import {EndTurnTransition} from "components/ui/Transitions";
 
 class GameView extends Component {
     constructor(props) {
@@ -28,6 +30,7 @@ class GameView extends Component {
             activePlayer: undefined,
             turnTime: 0,
             turnNumber: 0,
+            hasDrawn: false,
             chatItems: []
         };
     }
@@ -40,6 +43,36 @@ class GameView extends Component {
                 {
                     username: "jan",
                     points: 12,
+                    skipped: false,
+                    cards: franticUtils.generateBackCards(7)
+                },
+                {
+                    username: "jon",
+                    points: 69,
+                    skipped: false,
+                    cards: franticUtils.generateBackCards(7)
+                },
+                {
+                    username: "jon",
+                    points: 69,
+                    skipped: false,
+                    cards: franticUtils.generateBackCards(7)
+                },
+                {
+                    username: "jon",
+                    points: 69,
+                    skipped: false,
+                    cards: franticUtils.generateBackCards(7)
+                },
+                {
+                    username: "jon",
+                    points: 69,
+                    skipped: false,
+                    cards: franticUtils.generateBackCards(7)
+                },
+                {
+                    username: "jon",
+                    points: 69,
                     skipped: false,
                     cards: franticUtils.generateBackCards(7)
                 },
@@ -91,14 +124,16 @@ class GameView extends Component {
         const isPlayerTurn = sessionManager.username === this.state.activePlayer;
 
         let remaining = this.state.opponents.slice();
-        let topOpps = [];
         let leftOpps = [];
+        let topOpps = [];
         let rightOpps = [];
 
+        // fill the players in counter-clockwise direction, so we have the
+        // "correct" turn order
         if (remaining.length > 3) {
             let amount = Math.floor((remaining.length - 3) / 2);
             for (let i = 0; i < amount; i++) {
-                const opp = remaining.pop();
+                const opp = remaining.shift();
                 rightOpps.push(
                     <OpponentHand
                         mode="right"
@@ -111,7 +146,7 @@ class GameView extends Component {
         }
         let amount = Math.min(remaining.length, 3);
         for (let i = 0; i < amount; i++) {
-            const opp = remaining.pop();
+            const opp = remaining.shift();
             topOpps.push(
                 <OpponentHand
                     mode="top"
@@ -122,11 +157,11 @@ class GameView extends Component {
             );
         }
         while (remaining.length > 0) {
-            const opp = remaining.pop();
+            const opp = remaining.shift();
             leftOpps.push(
                 <OpponentHand
                     mode="left"
-                    opponents={opp}
+                    opponent={opp}
                     active={opp.username === this.state.activePlayer}
                     key={remaining.length}
                 />
@@ -153,7 +188,16 @@ class GameView extends Component {
                         drawKey={this.state.drawKey}
                         onClick={() => this.handleCardDraw()}
                     />
-                    <div className="game-stack-spacer"/>
+                    <div className="end-turn-container">
+                        <EndTurnTransition>
+                            {
+                                this.state.hasDrawn &&
+                                <Button type="end-turn" onClick={() => this.handleTurnEnd()}>
+                                    End Turn
+                                </Button>
+                            }
+                        </EndTurnTransition>
+                    </div>
                     <DiscardPile
                         topCard={this.state.discardPileTopCard}
                     />
@@ -161,7 +205,7 @@ class GameView extends Component {
                     <div className="game-player">
                         <PlayerHand
                             cards={this.state.playerCards}
-                            available={isPlayerTurn ? this.state.availableCards : []}
+                            available={this.state.availableCards}
                             onCardClick={i => this.handleCardClick(i)}
                         />
                     </div>
@@ -194,12 +238,12 @@ class GameView extends Component {
     }
 
     handleGameState(newState) {
-        let opps = newState.players;
-        for (let i = 0; i < opps.length; i++) {
-            if (opps[i].username === sessionManager.username) {
-                opps.splice(i, 1);
-                break;
+        let opps = newState.players.slice();
+        if (opps.length > 0) {
+            while (opps[0].username !== sessionManager.username) {
+                opps.unshift(opps.pop());
             }
+            opps.shift();
         }
         this.setState({
             loading: false,
@@ -231,9 +275,9 @@ class GameView extends Component {
         this.setState({
             activePlayer: t.currentPlayer,
             turnTime: t.time,
-            turnNumber: Math.random()
+            turnNumber: t.turn,
+            hasDrawn: false
         });
-        //TODO: turnNumber: t.turn
     }
 
     handleChatSend(msg) {
@@ -275,9 +319,21 @@ class GameView extends Component {
     }
 
     handleCardDraw() {
+        if (!this.state.hasDrawn) {
+            this.setState({hasDrawn: true});
+        }
         try {
             if (sockClient.isConnected()) {
                 sockClient.sendToLobby('/draw');
+            }
+        } catch {
+        }
+    }
+
+    handleTurnEnd() {
+        try {
+            if (sockClient.isConnected()) {
+                sockClient.sendToLobby('/end-turn');
             }
         } catch {
         }
