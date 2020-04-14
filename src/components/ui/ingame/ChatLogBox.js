@@ -41,9 +41,11 @@ class ChatLogBox extends Component {
                 {boxProps =>
                     <animated.div className="chat-log-container" style={boxProps}>
                         <div
-                            className={"chat-expand-icon" + (this.state.expanded ? ' expanded' : '')}
+                            className="chat-expand-container"
                             onClick={() => this.toggleExpand()}
-                        />
+                        >
+                            <div className={"chat-expand-icon" + (this.state.expanded ? ' expanded' : '')}/>
+                        </div>
                         <div className={"chat-log-content" + (this.state.expanded ? ' expanded' : '')}>
                             <ChatBox>
                                 {this.props.children}

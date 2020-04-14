@@ -10,6 +10,7 @@
   background-color: $blueGray;
   border-radius: 0.3em 0.3em 0 0;
   box-shadow: $dropShadow;
+  overflow: hidden;
 }
 
 .chat-log-content {
@@ -32,6 +33,13 @@
   overflow: hidden;
 }
 
+.chat-expand-container {
+  background-color: $blueGray;
+  width: 110%;
+  @include center;
+  @include clickable;
+}
+
 .chat-expand-icon {
   $arrowSize: 0.5em;
   margin: 0.5em;
@@ -41,7 +49,6 @@
   border-left: $arrowSize solid transparent;
   border-right: $arrowSize solid transparent;
   border-bottom: $arrowSize solid $terracotta;
-  @include clickable;
 
   &.expanded {
     transform: rotate(180deg);
