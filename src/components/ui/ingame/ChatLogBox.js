@@ -20,14 +20,6 @@ class ChatLogBox extends Component {
     }
 
     render() {
-        const minimizedStyle = {
-            boxStyle: {
-                height: '15vh'
-            },
-            inputStyle: {
-                height: '0em'
-            }
-        };
         const boxMin = {
                 height: '15vh'
             },

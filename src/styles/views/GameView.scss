@@ -53,10 +53,17 @@
   }
 }
 
+
+.end-turn-container {
+  width: 15em;
+  @include center;
+  flex-shrink: 0;
+}
+
 .timer-container {
   position: absolute;
   bottom: 1em;
-  left: 25vh;
+  left: 20vh;
 }
 
 .game-chat-container {

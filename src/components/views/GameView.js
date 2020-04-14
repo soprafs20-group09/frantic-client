@@ -130,8 +130,8 @@ class GameView extends Component {
 
         // fill the players in counter-clockwise direction, so we have the
         // "correct" turn order
+        let amount = Math.floor((remaining.length - 3) / 2);
         if (remaining.length > 3) {
-            let amount = Math.floor((remaining.length - 3) / 2);
             for (let i = 0; i < amount; i++) {
                 const opp = remaining.shift();
                 rightOpps.push(
@@ -144,7 +144,7 @@ class GameView extends Component {
                 );
             }
         }
-        let amount = Math.min(remaining.length, 3);
+        amount = Math.min(remaining.length, 3);
         for (let i = 0; i < amount; i++) {
             const opp = remaining.shift();
             topOpps.push(
