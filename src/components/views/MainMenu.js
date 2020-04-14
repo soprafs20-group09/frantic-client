@@ -7,6 +7,7 @@ import "styles/views/MainMenu.scss";
 import MainMenuItem from "components/ui/MainMenuItem";
 import AppContainer from "components/ui/AppContainer";
 import {MainMenuItemTransition, MainMenuLogoTransition, MainMenuMadeWithTransition} from "components/ui/Transitions";
+import sessionManager from "utils/sessionManager";
 
 const madeWithIcons = [
     ':heart:',
@@ -23,6 +24,10 @@ const madeWithIcons = [
 ];
 
 class MadeWithLabel extends React.Component {
+    componentDidMount() {
+        sessionManager.reset();
+    }
+
     render() {
         return (
             <p className="madewith label">
