@@ -12,10 +12,7 @@ class CardDisplay extends Component {
                         <Card type="number" value="4" color="blue"/>
                     </div>
                     <div className="card-overlay-container">
-                        <Card type="number" value="8" color="red"/>
-                    </div>
-                    <div className="card-overlay-container">
-                        <Card type="special" value="fuck-you"/>
+                        <Card type="number" value="8" color="black"/>
                     </div>
                     <div className="card-overlay-container">
                         <Card type="special" value="fantastic-four"/>
@@ -31,6 +28,12 @@ class CardDisplay extends Component {
                     </div>
                     <div className="card-overlay-container">
                         <Card type="back"/>
+                    </div>
+                    <div className="card-overlay-container">
+                        <Card type="wish" color="red"/>
+                    </div>
+                    <div className="card-overlay-container">
+                        <Card type="wish" value="5"/>
                     </div>
                 </div>
             </AppContainer>

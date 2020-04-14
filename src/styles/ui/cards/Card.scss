@@ -136,9 +136,9 @@ $ribbonColor: white;
     position: relative;
     padding: .15em .75em;
     text-decoration: none;
+    text-transform: lowercase;
     color: black;
     background-color: $ribbonColor;
-
 
     &:after,
     &:before {
@@ -167,4 +167,12 @@ $ribbonColor: white;
       border-right: .5em solid transparent;
     }
   }
+}
+
+.card-event-lightning {
+  height: 1em;
+  width: 1em;
+  stroke: currentColor;
+  stroke-width: 0.1em;
+  transform: rotate(-15deg);
 }
