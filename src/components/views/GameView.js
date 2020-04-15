@@ -38,7 +38,6 @@ class GameView extends Component {
     componentDidMount() {
         this.setState({
             playerCards: franticUtils.generateRandomCards(7, true),
-            availableCards: [0, 2, 6, 24, 11, 16],
             opponents: [
                 {
                     username: "jan",
