@@ -8,6 +8,7 @@ import CardDisplay from "components/views/CardDisplay";
 import HelpView from "components/views/HelpView";
 import JoinLobbyView from "components/views/JoinLobbyView";
 import GameView from "components/views/GameView";
+import EndRoundView from "components/views/EndRoundView";
 
 class AppRouter extends React.Component {
     render() {
@@ -37,6 +38,9 @@ class AppRouter extends React.Component {
                     </Route>
                     <Route exact path="/cards">
                         <CardDisplay/>
+                    </Route>
+                    <Route exact path="/end/round">
+                        <EndRoundView/>
                     </Route>
                 </Switch>
             </BrowserRouter>
