@@ -13,8 +13,14 @@ class EndRoundWindow extends Component {
     componentDidMount() {
         this.setState({
             players: {
-                jan: 12,
-                jon: 15
+                user1: 2,
+                user2: 45,
+                user3: 7,
+                user4: 15,
+                user5: 67,
+                user6: 69,
+                user7: 34,
+                user8: 420,
             }
         });
     }
