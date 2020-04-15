@@ -232,3 +232,21 @@ $buttonHeight: 1.75em;
     @include fillCenter;
   }
 }
+
+// Player Avatar
+.player-avatar {
+  flex-shrink: 0;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  padding: calc(1em / 7);
+  background-color: $blueLightGray;
+  pointer-events: all;
+  transition: 0.3s;
+  box-sizing: border-box;
+
+  &.active {
+    border: 0.04em solid $terracotta;
+    box-shadow: 0 0 0.2em $terracotta;
+  }
+}

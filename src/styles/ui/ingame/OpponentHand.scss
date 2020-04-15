@@ -81,21 +81,6 @@ $infoSize: 10em;
   position: relative;
 }
 
-.opponent-avatar {
-  width: 3.5em;
-  height: 3.5em;
-  border-radius: 50%;
-  padding: 0.5em;
-  background-color: $blueLightGray;
-  pointer-events: all;
-  transition: 0.3s;
-
-  &.active {
-    border: 0.2em solid $terracotta;
-    box-shadow: 0 0 1em $terracotta;
-  }
-}
-
 .opponent-skip {
   top: 0;
   left: 0;

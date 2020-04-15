@@ -3,8 +3,8 @@ import {animated, Transition} from "react-spring/renderprops";
 import InlineSVG from "react-inlinesvg";
 import Crown from "assets/icons/crown.svg";
 import Cross from "assets/icons/cross.svg";
-import {getPlayerAvatar} from "utils/api";
 import 'styles/ui/PlayerList.scss';
+import PlayerAvatar from "components/ui/PlayerAvatar";
 
 /**
  * Renders a list of players.
@@ -98,9 +98,11 @@ class PlayerItem extends Component {
 
         return (
             <animated.li className="player-item" style={this.props.style}>
-                <img
-                    className="player-item-avatar"
-                    src={getPlayerAvatar(this.props.name, this.props.avatarType)}/>
+                <PlayerAvatar
+                    name={this.props.name}
+                    style={this.props.avatarType}
+                    size="2.2em"
+                />
                 <p className="player-item-text" style={{color: this.props.color}}>{this.props.name}</p>
                 {decor}
             </animated.li>

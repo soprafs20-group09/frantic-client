@@ -28,21 +28,10 @@
 }
 
 .player-item-text {
-  margin: 0;
+  margin: 0 0 0 0.5em;
   width: 100%;
   text-transform: none;
   font-weight: 500;
-}
-
-.player-item-avatar {
-  flex-shrink: 0;
-  width: 2.2em;
-  height: 2.2em;
-  border-radius: 50%;
-  padding: 0.2em;
-  box-sizing: border-box;
-  background-color: $blueLightGray;
-  margin-right: 0.5em;
 }
 
 .player-item-decor {
