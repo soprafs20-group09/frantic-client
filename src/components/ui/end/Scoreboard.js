@@ -77,10 +77,13 @@ class Scoreboard extends Component {
                 if (rank === 1) {
                     podium.push(
                         <li className="podium-item gold">
+                            <div className="rank left gold">
+                                {rank + "."}
+                            </div>
                             <PlayerAvatar
                                 name={p.username}
                                 style={this.props.avatarType}
-                                size="2.2em"
+                                size="1.3em"
                             />
                             <div className="podium-text">
                                 {p.username}
@@ -94,10 +97,13 @@ class Scoreboard extends Component {
                 } else if (rank === 2) {
                     podium.push(
                         <li className="podium-item silver">
+                            <div className="rank left silver">
+                                {rank + "."}
+                            </div>
                             <PlayerAvatar
                                 name={p.username}
                                 style={this.props.avatarType}
-                                size="2.2em"
+                                size="1.3em"
                             />
                             <div className="podium-text">
                                 {p.username}
@@ -111,10 +117,13 @@ class Scoreboard extends Component {
                 } else if (rank === 3) {
                     podium.push(
                         <li className="podium-item bronze">
+                            <div className="rank left bronze">
+                                {rank + "."}
+                            </div>
                             <PlayerAvatar
                                 name={p.username}
                                 style={this.props.avatarType}
-                                size="2.2em"
+                                size="1.3em"
                             />
                             <div className="podium-text">
                                 {p.username}

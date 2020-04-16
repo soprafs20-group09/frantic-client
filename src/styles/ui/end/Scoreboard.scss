@@ -89,6 +89,11 @@
   align-items: center;
 }
 
+.left {
+  align-self: flex-start;
+  margin-left: 0.5em;
+}
+
 .username-text {
   margin-left: 1em;
   width: 100%;
