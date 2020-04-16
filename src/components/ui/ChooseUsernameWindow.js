@@ -31,7 +31,7 @@ class ChooseUsernameWindow extends Component {
                     <Button
                         type="primary"
                         width="50%"
-                        disabled={!this.state.username}
+                        disabled={!this.isCurrentValid()}
                         onClick={() => this.handleConfirm()}
                     >
                         Confirm
@@ -54,7 +54,7 @@ class ChooseUsernameWindow extends Component {
     }
 
     handleConfirm() {
-        if (this.state.username && this.props.onConfirm) {
+        if (this.isCurrentValid() && this.props.onConfirm) {
             this.props.onConfirm(this.state.username);
         }
     }
@@ -63,6 +63,9 @@ class ChooseUsernameWindow extends Component {
         this.props.history.push(this.props.closeRoute || '..');
     }
 
+    isCurrentValid() {
+        return this.state.username && /^\S{2,20}$/i.test(this.state.username);
+    }
 }
 
 export default withRouter(ChooseUsernameWindow);
