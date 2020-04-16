@@ -1,0 +1,39 @@
+@import 'theme';
+
+.ctp-container {
+  width: 100%;
+  height: 90%;
+  position: relative;
+  @include center;
+}
+
+.ctp-cards {
+  position: absolute;
+  bottom: 0;
+  @include center;
+  height: 5em;
+}
+
+.ctp-card-item {
+  cursor: grab;
+  font-size: 0.5em;
+  flex-shrink: 0;
+  margin: 0.5em;
+  border-radius: 0.8em;
+  box-sizing: border-box;
+
+  &:hover {
+    filter: brightness(110%);
+  }
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+.ctp-target-test {
+  width: 5em;
+  height: 5em;
+  position: absolute;
+  top: 3em;
+  background-color: $terracotta;
+}

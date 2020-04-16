@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import "styles/ui/pickers/Pickers.scss";
+import "styles/ui/pickers/BasicPickers.scss";
 import franticUtils from "utils/franticUtils";
 
 /**
