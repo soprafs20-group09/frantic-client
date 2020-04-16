@@ -30,7 +30,7 @@ class DrawStack extends Component {
             this.setState({cardsToDraw: this.props.drawAmount});
 
             setTimeout(() => {
-                this.setState({animating: false, cardsToDraw: 0});
+                this.setState({cardsToDraw: 0});
             }, this.props.drawAmount * 500);
         }
     }
