@@ -65,6 +65,21 @@
   font-size: 0.5em;
 }
 
+.picker-card-item {
+  font-size: 0.5em;
+  flex-shrink: 0;
+  margin: 0.5em;
+  @include clickable;
+  border-radius: 0.8em;
+  box-sizing: border-box;
+
+  &.active {
+    border: 0.28em solid $terracotta;
+    box-shadow: 0 0 1.4em $terracotta;
+    margin: 0.5 - 0.28em;
+  }
+}
+
 .picker-separator-container {
   margin-top: 0.5em;
   width: 100%;

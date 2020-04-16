@@ -47,14 +47,14 @@ class ColorNumberPicker extends Component {
         let numberContent;
         if (numberItems) {
             numberContent = [
-                <div className="picker-separator-container">
+                <div className="picker-separator-container" key="picker-separator">
                     <div className="picker-separator line"/>
                     <div className="picker-separator">
                         OR
                     </div>
                     <div className="picker-separator line"/>
                 </div>,
-                <div className="picker-container">
+                <div className="picker-container" key="number-container">
                     {numberItems}
                 </div>
             ]
