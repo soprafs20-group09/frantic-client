@@ -1,0 +1,66 @@
+@import 'theme';
+@import 'ui/cards/colors';
+
+.picker-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.picker-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  margin: 0.5em;
+  padding: 0.5em;
+  //background-color: $blueMediumGray;
+  //border-radius: 0.3em;
+  @include clickable;
+  pointer-events: none;
+  max-width: 5em;
+
+  &.active {
+    font-weight: 500;
+    color: $terracotta;
+    //color: $blueGray;
+    //background-color: $terracotta;
+    //box-shadow: $dropShadow;
+  }
+}
+
+.picker-name {
+  margin: 0.5em 0 0;
+  pointer-events: all;
+  text-align: center;
+  word-break: break-all;
+}
+
+.picker-cn-item {
+  font-size: 3.5em;
+  flex-shrink: 0;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  pointer-events: all;
+  transition: 0.3s;
+  box-sizing: border-box;
+  border: 0.1em solid $blueLightGray;
+  @include center;
+
+  &.number {
+    background-color: $blueLightGray;
+  }
+
+  &.active {
+    border: 0.04em solid $terracotta;
+    box-shadow: 0 0 0.2em $terracotta;
+    color: $terracotta;
+    font-weight: 500;
+  }
+}
+
+.picker-cn-number {
+  font-size: 0.5em;
+}
