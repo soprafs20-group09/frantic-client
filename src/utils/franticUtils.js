@@ -415,5 +415,10 @@ export default {
     isMultinumber,
     getHelpFromCard,
     generateRandomCards,
-    generateBackCards
+    generateBackCards,
+    constants: {
+        colors,
+        specialCards,
+        events
+    }
 }
