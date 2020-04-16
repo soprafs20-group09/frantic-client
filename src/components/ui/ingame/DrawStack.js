@@ -28,8 +28,10 @@ class DrawStack extends Component {
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (this.props.drawKey !== prevProps.drawKey) {
             this.setState({cardsToDraw: this.props.drawAmount});
-        } else if (this.state.cardsToDraw) {
-            this.setState({cardsToDraw: 0});
+
+            setTimeout(() => {
+                this.setState({animating: false, cardsToDraw: 0});
+            }, this.props.drawAmount * 500);
         }
     }
 
