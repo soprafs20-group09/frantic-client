@@ -91,7 +91,7 @@ class Scoreboard extends Component {
                             <PlayerAvatar
                                 name={p.username}
                                 style={this.props.avatarType}
-                                size="2.2em"
+                                size="4.84em"
                             />
                             <div className="podium-text">
                                 {p.username}
@@ -107,7 +107,7 @@ class Scoreboard extends Component {
                             <PlayerAvatar
                                 name={p.username}
                                 style={this.props.avatarType}
-                                size="2.2em"
+                                size="4.84em"
                             />
                             <div className="podium-text">
                                 {p.username}
@@ -123,7 +123,7 @@ class Scoreboard extends Component {
                             <PlayerAvatar
                                 name={p.username}
                                 style={this.props.avatarType}
-                                size="2.2em"
+                                size="4.84em"
                             />
                             <div className="podium-text">
                                 {p.username}
@@ -146,7 +146,7 @@ class Scoreboard extends Component {
                             <PlayerAvatar
                                 name={p.username}
                                 style={this.props.avatarType}
-                                size="1em"
+                                size="2.2em"
                             />
                             <div className="username-text">
                                 {p.username}
