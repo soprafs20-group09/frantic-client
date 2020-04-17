@@ -87,7 +87,7 @@ class CardsToPlayersPicker extends Component {
                     {playerItems}
                 </div>
                 <div className="ctp-cards">
-                    <CTPCardTransition>
+                    <CTPCardTransition containerClass="ctp-card-shrinker">
                         {cardItems.length || this.state.init ? cardItems : endButton}
                     </CTPCardTransition>
                 </div>
