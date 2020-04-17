@@ -1,5 +1,82 @@
 @import 'theme';
 
 .scoreboard-container {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.scoreboard-item-container {
+  @include center;
+  margin-bottom: 0.6em;
+  width: 60%;
+}
+
+.scoreboard-item {
+  height: 2.5em;
+  margin: 0;
+}
+
+.rank {
+  flex-shrink: 0;
+  width: 2.4em;
+  height: 2.4em;
+  margin-right: 0.5em;
+  border-radius: 50%;
+  box-shadow: $dropShadow;
+  background-color: #5B6171;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.username-text {
+  margin-left: 1em;
   width: 100%;
+  font-weight: 500;
+}
+
+.points-text {
+  font-weight: 500;
+}
+
+.podium-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.podium-item {
+  width: 18.7%;
+  height: 9em;
+  margin-left: 0.4em;
+  margin-right: 0.4em;
+  margin-bottom: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: $dropShadow;
+  border-radius: 0.3em;
+}
+
+.podium-text {
+  margin-top: 0.2em;
+  font-weight: 500;
+  text-shadow: $dropShadow;
+}
+
+.gold {
+  background-color: #f0c630;
+}
+
+.silver {
+  background-color: #c5d3d4;
+}
+
+.bronze {
+  background-color: #8f612e;
 }

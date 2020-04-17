@@ -15,9 +15,9 @@ class EndRoundWindow extends Component {
             players: {
                 user1: 2,
                 user2: 45,
-                user3: 7,
-                user4: 15,
-                user5: 67,
+                user3: 13,
+                user4: 45,
+                user5: 6,
                 user6: 69,
                 user7: 34,
                 user8: 420,
@@ -28,7 +28,7 @@ class EndRoundWindow extends Component {
     render() {
         return (
             <Window title="End of Round" width="45em" height="80vh">
-                <Scoreboard players={this.state.players} showWinners={false}/>
+                <Scoreboard players={this.state.players} showWinners={true}/>
             </Window>
         );
     }
