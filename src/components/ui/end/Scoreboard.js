@@ -23,6 +23,24 @@ class Scoreboard extends Component {
         let playerContainers = [];
         let players = [];
         let podium = [];
+
+        function giveRank() {
+            let same = false;
+
+            for (let i = 0; i < players.length; i++) {
+                if (same) {
+                    players[i].rank = i;
+                    same = false;
+                } else {
+                    players[i].rank = i + 1;
+                }
+                if (i + 1 < players.length &&
+                    players[i].points === players[i + 1].points) {
+                    same = true;
+                }
+            }
+        }
+
         for (let username in this.props.players) {
             players.push({
                 username: username,
@@ -30,52 +48,35 @@ class Scoreboard extends Component {
             });
         }
 
+        //sort players by points
         players.sort((a, b) => {
             return a.points - b.points;
         });
 
-        let same = false;
-
-        for (let i = 0; i < players.length; i++) {
-            if (same) {
-                players[i]["rank"] = i;
-                same = false;
-            } else {
-                players[i]["rank"] = i+1;
-            }
-            if (i+1 < players.length && players[i]["points"] === players[i+1]["points"]) {
-                same = true;
-            }
-        }
+        //give each player a rank
+        giveRank();
 
         if (!this.props.showWinners) {
             for (let p of players) {
                 playerContainers.push(
-                    <div className="rank-container">
+                    <li className="scoreboard-item-container" key={p.username}>
                         <div className="rank">
                             {p.rank + "."}
                         </div>
-                    </div>
-                );
-                playerContainers.push(
-                    <li className="player-item scoreboard-item" key={p.username}>
-                        <PlayerAvatar
-                            name={p.username}
-                            style={this.props.avatarType}
-                            size="2.2em"
-                        />
-                        <div className="username-text">
-                            {p.username}
-                        </div>
-                        <div className="points-text">
-                            {p.points}
+                        <div className="player-item scoreboard-item" >
+                            <PlayerAvatar
+                                name={p.username}
+                                style={this.props.avatarType}
+                                size="2.2em"
+                            />
+                            <div className="username-text">
+                                {p.username}
+                            </div>
+                            <div className="points-text">
+                                {p.points}
+                            </div>
                         </div>
                     </li>
-                );
-                playerContainers.push(
-                    <div className="space-filler">
-
-                    </div>
                 );
             }
             return (
@@ -135,31 +136,24 @@ class Scoreboard extends Component {
                     );
                 } else {
                     playerContainers.push(
-                        <div className="rank-container">
+                        <li className="scoreboard-item-container" key={p.username}>
                             <div className="rank">
                                 {p.rank + "."}
                             </div>
-                        </div>
-                    );
-                    playerContainers.push(
-                        <li className="player-item scoreboard-item" key={p.username}>
-                            <PlayerAvatar
-                                name={p.username}
-                                style={this.props.avatarType}
-                                size="2.2em"
-                            />
-                            <div className="username-text">
-                                {p.username}
-                            </div>
-                            <div className="points-text">
-                                {p.points}
+                            <div className="player-item scoreboard-item" >
+                                <PlayerAvatar
+                                    name={p.username}
+                                    style={this.props.avatarType}
+                                    size="2.2em"
+                                />
+                                <div className="username-text">
+                                    {p.username}
+                                </div>
+                                <div className="points-text">
+                                    {p.points}
+                                </div>
                             </div>
                         </li>
-                    );
-                    playerContainers.push(
-                        <div className="space-filler">
-
-                        </div>
                     );
                 }
             }

@@ -1,35 +1,72 @@
 @import 'theme';
 
 .scoreboard-container {
-  width: 100%;
   padding: 0;
-  list-style-type: none;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
 }
-.podium-container {
-  width: 100%;
-  padding: 0;
-  list-style-type: none;
+
+.scoreboard-item-container {
+  @include center;
+  margin-bottom: 0.6em;
+  width: 60%;
+}
+
+.scoreboard-item {
+  height: 2.5em;
+  margin: 0;
+}
+
+.rank {
+  flex-shrink: 0;
+  width: 2.4em;
+  height: 2.4em;
+  margin-right: 0.5em;
+  border-radius: 50%;
+  box-shadow: $dropShadow;
+  background-color: #5B6171;
+  font-weight: 500;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+.username-text {
+  margin-left: 1em;
+  width: 100%;
+  font-weight: 500;
+}
+
+.points-text {
+  font-weight: 500;
+}
+
+.podium-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 .podium-item {
-  width: 17.7%;
+  width: 18.7%;
   height: 9em;
-  margin-right: 0.75em;
-  margin-bottom: 0.75em;
+  margin-left: 0.4em;
+  margin-right: 0.4em;
+  margin-bottom: 1em;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   box-shadow: $dropShadow;
   border-radius: 0.3em;
-  box-sizing: border-box;
+}
+
+.podium-text {
+  margin-top: 0.2em;
+  font-weight: 500;
+  text-shadow: $dropShadow;
 }
 
 .gold {
@@ -42,67 +79,4 @@
 
 .bronze {
   background-color: #8f612e;
-}
-
-.podium-text {
-  text-transform: none;
-  margin-top: 0.2em;
-  font-weight: 500;
-}
-
-.podium-avatar {
-  margin-left: 0;
-}
-
-.scoreboard-item {
-  width: 50%;
-  height: 2.5em;
-}
-
-.space-filler {
-  width: 22.5%;
-  height: 2.5em;
-}
-
-.rank-container {
-  width: 27.5%;
-  height: 2.5em;
-  display: flex;
-  justify-content: flex-end;
-}
-
-.rank {
-  width: 2.4em;
-  height: 2.4em;
-  margin-left: 2em;
-  margin-right: 0.5em;
-  margin-bottom: 0;
-  border-radius: 50%;
-  box-shadow: $dropShadow;
-  padding: 0.2em;
-  box-sizing: border-box;
-  background-color: #676E80;
-  text-transform: none;
-  font-weight: 500;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.left {
-  align-self: flex-start;
-  margin-left: 0.5em;
-}
-
-.username-text {
-  margin-left: 1em;
-  width: 100%;
-  text-transform: none;
-  font-weight: 500;
-}
-
-.points-text {
-  margin-left: auto;
-  text-transform: none;
-  font-weight: 500;
 }

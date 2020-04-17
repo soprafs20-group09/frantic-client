@@ -15,7 +15,7 @@ class EndRoundWindow extends Component {
             players: {
                 user1: 2,
                 user2: 45,
-                user3: 2,
+                user3: 13,
                 user4: 45,
                 user5: 6,
                 user6: 69,
