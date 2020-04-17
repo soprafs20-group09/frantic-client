@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import "styles/ui/ingame/OpponentHand.scss";
 import Card from "components/ui/cards/Card";
-import {getPlayerAvatar} from "utils/api";
 import {HandTransition, WindowTransition} from "components/ui/Transitions";
 import Skip from "assets/frantic/special-cards/skip.svg";
 import InlineSVG from "react-inlinesvg";
@@ -10,16 +9,22 @@ import PlayerAvatar from "components/ui/PlayerAvatar";
 /**
  * This component renders the hand (cards) of an opponent.
  * PROPS:
- * mode: string     - controls how the component is shown, possibilities: top, left, right,
- * opponent: object - an opponent object which contains the following:
+ * mode: string         - controls how the component is shown, possibilities: top, left, right,
+ * opponent: object     - an opponent object which contains the following:
  *  - username: string
  *  - points: number
  *  - cards: array of card objects
  *  -skipped: boolean
+ *  -active: boolean - highlights the player
+ * infoOverride: object - an optional override for the displayed information.
+ *  - points: number
+ *  - cards: number
  */
 class OpponentHand extends Component {
     render() {
-        let oc = this.props.opponent.cards;
+        const {opponent, mode, active, infoOverride, trail} = this.props;
+
+        let oc = opponent.cards;
 
         // how much each card is tilted to the right
         let degChange = 10;
@@ -69,19 +74,19 @@ class OpponentHand extends Component {
         }
 
         return (
-            <div className={"opponent-hand " + this.props.mode}>
-                <div className={"opponent-hand-cards " + this.props.mode}>
-                    <HandTransition>
+            <div className={"opponent-hand " + mode}>
+                <div className={"opponent-hand-cards " + mode}>
+                    <HandTransition trail={trail}>
                         {cards}
                     </HandTransition>
                 </div>
                 <OpponentInfo
-                    mode={this.props.mode}
-                    username={this.props.opponent.username}
-                    cards={this.props.opponent.cards.length}
-                    points={this.props.opponent.points}
-                    skipped={this.props.opponent.skipped}
-                    active={this.props.active}
+                    mode={mode}
+                    username={opponent.username}
+                    cards={infoOverride ? infoOverride.cards : opponent.cards.length}
+                    points={infoOverride ? infoOverride.points : opponent.points}
+                    skipped={opponent.skipped}
+                    active={active}
                 />
             </div>
         );
@@ -89,7 +94,8 @@ class OpponentHand extends Component {
 }
 
 OpponentHand.defaultProps = {
-    mode: 'bottom'
+    mode: 'bottom',
+    trail: 500
 };
 
 class OpponentInfo extends Component {

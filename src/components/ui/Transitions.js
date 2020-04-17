@@ -223,6 +223,11 @@ class TabSwitcherTransition extends Component {
     }
 }
 
+/**
+ * PROPS:
+ * trail: number
+ * containerClass: string
+ */
 class HandTransition extends Component {
     render() {
         const fromStyle = {
@@ -248,7 +253,7 @@ class HandTransition extends Component {
                 from={fromStyle}
                 enter={enterStyle}
                 leave={leaveStyle}
-                trail={500}
+                trail={this.props.trail}
             >
                 {item => style =>
                     <animated.div
@@ -260,6 +265,10 @@ class HandTransition extends Component {
         );
     }
 }
+
+HandTransition.defaultProps = {
+    trail: 500
+};
 
 class DiscardPileTransition extends Component {
     render() {
@@ -363,6 +372,46 @@ class EndTurnTransition extends Component {
     }
 }
 
+class CTPCardTransition extends Component {
+    render() {
+        const fromStyle = {
+            width: 0,
+            opacity: 0,
+            transform: 'scale(0.8) translateY(-100%)',
+            visibility: 'visible'
+        };
+        const enterStyle = {
+            width: 'auto',
+            opacity: 1,
+            transform: 'scale(1) translateY(0%)',
+            visibility: 'visible'
+        };
+        const leaveStyle = {
+            width: 0,
+            opacity: 0,
+            visibility: 'hidden'
+        };
+
+        return (
+            <Transition
+                items={this.props.children}
+                keys={item => item.key}
+                from={fromStyle}
+                enter={enterStyle}
+                leave={leaveStyle}
+                trail={0}
+            >
+                {item => style =>
+                    <animated.div
+                        className={this.props.containerClass}
+                        style={style}>
+                        {item}
+                    </animated.div>}
+            </Transition>
+        );
+    }
+}
+
 export {
     WindowTransition,
     ChatItemTransition,
@@ -374,5 +423,6 @@ export {
     HandTransition,
     DiscardPileTransition,
     BaseStackTransition,
-    EndTurnTransition
+    EndTurnTransition,
+    CTPCardTransition
 };

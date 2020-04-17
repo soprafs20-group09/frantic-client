@@ -2,9 +2,10 @@
 
 .opponent-hand {
   @include center;
-  font-size: 0.9rem;
+  font-size: 0.9em;
   position: relative;
-  min-width: 10em;
+  min-width: 11.6em;
+  min-height: 12em;
 
   &.top {
     margin-top: -5em;
@@ -79,6 +80,7 @@ $infoSize: 10em;
 
 .opponent-avatar-container {
   position: relative;
+  z-index: 2;
 }
 
 .opponent-skip {
