@@ -34,14 +34,26 @@ class Scoreboard extends Component {
             return a.points - b.points;
         });
 
-        let rank = 1;
+        let same = false;
+
+        for (let i = 0; i < players.length; i++) {
+            if (same) {
+                players[i]["rank"] = i;
+                same = false;
+            } else {
+                players[i]["rank"] = i+1;
+            }
+            if (i+1 < players.length && players[i]["points"] === players[i+1]["points"]) {
+                same = true;
+            }
+        }
 
         if (!this.props.showWinners) {
             for (let p of players) {
                 playerContainers.push(
                     <div className="rank-container">
                         <div className="rank">
-                            {rank + "."}
+                            {p.rank + "."}
                         </div>
                     </div>
                 );
@@ -65,7 +77,6 @@ class Scoreboard extends Component {
 
                     </div>
                 );
-                rank += 1
             }
             return (
                 <ul className="scoreboard-container">
@@ -74,16 +85,13 @@ class Scoreboard extends Component {
             );
         } else {
             for (let p of players) {
-                if (rank === 1) {
+                if (p.rank === 1) {
                     podium.push(
                         <li className="podium-item gold">
-                            <div className="rank left gold">
-                                {rank + "."}
-                            </div>
                             <PlayerAvatar
                                 name={p.username}
                                 style={this.props.avatarType}
-                                size="1.3em"
+                                size="2.2em"
                             />
                             <div className="podium-text">
                                 {p.username}
@@ -93,17 +101,13 @@ class Scoreboard extends Component {
                             </div>
                         </li>
                     );
-                    rank += 1
-                } else if (rank === 2) {
+                } else if (p.rank === 2) {
                     podium.push(
                         <li className="podium-item silver">
-                            <div className="rank left silver">
-                                {rank + "."}
-                            </div>
                             <PlayerAvatar
                                 name={p.username}
                                 style={this.props.avatarType}
-                                size="1.3em"
+                                size="2.2em"
                             />
                             <div className="podium-text">
                                 {p.username}
@@ -113,17 +117,13 @@ class Scoreboard extends Component {
                             </div>
                         </li>
                     );
-                    rank += 1
-                } else if (rank === 3) {
+                } else if (p.rank === 3) {
                     podium.push(
                         <li className="podium-item bronze">
-                            <div className="rank left bronze">
-                                {rank + "."}
-                            </div>
                             <PlayerAvatar
                                 name={p.username}
                                 style={this.props.avatarType}
-                                size="1.3em"
+                                size="2.2em"
                             />
                             <div className="podium-text">
                                 {p.username}
@@ -133,12 +133,11 @@ class Scoreboard extends Component {
                             </div>
                         </li>
                     );
-                    rank += 1
                 } else {
                     playerContainers.push(
                         <div className="rank-container">
                             <div className="rank">
-                                {rank + "."}
+                                {p.rank + "."}
                             </div>
                         </div>
                     );
@@ -162,7 +161,6 @@ class Scoreboard extends Component {
 
                         </div>
                     );
-                    rank += 1
                 }
             }
             return (
