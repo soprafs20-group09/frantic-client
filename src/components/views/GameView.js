@@ -14,7 +14,13 @@ import uiUtils from "utils/uiUtils";
 import ErrorBox from "components/ui/ErrorBox";
 import sessionManager from "utils/sessionManager";
 import Button from "components/ui/Button";
-import {EndTurnTransition} from "components/ui/Transitions";
+import {EndTurnTransition, WindowTransition} from "components/ui/Transitions";
+import GiftExchangePicker from "components/ui/pickers/GiftExchangePicker";
+import SkipPicker from "components/ui/pickers/SkipPicker";
+import FantasticPicker from "components/ui/pickers/FantasticPicker";
+import EqualityPicker from "components/ui/pickers/EqualityPicker";
+import GenericColorPicker from "components/ui/pickers/GenericColorPicker";
+import IconTitle from "components/ui/IconTitle";
 
 class GameView extends Component {
     constructor(props) {
@@ -49,37 +55,37 @@ class GameView extends Component {
                     username: "jon",
                     points: 69,
                     skipped: false,
-                    cards: franticUtils.generateBackCards(7)
+                    cards: franticUtils.generateBackCards(9)
                 },
                 {
-                    username: "jon",
+                    username: "sina",
                     points: 69,
                     skipped: false,
-                    cards: franticUtils.generateBackCards(7)
+                    cards: franticUtils.generateBackCards(3)
                 },
                 {
-                    username: "jon",
+                    username: "kyrill",
                     points: 69,
-                    skipped: false,
-                    cards: franticUtils.generateBackCards(7)
+                    skipped: true,
+                    cards: franticUtils.generateBackCards(5)
                 },
                 {
-                    username: "jon",
+                    username: "remy",
                     points: 69,
                     skipped: false,
-                    cards: franticUtils.generateBackCards(7)
+                    cards: franticUtils.generateBackCards(10)
                 },
                 {
-                    username: "jon",
+                    username: "davide",
                     points: 69,
                     skipped: false,
-                    cards: franticUtils.generateBackCards(7)
+                    cards: franticUtils.generateBackCards(5)
                 },
                 {
-                    username: "jon",
+                    username: "joe",
                     points: 69,
                     skipped: false,
-                    cards: franticUtils.generateBackCards(7)
+                    cards: franticUtils.generateBackCards(1)
                 }
             ],
             activePlayer: "jan"
@@ -91,6 +97,7 @@ class GameView extends Component {
         sockClient.onLobbyMessage('/hand', h => this.handleNewHand(h));
         sockClient.onLobbyMessage('/playable-cards', pc => this.handlePlayableCards(pc));
         sockClient.onLobbyMessage('/draw', a => this.handleNewDraw(a));
+        sockClient.onLobbyMessage('/action-response', r => this.handleActionResponse(r))
     }
 
     componentWillUnmount() {
@@ -167,9 +174,14 @@ class GameView extends Component {
             );
         }
 
+        let overlay = false;
+        if (this.state.actionResponse) {
+            overlay = this.getActionResponse(this.state.actionResponse);
+        }
+
         return (
             <AppContainer withHelp>
-                <div className="game-table">
+                <div className={"game-table" + (overlay ? " overlayed" : "")}>
                     <div className="game-opponent-container right">
                         {rightOpps}
                     </div>
@@ -223,9 +235,96 @@ class GameView extends Component {
                         </ChatLogBox>
                     </div>
                 </div>
+                <div className="game-overlay">
+                    <WindowTransition trail={0}>
+                        {overlay}
+                    </WindowTransition>
+                </div>
             </AppContainer>
         );
     }
+
+    // region react logic
+
+    getActionResponse(ar) {
+        switch (ar) {
+            case 'gift':
+                return (
+                    <GiftExchangePicker
+                        mode="gift"
+                        players={this.state.opponents}
+                        cards={this.state.playerCards}
+                        onFinish={p => this.handleFinishActionResponse(ar, p)}
+                    />
+                );
+
+            case 'exchange':
+                return (
+                    <GiftExchangePicker
+                        mode="exchange"
+                        players={this.state.opponents}
+                        cards={this.state.playerCards}
+                        onFinish={p => this.handleFinishActionResponse(ar, p)}
+                    />
+                );
+
+            case 'skip':
+                return (
+                    <SkipPicker
+                        players={this.state.opponents}
+                        onFinish={p => this.handleFinishActionResponse(ar, p)}
+                    />
+                );
+
+            case 'fantastic':
+                return (
+                    <FantasticPicker
+                        onFinish={p => this.handleFinishActionResponse(ar, p)}
+                    />
+                );
+
+            case 'fantastic-four':
+                return (
+                    <FantasticPicker
+                        withFour
+                        players={this.state.opponents}
+                        onFinish={p => this.handleFinishActionResponse(ar, p)}
+                    />
+                );
+
+            case 'equality':
+                return (
+                    <EqualityPicker
+                        maxCards={this.state.playerCards.length}
+                        players={this.state.opponents}
+                        onFinish={p => this.handleFinishActionResponse(ar, p)}
+                    />
+                );
+
+            case 'counterattack':
+                return (
+                    <GenericColorPicker
+                        title={<IconTitle icon="special:counterattack">Counterattack</IconTitle>}
+                        onFinish={p => this.handleFinishActionResponse(ar, p)}
+                    />
+                );
+
+            case 'nice-try':
+                return (
+                    <GenericColorPicker
+                        title={<IconTitle icon="special:nice-try">Nice Try</IconTitle>}
+                        onFinish={p => this.handleFinishActionResponse(ar, p)}
+                    />
+                );
+
+            default:
+                return null;
+        }
+    }
+
+    // endregion
+
+    // region incoming
 
     handleChatMessage(msg) {
         let newItem = uiUtils.parseChatObject(msg);
@@ -275,17 +374,13 @@ class GameView extends Component {
             activePlayer: t.currentPlayer,
             turnTime: t.time,
             turnNumber: t.turn,
-            hasDrawn: false
+            hasDrawn: false,
+            actionResponse: null
         });
     }
 
-    handleChatSend(msg) {
-        try {
-            if (sockClient.isConnected()) {
-                sockClient.sendToLobby('/chat', {message: msg});
-            }
-        } catch {
-        }
+    handleActionResponse(r) {
+        this.setState({actionResponse: r.action});
     }
 
     handleDisconnect(reason) {
@@ -304,6 +399,19 @@ class GameView extends Component {
         });
         sockClient.clearMessageSubscriptions();
         sockClient.clearDisconnectSubscriptions();
+    }
+
+    // endregion
+
+    // region outgoing
+
+    handleChatSend(msg) {
+        try {
+            if (sockClient.isConnected()) {
+                sockClient.sendToLobby('/chat', {message: msg});
+            }
+        } catch {
+        }
     }
 
     handleCardClick(i) {
@@ -337,6 +445,18 @@ class GameView extends Component {
         } catch {
         }
     }
+
+    handleFinishActionResponse(ar, payload) {
+        try {
+            if (sockClient.isConnected()) {
+                sockClient.sendToLobby(`/${ar}`, payload);
+            }
+        } catch {
+        }
+        this.setState({actionResponse: null});
+    }
+
+    // endregion
 }
 
 export default GameView;

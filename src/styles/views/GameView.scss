@@ -1,12 +1,31 @@
 @import 'theme';
 
-.game-table {
+.game-table, .game-overlay {
   position: absolute;
   @include fullscreen;
   @include center;
   top: 0;
   left: 0;
   overflow: hidden;
+}
+
+.game-table {
+  & > :not(.timer-container):not(.game-chat-container){
+    transition: 0.5s;
+  }
+
+  &.overlayed > :not(.timer-container):not(.game-chat-container) {
+    filter: blur(0.3em);
+    pointer-events: none !important;
+  }
+}
+
+.game-overlay {
+  pointer-events: none;
+
+  & > * {
+    pointer-events: all;
+  }
 }
 
 .game-stack-spacer {
@@ -67,6 +86,7 @@
 }
 
 .game-chat-container {
+  pointer-events: all;
   position: absolute;
   bottom: 0;
   right: 10vw;
