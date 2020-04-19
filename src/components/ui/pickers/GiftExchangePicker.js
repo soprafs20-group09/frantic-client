@@ -28,7 +28,7 @@ class GiftExchangePicker extends Component {
     render() {
         return (
             <ToolWindow title={this.getTitle()} style={{width: "30em"}}>
-                <div className="gift-exchange-picker">
+                <div className="concrete-picker-container">
                     <Separator step={1}>
                         {this.getText1()}
                     </Separator>
@@ -46,7 +46,7 @@ class GiftExchangePicker extends Component {
                         maxAmount={1}
                         onSelectionChange={p => this.handlePlayerChange(p)}
                     />
-                    <div className="gift-exchange-spacer"/>
+                    <div className="concrete-picker-spacer"/>
                     <Button
                         width="10em"
                         disabled={!this.enableButton()}
