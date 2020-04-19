@@ -12,7 +12,11 @@ import IconTitle from "components/ui/IconTitle";
  * maxCards: number                  - the amount of cards the player is holding
  * players: array of player objects  - the players to be selectable (players with >= maxCards are automatically disabled)
  * onFinish: func(string)            - a function to be called when the user is done.
- *                                   - parameter is the username of the selected player.
+ *                                   - parameter is the wished color and the username of the selected player:
+ *                                   {
+ *                                       target: string
+ *                                       color: string
+ *                                   }
  */
 class EqualityPicker extends Component {
     constructor(props) {

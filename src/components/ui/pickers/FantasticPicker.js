@@ -127,7 +127,7 @@ class FantasticPicker extends Component {
 
             this.props.onFinish({
                 ...this.buildWishObject(),
-                players: distribution
+                targets: distribution
             });
         }
     }

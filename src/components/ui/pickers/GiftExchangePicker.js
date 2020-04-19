@@ -61,7 +61,8 @@ class GiftExchangePicker extends Component {
     }
 
     enableButton() {
-        return this.state.selectedCards.length === 2 && this.state.selectedPlayer;
+        return (this.state.selectedCards.length === Math.min(2, this.props.cards.length)
+            && this.state.selectedPlayer);
     }
 
     getTitle() {
@@ -92,9 +93,15 @@ class GiftExchangePicker extends Component {
 
     handleFinish() {
         if (this.props.onFinish) {
+            let indices = [];
+
+            for (let c of this.state.selectedCards) {
+                indices.push(this.props.cards.indexOf(c));
+            }
+
             this.props.onFinish({
                 target: this.state.selectedPlayer,
-                cards: this.state.selectedCards
+                cards: indices
             });
         }
     }
