@@ -26,7 +26,7 @@ class CardPicker extends Component {
                 <div className={
                     "picker-card-item"
                     + (this.state.selectedCards.includes(c) ? " active" : "")
-                    + (c.disabled ? " disabled" : "")}
+                    + ((c.disabled || c.value === 'fuck-you') ? " disabled" : "")}
                      onClick={() => this.handleCardClick(c)}
                      key={c.key}
                 >
@@ -48,6 +48,10 @@ class CardPicker extends Component {
     }
 
     handleCardClick(c) {
+        if (c.disabled || c.value === 'fuck-you') {
+            return;
+        }
+
         let i = this.state.selectedCards.indexOf(c);
         let newCards = this.state.selectedCards.slice();
         if (i >= 0) {
