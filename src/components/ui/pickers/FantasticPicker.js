@@ -14,6 +14,17 @@ import franticUtils from "utils/franticUtils";
  * withFour: boolean         - if true, will put dialog in "Fantastic Four" mode.
  * IF WITHFOUR:
  * players: array of players - array of distributable players
+ *
+ * onFinish: func(obj)       - function that is called when user is done
+ *                           - param: (either color OR number, players only if withFour)
+ *                           {
+ *                               color: string
+ *                               number: num
+ *                               players: {
+ *                                   "jan": 2,
+ *                                   "sina": 2
+ *                               }
+ *                           }
  */
 class FantasticPicker extends Component {
     constructor(props) {
@@ -107,7 +118,9 @@ class FantasticPicker extends Component {
         if (this.props.onFinish) {
             let distribution = {};
             for (let p of players) {
-                distribution[p.username] = p.cards.length;
+                if (p.cards.length > 0) {
+                    distribution[p.username] = p.cards.length;
+                }
             }
 
             this.props.onFinish({
