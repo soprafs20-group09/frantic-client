@@ -188,6 +188,10 @@ class CardMultinumberTransition extends Component {
     }
 }
 
+/**
+ * PROPS:
+ * direction: string - 'left'/'right'
+ */
 class TabSwitcherTransition extends Component {
     render() {
         const left = {

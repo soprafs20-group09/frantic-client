@@ -45,7 +45,7 @@ class ColorNumberPicker extends Component {
         }
 
         let numberContent;
-        if (numberItems) {
+        if (numberItems.length > 0) {
             numberContent = [
                 <div className="picker-separator-container" key="picker-separator">
                     <div className="picker-separator line"/>

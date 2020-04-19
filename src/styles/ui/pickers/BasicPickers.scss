@@ -15,8 +15,6 @@
   box-sizing: border-box;
   margin: 0.5em 0.5em 0;
   padding: 0.5em;
-  //background-color: $blueMediumGray;
-  //border-radius: 0.3em;
   @include clickable;
   pointer-events: none;
   max-width: 5em;
@@ -24,9 +22,6 @@
   &.active {
     font-weight: 500;
     color: $terracotta;
-    //color: $blueGray;
-    //background-color: $terracotta;
-    //box-shadow: $dropShadow;
   }
 }
 

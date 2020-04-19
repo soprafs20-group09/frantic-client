@@ -25,8 +25,12 @@ class CardsToPlayersPicker extends Component {
     }
 
     componentDidMount() {
+        let players = JSON.parse(JSON.stringify(this.props.players));
+        for (let p of players) {
+            p.cards = [];
+        }
         this.setState({
-            players: JSON.parse(JSON.stringify(this.props.players)),
+            players: players,
             cards: this.props.cards.slice()
         });
     }
@@ -75,10 +79,10 @@ class CardsToPlayersPicker extends Component {
         const endButton =
             <Button
                 onClick={() => this.handleFinish()}
-                width="5em"
+                width="10em"
                 key="done-btn"
             >
-                Confirm
+                Done
             </Button>;
 
         return (
