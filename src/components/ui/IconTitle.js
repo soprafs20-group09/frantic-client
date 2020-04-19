@@ -12,7 +12,7 @@ import uiUtils from "utils/uiUtils";
 class IconTitle extends Component {
     render() {
         return (
-            <span className=".icon-title">
+            <span className="icon-title">
                 <InlineSVG src={uiUtils.resolveIconString(this.props.icon)} className="icon-title-icon"/>
                 {this.props.children}
             </span>
