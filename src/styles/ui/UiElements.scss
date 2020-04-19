@@ -129,6 +129,53 @@ $buttonHeight: 1.75em;
   font-weight: 600;
   border-bottom: 0.09em solid $blueLightGray;
   text-transform: lowercase;
+
+  &.small {
+    font-size: $fontSizeSmallHeader;
+  }
+}
+
+// Separator
+
+.step-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1em;
+  user-select: none;
+}
+
+.step-number {
+  width: 2em;
+  height: 2em;
+  color: $blueGray;
+  background-color: $terracotta;
+  border-radius: 50%;
+  font-weight: 700;
+  @include center;
+}
+
+.step-title {
+  color: $terracotta;
+  font-size: $fontSizeSmallHeader;
+  font-weight: 500;
+  margin: 0;
+  line-height: 1em;
+  text-transform: lowercase;
+  text-align: center;
+}
+
+.step-separator {
+  border-bottom: 0.1em solid $terracotta;
+  flex-grow: 1;
+  margin: 0.5em;
+
+  &:first-of-type {
+    margin-left: 0;
+  }
+  &:last-of-type {
+    margin-right: 0;
+  }
 }
 
 // SingleSelect
