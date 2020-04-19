@@ -38,4 +38,8 @@
   overflow-x: hidden;
   @include scrollbar;
   box-sizing: border-box;
+
+  &.no-scroll {
+    overflow-y: hidden;
+  }
 }

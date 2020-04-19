@@ -6,8 +6,9 @@ import 'styles/ui/ToolWindow.scss';
 /**
  * This component should be used for smaller popup-style windows.
  * PROPS:
- * title: string - the window's title.
+ * title: string            - the window's title.
  * style: object (optional) - a custom style property to override the window style.
+ * noScroll: bool           - window will hide overflow instead of scrolling
  */
 class ToolWindow extends Component {
     render() {
@@ -16,7 +17,7 @@ class ToolWindow extends Component {
                 <div className="toolwindow-header">
                     <p className="toolwindow-title">{this.props.title}</p>
                 </div>
-                <div className="toolwindow-content">
+                <div className={"toolwindow-content" + (this.props.noScroll ? " no-scroll" : "")}>
                     {this.props.children}
                 </div>
             </div>
