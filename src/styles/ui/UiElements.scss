@@ -135,6 +135,17 @@ $buttonHeight: 1.75em;
   }
 }
 
+// IconTitle
+.icon-title {
+  display: flex;
+  align-items: center;
+}
+
+.icon-title-icon {
+  fill: currentColor;
+  margin-right: 0.5em;
+}
+
 // Separator
 
 .step-container {

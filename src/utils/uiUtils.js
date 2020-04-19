@@ -21,22 +21,7 @@ function parseChatObject(msg) {
             let icon;
 
             if (msg.icon) {
-                let iconType = msg.icon.substr(0, msg.icon.indexOf(':'));
-                let iconValue = msg.icon.substr(msg.icon.indexOf(':') + 1);
-
-                switch (iconType) {
-                    case 'avatar':
-                        icon = getPlayerAvatar(iconValue);
-                        break;
-
-                    case 'event':
-                        icon = require("assets/frantic/event-cards/" + iconValue + ".svg");
-                        break;
-
-                    case 'special':
-                        icon = require("assets/frantic/special-cards/" + iconValue + ".svg");
-                        break;
-                }
+                icon = resolveIconString(msg.icon);
             }
 
             newItem =
@@ -54,6 +39,33 @@ function parseChatObject(msg) {
     }
 }
 
+function resolveIconString(iconStr) {
+    let iconType = iconStr.substr(0, iconStr.indexOf(':'));
+    let iconValue = iconStr.substr(iconStr.indexOf(':') + 1);
+    let icon;
+
+    switch (iconType) {
+        case 'avatar':
+            icon = getPlayerAvatar(iconValue);
+            break;
+
+        case 'event':
+            icon = require("assets/frantic/event-cards/" + iconValue + ".svg");
+            break;
+
+        case 'special':
+            icon = require("assets/frantic/special-cards/" + iconValue + ".svg");
+            break;
+
+        default:
+            icon = null;
+            break;
+    }
+
+    return icon;
+}
+
 export default {
-    parseChatObject
+    parseChatObject,
+    resolveIconString
 }
