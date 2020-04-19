@@ -78,7 +78,7 @@ class CardsToPlayersPicker extends Component {
                 width="5em"
                 key="done-btn"
             >
-                done
+                Confirm
             </Button>;
 
         return (
