@@ -4,6 +4,7 @@ import ToolWindow from "components/ui/ToolWindow";
 import PlayerPicker from "components/ui/pickers/parts/PlayerPicker";
 import Separator from "components/ui/Separator";
 import Button from "components/ui/Button";
+import IconTitle from "components/ui/IconTitle";
 
 /**
  * This component allows the player to pick a player to skip
@@ -29,7 +30,7 @@ class SkipPicker extends Component {
         return (
             <ToolWindow
                 noScroll
-                title="Skip"
+                title={<IconTitle icon="special:skip">Skip</IconTitle>}
                 style={{width: "30em"}}
             >
                 <div className="concrete-picker-container">

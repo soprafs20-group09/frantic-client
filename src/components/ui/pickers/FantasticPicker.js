@@ -6,6 +6,7 @@ import Separator from "components/ui/Separator";
 import Button from "components/ui/Button";
 import CardsToPlayersPicker from "components/ui/pickers/parts/CardsToPlayersPicker";
 import franticUtils from "utils/franticUtils";
+import IconTitle from "components/ui/IconTitle";
 
 /**
  * Shows a dialog that lets the player fill in needed information
@@ -82,7 +83,9 @@ class FantasticPicker extends Component {
     }
 
     getTitle() {
-        return this.props.withFour ? "Fantastic Four" : "Fantastic";
+        return this.props.withFour ?
+            <IconTitle icon="special:fantastic-four">Fantastic Four</IconTitle> :
+            <IconTitle icon="special:fantastic">Fantastic</IconTitle>;
     }
 
     getButtonText() {
@@ -100,8 +103,7 @@ class FantasticPicker extends Component {
     buildWishObject() {
         if (isNaN(parseInt(this.state.wish))) {
             return {color: this.state.wish};
-        }
-        else {
+        } else {
             return {number: parseInt(this.state.wish)};
         }
     }

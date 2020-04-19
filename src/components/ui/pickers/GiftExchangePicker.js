@@ -5,6 +5,7 @@ import PlayerPicker from "components/ui/pickers/parts/PlayerPicker";
 import CardPicker from "components/ui/pickers/parts/CardPicker";
 import Separator from "components/ui/Separator";
 import Button from "components/ui/Button";
+import IconTitle from "components/ui/IconTitle";
 
 /**
  * Renders a ToolWindow to get information about a Gift or Exchange action from the user.
@@ -64,7 +65,9 @@ class GiftExchangePicker extends Component {
     }
 
     getTitle() {
-        return this.props.mode === 'gift' ? "Gift" : "Exchange";
+        return this.props.mode === 'gift' ?
+            <IconTitle icon="special:gift">Gift</IconTitle> :
+            <IconTitle icon="special:exchange">Exchange</IconTitle>;
     }
 
     getText1() {
