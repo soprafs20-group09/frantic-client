@@ -28,6 +28,7 @@ class CardsToPlayersPicker extends Component {
         let players = JSON.parse(JSON.stringify(this.props.players));
         for (let p of players) {
             p.cards = [];
+            p.skipped = false;
         }
         this.setState({
             players: players,
@@ -177,6 +178,7 @@ class DraggableCard extends Component {
             >
                 {style =>
                     <Draggable
+                        defaultClassNameDragging="ctp-card-dragging"
                         onStart={() => this.handleDragStart()}
                         onStop={(e, p) => this.handleDragStop(e, p)}
                         position={this.state.dragging ? null : style}
