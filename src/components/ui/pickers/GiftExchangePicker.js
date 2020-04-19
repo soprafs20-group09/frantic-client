@@ -84,7 +84,7 @@ class GiftExchangePicker extends Component {
     }
 
     handlePlayerChange(p) {
-        this.setState({selectedPlayer: p ? p[0] : null});
+        this.setState({selectedPlayer: p.length ? p[0] : null});
     }
 
     handleFinish() {
