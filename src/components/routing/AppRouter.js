@@ -9,6 +9,7 @@ import HelpView from "components/views/HelpView";
 import JoinLobbyView from "components/views/JoinLobbyView";
 import GameView from "components/views/GameView";
 import EndRoundView from "components/views/EndRoundView";
+import LobbyGuard from "components/routing/guards/LobbyGuard";
 
 class AppRouter extends React.Component {
     render() {
@@ -19,10 +20,14 @@ class AppRouter extends React.Component {
                         <MainMenu/>
                     </Route>
                     <Route exact path="/create">
-                        <LobbyView mode="create"/>
+                        <LobbyGuard>
+                            <LobbyView mode="create"/>
+                        </LobbyGuard>
                     </Route>
                     <Route exact path="/join">
-                        <LobbyView mode="join"/>
+                        <LobbyGuard>
+                            <LobbyView mode="join"/>
+                        </LobbyGuard>
                     </Route>
                     <Route exact path="/join/:id">
                         <JoinLobbyView/>
