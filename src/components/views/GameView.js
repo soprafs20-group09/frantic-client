@@ -273,7 +273,7 @@ class GameView extends Component {
                 return (
                     <SkipPicker
                         players={this.state.opponents}
-                        onFinish={p => this.handleFinishActionResponse(ar, p)}
+                        onFinish={p => this.handleFinishActionResponse(ar, {target: p})}
                     />
                 );
 
