@@ -73,7 +73,7 @@ class ColorNumberPicker extends Component {
     handleItemClick(item) {
         this.setState({selected: item});
         if (this.props.onSelectionChange) {
-            this.props.onSelectionChange(item);
+            this.props.onSelectionChange(item.toUpperCase());
         }
     }
 }
