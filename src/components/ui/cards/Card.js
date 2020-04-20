@@ -130,7 +130,7 @@ class Card extends Component {
                 break;
 
             case 'wish':
-                if (this.props.value === 'none') {
+                if (this.props.color === 'none') {
                     center = <div className="card-icon center number">{this.props.value}</div>;
                     color = 'multicolor';
                     banner =

@@ -422,6 +422,9 @@ class GameView extends Component {
                     index: i
                 });
             }
+            if (this.state.hasDrawn && this.props.playerCards[i].value === 'second-chance') {
+                this.setState({hasDrawn: false});
+            }
         } catch {
         }
     }
