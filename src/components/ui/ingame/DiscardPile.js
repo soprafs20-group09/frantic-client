@@ -50,7 +50,7 @@ class DiscardPile extends Component {
             />;
 
         return (
-            <div className="card-stack" onClick={() => this.addNewCard(franticUtils.generateRandomCards()[0])}>
+            <div className="card-stack">
                 <div className="card-stack-dummy" key="dummy"/>
                 <BaseStackTransition containerClass="card-stack-card">
                     {baseStack}

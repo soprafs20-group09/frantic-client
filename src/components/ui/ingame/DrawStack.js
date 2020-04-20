@@ -69,7 +69,6 @@ class DrawStack extends Component {
         if (this.props.interactive && this.props.onClick) {
             this.props.onClick();
         }
-        this.setState({cardsToDraw: 1});
     }
 }
 
