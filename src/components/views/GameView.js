@@ -37,6 +37,7 @@ class GameView extends Component {
             turnTime: 0,
             turnNumber: 0,
             hasDrawn: false,
+            actionResponse: null,
             chatItems: []
         };
     }
