@@ -453,7 +453,7 @@ class GameView extends Component {
     handleFinishActionResponse(ar, payload) {
         try {
             if (sockClient.isConnected()) {
-                sockClient.sendToLobby(`/${ar}`, payload);
+                sockClient.sendToLobby(`/action/${ar}`, payload);
             }
         } catch {
         }
