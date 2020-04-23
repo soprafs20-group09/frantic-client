@@ -30,10 +30,10 @@ class CardDisplay extends Component {
                         <Card type="back"/>
                     </div>
                     <div className="card-overlay-container">
-                        <Card type="wish" color="red"/>
+                        <Card type="wish" color="red" value="none"/>
                     </div>
                     <div className="card-overlay-container">
-                        <Card type="wish" value="5"/>
+                        <Card type="wish" color="none" value="5"/>
                     </div>
                 </div>
             </AppContainer>

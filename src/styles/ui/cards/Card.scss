@@ -17,6 +17,19 @@
   fill: white;
   flex-shrink: 0;
   user-select: none;
+
+  &.red > .ribbon {
+    color: $red;
+  }
+  &.yellow > .ribbon {
+    color: $yellow;
+  }
+  &.green > .ribbon {
+    color: $green;
+  }
+  &.blue > .ribbon {
+    color: $blue;
+  }
 }
 
 .card-inner {
@@ -92,6 +105,7 @@ $borderMargin: 0.5em;
 $ribbonColor: white;
 
 .ribbon {
+  z-index: 0;
   font-size: 0.18em;
   position: relative;
   display: inline-block;
@@ -100,8 +114,8 @@ $ribbonColor: white;
   letter-spacing: 0.11em;
   white-space: nowrap;
   text-align: center;
-  mix-blend-mode: screen;
   margin: 1.5em 0;
+  color: $black;
 
   &:nth-child(3) {
     transform: rotate(180deg);
@@ -137,7 +151,7 @@ $ribbonColor: white;
     padding: .15em .75em;
     text-decoration: none;
     text-transform: lowercase;
-    color: black;
+    color: currentColor;
     background-color: $ribbonColor;
 
     &:after,
