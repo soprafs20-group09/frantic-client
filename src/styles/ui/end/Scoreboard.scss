@@ -47,36 +47,84 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  align-items: flex-end;
 }
 
 .podium-item {
   width: 18.7%;
-  height: 9em;
+  height: 13em;
   margin-left: 0.4em;
   margin-right: 0.4em;
   margin-bottom: 1em;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
+  align-items: center;
+  border-radius: 0.3em;
+}
+
+.avatar-container {
+  display: flex;
+  justify-content: flex-end;
+  border-radius: 50%;
+  box-shadow: $dropShadow;
+}
+
+.podium-text-container {
+  width: 100%;
+  margin-top: 0.5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   align-items: center;
   box-shadow: $dropShadow;
   border-radius: 0.3em;
 }
 
+.rank-text {
+  font-size: 2em;
+  font-weight: 500;
+}
+
+.gold-margin {
+  margin-bottom: 1.4em;
+}
+
+.silver-margin {
+  margin-bottom: 0.5em;
+}
+
 .podium-text {
   margin-top: 0.2em;
   font-weight: 500;
-  text-shadow: $dropShadow;
+}
+
+.podium-text-bottom {
+  margin-top: 0.2em;
+  margin-bottom: 0.6em;
+  font-weight: 500;
 }
 
 .gold {
-  background-color: #f0c630;
+  background-color: #dbb52a;
+}
+
+.gold-height {
+  height: 9em;
 }
 
 .silver {
-  background-color: #c5d3d4;
+  background-color: #8e9899;
+}
+
+.silver-height {
+  height: 7em;
 }
 
 .bronze {
   background-color: #8f612e;
+}
+
+.bronze-height {
+  height: 6em;
 }

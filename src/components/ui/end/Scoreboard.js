@@ -41,6 +41,15 @@ class Scoreboard extends Component {
             }
         }
 
+        function reOrderPodium() {
+            let third = podium.pop();
+            let second = podium.pop();
+            let first = podium.pop();
+            podium.push(second);
+            podium.push(first);
+            podium.push(third);
+        }
+
         for (let username in this.props.players) {
             players.push({
                 username: username,
@@ -88,50 +97,71 @@ class Scoreboard extends Component {
             for (let p of players) {
                 if (p.rank === 1) {
                     podium.push(
-                        <li className="podium-item gold">
-                            <PlayerAvatar
-                                name={p.username}
-                                style={this.props.avatarType}
-                                size="4.84em"
-                            />
-                            <div className="podium-text">
-                                {p.username}
+                        <li className="podium-item">
+                            <div className="avatar-container">
+                                <PlayerAvatar
+                                    name={p.username}
+                                    style={this.props.avatarType}
+                                    size="3.6em"
+                                />
                             </div>
-                            <div className="podium-text">
-                                {p.points}
-                            </div>
+                            <li className="podium-text-container gold gold-height">
+                                <div className="rank-text gold-margin">
+                                    {p.rank + "."}
+                                </div>
+                                <div className="podium-text">
+                                    {p.username}
+                                </div>
+                                <div className="podium-text-bottom">
+                                    {p.points + " points"}
+                                </div>
+                            </li>
                         </li>
                     );
                 } else if (p.rank === 2) {
                     podium.push(
-                        <li className="podium-item silver">
-                            <PlayerAvatar
-                                name={p.username}
-                                style={this.props.avatarType}
-                                size="4.84em"
-                            />
-                            <div className="podium-text">
-                                {p.username}
+                        <li className="podium-item">
+                            <div className="avatar-container">
+                                <PlayerAvatar
+                                    name={p.username}
+                                    style={this.props.avatarType}
+                                    size="3.6em"
+                                />
                             </div>
-                            <div className="podium-text">
-                                {p.points}
-                            </div>
+                            <li className="podium-text-container silver silver-height">
+                                <div className="rank-text silver-margin">
+                                    {p.rank + "."}
+                                </div>
+                                <div className="podium-text">
+                                    {p.username}
+                                </div>
+                                <div className="podium-text-bottom">
+                                    {p.points + " points"}
+                                </div>
+                            </li>
                         </li>
                     );
                 } else if (p.rank === 3) {
                     podium.push(
-                        <li className="podium-item bronze">
-                            <PlayerAvatar
-                                name={p.username}
-                                style={this.props.avatarType}
-                                size="4.84em"
-                            />
-                            <div className="podium-text">
-                                {p.username}
+                        <li className="podium-item">
+                            <div className="avatar-container">
+                                <PlayerAvatar
+                                    name={p.username}
+                                    style={this.props.avatarType}
+                                    size="3.6em"
+                                />
                             </div>
-                            <div className="podium-text">
-                                {p.points}
-                            </div>
+                            <li className="podium-text-container bronze bronze-height">
+                                <div className="rank-text">
+                                    {p.rank + "."}
+                                </div>
+                                <div className="podium-text">
+                                    {p.username}
+                                </div>
+                                <div className="podium-text-bottom">
+                                    {p.points + " points"}
+                                </div>
+                            </li>
                         </li>
                     );
                 } else {
@@ -157,6 +187,7 @@ class Scoreboard extends Component {
                     );
                 }
             }
+            reOrderPodium();
             return (
                 <ul className="scoreboard-container">
                     <div className="podium-container">
