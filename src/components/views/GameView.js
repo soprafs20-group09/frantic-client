@@ -218,7 +218,7 @@ class GameView extends Component {
 
                     <DrawStack
                         animated
-                        interactive={isPlayerTurn}
+                        interactive={isPlayerTurn && !this.state.hasDrawn}
                         drawAmount={this.state.drawAmount}
                         drawKey={this.state.drawKey}
                         onClick={() => this.handleCardDraw()}
