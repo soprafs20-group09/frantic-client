@@ -19,15 +19,18 @@ function parseChatObject(msg) {
 
         case 'event':
             let icon;
+            let svg = false;
 
             if (msg.icon) {
                 icon = resolveIconString(msg.icon);
+                svg = !msg.icon.startsWith('avatar');
             }
 
             newItem =
                 <ChatItem
                     style={msg.type}
                     icon={icon}
+                    svgIcon={svg}
                     key={new Date().getTime()}
                 >
                     {msg.message}
