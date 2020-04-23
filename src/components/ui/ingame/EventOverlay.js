@@ -20,9 +20,11 @@ class EventOverlay extends Component {
     render() {
         return (
             <div className="event-overlay-container">
-                <TextOverlay icon={this.state.icon} title={this.state.title}>
-                    {this.props.children}
-                </TextOverlay>
+                <div className="event-overlay-content">
+                    <TextOverlay icon={this.state.icon} title={this.state.title}>
+                        {this.props.children}
+                    </TextOverlay>
+                </div>
             </div>
         );
     }
