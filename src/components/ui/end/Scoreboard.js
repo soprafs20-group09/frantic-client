@@ -68,7 +68,7 @@ class Scoreboard extends Component {
         if (!this.props.showWinners) {
             playerContainers.push(
                 <div className="point-limit-container">
-                    {"Point Limit: "}
+                    {"Point limit: " + this.props.pointLimit}
                 </div>
             );
             for (let p of players) {
