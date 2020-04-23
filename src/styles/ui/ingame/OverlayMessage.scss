@@ -6,7 +6,7 @@
   width: 120vw;
   background-color: $black;
   transform: rotate(-10deg);
-  overflow: visible;
+  overflow: hidden;
   @include center;
 
   & > * {
@@ -15,10 +15,10 @@
 }
 
 .event-overlay-content {
+  position: relative;
   width: 100%;
   height: 200%;
   @include center;
-  overflow: hidden;
 }
 
 .overlay-message {
