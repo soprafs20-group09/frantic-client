@@ -104,7 +104,7 @@ class Card extends Component {
                 banner =
                     <div className="ribbon">
                         <span className="ribbon-inner">
-                            {this.props.value.replace('-', ' ')}
+                            {this.props.value.replace(/-/g, ' ')}
                         </span>
                     </div>;
                 if (this.props.value === 'fuck-you') {

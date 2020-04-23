@@ -416,6 +416,31 @@ class CTPCardTransition extends Component {
     }
 }
 
+class EventOverlayTransition extends Component {
+    render() {
+        const fromStyle = {
+            opacity: 0,
+            height: '0em',
+        };
+        const toStyle = {
+            opacity: 1,
+            height: '20em'
+        };
+
+        return (
+            <Transition
+                items={this.props.children}
+                keys={item => item.key}
+                from={fromStyle}
+                enter={toStyle}
+                leave={fromStyle}
+                trail={0}>
+                {item => style => <animated.div style={style}>{item}</animated.div>}
+            </Transition>
+        );
+    }
+}
+
 export {
     WindowTransition,
     ChatItemTransition,
@@ -428,5 +453,6 @@ export {
     DiscardPileTransition,
     BaseStackTransition,
     EndTurnTransition,
-    CTPCardTransition
+    CTPCardTransition,
+    EventOverlayTransition
 };

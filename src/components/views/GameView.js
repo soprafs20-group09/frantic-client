@@ -14,13 +14,15 @@ import uiUtils from "utils/uiUtils";
 import ErrorBox from "components/ui/ErrorBox";
 import sessionManager from "utils/sessionManager";
 import Button from "components/ui/Button";
-import {EndTurnTransition, WindowTransition} from "components/ui/Transitions";
+import {EndTurnTransition, EventOverlayTransition, WindowTransition} from "components/ui/Transitions";
 import GiftExchangePicker from "components/ui/pickers/GiftExchangePicker";
 import SkipPicker from "components/ui/pickers/SkipPicker";
 import FantasticPicker from "components/ui/pickers/FantasticPicker";
 import EqualityPicker from "components/ui/pickers/EqualityPicker";
 import GenericColorPicker from "components/ui/pickers/GenericColorPicker";
 import IconTitle from "components/ui/IconTitle";
+import EventOverlay from "components/ui/ingame/EventOverlay";
+import TextOverlay from "components/ui/ingame/TextOverlay";
 
 class GameView extends Component {
     constructor(props) {
@@ -176,13 +178,31 @@ class GameView extends Component {
         }
 
         let overlay = false;
+        let event = false;
         if (this.state.actionResponse) {
             overlay = this.getActionResponse(this.state.actionResponse);
+        } else if (this.state.event) {
+            event =
+                <EventOverlay
+                    event={this.state.event.name}
+                >
+                    {this.state.event.message}
+                </EventOverlay>;
+            this.resetOverlayIn(10);
+        } else if (this.state.overlay) {
+            overlay =
+                <TextOverlay
+                    title={this.state.overlay.title}
+                    icon={this.state.overlay.icon}
+                >
+                    {this.state.overlay.message}
+                </TextOverlay>;
+            this.resetOverlayIn(this.state.overlay.duration || 1);
         }
 
         return (
             <AppContainer withHelp>
-                <div className={"game-table" + (overlay ? " overlayed" : "")}>
+                <div className={"game-table" + ((overlay || event) ? " overlayed" : "")}>
                     <div className="game-opponent-container right">
                         {rightOpps}
                     </div>
@@ -240,6 +260,9 @@ class GameView extends Component {
                     <WindowTransition trail={0}>
                         {overlay}
                     </WindowTransition>
+                    <EventOverlayTransition>
+                        {event}
+                    </EventOverlayTransition>
                 </div>
             </AppContainer>
         );
@@ -323,6 +346,13 @@ class GameView extends Component {
         }
     }
 
+    resetOverlayIn(seconds) {
+        setTimeout(
+            () => this.setState({event: null, overlay: null}),
+            seconds * 1000
+        );
+    }
+
     // endregion
 
     // region incoming
@@ -371,12 +401,21 @@ class GameView extends Component {
     }
 
     handleTurnStart(t) {
+        let overlay = null;
+        if (t.currentPlayer === sessionManager.username) {
+            overlay = {
+                title: "it's your turn!",
+                duration: 1
+            }
+        }
+
         this.setState({
             activePlayer: t.currentPlayer,
             turnTime: t.time,
             turnNumber: t.turn,
             hasDrawn: false,
-            actionResponse: null
+            actionResponse: null,
+            overlay: overlay,
         });
     }
 
