@@ -66,6 +66,11 @@ class Scoreboard extends Component {
         giveRank();
 
         if (!this.props.showWinners) {
+            playerContainers.push(
+                <div className="point-limit-container">
+                    {"Point Limit: "}
+                </div>
+            );
             for (let p of players) {
                 playerContainers.push(
                     <li className="scoreboard-item-container" key={p.username}>

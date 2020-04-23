@@ -1,5 +1,24 @@
 @import 'theme';
 
+.point-limit-container {
+  width: 60%;
+  height: 2.8em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $blueMediumGray;
+  box-shadow: $dropShadow;
+  margin-bottom: 0.6em;
+  padding: 0.6em 0.9em 0.6em 0.6em;
+  border-radius: 0.3em;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  &:first-child {
+    margin-top: 0.6em;
+  }
+}
+
 .scoreboard-container {
   padding: 0;
   display: flex;
