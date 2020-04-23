@@ -27,6 +27,7 @@ class LobbyWindow extends Component {
         super(props);
         this.state = {
             loading: true,
+            adminMode: this.props.adminMode,
             chatItems: [],
             players: [],
             settings: {},
@@ -86,7 +87,7 @@ class LobbyWindow extends Component {
                                     <Input
                                         style={spacingStyle}
                                         title="Lobby Name"
-                                        disabled={!this.props.adminMode}
+                                        disabled={!this.state.adminMode}
                                         initialValue={this.state.settings.lobbyName}
                                         onChange={v => this.handleSettingsUpdate({lobbyName: v})}
                                     />
@@ -94,7 +95,7 @@ class LobbyWindow extends Component {
                                         style={spacingStyle}
                                         title="Game Duration"
                                         items={this.state.settings.durationItems}
-                                        disabled={!this.props.adminMode}
+                                        disabled={!this.state.adminMode}
                                         initialValue={this.state.settings.duration}
                                         onValueChanged={v => this.handleSettingsUpdate({duration: v})}
                                     />
@@ -103,12 +104,12 @@ class LobbyWindow extends Component {
                                         title="Public"
                                         on="yes"
                                         off="no"
-                                        disabled={!this.props.adminMode}
+                                        disabled={!this.state.adminMode}
                                         initialValue={this.state.settings.publicLobby}
                                         onSwitch={v => this.handleSettingsUpdate({publicLobby: v})}
                                     />
                                     <Button
-                                        disabled={!this.props.adminMode || this.state.players.length < 2}
+                                        disabled={!this.state.adminMode || this.state.players.length < 2}
                                         width="100%"
                                         onClick={() => this.handleStartClick()}
                                     >
@@ -119,7 +120,7 @@ class LobbyWindow extends Component {
                                     <Header>Players</Header>
                                     <PlayerList
                                         players={this.state.players}
-                                        adminMode={this.props.adminMode}
+                                        adminMode={this.state.adminMode}
                                         onKick={p => this.handleKick(p)}
                                     />
                                 </div>
@@ -204,8 +205,17 @@ class LobbyWindow extends Component {
     }
 
     handleLobbyUpdate(update) {
+        // update admin mode in case of admin changes
+        let adminMode = false;
+        for (let player of update.players) {
+            if (player.username === sessionManager.username && player.admin) {
+                adminMode = true;
+            }
+        }
+
         this.setState({
             loading: false,
+            adminMode: adminMode,
             ...update
         });
     }
