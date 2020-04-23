@@ -61,6 +61,7 @@ class DrawStack extends Component {
             >
                 {baseStack}
                 {animatedCards}
+                <div className={"card-stack-border" + (this.props.interactive ? ' active' : '')}/>
             </div>
         );
     }

@@ -10,15 +10,33 @@
   justify-content: flex-end;
   width: 2.8 * 3.1em + 0.5em;
   transition: 0.3s;
+  user-select: none;
 
   &.draw.active {
     cursor: pointer;
-    transition: 0.3s;
-    user-select: none;
 
     &:hover {
       filter: brightness(110%);
     }
+  }
+}
+
+.card-stack-border {
+  z-index: 1;
+  width: 2.8 * 3.1em + 0.5em;
+  height: 100%;
+  position: absolute;
+  top: -0.1em;
+  left: -0.1em;
+  user-select: none;
+  border-radius: 0.8em;
+  transition: 0.3s;
+  border: none;
+  box-shadow: none;
+
+  &.active {
+    border: 0.1em solid $availableCardColor;
+    box-shadow: 0 0 0.5em 0 $availableCardColor;
   }
 }
 
