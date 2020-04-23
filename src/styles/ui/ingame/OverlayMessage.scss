@@ -1,0 +1,47 @@
+@import 'theme';
+@import 'ui/cards/colors';
+
+.event-overlay-container {
+  height: 100%;
+  width: 120vw;
+  background-color: $black;
+  @include center;
+  overflow: hidden;
+  transform: rotate(-10deg);
+
+  & > * {
+    transform: rotate(10deg);
+  }
+}
+
+.overlay-message {
+  color: $terracotta;
+  max-width: 25em;
+  @include center;
+  flex-direction: column;
+
+  & h1 {
+    font-size: $fontSizeHeader;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  & p {
+    color: white;
+    margin: 0;
+    text-align: center;
+  }
+}
+
+.overlay-title-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1em;
+}
+
+.overlay-message-icon {
+  height: $fontSizeHeader;
+  width: $fontSizeHeader;
+  fill: $terracotta;
+  margin-right: 1em;
+}
