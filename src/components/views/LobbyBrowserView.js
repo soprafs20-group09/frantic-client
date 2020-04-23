@@ -9,6 +9,7 @@ import Spinner from "components/ui/Spinner";
 import "styles/views/LobbyBrowserView.scss";
 import {api, parseCommonErrors} from "utils/api";
 import ErrorBox from "components/ui/ErrorBox";
+import sessionManager from "utils/sessionManager";
 
 class NoLobbiesMessage extends Component {
     render() {
@@ -37,6 +38,7 @@ class LobbyBrowserView extends Component {
     }
 
     componentDidMount() {
+        sessionManager.reset();
         this.refreshLobbies(this.state.filter);
     }
 

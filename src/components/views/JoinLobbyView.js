@@ -8,6 +8,7 @@ import {Redirect, withRouter} from "react-router-dom";
 class JoinLobbyView extends Component {
 
     componentDidMount() {
+        sessionManager.reset();
         sessionManager.lobbyId = this.props.match.params.id;
     }
 
