@@ -1,0 +1,219 @@
+@import 'theme';
+@import 'ui/cards/colors';
+
+$cloudAnimation: 3s forwards 1.25s;
+
+.doomsday-animation {
+  z-index: 1;
+  position: relative;
+  @include fillCenter;
+}
+
+.doomsday-mushroom {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: column;
+  width: 25em;
+  height: 11.1em;
+  visibility: hidden;
+  animation: doomsday-show-mushroom 0s 1.25s forwards;
+
+  & .ring {
+    position: relative;
+    border-top: 0.2em solid $terracotta;
+    width: 20em;
+    height: 1em;
+    border-radius: 50%;
+    margin-bottom: -0.5em;
+
+    &::before {
+      z-index: -1;
+      position: absolute;
+      top: -0.22em;
+      display: block;
+      content: '';
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border-bottom: 0.2em solid $terracotta;
+      filter: brightness(50%);
+    }
+
+    &.top {
+      animation: doomsday-ring-expand $cloudAnimation;
+      position: absolute;
+      top: 0
+    }
+
+    &.bottom {
+      width: 4em;
+      height: 0.75em;
+      margin-bottom: -0.5em;
+    }
+  }
+
+  & .head {
+    position: relative;
+    width: 10em;
+    height: 2.5em;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    margin-bottom: 0.3em;
+
+    &::before {
+      position: absolute;
+      display: block;
+      content: '';
+      width: 11em;
+      height: 10em;
+      border-radius: 50%;
+      background-color: $terracotta;
+    }
+  }
+
+  & .stem {
+    width: 0.5em;
+    background-color: $terracotta;
+
+    &.top {
+      height: 2.9em;
+      animation: doomsday-stem-top-grow $cloudAnimation;
+    }
+
+    &.bottom {
+      height: 4em;
+      animation: doomsday-stem-bottom-grow $cloudAnimation;
+    }
+  }
+
+  & .splash-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 0;
+    overflow: visible;
+  }
+
+  & .splash {
+    width: 0.5em;
+    height: 2em;
+    background-color: $terracotta;
+    margin: -0.6em 0.09em;
+    border-radius: 0.25em;
+
+    &.left {
+      transform: rotate(-45deg);
+      animation: doomsday-splash-left $cloudAnimation;
+    }
+
+    &.right {
+      transform: rotate(45deg);
+      animation: doomsday-splash-right $cloudAnimation;
+    }
+  }
+
+  & .ground {
+    margin-top: 0.1em;
+    height: 0.1em;
+    width: 13em;
+    background-color: $terracotta;
+  }
+
+  & .cover {
+    z-index: 1;
+    height: 0.5em;
+    background-color: $black;
+    width: 20em;
+  }
+}
+
+.doomsday-explosion {
+  z-index: 2;
+  position: absolute;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  background-color: $terracotta;
+  animation: doomsday-explosion 3s ease-out forwards;
+}
+
+@keyframes doomsday-explosion {
+  0% {
+    width: 1em;
+    height: 1em;
+    background-color: $terracotta;
+  }
+  20% {
+    background-color: $terracotta;
+  }
+  40% {
+    width: 0.5em;
+    height: 0.5em;
+    background-color: white;
+  }
+  60% {
+    width: 200%;
+    height: 400%;
+    background-color: white;
+    opacity: 100%;
+  }
+  80%, 100% {
+    width: 200%;
+    height: 400%;
+    background-color: white;
+    opacity: 0;
+  }
+}
+
+@keyframes doomsday-ring-expand {
+  0% {
+    width: 10em;
+  }
+  100% {
+    width: 25em;
+  }
+}
+
+@keyframes doomsday-stem-bottom-grow {
+  0% {
+    height: 3.5em;
+  }
+  100% {
+    height: 4em;
+  }
+}
+
+@keyframes doomsday-stem-top-grow {
+  0% {
+    height: 2em;
+  }
+  100% {
+    height: 2.7em;
+  }
+}
+
+@keyframes doomsday-splash-left {
+  0% {
+    margin: -0.6em -0.1em;
+  }
+  100% {
+    margin: -0.6em 0.09em;
+  }
+}
+@keyframes doomsday-splash-right {
+  0% {
+    margin: -0.6em -0.1em;
+  }
+  100% {
+    margin: -0.6em 0.09em;
+  }
+}
+
+@keyframes doomsday-show-mushroom {
+  to {
+    visibility: visible;
+  }
+}
