@@ -37,7 +37,7 @@ class GameView extends Component {
             drawKey: 0,
             activePlayer: undefined,
             turnTime: 0,
-            turnNumber: 0,
+            turnKey: 0,
             hasDrawn: false,
             actionResponse: null,
             chatItems: []
@@ -249,7 +249,7 @@ class GameView extends Component {
                         <TurnTimer
                             start
                             seconds={this.state.turnTime}
-                            turn={this.state.turnNumber}
+                            turn={this.state.turnKey}
                         />
                     </div>
 
@@ -415,7 +415,7 @@ class GameView extends Component {
         this.setState({
             activePlayer: t.currentPlayer,
             turnTime: t.time,
-            turnNumber: t.turn,
+            turnKey: t.turn,
             hasDrawn: false,
             actionResponse: null,
             overlay: overlay,
@@ -437,7 +437,7 @@ class GameView extends Component {
         this.setState({
             availableCards: r.playable,
             turnTime: r.time,
-            turnNumber: 'attack'
+            turnKey: 'attack'
         });
     }
 
