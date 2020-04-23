@@ -100,7 +100,10 @@ class GameView extends Component {
         sockClient.onLobbyMessage('/hand', h => this.handleNewHand(h));
         sockClient.onLobbyMessage('/playable-cards', pc => this.handlePlayableCards(pc));
         sockClient.onLobbyMessage('/draw', a => this.handleNewDraw(a));
-        sockClient.onLobbyMessage('/action-response', r => this.handleActionResponse(r))
+        sockClient.onLobbyMessage('/action-response', r => this.handleActionResponse(r));
+        sockClient.onLobbyMessage('/event', e => this.handleEvent(e));
+        sockClient.onLobbyMessage('/attack-window', r => this.handleAttackOpportunity(r));
+        sockClient.onLobbyMessage('/nice-try-window', r => this.handleAttackOpportunity(r));
     }
 
     componentWillUnmount() {
@@ -421,6 +424,21 @@ class GameView extends Component {
 
     handleActionResponse(r) {
         this.setState({actionResponse: r.action});
+    }
+
+    handleEvent(e) {
+        this.setState({
+            name: e.event,
+            message: e.message
+        });
+    }
+
+    handleAttackOpportunity(r) {
+        this.setState({
+            availableCards: r.playable,
+            turnTime: r.time,
+            turnNumber: 'attack'
+        });
     }
 
     handleDisconnect(reason) {
