@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import "styles/ui/ingame/animations/DoomsdayAnimation.scss";
+
+import "styles/ui/events/DoomsdayAnimation.scss";
 
 class DoomsdayAnimation extends Component {
     render() {
@@ -28,16 +29,4 @@ class DoomsdayAnimation extends Component {
     }
 }
 
-function getAnimation(event) {
-    switch (event) {
-        case 'doomsday':
-            return <DoomsdayAnimation/>;
-
-        default:
-            return false;
-    }
-}
-
-export default {
-    getAnimation
-};
+export default DoomsdayAnimation;

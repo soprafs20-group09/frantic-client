@@ -1,6 +1,7 @@
 import React from 'react';
 import ChatItem from "components/ui/chat/ChatItem";
 import {getPlayerAvatar} from "utils/api";
+import DoomsdayAnimation from "components/ui/events/DoomsdayAnimation";
 
 function parseChatObject(msg) {
     let newItem;
@@ -68,7 +69,18 @@ function resolveIconString(iconStr) {
     return icon;
 }
 
+function getEventAnimation(event) {
+    switch (event) {
+        case 'doomsday':
+            return <DoomsdayAnimation/>;
+
+        default:
+            return false;
+    }
+}
+
 export default {
     parseChatObject,
-    resolveIconString
+    resolveIconString,
+    getEventAnimation
 }
