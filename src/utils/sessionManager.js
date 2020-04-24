@@ -31,13 +31,13 @@ export default {
         sessionStorage.setItem('ingame', value);
     },
     get endPlayers() {
-        return sessionStorage.getItem('endPlayers');
+        return JSON.parse(sessionStorage.getItem('endPlayers'));
     },
     set endPlayers(value) {
         if (value === undefined) {
             sessionStorage.removeItem('endPlayers');
         }
-        sessionStorage.setItem('endPlayers', value);
+        sessionStorage.setItem('endPlayers', JSON.stringify(value));
     },
     get pointLimit() {
         return sessionStorage.getItem('pointLimit');

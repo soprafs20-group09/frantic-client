@@ -82,20 +82,21 @@ class EndView extends Component {
     getActions() {
         if (this.props.mode === 'round') {
             return [
-                <p className="end-actions-text">next round in</p>,
-                <TurnTimer start seconds={30}/>
+                <p className="end-actions-text" key="d">next round in</p>,
+                <TurnTimer key="t" start seconds={30}/>
             ];
         } else {
             return [
                 <Button
+                    key="leave"
                     width="10em"
                     type="secondary"
                     onClick={() => this.props.history.push('/')}
                 >
                     leave
                 </Button>,
-                <div style={{width: "2em"}} onClick={() => this.handleRematch()}/>,
-                <Button width="10em">Rematch</Button>
+                <div style={{width: "2em"}} key="spacer" onClick={() => this.handleRematch()}/>,
+                <Button key="rematch" width="10em">Rematch</Button>
             ]
         }
     }
