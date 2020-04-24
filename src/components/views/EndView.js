@@ -62,7 +62,7 @@ class EndView extends Component {
                     </div>
                     <div className="end-column rest">
                         <div className="chat">
-                            <ChatWindow>
+                            <ChatWindow onSend={msg => this.handleChatSend(msg)}>
                                 {this.state.chatItems}
                             </ChatWindow>
                         </div>
@@ -98,6 +98,15 @@ class EndView extends Component {
                 <div style={{width: "2em"}} key="spacer" onClick={() => this.handleRematch()}/>,
                 <Button key="rematch" width="10em">Rematch</Button>
             ]
+        }
+    }
+
+    handleChatSend(msg) {
+        try {
+            if (sockClient.isConnected()) {
+                sockClient.sendToLobby('/chat', {message: msg});
+            }
+        } catch {
         }
     }
 
