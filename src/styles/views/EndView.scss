@@ -1,0 +1,57 @@
+@import 'theme';
+
+.end-container {
+  max-height: 41.2em;
+  @include fillCenter;
+}
+
+.end-column {
+  &.timer {
+    margin-right: 5%;
+    width: 12em;
+    align-self: flex-end;
+
+    & .text {
+      margin: 0 0 0.5em;
+      font-size: 1.5em;
+      font-weight: 500;
+      color: $terracotta;
+      text-transform: lowercase;
+      text-shadow: $dropShadow;
+    }
+  }
+
+  &.rest {
+    align-self: stretch;
+    margin-left: 5%;
+    display: flex;
+    flex-direction: column;
+    width: 14.5em;
+
+    & .chat {
+      flex-grow: 1;
+    }
+  }
+
+  & .rest-spacer {
+    margin: 0.5em;
+  }
+}
+
+.end-timer {
+  position: relative;
+  width: 14.5em;
+  margin-bottom: 1em;
+  @include center;
+  flex-direction: column;
+  padding: 0.5em 0;
+
+  &.text {
+    margin: 0 1em 0 0;
+    font-size: 1.5em;
+    font-weight: 500;
+    color: $terracotta;
+    text-transform: lowercase;
+    text-shadow: $dropShadow;
+  }
+}

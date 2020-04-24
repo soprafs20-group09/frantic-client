@@ -2,13 +2,14 @@
 
 .turn-timer-container {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   text-shadow: $dropShadow;
 }
 
 $timerSize: 2em;
 
 .turn-timer {
+  flex-shrink: 0;
   height: $timerSize;
   width: $timerSize;
   display: block;
@@ -19,10 +20,12 @@ $timerSize: 2em;
 }
 
 .turn-timer-spinner {
+  flex-shrink: 0;
   fill: $terracotta;
 }
 
 .turn-timer-seconds {
+  flex-shrink: 0;
   color: $terracotta;
   margin: 0 0 0 0.5em;
   font-size: 1.5em;
