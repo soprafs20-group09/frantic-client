@@ -105,6 +105,8 @@ class GameView extends Component {
         sockClient.onLobbyMessage('/event', e => this.handleEvent(e));
         sockClient.onLobbyMessage('/attack-window', r => this.handleAttackOpportunity(r));
         sockClient.onLobbyMessage('/nice-try-window', r => this.handleAttackOpportunity(r));
+        sockClient.onLobbyMessage('/end-round', r => this.handleRoundEnd(r));
+        sockClient.onLobbyMessage('/end-game', r => this.handleEndGame(r));
     }
 
     componentWillUnmount() {
@@ -440,6 +442,20 @@ class GameView extends Component {
             turnTime: r.time,
             turnKey: 'attack'
         });
+    }
+
+    handleRoundEnd(r) {
+        sessionManager.inGame = false;
+        sessionManager.endPlayers = r.players;
+        sessionManager.pointLimit = r.pointLimit;
+        this.props.history.push('/end/round');
+    }
+
+    handleEndGame(r) {
+        sessionManager.inGame = false;
+        sessionManager.endPlayers = r.players;
+        sessionManager.pointLimit = r.pointLimit;
+        this.props.history.push('/end/game');
     }
 
     handleDisconnect(reason) {

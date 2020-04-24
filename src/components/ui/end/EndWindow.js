@@ -7,9 +7,10 @@ import Separator from "components/ui/Separator";
 /**
  * This window shows essential end of round or game information.
  * PROPS:
- * mode: string     - 'round' or 'game'.
- * players: array   - list of players to show in the scoreboard
- * children: JSX    - actions to show below the scoreboard.
+ * mode: string       - 'round' or 'game'.
+ * players: array     - list of players to show in the scoreboard
+ * pointLimit: number - a point limit to display in the scoreboard.
+ * children: JSX      - actions to show below the scoreboard.
  */
 class EndWindow extends Component {
     render() {
@@ -20,7 +21,11 @@ class EndWindow extends Component {
                 </p>
                 <Separator/>
                 <div className="end-scoreboard-container">
-                    <Scoreboard players={this.props.players} showWinners={this.props.mode === 'game'} pointLimit={113}/>
+                    <Scoreboard
+                        players={this.props.players}
+                        showWinners={this.props.mode === 'game'}
+                        pointLimit={this.props.pointLimit}
+                    />
                 </div>
                 <div className="end-actions-container">
                     {this.props.children}

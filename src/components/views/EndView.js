@@ -56,7 +56,7 @@ class EndView extends Component {
             content =
                 <div className="end-container" key="end-container">
                     <div className="end-column">
-                        <EndWindow mode={this.props.mode} players={this.state.players}>
+                        <EndWindow mode={this.props.mode} players={this.state.players} pointLimit={sessionManager.pointLimit}>
                             {this.getActions()}
                         </EndWindow>
                     </div>

@@ -39,6 +39,15 @@ export default {
         }
         sessionStorage.setItem('endPlayers', value);
     },
+    get pointLimit() {
+        return sessionStorage.getItem('pointLimit');
+    },
+    set pointLimit(value) {
+        if (value === undefined) {
+            sessionStorage.removeItem('pointLimit');
+        }
+        sessionStorage.setItem('pointLimit', value);
+    },
 
     reset() {
         sessionStorage.clear();
