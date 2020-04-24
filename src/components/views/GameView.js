@@ -23,6 +23,7 @@ import GenericColorPicker from "components/ui/pickers/GenericColorPicker";
 import IconTitle from "components/ui/IconTitle";
 import EventOverlay from "components/ui/ingame/EventOverlay";
 import TextOverlay from "components/ui/ingame/TextOverlay";
+import {withRouter} from "react-router-dom";
 
 class GameView extends Component {
     constructor(props) {
@@ -106,7 +107,7 @@ class GameView extends Component {
         sockClient.onLobbyMessage('/attack-window', r => this.handleAttackOpportunity(r));
         sockClient.onLobbyMessage('/nice-try-window', r => this.handleAttackOpportunity(r));
         sockClient.onLobbyMessage('/end-round', r => this.handleRoundEnd(r));
-        sockClient.onLobbyMessage('/end-game', r => this.handleEndGame(r));
+        sockClient.onLobbyMessage('/end-game', r => this.handleGameEnd(r));
     }
 
     componentWillUnmount() {
@@ -451,7 +452,7 @@ class GameView extends Component {
         this.props.history.push('/end/round');
     }
 
-    handleEndGame(r) {
+    handleGameEnd(r) {
         sessionManager.inGame = false;
         sessionManager.endPlayers = r.players;
         sessionManager.pointLimit = r.pointLimit;
@@ -537,4 +538,4 @@ class GameView extends Component {
     // endregion
 }
 
-export default GameView;
+export default withRouter(GameView);
