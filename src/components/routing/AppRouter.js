@@ -8,7 +8,7 @@ import CardDisplay from "components/views/CardDisplay";
 import HelpView from "components/views/HelpView";
 import JoinLobbyView from "components/views/JoinLobbyView";
 import GameView from "components/views/GameView";
-import EndRoundView from "components/views/EndRoundView";
+import EndView from "components/views/EndView";
 import LobbyGuard from "components/routing/guards/LobbyGuard";
 import AnimationView from "components/views/AnimationView";
 
@@ -46,7 +46,10 @@ class AppRouter extends React.Component {
                         <CardDisplay/>
                     </Route>
                     <Route exact path="/end/round">
-                        <EndRoundView/>
+                        <EndView mode="round"/>
+                    </Route>
+                    <Route exact path="/end/game">
+                        <EndView mode="game"/>
                     </Route>
                     <Route exact path="/animations/:event">
                         <AnimationView/>

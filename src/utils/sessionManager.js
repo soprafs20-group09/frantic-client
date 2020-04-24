@@ -30,6 +30,15 @@ export default {
         }
         sessionStorage.setItem('ingame', value);
     },
+    get endPlayers() {
+        return sessionStorage.getItem('endPlayers');
+    },
+    set endPlayers(value) {
+        if (value === undefined) {
+            sessionStorage.removeItem('endPlayers');
+        }
+        sessionStorage.setItem('endPlayers', value);
+    },
 
     reset() {
         sessionStorage.clear();

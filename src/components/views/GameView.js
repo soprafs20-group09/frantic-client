@@ -28,7 +28,7 @@ class GameView extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            loading: false,
+            loading: true,
             playerCards: [],
             availableCards: [],
             discardPileTopCard: undefined,
@@ -46,6 +46,7 @@ class GameView extends Component {
 
     componentDidMount() {
         this.setState({
+            loading: false,
             playerCards: franticUtils.generateRandomCards(7, true),
             opponents: [
                 {
