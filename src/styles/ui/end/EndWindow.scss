@@ -1,0 +1,33 @@
+@import 'theme';
+
+.end-p {
+  margin: 0 0 0.5em;
+}
+
+.end-scoreboard-container {
+  height: 23em;
+  overflow: auto;
+  @include scrollbar;
+}
+
+.end-actions-text {
+  font-size: 1.5em;
+  font-weight: 500;
+  color: $terracotta;
+  text-transform: lowercase;
+  margin: 0 0.5em 0 0;
+}
+
+.end-actions-container {
+  margin-top: 1.5em;
+  @include center;
+
+  & > .turn-timer-container {
+    text-shadow: none;
+    width: 6em;
+  }
+
+  & > .turn-timer-container > .turn-timer {
+    filter: none;
+  }
+}
