@@ -187,6 +187,11 @@ $buttonHeight: 1.75em;
   &:last-of-type {
     margin-right: 0;
   }
+
+  // there is no title if line is second child
+  &:nth-child(2) {
+    margin-left: -0.5em;
+  }
 }
 
 // SingleSelect

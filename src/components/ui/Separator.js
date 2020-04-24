@@ -13,7 +13,7 @@ class Separator extends Component {
             <div className="step-container">
                 {(this.props.step !== null) && <div className="step-number">{this.props.step}</div>}
                 <span className="step-separator"/>
-                <h3 className="step-title">{this.props.children}</h3>
+                {this.props.children && <h3 className="step-title">{this.props.children}</h3>}
                 <span className="step-separator"/>
             </div>
         );
