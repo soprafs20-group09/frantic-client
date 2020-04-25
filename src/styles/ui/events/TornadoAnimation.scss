@@ -2,4 +2,175 @@
 @import 'ui/cards/colors';
 
 .tornado-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: column;
+
+  & .whirl {
+    width: 15em;
+    height: 2em;
+    border-radius: 1em;
+    //background-color: $terracotta;
+    background: linear-gradient(
+                    90deg,
+                    $terracotta,
+                    $terracotta,
+                    lighten($terracotta, 5),
+                    $terracotta,
+                    $terracotta
+    );
+    background-size: 400%;
+    animation-name: tornado-whirl;
+    animation-duration: 2.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    animation-delay: -3s;
+
+    &:nth-child(1) {
+      animation-delay: -0.5;
+    }
+
+    &:nth-child(2) {
+      width: 12em;
+      animation-delay: -1s;
+    }
+
+    &:nth-child(3) {
+      width: 9em;
+      animation-delay: -1.5s;
+    }
+
+    &:nth-child(4) {
+      width: 7em;
+      animation-delay: -2s;
+    }
+
+    &:nth-child(5) {
+      width: 4em;
+      animation-delay: -2.5s;
+    }
+  }
+
+  & .ground {
+    height: 0.1em;
+    width: 13em;
+    background-color: $terracotta;
+  }
+
+  & .rubble-container {
+    display: block;
+    position: absolute;
+    animation-duration: 3s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+
+    &.top {
+      top: 0;
+      animation-name: tornado-rubble-fly-top;
+    }
+
+    &.mid {
+      top: 3.5em;
+      animation-delay: -1s;
+      animation-name: tornado-rubble-fly-mid;
+    }
+
+    &.bot {
+      top: 7em;
+      animation-delay: -2s;
+      animation-name: tornado-rubble-fly-bot;
+    }
+  }
+
+  & .rubble {
+    display: block;
+    width: 0.5em;
+    height: 0.7em;
+    background-color: white;
+    animation: tornado-rubble-rotate 3s linear infinite;
+  }
+}
+
+$tornadoShift: 0.5em;
+@keyframes tornado-whirl {
+  0% {
+    transform: translateX(-$tornadoShift);
+    background-position: 0% 50%;
+  }
+  50% {
+    transform: translateX($tornadoShift);
+    background-position: 50% 50%;
+  }
+  100% {
+    transform: translateX(-$tornadoShift);
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes tornado-rubble-rotate {
+  0% {
+    transform: rotate(0) rotateX(0);
+  }
+  50% {
+    transform: rotate(1turn) rotateX(1turn) rotateY(0.5turn);
+  }
+  100% {
+    transform: rotate(2turn);
+  }
+}
+
+@keyframes tornado-rubble-fly-top {
+  0% {
+    transform: translateX(-10em);
+    z-index: 1;
+  }
+  50% {
+    transform: translateX(10em);
+    z-index: 1;
+  }
+  70% {
+    z-index: -1;
+  }
+  100% {
+    transform: translateX(-10em);
+    z-index: -1;
+  }
+}
+
+@keyframes tornado-rubble-fly-mid {
+  0% {
+    transform: translateX(-8em);
+    z-index: 1;
+  }
+  50% {
+    transform: translateX(8em);
+    z-index: 1;
+  }
+  60% {
+    z-index: -1;
+  }
+  100% {
+    transform: translateX(-8em);
+    z-index: -1;
+  }
+}
+
+@keyframes tornado-rubble-fly-bot {
+  0% {
+    transform: translateX(-5em);
+    z-index: 1;
+  }
+  50% {
+    transform: translateX(5em);
+    z-index: 1;
+  }
+  60% {
+    z-index: -1;
+  }
+  100% {
+    transform: translateX(-5em);
+    z-index: -1;
+  }
 }
