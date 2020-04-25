@@ -3,6 +3,7 @@ import ChatItem from "components/ui/chat/ChatItem";
 import {getPlayerAvatar} from "utils/api";
 import DoomsdayAnimation from "components/ui/events/DoomsdayAnimation";
 import TornadoAnimation from "components/ui/events/TornadoAnimation";
+import FridayThe13ThAnimation from "components/ui/events/FridayThe13thAnimation";
 
 function parseChatObject(msg) {
     let newItem;
@@ -77,6 +78,9 @@ function getEventAnimation(event) {
 
         case 'tornado':
             return <TornadoAnimation/>;
+
+        case 'friday-the-13th':
+            return <FridayThe13ThAnimation/>;
 
         default:
             return false;
