@@ -7,12 +7,13 @@
   align-items: center;
   justify-content: flex-end;
   flex-direction: column;
+  height: 10.2em;
 
   & .whirl {
     width: 15em;
-    height: 2em;
+    height: 0;
+    opacity: 0;
     border-radius: 1em;
-    //background-color: $terracotta;
     background: linear-gradient(
                     90deg,
                     $terracotta,
@@ -22,34 +23,35 @@
                     $terracotta
     );
     background-size: 400%;
-    animation-name: tornado-whirl;
-    animation-duration: 2.5s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out;
-    animation-delay: -3s;
+    animation-name: tornado-whirl, tornado-whirl-fadein;
+    animation-duration: 2.5s, 0.5s;
+    animation-iteration-count: infinite, 1;
+    animation-timing-function: ease-in-out, ease;
+    animation-delay: -3s, 0s;
+    animation-fill-mode: forwards;
+    $animationDelay: 0.45s;
+    $fadeDelay: 0.25s;
 
-    &:nth-child(1) {
-      animation-delay: -0.5;
+    @for $i from 1 through 5 {
+      &:nth-child(#{$i}) {
+        animation-delay: -($animationDelay * $i), ($fadeDelay * 5) - ($fadeDelay * $i);
+      }
     }
 
     &:nth-child(2) {
       width: 12em;
-      animation-delay: -1s;
     }
 
     &:nth-child(3) {
       width: 9em;
-      animation-delay: -1.5s;
     }
 
     &:nth-child(4) {
-      width: 7em;
-      animation-delay: -2s;
+      width: 6em;
     }
 
     &:nth-child(5) {
       width: 4em;
-      animation-delay: -2.5s;
     }
   }
 
@@ -62,25 +64,28 @@
   & .rubble-container {
     display: block;
     position: absolute;
-    animation-duration: 3s;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: infinite;
+    animation-duration: 3s, 1s;
+    animation-timing-function: ease-in-out, ease;
+    animation-iteration-count: infinite, 1;
+    animation-fill-mode: forwards;
+    opacity: 0;
 
     &.top {
       top: 0;
-      animation-name: tornado-rubble-fly-top;
+      animation-name: tornado-rubble-fly-top, tornado-rubble-fadein;
+      animation-delay: 1.5s, 2s;
     }
 
     &.mid {
       top: 3.5em;
-      animation-delay: -1s;
-      animation-name: tornado-rubble-fly-mid;
+      animation-delay: 0.75s, 1.25s;
+      animation-name: tornado-rubble-fly-mid, tornado-rubble-fadein;
     }
 
     &.bot {
       top: 7em;
-      animation-delay: -2s;
-      animation-name: tornado-rubble-fly-bot;
+      animation-delay: 0s, 0.5s;
+      animation-name: tornado-rubble-fly-bot, tornado-rubble-fadein;
     }
   }
 
@@ -93,11 +98,22 @@
   }
 }
 
+@keyframes tornado-whirl-fadein {
+  0% {
+    height: 0;
+    opacity: 0;
+  }
+  100% {
+    height: 2em;
+    opacity: 1;
+  }
+}
+
 $tornadoShift: 0.5em;
 @keyframes tornado-whirl {
   0% {
     transform: translateX(-$tornadoShift);
-    background-position: 0% 50%;
+    background-position: 0 50%;
   }
   50% {
     transform: translateX($tornadoShift);
@@ -172,5 +188,14 @@ $tornadoShift: 0.5em;
   100% {
     transform: translateX(-5em);
     z-index: -1;
+  }
+}
+
+@keyframes tornado-rubble-fadein {
+  0% {
+    opacity: 0
+  }
+  100% {
+    opacity: 1;
   }
 }
