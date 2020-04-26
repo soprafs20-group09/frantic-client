@@ -195,7 +195,7 @@ class GameView extends Component {
                 >
                     {this.state.event.message}
                 </EventOverlay>;
-            this.resetOverlayIn(10);
+            this.resetOverlayIn(11);
         } else if (this.state.overlay) {
             overlay =
                 <TextOverlay
