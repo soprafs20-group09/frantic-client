@@ -20,6 +20,20 @@
   width: 100%;
   height: 200%;
   @include center;
+  animation-name: overlay-fade;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  animation-play-state: paused;
+
+  &.out {
+    animation-play-state: running;
+    animation-direction: normal;
+    animation-delay: 5s;
+  }
+  &.in {
+    animation-play-state: running;
+    animation-direction: reverse;
+  }
 }
 
 .overlay-message {
@@ -52,4 +66,13 @@
   width: $fontSizeHeader;
   fill: $terracotta;
   margin-right: 1em;
+}
+
+@keyframes overlay-fade {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
