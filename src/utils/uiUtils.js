@@ -4,6 +4,7 @@ import {getPlayerAvatar} from "utils/api";
 import DoomsdayAnimation from "components/ui/events/DoomsdayAnimation";
 import TornadoAnimation from "components/ui/events/TornadoAnimation";
 import FridayThe13ThAnimation from "components/ui/events/FridayThe13thAnimation";
+import FinishLineAnimation from "components/ui/events/FinishLineAnimation";
 
 function parseChatObject(msg) {
     let newItem;
@@ -82,8 +83,11 @@ function getEventAnimation(event) {
         case 'friday-the-13th':
             return <FridayThe13ThAnimation/>;
 
+        case 'finish-line':
+            return <FinishLineAnimation/>;
+
         default:
-            return false;
+            return 'coming soon™';
     }
 }
 

@@ -1,0 +1,161 @@
+@import 'theme';
+
+.finishline-container {
+  position: relative;
+  @include fillCenter;
+  transform: rotate(-10deg);
+
+  & .finish-line {
+    position: absolute;
+    right: 5em;
+    width: 1.5em;
+    height: 12em;
+    border: 0.1em solid $terracotta;
+    background-size: 1em 1em;
+    background-position: 0 0, 0.5em 0.5em;
+    background-image: linear-gradient(45deg, $terracotta 25%, transparent 25%, transparent 75%, $terracotta 75%, $terracotta),
+    linear-gradient(45deg, $terracotta 25%, transparent 25%, transparent 75%, $terracotta 75%, $terracotta);
+  }
+
+  & .fl-runners-container {
+    position: relative;
+    margin-left: -10em;
+    width: 70em;
+    height: 16em;
+    @include center;
+  }
+
+  & .running-man {
+    position: absolute;
+    left: 0;
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    background-color: $terracotta;
+    overflow: visible;
+    animation: finishline-run-1 2s linear forwards,
+    finishline-run-end 2s ease-out forwards;
+    animation-delay: 0s, 2s;
+
+    &:nth-of-type(1) {
+      top: 3em;
+      left: 1em;
+    }
+
+    &:nth-of-type(2) {
+      left: 5em;
+    }
+
+    &:nth-of-type(3) {
+      bottom: 3em;
+      left: -1em;
+    }
+
+    @mixin foot {
+      position: absolute;
+      display: block;
+      content: '';
+      width: 1em;
+      height: 1em;
+      border-radius: 50%;
+      background-color: $terracotta;
+      animation-name: finishline-move-feet, finishline-move-feet;
+      animation-duration: 0.5s, 1s;
+      animation-iteration-count: 4, 2;
+      animation-timing-function: ease-in-out;
+    }
+
+    &::before {
+      @include foot;
+      animation-delay: -0.25s, 1.75s;
+      top: -0.1em;
+    }
+
+    &::after {
+      @include foot;
+      animation-delay: -0s, 2s;
+      bottom: -0.1em;
+    }
+
+    & .feet {
+      position: relative;
+      height: 100%;
+      width: 100%;
+      z-index: -1;
+    }
+  }
+
+  & .finish-flag {
+    width: 5em;
+    height: 5em;
+    margin-bottom: 5em;
+    fill: $terracotta;
+    opacity: 0;
+    transform: scale(-1, 1);
+    transform-origin: 100% 100%;
+    animation: finishline-flag-wave-2 1.5s 2s 1 forwards,
+    finishline-show-flag 1s 1.8s forwards;
+  }
+}
+
+@keyframes finishline-run-1 {
+  0% {
+    transform: translateX(0em);
+  }
+  100% {
+    transform: translateX(58em);
+  }
+}
+
+@keyframes finishline-run-end {
+  0% {
+    transform: translateX(58em);
+  }
+  100% {
+    transform: translateX(60em);
+  }
+}
+
+@keyframes finishline-move-feet {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(1em);
+  }
+}
+
+@keyframes finishline-show-flag {
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes finishline-show-flags {
+  0% {
+    opacity: 0;
+    background-color: white;
+  }
+  100% {
+    background-color: transparent;
+    opacity: 1;
+  }
+}
+
+@keyframes finishline-flag-wave {
+  0% {
+    transform: none;
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes finishline-flag-wave-2 {
+  0% {
+    transform: scale(-1, 1);
+  }
+  100% {
+    transform: scale(-1, 1) rotate(360deg);
+  }
+}
