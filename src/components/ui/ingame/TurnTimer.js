@@ -1,12 +1,15 @@
 import React, {Component} from 'react';
 import "styles/ui/ingame/TurnTimer.scss";
+import Icon from "components/ui/Icon";
 
 /**
  * Shows a ticking timer
  * PROPS:
- * start: bool     - timer will start on mount if true.
- * seconds: number - how much time should be on the timer.
- * turn: any       - a turn number or key that causes the timer to reste on change
+ * start: bool                  - timer will start on mount if true.
+ * seconds: number              - how much time should be on the timer.
+ * turn: any                    - a turn number or key that causes the timer to reste on change
+ * timebomb: number            - if set, a timebomb icon will be displayed below the timer
+ *                                with a corresponding number next to it.
  */
 class TurnTimer extends Component {
     constructor(props) {
@@ -35,10 +38,13 @@ class TurnTimer extends Component {
     render() {
         return (
             <div className="turn-timer-container">
-                <svg className="turn-timer" viewBox="0 0 250 250">
-                    {this.getCurrentFrame()}
-                </svg>
-                <p className="turn-timer-seconds">{this.state.remainingSeconds}s</p>
+                <div className="turn-timer-inner">
+                    <svg className="turn-timer" viewBox="0 0 250 250">
+                        {this.getCurrentFrame()}
+                    </svg>
+                    <p className="turn-timer-seconds">{this.state.remainingSeconds}s</p>
+                </div>
+                {this.getTimeBombPart()}
             </div>
         );
     }
@@ -99,6 +105,17 @@ class TurnTimer extends Component {
                 transform="translate(125, 125)"
             />
         );
+    }
+
+    getTimeBombPart() {
+        if (this.props.timebomb) {
+            return (
+                <div className="turn-timer-inner bomb">
+                    <Icon from="event" className="turn-timer-bomb">time-bomb</Icon>
+                    <p className="turn-timer-seconds bomb">{this.props.timebomb}</p>
+                </div>
+            );
+        } else return false;
     }
 }
 

@@ -2,8 +2,20 @@
 
 .turn-timer-container {
   display: flex;
+  flex-direction: column-reverse;
+}
+
+.turn-timer-inner {
+  display: flex;
   justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
   text-shadow: $dropShadow;
+  margin-top: 0.5em;
+
+  &.bomb {
+    animation: timer-bomb-transition 0.5s;
+  }
 }
 
 $timerSize: 2em;
@@ -16,7 +28,6 @@ $timerSize: 2em;
   position: relative;
   border-radius: 50%;
   filter: drop-shadow($dropShadow);
-  //transform: scaleX(-1);
 }
 
 .turn-timer-spinner {
@@ -29,6 +40,32 @@ $timerSize: 2em;
   color: $terracotta;
   margin: 0 0 0 0.5em;
   font-size: 1.5em;
-  line-height: 1.5em;
+  line-height: 1em;
+  height: 1em;
   font-weight: 500;
+
+  &.bomb {
+    margin-top: 0.8em;
+  }
+}
+
+.turn-timer-bomb {
+  width: 3em;
+  height: 3em;
+  fill: $terracotta;
+  filter: drop-shadow($dropShadow);
+  margin-left: -0.25em;
+  margin-right: -0.6em;
+  margin-bottom: 0;
+}
+
+@keyframes timer-bomb-transition {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0%);
+  }
 }
