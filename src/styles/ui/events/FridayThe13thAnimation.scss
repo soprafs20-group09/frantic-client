@@ -11,6 +11,7 @@
     position: relative;
     width: 13em;
     height: 7.5em;
+    margin-top: 0.3em;
     background: $terracotta;
   }
 
@@ -28,7 +29,7 @@
     background: $terracotta;
     position: absolute;
     right: 4.5em;
-    top: -1.5em;
+    top: -1.8em;
 
   }
 
@@ -37,6 +38,7 @@
     height: 3.2em;
     background: $blueBlack;
     position: absolute;
+    animation: tv-flickering 1.8s infinite;
 
     &::before {
       content: '';
@@ -65,16 +67,78 @@
 
   }
 
-  .freddy-mask {
+  & .killer {
     position: absolute;
-    fill: $terracotta;
-    width: 14%;
-    height: auto;
-    transform: rotate(-25deg);
-    left: -2em;
-    bottom: 1.5em;
+
+    & .killer-mask {
+
+      fill: $green;
+      width: 140%;
+      height: auto;
+      left: 3em;
+      bottom: 5em;
+      animation: freddy-peeking 2.5s forwards;
+      animation-delay: 1s;
+    }
+
+    & .killer-body {
+      position: absolute;
+      border: 0.19em solid $green;
+      border-radius: 1em 1em 0 0;
+      height: 1.5em;
+      width: 2.5em;
+      bottom: 0.2em;
+      animation: move-body 2.5s forwards;
+      animation-delay: 1s;
+    }
+
+    & .cleaver {}
+
+
   }
 
+
+
+}
+
+@keyframes freddy-peeking {
+  100% {
+    //left: -1.5em;
+    //bottom: 2.5em;
+    transform:  translate(-1.75em, -1.8em) rotate(-27deg);
+  }
+}
+
+@keyframes move-body {
+  100% {
+    transform: rotate(-27deg) translate(-0.7em, -0.7em);
+  }
+}
+
+@keyframes tv-flickering {
+  10% {
+    background:  lighten($black, 30%);
+  }
+  15% {
+    background: $black;
+  }
+  25% {
+    background: lighten($black, 40%);
+  }
+  40% {
+    background: $black;
+  }
+  55% {
+    background: lighten($black, 30%);
+  }
+  65% {
+    background: $black;
+  }
+  80% {
+    background: lighten($black, 40%);
+  }
+  100% {background: $black;
+  }
 
 }
 
