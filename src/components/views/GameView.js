@@ -106,6 +106,7 @@ class GameView extends Component {
         sockClient.onLobbyMessage('/event', e => this.handleEvent(e));
         sockClient.onLobbyMessage('/attack-window', r => this.handleAttackOpportunity(r));
         sockClient.onLobbyMessage('/nice-try-window', r => this.handleAttackOpportunity(r));
+        sockClient.onLobbyMessage('/overlay', o => this.handleOverlay(o));
         sockClient.onLobbyMessage('/end-round', r => this.handleRoundEnd(r));
         sockClient.onLobbyMessage('/end-game', r => this.handleGameEnd(r));
     }
@@ -442,6 +443,12 @@ class GameView extends Component {
             availableCards: r.playable,
             turnTime: r.time,
             turnKey: 'attack'
+        });
+    }
+
+    handleOverlay(o) {
+        this.setState({
+            overlay: o
         });
     }
 
