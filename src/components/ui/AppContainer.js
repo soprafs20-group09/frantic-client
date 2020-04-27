@@ -5,6 +5,8 @@ import MainMenuItem from "components/ui/MainMenuItem";
 import 'styles/ui/AppContainer.scss'
 import HelpWindow from "components/ui/help/HelpWindow";
 import {WindowTransition} from "components/ui/Transitions";
+import Icon from "./Icon";
+import SettingsWindow from "./SettingsWindow";
 
 /**
  * This is a container that holds most app contents,
@@ -13,12 +15,13 @@ import {WindowTransition} from "components/ui/Transitions";
  * PROPS:
  * withHelp: bool               - whether to show the help button
  * withBack: bool               - whether to show the back button
+ * withSettings: bool           - whether to show the settings button
  * backRoute: (optional) string - where the back button should point to, default: ".."
  */
 class AppContainer extends Component {
     constructor(props) {
         super(props);
-        this.state = {showHelp: false};
+        this.state = {overlay: false};
     }
 
     render() {
@@ -28,33 +31,62 @@ class AppContainer extends Component {
                     ◀ Back to Menu
                 </MainMenuItem>
             </div>;
-        const helpButton =
-            <div className="help-button">
-                <MainMenuItem onClick={() => this.toggleHelp()}>?</MainMenuItem>
-            </div>;
-        const helpPage =
-            <HelpWindow
-                withClose
-                withNewTab
-                onClose={() => this.toggleHelp()}
-            />;
-
+        const helpButton = <MainMenuItem onClick={() => this.toggleHelp()}>?</MainMenuItem>;
+        const settingsButton =
+            <MainMenuItem onClick={() => this.toggleSettings()}>
+                <Icon className="settings-button" from="misc">gear</Icon>
+            </MainMenuItem>;
         return (
             <div className="app-container">
-                <div className={`app-container ${this.state.showHelp && 'blur'}`}>
+                <div className={`app-container ${this.state.overlay && 'blur'}`}>
                     {this.props.children}
+                    <div className="ac-top-right-buttons">
+                        {this.props.withHelp && helpButton}
+                        {this.props.withSettings && settingsButton}
+                    </div>
                     {this.props.withBack && backButton}
-                    {this.props.withHelp && helpButton}
                 </div>
                 <WindowTransition trail={0}>
-                    {this.state.showHelp && helpPage}
+                    {this.getOverlay()}
                 </WindowTransition>
             </div>
         );
     }
 
+    getOverlay() {
+        switch (this.state.overlay) {
+            case 'help':
+                return <HelpWindow
+                    withClose
+                    withNewTab
+                    onClose={() => this.toggleHelp()}
+                    key="help"
+                />;
+
+            case 'settings':
+                return <SettingsWindow key="settings"/>;
+
+            default:
+                return false;
+        }
+    }
+
+    toggleSettings() {
+        if (this.state.overlay === 'settings') {
+            this.setState({overlay: false});
+        }
+        else {
+            this.setState({overlay: 'settings'});
+        }
+    }
+
     toggleHelp() {
-        this.setState({showHelp: !this.state.showHelp});
+        if (this.state.overlay === 'help') {
+            this.setState({overlay: false});
+        }
+        else {
+            this.setState({overlay: 'help'})
+        }
     }
 }
 

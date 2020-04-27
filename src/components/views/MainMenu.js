@@ -55,7 +55,7 @@ class MadeWithLabel extends React.Component {
 class MainMenu extends React.Component {
     render() {
         return (
-            <AppContainer withHelp>
+            <AppContainer withHelp withSettings>
                 <div className="mainmenu-container">
                     <MainMenuLogoTransition containerClass="mainmenu-logo-shadow-container">
                         <InlineSVG src={Logo} className="mainmenu-logo"/>

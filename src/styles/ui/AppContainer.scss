@@ -16,6 +16,16 @@
   pointer-events: none;
 }
 
+.ac-top-right-buttons {
+  position: absolute;
+  top: 0.5em;
+  right: 1.5em;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  align-items: center;
+}
+
 .back-button {
   position: absolute;
   top: 0.5em;
@@ -26,4 +36,12 @@
   position: absolute;
   top: 0.5em;
   right: 1.5em;
+}
+
+.settings-button {
+  fill: $terracotta;
+  height: $fontSizeDefault * 1.25;
+  width: $fontSizeDefault * 1.25;
+  margin-right: 0.5em;
+  margin-bottom: 0.05em;
 }

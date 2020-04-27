@@ -64,6 +64,10 @@ function resolveIconString(iconStr) {
             icon = require("assets/frantic/special-cards/" + iconValue + ".svg");
             break;
 
+        case 'misc':
+            icon = require("assets/icons/" + iconValue + ".svg");
+            break;
+
         default:
             icon = null;
             break;
