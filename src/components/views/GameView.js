@@ -439,10 +439,15 @@ class GameView extends Component {
     }
 
     handleAttackOpportunity(r) {
+        let newKey = this.state.turnKey;
+        if (isNaN(newKey)) {
+            newKey = 1;
+        }
+        newKey++;
         this.setState({
             availableCards: r.playable,
             turnTime: r.time,
-            turnKey: 'attack'
+            turnKey: newKey
         });
     }
 
