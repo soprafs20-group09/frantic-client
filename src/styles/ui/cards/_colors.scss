@@ -3,6 +3,7 @@ $yellow: #ffcd2a;
 $green: #78b917;
 $blue: #0861a9;
 $black: #282c34;
+$white: invert($black);
 
 .red {
   background-color: $red;
@@ -25,7 +26,12 @@ $black: #282c34;
 }
 
 .white {
-  background-color: white;
+  color: $black;
+  background-color: $white;
+}
+
+.special {
+  background-color: rgba($black, 0.9);
 }
 
 .multicolor-old {

@@ -21,14 +21,38 @@
   &.red > .ribbon {
     color: $red;
   }
+
   &.yellow > .ribbon {
     color: $yellow;
   }
+
   &.green > .ribbon {
     color: $green;
   }
+
   &.blue > .ribbon {
     color: $blue;
+  }
+
+  &.multicolor > .ribbon {
+    color: $black;
+  }
+
+  &.white > .ribbon {
+    color: $white;
+    background-color: $black;
+
+    & > .ribbon-inner {
+      font-weight: 300;
+
+      &:before {
+        border-bottom: .5em solid darken($black, 30);
+      }
+
+      &:after {
+        border-top: .5em solid darken($black, 30);
+      }
+    }
   }
 }
 
@@ -61,6 +85,7 @@ $borderMargin: 0.5em;
   line-height: 1em;
   margin: 0;
   z-index: 0;
+  fill: currentColor;
 
   &.center {
     font-size: 1.2em;
@@ -115,7 +140,7 @@ $ribbonColor: white;
   white-space: nowrap;
   text-align: center;
   margin: 1.5em 0;
-  color: $black;
+  background-color: white;
 
   &:nth-child(3) {
     transform: rotate(180deg);
@@ -129,7 +154,9 @@ $ribbonColor: white;
     bottom: -.5em;
     width: 1em;
     height: 100%;
-    background-color: darken($ribbonColor, 10);
+    background-color: inherit;
+    filter: brightness(90%);
+    //background-color: darken($ribbonColor, 10);
     pointer-events: none;
   }
 
@@ -152,7 +179,7 @@ $ribbonColor: white;
     text-decoration: none;
     text-transform: lowercase;
     color: currentColor;
-    background-color: $ribbonColor;
+    background-color: inherit;
 
     &:after,
     &:before {

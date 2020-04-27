@@ -108,7 +108,7 @@ class Card extends Component {
                         </span>
                     </div>;
                 if (this.props.value === 'fuck-you') {
-                    color = 'black';
+                    color = 'white';
                 }
                 break;
 
@@ -152,7 +152,7 @@ class Card extends Component {
         }
 
         if (color === 'multicolor') {
-            innerColor = 'black';
+            innerColor = 'special';
         }
 
         return (
