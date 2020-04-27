@@ -11,7 +11,11 @@ class FridayThe13ThAnimation extends Component {
                 <div className="house">
                     <div className="window"/>
                     <div className="window"/>
-                    <Icon className="freddy-mask" from="event">friday-the-13th</Icon>
+                    <div className="killer">
+                        <Icon className="killer-mask" from="event">friday-the-13th</Icon>
+                    </div>
+
+
                 </div>
 
             </div>
