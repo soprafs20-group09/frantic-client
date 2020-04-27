@@ -56,7 +56,8 @@ class EndView extends Component {
             content =
                 <div className="end-container" key="end-container">
                     <div className="end-column">
-                        <EndWindow mode={this.props.mode} players={this.state.players} pointLimit={sessionManager.pointLimit}>
+                        <EndWindow mode={this.props.mode} players={this.state.players}
+                                   pointLimit={sessionManager.pointLimit}>
                             {this.getActions()}
                         </EndWindow>
                     </div>
@@ -95,8 +96,10 @@ class EndView extends Component {
                 >
                     leave
                 </Button>,
-                <div style={{width: "2em"}} key="spacer" onClick={() => this.handleRematch()}/>,
-                <Button key="rematch" width="10em">Rematch</Button>
+                <div style={{width: "2em"}} key="spacer"/>,
+                <Button key="rematch" width="10em" onClick={() => this.handleRematch()}>
+                    Rematch
+                </Button>
             ]
         }
     }
