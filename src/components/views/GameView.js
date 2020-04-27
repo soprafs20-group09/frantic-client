@@ -41,6 +41,7 @@ class GameView extends Component {
             turnKey: 0,
             hasDrawn: false,
             actionResponse: null,
+            timebombRounds: 0,
             chatItems: []
         };
     }
@@ -255,6 +256,7 @@ class GameView extends Component {
                             start
                             seconds={this.state.turnTime}
                             turn={this.state.turnKey}
+                            timebomb={this.state.timebombRounds}
                         />
                     </div>
 
@@ -423,6 +425,7 @@ class GameView extends Component {
             turnKey: t.turn,
             hasDrawn: false,
             actionResponse: null,
+            timebombRounds: t.timebombRounds,
             overlay: overlay,
         });
     }
