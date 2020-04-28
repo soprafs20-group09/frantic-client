@@ -15,11 +15,11 @@
     width: 3.2em;
     height: 13em;
     transform: translateX(-0.2em) translateY(2.3em);
-    animation-name: vandalism-cover;
-    animation-duration: 1s;
-    animation-iteration-count: 1;
-    animation-timing-function: ease-in-out;
-    animation-delay: 0.2s;
+    animation-name: vandalism-cover, vandalism-cover-fadein;
+    animation-duration: 1s, 2s;
+    animation-iteration-count: 1, 1;
+    animation-timing-function: ease-in-out, ease;
+    animation-delay: 0.2s, 0s;
     animation-fill-mode: forwards;
 
     $animationDelay: 0.42s;
@@ -81,6 +81,15 @@
   }
   100% {
     height: 0;
+  }
+}
+
+@keyframes vandalism-cover-fadein {
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
   }
 }
 
@@ -161,6 +170,15 @@
   100%{
     left: 20em;
     top: -2em;
+  }
+}
+
+@keyframes vandalism-logo-fadein {
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
   }
 }
 
