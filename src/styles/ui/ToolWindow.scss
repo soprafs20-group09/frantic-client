@@ -28,6 +28,16 @@
   text-align: left;
 }
 
+.toolwindow-close {
+  width: 0.75em;
+  height: 0.75em;
+  fill: $blueGray;
+  position: absolute;
+  right: 0.75em;
+  top: 0.64em;
+  @include clickable;
+}
+
 .toolwindow-content {
   height: calc(100% - 2em);
   max-height: calc(100% - 2em);
