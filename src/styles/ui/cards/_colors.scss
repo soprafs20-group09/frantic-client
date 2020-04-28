@@ -31,7 +31,19 @@ $white: invert($black);
 }
 
 .special {
-  background-color: rgba($black, 0.9);
+  transition: 0.5s;
+
+  &.matte {
+    background-color: $black;
+  }
+
+  &.opaque {
+    background-color: rgba($black, 0.88);
+  }
+
+  &.colorful {
+    background-color: transparent;
+  }
 }
 
 .multicolor-old {

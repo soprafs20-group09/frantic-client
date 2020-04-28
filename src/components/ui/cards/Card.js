@@ -4,6 +4,7 @@ import InlineSVG from "react-inlinesvg";
 import LogoText from "assets/frantic/logo-text.svg";
 import {CardMultinumberTransition} from "components/ui/Transitions";
 import FranticUtils from "utils/franticUtils";
+import settingsManager from "utils/settingsManager";
 
 // standard playing card size:
 // 62mm x 82mm
@@ -152,7 +153,7 @@ class Card extends Component {
         }
 
         if (color === 'multicolor') {
-            innerColor = 'special';
+            innerColor = 'special ' + settingsManager.multicolorStyle;
         }
 
         return (

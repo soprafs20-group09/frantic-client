@@ -47,7 +47,6 @@ class SettingsWindow extends Component {
                         withShadow
                         type="special"
                         value="fantastic-four"
-                        key={settingsManager.multicolorStyle}
                     />
                     <Card
                         withShadow
