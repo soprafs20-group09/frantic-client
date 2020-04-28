@@ -24,6 +24,10 @@
   flex-direction: row-reverse;
   justify-content: flex-end;
   align-items: center;
+
+  & > .mainmenu-item:not(:first-child) {
+    margin-right: 0.5em;
+  }
 }
 
 .back-button {
@@ -42,6 +46,5 @@
   fill: $terracotta;
   height: $fontSizeDefault * 1.25;
   width: $fontSizeDefault * 1.25;
-  margin-right: 0.5em;
-  margin-bottom: 0.05em;
+  margin-bottom: 0.06em;
 }
