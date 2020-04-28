@@ -441,6 +441,37 @@ class EventOverlayTransition extends Component {
     }
 }
 
+class ToastMessageTransition extends Component {
+    render() {
+        const fromStyle = {
+            opacity: 0,
+            transform: 'translateY(3em)'
+        };
+        const toStyle = {
+            opacity: 1,
+            transform: 'translateY(0em)'
+        };
+
+        return (
+            <Transition
+                items={this.props.children}
+                keys={item => item.key}
+                from={fromStyle}
+                enter={toStyle}
+                leave={fromStyle}
+                trail={0}>
+                {item => style =>
+                    <animated.div
+                        className={this.props.containerClass}
+                        style={style}
+                    >
+                        {item}
+                    </animated.div>}
+            </Transition>
+        );
+    }
+}
+
 export {
     WindowTransition,
     ChatItemTransition,
@@ -454,5 +485,6 @@ export {
     BaseStackTransition,
     EndTurnTransition,
     CTPCardTransition,
-    EventOverlayTransition
+    EventOverlayTransition,
+    ToastMessageTransition
 };

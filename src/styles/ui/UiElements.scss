@@ -315,3 +315,29 @@ $buttonHeight: 1.75em;
     box-shadow: 0 0 0.2em $terracotta;
   }
 }
+
+// Toast Message
+
+.toast-container {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  overflow: visible;
+  display: flex;
+  justify-content: center;
+}
+
+.toast-transition {
+  position: absolute;
+  bottom: 1em;
+}
+
+.toast-message {
+  padding: 0.3em 0.8em 0.3em 0.5em;
+  border-radius: 0.3em;
+  background-color: $terracotta;
+  color: $blueGray;
+  font-weight: 500;
+  box-shadow: $dropShadow;
+}
