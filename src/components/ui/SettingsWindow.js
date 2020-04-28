@@ -7,8 +7,14 @@ import SingleSelect from "components/ui/SingleSelect";
 import Separator from "components/ui/Separator";
 import Card from "components/ui/cards/Card";
 import settingsManager from "utils/settingsManager";
+import ToastMessage from "components/ui/ToastMessage";
 
 class SettingsWindow extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {showMsg: false};
+    }
+
     render() {
         const multicolorStyles = [
             {name: "Matte", value: 'matte'},
@@ -55,13 +61,24 @@ class SettingsWindow extends Component {
                         color="green"
                     />
                 </div>
+                {this.state.showMsg &&
+                <ToastMessage icon="misc:tick" duration={2}>
+                    applied!
+                </ToastMessage>}
             </ToolWindow>
         );
     }
 
     handleMulticolorChange(newVal) {
         settingsManager.multicolorStyle = newVal;
-        this.forceUpdate();
+        this.setState({showMsg: false});
+        if (this.msgTimeout) {
+            clearTimeout(this.msgTimeout);
+        }
+        this.msgTimeout = setTimeout(() => {
+            this.msgTimeout = null;
+            this.setState({showMsg: true});
+        }, 1000);
     }
 }
 
