@@ -64,7 +64,10 @@ class AppContainer extends Component {
                 />;
 
             case 'settings':
-                return <SettingsWindow key="settings"/>;
+                return <SettingsWindow
+                    onClose={() => this.toggleSettings()}
+                    key="settings"
+                />;
 
             default:
                 return false;
