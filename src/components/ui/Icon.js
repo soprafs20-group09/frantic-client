@@ -9,6 +9,7 @@ import uiUtils from "utils/uiUtils";
  * className: string - className for the SVG
  * style: object     - put inline CSS styling here.
  * children: string  - what icon to load.
+ * onClick: func     - onClick of the element.
  */
 class Icon extends Component {
     render() {
@@ -17,6 +18,7 @@ class Icon extends Component {
                 src={uiUtils.resolveIconString(this.props.from + ':' + this.props.children)}
                 style={this.props.style}
                 className={this.props.className}
+                onClick={this.props.onClick}
             />
         );
     }

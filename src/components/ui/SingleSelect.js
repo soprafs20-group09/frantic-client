@@ -5,7 +5,7 @@ import React, {Component} from 'react';
  * only one of which can be selected at a time.
  *
  * PROPS:
- * items: array                - array of objects of the following form:
+ * items: array of objects     - array of objects of the following form:
  * -name: string               - the name to be displayed
  * -value: string              - the value of the item that is returned on change.
  * initialValue: string        - value of the item that is to be selected first.
