@@ -1,0 +1,181 @@
+@import 'theme';
+@import 'ui/cards/colors';
+
+.logo-container{
+  z-index: 1;
+  position: absolute;
+  display: flex;
+  align-items: flex-end;
+  height: 10.2em;
+
+  & .cover{
+    z-index: 2;
+    position: absolute;
+    background-color: $black;
+    width: 3em;
+    height: 13em;
+    transform: translateX(-0.2em) translateY(2.3em);
+    animation-name: vandalism-cover;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in-out;
+    animation-delay: 0.2s;
+    animation-fill-mode: forwards;
+
+    $animationDelay: 0.42s;
+
+    @for $i from 2 through 7 {
+      &:nth-child(#{$i}) {
+        animation-delay: $animationDelay * $i + 1s;
+      }
+    }
+
+    &:nth-child(2) {
+      transform: translateX(2.8em) translateY(1.8em);
+    }
+
+    &:nth-child(3) {
+      transform: translateX(5.8em) translateY(-1.5em);
+    }
+
+    &:nth-child(4) {
+      transform: translateX(8.8em) translateY(0.8em);
+    }
+
+    &:nth-child(5) {
+      transform: translateX(11.8em) translateY(-2.5em);
+    }
+
+    &:nth-child(6) {
+      transform: translateX(14.8em) translateY(-0.2em);
+    }
+
+    &:nth-child(7) {
+      transform: translateX(17.8em) translateY(-3.5em);
+    }
+  }
+
+  & .top{
+    align-self: flex-start;
+  }
+
+  & .vandalism-logo{
+    z-index: 3;
+    position: absolute;
+    fill: $terracotta;
+    transform: rotate(-20deg);
+    width: 6em;
+    height: 10em;
+    animation-name: vandalism-logo-move, vandalism-logo-fadein;
+    animation-duration: 5s, 0.5s;
+    animation-iteration-count: 1, 1;
+    animation-timing-function: ease-in-out, ease;
+    animation-delay: 0.2s, 0s;
+    animation-fill-mode: forwards;
+  }
+}
+
+@keyframes vandalism-cover {
+  0% {
+    height: 13em;
+  }
+  100% {
+    height: 0;
+  }
+}
+
+@keyframes vandalism-logo-move {
+  0% {
+    left: 0;
+    top: 0;
+  }
+  12.5%{
+    left: 0;
+    top: 5em;
+  }
+  17.5%{
+    transform: rotate(-20deg);
+    left: 5em;
+    top: 0;
+  }
+  19.5%{
+    transform: rotate(0deg);
+    left: 5em;
+    top: 5em;
+  }
+  21.5%{
+    transform: rotate(0deg);
+    left: 5em;
+    top: 0;
+  }
+  23.5%{
+    transform: rotate(0deg);
+    left: 5em;
+    top: 5em;
+  }
+  25.5%{
+    transform: rotate(0deg);
+    left: 5em;
+    top: 0;
+  }
+  27.5%{
+    transform: rotate(0deg);
+    left: 5em;
+    top: 5em;
+  }
+  29.5%{
+    transform: rotate(0deg);
+    left: 5em;
+    top: 0;
+  }
+  31%{
+    transform: rotate(0deg);
+    left: 5em;
+    top: 0;
+  }
+  37.5%{
+    transform: rotate(-20deg);
+    left: 5em;
+    top: 5em;
+  }
+  50%{
+    left: 10em;
+    top: -1em;
+  }
+  60%{
+    left: 10em;
+    top: 5em;
+  }
+  70%{
+    left: 15em;
+    top: -2em;
+  }
+  80%{
+    left: 15em;
+    top: 5em;
+  }
+  90% {
+    left: 20em;
+    top: -2em;
+  }
+  100%{
+    left: 20em;
+    top: -2em;
+  }
+}
+
+.vandalism-container {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 10.2em;
+}
+
+.vandalism-frantic-logo {
+  position: relative;
+  fill: $terracotta;
+  height: 10em;
+  width: 20em;
+  transform: rotate(-2deg);
+}
