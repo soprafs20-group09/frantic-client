@@ -4,6 +4,7 @@ import {animated, Transition} from "react-spring/renderprops";
 /**
  * PROPS:
  * mode: string - relative or absolute (sets container position style)
+ * containerClass: string - a class for the div
  */
 class WindowTransition extends Component {
     render() {
@@ -32,7 +33,13 @@ class WindowTransition extends Component {
                 leave={leaveStyle}
                 trail={this.props.trail}
             >
-                {item => style => <animated.div style={style}>{item}</animated.div>}
+                {item => style =>
+                    <animated.div
+                        className={this.props.containerClass}
+                        style={style}
+                    >
+                        {item}
+                    </animated.div>}
             </Transition>
         );
     }
