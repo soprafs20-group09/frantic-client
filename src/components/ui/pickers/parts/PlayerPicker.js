@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import "styles/ui/pickers/BasicPickers.scss";
 import PlayerAvatar from "components/ui/PlayerAvatar";
+import {WindowTransition} from "components/ui/Transitions";
 
 /**
  * This component allows the user to pick a number of players.
@@ -20,7 +21,9 @@ class PlayerPicker extends Component {
 
     componentDidMount() {
         if (this.props.players.length === 1) {
-            this.setState({selectedPlayers: [0]});
+            this.setState({
+                selectedPlayers: [this.props.players[0].username]
+            });
         }
     }
 
@@ -31,6 +34,8 @@ class PlayerPicker extends Component {
             playerItems.push(
                 <PlayerItem
                     username={player.username}
+                    cards={player.cards.length}
+                    points={player.points}
                     active={this.state.selectedPlayers.includes(player.username)}
                     disabled={player.disabled}
                     onClick={() => this.handlePlayerClick(player)}
@@ -76,12 +81,36 @@ PlayerPicker.defaultProps = {
 /**
  * PROPS:
  * username: string
+ * cards: number
+ * points: number
  * active: bool
  * disabled: bool
  * onCLick: func
  */
 class PlayerItem extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {showStats: false};
+    }
+
     render() {
+        const stats =
+            <div className={"opponent-stats-container"} key="player-stats">
+                <h2 className="opponent-username">{this.props.username}</h2>
+                <table className="opponent-stats">
+                    <tbody>
+                    <tr>
+                        <th>Cards</th>
+                        <td>{this.props.cards}</td>
+                    </tr>
+                    <tr>
+                        <th>Points</th>
+                        <td>{this.props.points}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>;
+
         return (
             <div
                 className={
@@ -90,6 +119,8 @@ class PlayerItem extends Component {
                     + (this.props.disabled ? " disabled" : "")
                 }
                 onClick={() => this.handleClick()}
+                onMouseOver={() => this.handleMouseOver()}
+                onMouseLeave={() => this.handleMouseLeave()}
             >
                 <PlayerAvatar
                     size="3.5em"
@@ -97,6 +128,13 @@ class PlayerItem extends Component {
                     active={this.props.active}
                 />
                 <p className="picker-name">{this.props.username}</p>
+                <WindowTransition
+                    mode="relative"
+                    trail={0}
+                    containerClass="opponent-transition-container"
+                >
+                    {this.state.showStats && stats}
+                </WindowTransition>
             </div>
         );
     }
@@ -104,6 +142,25 @@ class PlayerItem extends Component {
     handleClick() {
         if (!this.props.disabled && this.props.onClick) {
             this.props.onClick();
+        }
+    }
+
+    handleMouseOver() {
+        if (this.leaveTimeout) {
+            clearTimeout(this.leaveTimeout);
+            this.leaveTimeout = null;
+        }
+        if (!this.state.showStats) {
+            this.setState({showStats: true});
+        }
+    }
+
+    handleMouseLeave() {
+        if (!this.leaveTimeout) {
+            this.leaveTimeout = setTimeout(() => {
+                this.leaveTimeout = null;
+                this.setState({showStats: false});
+            }, 200);
         }
     }
 }
