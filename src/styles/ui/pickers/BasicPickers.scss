@@ -23,6 +23,17 @@
     font-weight: 500;
     color: $terracotta;
   }
+
+  & .opponent-transition-container {
+    @include center;
+    width: 100%;
+  }
+
+  & .opponent-stats-container {
+    font-size: 0.8em;
+    position: absolute;
+    top: -13.5em;
+  }
 }
 
 .picker-name {

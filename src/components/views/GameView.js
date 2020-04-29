@@ -49,20 +49,20 @@ class GameView extends Component {
     componentDidMount() {
         this.setState({
             loading: false,
-            playerCards: franticUtils.generateRandomCards(7, true),
+            playerCards: franticUtils.generateRandomCards(2, true),
             opponents: [
-                {
-                    username: "jan",
-                    points: 12,
-                    skipped: false,
-                    cards: franticUtils.generateBackCards(7)
-                },
-                {
-                    username: "jon",
-                    points: 69,
-                    skipped: false,
-                    cards: franticUtils.generateBackCards(9)
-                },
+                // {
+                //     username: "jan",
+                //     points: 12,
+                //     skipped: false,
+                //     cards: franticUtils.generateBackCards(7)
+                // },
+                // {
+                //     username: "jon",
+                //     points: 69,
+                //     skipped: false,
+                //     cards: franticUtils.generateBackCards(9)
+                // },
                 {
                     username: "sina",
                     points: 69,
@@ -75,26 +75,27 @@ class GameView extends Component {
                     skipped: true,
                     cards: franticUtils.generateBackCards(5)
                 },
-                {
-                    username: "remy",
-                    points: 69,
-                    skipped: false,
-                    cards: franticUtils.generateBackCards(10)
-                },
-                {
-                    username: "davide",
-                    points: 69,
-                    skipped: false,
-                    cards: franticUtils.generateBackCards(5)
-                },
-                {
-                    username: "joe",
-                    points: 69,
-                    skipped: false,
-                    cards: franticUtils.generateBackCards(1)
-                }
+                // {
+                //     username: "remy",
+                //     points: 69,
+                //     skipped: false,
+                //     cards: franticUtils.generateBackCards(10)
+                // },
+                // {
+                //     username: "davide",
+                //     points: 69,
+                //     skipped: false,
+                //     cards: franticUtils.generateBackCards(5)
+                // },
+                // {
+                //     username: "joe",
+                //     points: 69,
+                //     skipped: false,
+                //     cards: franticUtils.generateBackCards(1)
+                // }
             ],
-            activePlayer: "jan"
+            activePlayer: "jan",
+            actionResponse: "gift"
         });
         sockClient.onDisconnect(r => this.handleDisconnect(r));
         sockClient.onLobbyMessage('/chat', r => this.handleChatMessage(r));
