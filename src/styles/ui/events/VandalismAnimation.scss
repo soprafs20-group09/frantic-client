@@ -12,8 +12,9 @@
     z-index: 2;
     position: absolute;
     background-color: $black;
-    width: 3.2em;
+    width: 4.5em;
     height: 13em;
+    filter: blur(0.5em);
     transform: translateX(-0.2em) translateY(2.3em);
     animation-name: vandalism-cover;
     animation-duration: 1s;
@@ -62,7 +63,6 @@
   & .vandalism-logo{
     z-index: 3;
     position: absolute;
-    fill: $terracotta;
     transform: rotate(-20deg);
     width: 6em;
     height: 10em;
@@ -151,6 +151,7 @@
     top: -2em;
   }
   80%{
+    transform: rotate(-20deg);
     left: 15em;
     top: 5em;
   }
@@ -159,7 +160,8 @@
     top: -2em;
   }
   100%{
-    left: 20em;
+    transform: rotate(-2deg);
+    left: 20.5em;
     top: -2em;
   }
 }
