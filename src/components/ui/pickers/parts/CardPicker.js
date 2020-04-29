@@ -10,7 +10,7 @@ import Card from "components/ui/cards/Card";
  *                                   which makes the card unselectable.
  * maxAmount: number               - the maximum amount of cards that should be selectable.
  * onSelectionChange: func(string) - a function that is called every time the selection changes.
- *                                   parameter is a list of currently selected cards.
+ *                                   parameter is a list of currently selected card objects.
  */
 class CardPicker extends Component {
     constructor(props) {

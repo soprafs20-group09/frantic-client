@@ -53,7 +53,7 @@ class GiftExchangePicker extends Component {
                         disabled={!this.enableButton()}
                         onClick={() => this.handleFinish()}
                     >
-                        Done!
+                        Done
                     </Button>
                 </div>
             </ToolWindow>
