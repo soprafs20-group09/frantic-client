@@ -18,6 +18,12 @@ class PlayerPicker extends Component {
         this.state = {selectedPlayers: []};
     }
 
+    componentDidMount() {
+        if (this.props.players.length === 1) {
+            this.setState({selectedPlayers: [0]});
+        }
+    }
+
     render() {
         let playerItems = [];
 
