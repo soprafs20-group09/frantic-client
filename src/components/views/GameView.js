@@ -24,6 +24,7 @@ import IconTitle from "components/ui/IconTitle";
 import EventOverlay from "components/ui/ingame/EventOverlay";
 import TextOverlay from "components/ui/ingame/TextOverlay";
 import {withRouter} from "react-router-dom";
+import RecessionPicker from "components/ui/pickers/RecessionPicker";
 
 class GameView extends Component {
     constructor(props) {
@@ -41,6 +42,7 @@ class GameView extends Component {
             turnKey: 0,
             hasDrawn: false,
             actionResponse: null,
+            recessionAmount: 0,
             timebombRounds: 0,
             chatItems: []
         };
@@ -108,6 +110,7 @@ class GameView extends Component {
         sockClient.onLobbyMessage('/event', e => this.handleEvent(e));
         sockClient.onLobbyMessage('/attack-window', r => this.handleAttackOpportunity(r));
         sockClient.onLobbyMessage('/nice-try-window', r => this.handleAttackOpportunity(r));
+        sockClient.onLobbyMessage('/recession', r => this.handleRecessionAR(r));
         sockClient.onLobbyMessage('/overlay', o => this.handleOverlay(o));
         sockClient.onLobbyMessage('/end-round', r => this.handleRoundEnd(r));
         sockClient.onLobbyMessage('/end-game', r => this.handleGameEnd(r));
@@ -352,6 +355,15 @@ class GameView extends Component {
                     />
                 );
 
+            case 'recession':
+                return (
+                    <RecessionPicker
+                        cards={this.state.playerCards}
+                        amount={this.state.recessionAmount}
+                        onFinish={p => this.handleFinishActionResponse(ar, {cards: p})}
+                    />
+                );
+
             default:
                 return null;
         }
@@ -433,6 +445,13 @@ class GameView extends Component {
 
     handleActionResponse(r) {
         this.setState({actionResponse: r.action});
+    }
+
+    handleRecessionAR(r) {
+        this.setState({
+            actionResponse: 'recession',
+            recessionAmount: r.amount
+        });
     }
 
     handleEvent(e) {
