@@ -1,0 +1,206 @@
+@import 'theme';
+@import 'ui/cards/colors';
+
+.mexican-standoff-container {
+  position: relative;
+  @include center;
+  height: 10.2em;
+}
+
+.revolver-body{
+  position: absolute;
+
+  & .revolver {
+    z-index: 1;
+    position: absolute;
+    fill: $terracotta;
+    height: 10em;
+    width: 15em;
+    transform: rotate(90deg);
+    animation-name: revolver-shoot;
+    animation-duration: 5s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in-out;
+    animation-delay: 0s;
+    animation-fill-mode: forwards;
+  }
+
+  & .shot-hole{
+    position: absolute;
+    height: 3em;
+    width: 3em;
+    opacity: 0;
+    fill: $black;
+    transform: translateX(10em) translateY(-3em);
+    animation-name: hole-appear;
+    animation-duration: 0.001s;
+    animation-delay: 1.85s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+
+    $animationDelay: 0.1s;
+
+    @for $i from 1 through 3 {
+      &:nth-child(#{$i}) {
+        animation-delay: $animationDelay * $i + 1.85s;
+      }
+    }
+    &:nth-child(2) {
+      transform: translateX(15em) translateY(-2.2em);
+    }
+
+    &:nth-child(3) {
+      transform: translateX(13em) translateY(0.3em);
+    }
+  }
+
+  & .smoke{
+    position: absolute;
+    transform: translateX(-5em) translateY(-1em);
+    width: 0.5em;
+    height: 0.5em;
+    opacity: 0;
+    border-radius: 50%;
+    filter: blur(0.7em);
+    background-color: $white;
+    animation-name: smoke-move-even, smoke-move-odd;
+    animation-duration: 4s, 4s;
+    animation-delay: 2.5s, 2.8s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
+
+    $animationDelay: 0.32s;
+
+    @for $i from 1 through 16 {
+      &:nth-child(#{$i}) {
+        animation-delay: $animationDelay * $i + 1.6s;
+      }
+
+      &:nth-child(2i+0) {
+        animation: smoke-move-even;
+      }
+
+      &:nth-child(2i+1) {
+        animation: smoke-move-odd;
+      }
+    }
+  }
+}
+
+@keyframes revolver-shoot {
+  0% {
+    opacity: 0;
+    left: -25em;
+    top: 0;
+    transform: rotate(90deg);
+  }
+  10% {
+    left: -25em;
+    top: 0;
+    transform: rotate(90deg);
+  }
+  30% {
+    opacity: 100;
+    left: -25em;
+    top: 0;
+    transform: rotate(90deg);
+  }
+  33% {
+    left: -20em;
+    top: -3em;
+    transform: rotate(0deg);
+  }
+  38% {
+    left: -20em;
+    top: -3em;
+    transform: rotate(0deg);
+  }
+  39% {
+    left: -21em;
+    top: -3.2em;
+    transform: rotate(-10deg);
+  }
+  40%{
+    left: -20em;
+    top: -3em;
+    transform: rotate(0deg);
+  }
+  41% {
+    left: -21em;
+    top: -3.2em;
+    transform: rotate(-10deg);
+  }
+  42%{
+    left: -20em;
+    top: -3em;
+    transform: rotate(0deg);
+  }
+  43% {
+    left: -21em;
+    top: -3.2em;
+    transform: rotate(-10deg);
+  }
+  44%{
+    left: -20em;
+    top: -3em;
+    transform: rotate(0deg);
+  }
+  45% {
+    left: -21em;
+    top: -3.2em;
+    transform: rotate(-10deg);
+  }
+  46%{
+    left: -20em;
+    top: -3em;
+    transform: rotate(0deg);
+  }
+  100% {
+    left: -20em;
+    top: -3em;
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes hole-appear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 100;
+  }
+}
+
+@keyframes smoke-move-even {
+  0% {
+    left: 0;
+    top: 0;
+    width: 0.5em;
+    height: 0.5em;
+    opacity: 10;
+  }
+  100% {
+    width: 1em;
+    height: 1em;
+    left: 0.5em;
+    top: -6.5em;
+    opacity: 0;
+  }
+}
+
+@keyframes smoke-move-odd {
+  0% {
+    left: 0;
+    top: 0;
+    width: 0.5em;
+    height: 0.5em;
+    opacity: 10;
+  }
+  100% {
+    width: 1em;
+    height: 1em;
+    left: -0.5em;
+    top: -6.5em;
+    opacity: 0;
+  }
+}

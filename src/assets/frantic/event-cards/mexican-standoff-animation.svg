@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="115mm"
+   viewBox="0 0 210 115"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
+   sodipodi:docname="mexican-standoff-animation.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.979899"
+     inkscape:cx="388.67055"
+     inkscape:cy="276.09103"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="3240"
+     inkscape:window-height="2004"
+     inkscape:window-x="-16"
+     inkscape:window-y="-16"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Ebene 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-182)">
+    <g
+       transform="matrix(25.54094,0,0,25.54094,-2336.5713,-1949.3109)"
+       id="layer1-8"
+       inkscape:label="Layer 1">
+      <g
+         transform="matrix(0.35277777,0,0,-0.35277777,95.573779,82.71925)"
+         id="g1642">
+        <path
+           inkscape:connector-curvature="0"
+           id="path1644"
+           style="fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.35751295"
+           d="m -11.159912,-12.732623 c 1.046643,2.253471 2.0919275,4.3453981 2.0919275,4.3453981 0,0 1.3276476,2.413658 1.1674611,3.0177513 0.00136,0 0.4846321,0.051585 1.039855,0.1493264 0.080094,0.1113166 0.2280621,0.3149431 0.2565699,0.3583835 0.040726,0.059731 -0.3420933,0.6638237 -0.3420933,0.6638237 l -0.9054611,0.6841866 -0.1805494,1.0045596 0.9448291,0.161544 v -0.6638239 l 0.4832747,-0.4221865 1.167461,-0.2009119 0.5430053,0.4018238 h 0.4737718 c 0.1995542,0.4303316 0.3407356,0.78057 0.3407356,0.78057 l 1.2882807,-0.4425491 1.7498337,0.1208188 0.76428009,-0.2823626 H 0.80927963 2.1382842 V -3.1770901 H 6.301777 8.7765237 l 1.8299283,0.724912 h 0.401823 v -0.6448187 l 0.442549,-0.4819171 v -1.0466425 l -0.623099,-0.7439171 -0.02037,-0.262 H 2.1776525 L 1.9170104,-6.2545719 V -7.8442196 L 0.80927963,-8.0044061 0.40745612,-8.3872248 c 0,0 0.26200026,-1.1267357 -1.06564735,-1.6697412 -1.32764767,-0.543005 -2.32406307,-0.54572 -3.38428037,0.4710574 -0.4642695,0.1452538 -1.1606733,0.2687875 -1.4443939,-0.1696891 -0.4425491,-0.6841873 -0.2619999,-1.2869223 -0.2619999,-1.2869223 0,0 -0.5022798,-0.200912 -0.5022798,-0.724912 v -1.126736 c 0,0 -0.6040933,-0.442548 -0.6434612,-0.68283 -0.040725,-0.241636 0.1208189,-0.84573 -1.005917,-0.885097 -1.1267357,-0.04072 -4.3060306,-0.524 -3.2593886,1.729472 m 7.705244,3.2295225 c 0.1805485,-0.4018237 0.9651911,-0.7439175 2.2534705,-0.4371191 1.28692241,0.306798 1.48783479,1.1213057 1.14574096,1.8244975 -0.34209259,0.7045492 -1.64937766,0.3828186 -1.64937766,0.3828186 0,0 -0.4018236,-0.8443731 -0.1208138,-1.2475545 0.282363,-0.4018238 0.7846427,-0.5226425 0.7846427,-0.5226425 -0.6230986,-0.3013679 -1.0466429,0.262 -1.0466429,0.262 l -0.32173,0.8647358 -0.9054615,0.3420934 c 0,0 -0.3217312,-1.0670053 -0.1398232,-1.4688292" />
+      </g>
+      <g
+         transform="matrix(0.35277777,0,0,-0.35277777,94.926221,87.947417)"
+         id="g1646" />
+    </g>
+  </g>
+</svg>

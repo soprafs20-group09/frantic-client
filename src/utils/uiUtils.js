@@ -5,7 +5,8 @@ import DoomsdayAnimation from "components/ui/events/DoomsdayAnimation";
 import TornadoAnimation from "components/ui/events/TornadoAnimation";
 import FridayThe13ThAnimation from "components/ui/events/FridayThe13thAnimation";
 import FinishLineAnimation from "components/ui/events/FinishLineAnimation";
-import VandalismAnimation from "../components/ui/events/VandalismAnimation";
+import VandalismAnimation from "components/ui/events/VandalismAnimation";
+import MexicanStandoffAnimation from "components/ui/events/MexicanStandoffAnimation";
 
 function parseChatObject(msg) {
     let newItem;
@@ -93,6 +94,9 @@ function getEventAnimation(event) {
 
         case 'vandalism':
             return <VandalismAnimation/>;
+
+        case 'mexican-standoff':
+            return <MexicanStandoffAnimation/>
 
         default:
             return 'coming soon™';
