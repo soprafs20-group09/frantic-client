@@ -101,7 +101,7 @@ class GameView extends Component {
         sockClient.onDisconnect(r => this.handleDisconnect(r));
         sockClient.onLobbyMessage('/chat', r => this.handleChatMessage(r));
         sockClient.onLobbyMessage('/game-state', s => this.handleGameState(s));
-        sockClient.onLobbyMessage('/start-turn', t => this.handleTurnStart(t));
+        sockClient.onLobbyMessage('/start-turn', t => this.handleTurnStart(t, true));
         sockClient.onLobbyMessage('/hand', h => this.handleNewHand(h));
         sockClient.onLobbyMessage('/playable-cards', pc => this.handlePlayableCards(pc));
         sockClient.onLobbyMessage('/draw', a => this.handleNewDraw(a));
@@ -109,6 +109,7 @@ class GameView extends Component {
         sockClient.onLobbyMessage('/event', e => this.handleEvent(e));
         sockClient.onLobbyMessage('/attack-window', r => this.handleAttackOpportunity(r));
         sockClient.onLobbyMessage('/nice-try-window', r => this.handleAttackOpportunity(r));
+        sockClient.onLobbyMessage('/attack-window', t => this.handleTurnStart(t, false));
         sockClient.onLobbyMessage('/recession', r => this.handleRecessionAR(r));
         sockClient.onLobbyMessage('/overlay', o => this.handleOverlay(o));
         sockClient.onLobbyMessage('/end-round', r => this.handleRoundEnd(r));
@@ -422,9 +423,9 @@ class GameView extends Component {
         });
     }
 
-    handleTurnStart(t) {
+    handleTurnStart(t, notify) {
         let overlay = null;
-        if (t.currentPlayer === sessionManager.username) {
+        if (notify && t.currentPlayer === sessionManager.username) {
             overlay = {
                 title: "it's your turn!",
                 duration: 1
