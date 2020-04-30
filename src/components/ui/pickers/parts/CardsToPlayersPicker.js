@@ -3,7 +3,7 @@ import Draggable from 'react-draggable';
 import "styles/ui/pickers/BasicPickers.scss";
 import "styles/ui/pickers/CardsToPlayersPicker.scss";
 import Card from "components/ui/cards/Card";
-import {Spring} from "react-spring/renderprops";
+import {animated, Spring} from "react-spring/renderprops";
 import OpponentHand from "components/ui/ingame/OpponentHand";
 import {CTPCardTransition} from "components/ui/Transitions";
 import Button from "components/ui/Button";
@@ -183,14 +183,14 @@ class DraggableCard extends Component {
                         onStop={(e, p) => this.handleDragStop(e, p)}
                         position={this.state.dragging ? null : style}
                     >
-                        <div className="ctp-card-item">
+                        <animated.div className="ctp-card-item">
                             <Card
                                 withShadow
                                 type={this.props.type}
                                 value={this.props.value}
                                 color={this.props.color}
                             />
-                        </div>
+                        </animated.div>
                     </Draggable>
                 }
             </Spring>

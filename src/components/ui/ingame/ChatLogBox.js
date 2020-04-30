@@ -35,6 +35,7 @@ class ChatLogBox extends Component {
 
         return (
             <Spring
+                native
                 from={this.state.expanded ? boxMin : boxMax}
                 to={this.state.expanded ? boxMax : boxMin}
             >
@@ -51,13 +52,14 @@ class ChatLogBox extends Component {
                                 {this.props.children}
                             </ChatBox>
                             <Spring
+                                native
                                 from={this.state.expanded ? inputMin : inputMax}
                                 to={this.state.expanded ? inputMax : inputMin}
                             >
                                 {inputProps =>
-                                    <div className="chat-log-input-container" style={inputProps}>
+                                    <animated.div className="chat-log-input-container" style={inputProps}>
                                         <ChatInput onSend={this.props.onSend}/>
-                                    </div>
+                                    </animated.div>
                                 }
                             </Spring>
                         </div>

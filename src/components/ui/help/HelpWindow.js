@@ -53,10 +53,10 @@ class CardsIcon extends Component {
         return (
             <div className="icon-container cards">
                 <Spring from={fromStyle} to={toStyle} reset={this.props.reset}>
-                    {style => <div style={style} className="cards-icon-cards n1"/>}
+                    {style => <animated.div style={style} className="cards-icon-cards n1"/>}
                 </Spring>
                 <Spring from={fromStyle} to={toStyle} delay={200} reset={this.props.reset}>
-                    {style => <div style={style} className="cards-icon-cards n2"/>}
+                    {style => <animated.div style={style} className="cards-icon-cards n2"/>}
                 </Spring>
             </div>
         );
@@ -76,12 +76,12 @@ class EventIcon extends Component {
                     config={{tension: 100, friction: 50}}
                 >
                     {props =>
-                        <svg className="event-icon-lightning" viewBox="0 0 32 32" strokeDasharray={100}
+                        <animated.svg className="event-icon-lightning" viewBox="0 0 32 32" strokeDasharray={100}
                              strokeDashoffset={props.offset}>
                             <animated.path
                                 d="M18 13 L26 2 8 13 14 19 6 30 24 19 Z"
                             />
-                        </svg>
+                        </animated.svg>
                     }
                 </Spring>
             </div>

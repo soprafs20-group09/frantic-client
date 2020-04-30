@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Spring} from "react-spring/renderprops";
+import {animated, Spring} from "react-spring/renderprops";
 
 /**
  * This component renders a simple on/off switch.
@@ -38,11 +38,12 @@ class Switch extends Component {
                 <div className={`switch-rail ${this.props.disabled && 'disabled'}`}
                      onClick={() => this.switch()}>
                     <Spring
+                        native
                         config={{tension: 200, friction: 15}}
                         from={from}
                         to={to}>
                         {props =>
-                            <div
+                            <animated.div
                                 className={`switch-nob ${this.props.disabled && 'disabled'}`}
                                 style={{transform: `translateX(${props.x})`}}
                             />

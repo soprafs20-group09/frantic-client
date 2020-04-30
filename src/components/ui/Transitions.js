@@ -26,6 +26,7 @@ class WindowTransition extends Component {
 
         return (
             <Transition
+                native
                 items={this.props.children}
                 keys={item => item.key}
                 from={fromStyle}
@@ -63,6 +64,7 @@ class ChatItemTransition extends Component {
 
         return (
             <Transition
+                native
                 items={this.props.children}
                 keys={item => item.key}
                 from={fromStyle}
@@ -95,6 +97,7 @@ class MainMenuLogoTransition extends Component {
 
         return (
             <Transition
+                native
                 items={this.props.children}
                 from={fromStyle}
                 enter={enterStyle}
@@ -126,6 +129,7 @@ class MainMenuItemTransition extends Component {
 
         return (
             <Transition
+                native
                 items={this.props.children}
                 keys={item => item.key}
                 from={down}
@@ -152,6 +156,7 @@ class MainMenuMadeWithTransition extends Component {
 
         return (
             <Transition
+                native
                 items={this.props.children}
                 keys={item => item}
                 from={down}
@@ -179,6 +184,7 @@ class CardMultinumberTransition extends Component {
 
         return (
             <Transition
+                native
                 items={this.props.children}
                 from={fromStyle}
                 enter={enterStyle}
@@ -218,6 +224,7 @@ class TabSwitcherTransition extends Component {
 
         return (
             <Transition
+                native
                 items={this.props.children}
                 from={fromStyle}
                 enter={enterStyle}
@@ -259,6 +266,7 @@ class HandTransition extends Component {
 
         return (
             <Transition
+                native
                 items={this.props.children}
                 keys={item => item.key}
                 from={fromStyle}
@@ -298,6 +306,7 @@ class DiscardPileTransition extends Component {
 
         return (
             <Transition
+                native
                 items={this.props.children}
                 keys={item => item.key}
                 from={fromStyle}
@@ -332,6 +341,7 @@ class BaseStackTransition extends Component {
 
         return (
             <Transition
+                native
                 items={this.props.children}
                 keys={item => item.key}
                 from={fromStyle}
@@ -366,6 +376,7 @@ class EndTurnTransition extends Component {
 
         return (
             <Transition
+                native
                 items={this.props.children}
                 from={fromStyle}
                 enter={enterStyle}
@@ -405,6 +416,7 @@ class CTPCardTransition extends Component {
 
         return (
             <Transition
+                native
                 items={this.props.children}
                 keys={item => item.key}
                 from={fromStyle}
@@ -436,6 +448,7 @@ class EventOverlayTransition extends Component {
 
         return (
             <Transition
+                native
                 items={this.props.children}
                 keys={item => item.key}
                 from={fromStyle}
@@ -461,6 +474,7 @@ class ToastMessageTransition extends Component {
 
         return (
             <Transition
+                native
                 items={this.props.children}
                 keys={item => item.key}
                 from={fromStyle}

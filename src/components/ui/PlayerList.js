@@ -38,6 +38,7 @@ class PlayerList extends Component {
         return (
             <ul className="player-list">
                 <Transition
+                    native
                     items={this.props.players}
                     keys={item => item.username}
                     from={fromStyle}
