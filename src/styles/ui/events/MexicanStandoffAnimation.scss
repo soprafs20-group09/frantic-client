@@ -7,7 +7,7 @@
   height: 10.2em;
 }
 
-.revolver-body{
+.mexican-standoff-body{
   position: absolute;
 
   & .revolver {
@@ -38,8 +38,6 @@
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
 
-    $animationDelay: 0.1s;
-
     &:nth-child(2) {
       transform: translateX(15em) translateY(-2.2em);
       animation-delay: 2.3s;
@@ -51,6 +49,27 @@
     }
   }
 
+  & .muzzle-flash {
+    position: absolute;
+    transform: translateX(-12.5em) translateY(-8em);
+    width: 23em;
+    height: 13em;
+    opacity: 0;
+    animation-name: muzzle-flash-appear;
+    animation-duration: 0.1s;
+    animation-delay: 1.7s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+  }
+
+  & .muzzle2 {
+    animation-delay: 2.15s;
+  }
+
+  & .muzzle3 {
+    animation-delay: 2.4s;
+  }
+
   & .smoke{
     position: absolute;
     transform: translateX(-5em) translateY(-1em);
@@ -60,7 +79,7 @@
     border-radius: 50%;
     filter: blur(0.7em);
     background-color: $white;
-    animation-duration: 3s;
+    animation-duration: 2s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
 
@@ -68,7 +87,7 @@
 
     @for $i from 1 through 10 {
       &:nth-of-type(#{$i}) {
-        animation-delay: $animationDelay * $i + 3s;
+        animation-delay: $animationDelay * $i + 2s;
       }
 
       &:nth-of-type(even) {
@@ -163,6 +182,18 @@
   }
   100% {
     opacity: 100;
+  }
+}
+
+@keyframes muzzle-flash-appear {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 100;
+  }
+  100% {
+    opacity: 0;
   }
 }
 
