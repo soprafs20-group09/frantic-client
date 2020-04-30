@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
-import MexicanStandoffLogo from "assets/frantic/event-cards/mexican-standoff-animation.svg";
-import MexicanStandoffHole from"assets/frantic/event-cards/mexican-standoff-hole.svg";
+import MexicanStandoffLogo from "assets/icons/mexican-standoff-animation.svg";
+import MexicanStandoffHole1 from "assets/icons/bullet-hole-1.svg";
+import MexicanStandoffHole2 from "assets/icons/bullet-hole-2.svg";
+import MexicanStandoffHole3 from "assets/icons/bullet-hole-3.svg";
 import InlineSVG from "react-inlinesvg";
 import "styles/ui/events/MexicanStandoffAnimation.scss";
 
@@ -10,15 +12,9 @@ class MexicanStandoffAnimation extends Component {
             <div className="mexican-standoff-container">
                 <div className="revolver-body">
                     <InlineSVG src={MexicanStandoffLogo} className="revolver"/>
-                    <InlineSVG src={MexicanStandoffHole} className="shot-hole"/>
-                    <InlineSVG src={MexicanStandoffHole} className="shot-hole"/>
-                    <InlineSVG src={MexicanStandoffHole} className="shot-hole"/>
-                    <div className="smoke"/>
-                    <div className="smoke"/>
-                    <div className="smoke"/>
-                    <div className="smoke"/>
-                    <div className="smoke"/>
-                    <div className="smoke"/>
+                    <InlineSVG src={MexicanStandoffHole1} className="shot-hole"/>
+                    <InlineSVG src={MexicanStandoffHole2} className="shot-hole"/>
+                    <InlineSVG src={MexicanStandoffHole3} className="shot-hole"/>
                     <div className="smoke"/>
                     <div className="smoke"/>
                     <div className="smoke"/>

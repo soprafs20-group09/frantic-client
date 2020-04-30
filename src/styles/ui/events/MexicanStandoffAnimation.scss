@@ -30,7 +30,7 @@
     height: 3em;
     width: 3em;
     opacity: 0;
-    fill: $black;
+    fill: $blueLightGray;
     transform: translateX(10em) translateY(-3em);
     animation-name: hole-appear;
     animation-duration: 0.001s;
@@ -60,25 +60,23 @@
     border-radius: 50%;
     filter: blur(0.7em);
     background-color: $white;
-    animation-name: smoke-move-even, smoke-move-odd;
-    animation-duration: 4s, 4s;
-    animation-delay: 2.5s, 2.8s;
-    animation-iteration-count: infinite;
+    animation-duration: 3s;
+    animation-iteration-count: 1;
     animation-fill-mode: forwards;
 
     $animationDelay: 0.32s;
 
-    @for $i from 1 through 16 {
-      &:nth-child(#{$i}) {
-        animation-delay: $animationDelay * $i + 1.6s;
+    @for $i from 1 through 10 {
+      &:nth-of-type(#{$i}) {
+        animation-delay: $animationDelay * $i + 3s;
       }
 
-      &:nth-child(2i+0) {
-        animation: smoke-move-even;
+      &:nth-of-type(even) {
+        animation-name: smoke-move-even;
       }
 
-      &:nth-child(2i+1) {
-        animation: smoke-move-odd;
+      &:nth-of-type(odd) {
+        animation-name: smoke-move-odd;
       }
     }
   }
