@@ -34,18 +34,18 @@
     transform: translateX(10em) translateY(-3em);
     animation-name: hole-appear;
     animation-duration: 0.001s;
-    animation-delay: 1.85s;
+    animation-delay: 2.5s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
 
     &:nth-child(2) {
       transform: translateX(15em) translateY(-2.2em);
-      animation-delay: 2.3s;
+      animation-delay: 2.8s;
     }
 
     &:nth-child(3) {
       transform: translateX(13em) translateY(0.3em);
-      animation-delay: 2.55s;
+      animation-delay: 3.05s;
     }
   }
 
@@ -67,7 +67,7 @@
   }
 
   & .muzzle3 {
-    animation-delay: 2.4s;
+    animation-delay: 2.55s;
   }
 
   & .smoke{
@@ -134,37 +134,37 @@
     top: -3.2em;
     transform: rotate(-10deg);
   }
-  42%{
+  41%{
     left: -20em;
     top: -3em;
     transform: rotate(0deg);
   }
-  48% {
+  42% {
     left: -20em;
     top: -3em;
     transform: rotate(0deg);
   }
-  49% {
+  43% {
     left: -21.3em;
     top: -3.4em;
     transform: rotate(-10deg);
   }
-  52%{
+  45%{
     left: -20em;
     top: -3em;
     transform: rotate(1deg);
   }
-  53%{
+  46%{
     left: -20em;
     top: -3em;
     transform: rotate(0deg);
   }
-  54% {
+  47% {
     left: -21em;
     top: -3.2em;
     transform: rotate(-10deg);
   }
-  57%{
+  49%{
     left: -20em;
     top: -3em;
     transform: rotate(0deg);
