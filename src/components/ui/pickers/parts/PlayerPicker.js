@@ -21,9 +21,7 @@ class PlayerPicker extends Component {
 
     componentDidMount() {
         if (this.props.players.length === 1) {
-            this.setState({
-                selectedPlayers: [this.props.players[0].username]
-            });
+            this.handlePlayerClick(this.props.players[0]);
         }
     }
 
