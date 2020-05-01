@@ -15,19 +15,19 @@
   font-weight: 500;
   color: $terracotta;
   text-transform: lowercase;
-  margin: 0 0.5em 0 0;
+  margin: 0.4em 0.5em 0 0;
 }
 
 .end-actions-container {
   margin-top: 1.5em;
   @include center;
 
-  & > .turn-timer-container {
+  & > .turn-timer-container > .turn-timer-inner {
     text-shadow: none;
     width: 6em;
   }
 
-  & > .turn-timer-container > .turn-timer {
+  & > .turn-timer-container > .turn-timer-inner > .turn-timer {
     filter: none;
   }
 }
