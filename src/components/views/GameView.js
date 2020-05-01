@@ -101,7 +101,7 @@ class GameView extends Component {
         sockClient.onDisconnect(r => this.handleDisconnect(r));
         sockClient.onLobbyMessage('/chat', r => this.handleChatMessage(r));
         sockClient.onLobbyMessage('/game-state', s => this.handleGameState(s));
-        sockClient.onLobbyMessage('/start-turn', t => this.handleTurnStart(t, true));
+        sockClient.onLobbyMessage('/start-turn', t => this.handleTurnStart(t));
         sockClient.onLobbyMessage('/hand', h => this.handleNewHand(h));
         sockClient.onLobbyMessage('/playable-cards', pc => this.handlePlayableCards(pc));
         sockClient.onLobbyMessage('/draw', a => this.handleNewDraw(a));
@@ -109,7 +109,7 @@ class GameView extends Component {
         sockClient.onLobbyMessage('/event', e => this.handleEvent(e));
         sockClient.onLobbyMessage('/attack-window', r => this.handleAttackOpportunity(r));
         sockClient.onLobbyMessage('/nice-try-window', r => this.handleAttackOpportunity(r));
-        sockClient.onLobbyMessage('/attack-turn', t => this.handleTurnStart(t, false));
+        sockClient.onLobbyMessage('/attack-turn', t => this.handleAttackTurn(t));
         sockClient.onLobbyMessage('/recession', r => this.handleRecessionAR(r));
         sockClient.onLobbyMessage('/overlay', o => this.handleOverlay(o));
         sockClient.onLobbyMessage('/end-round', r => this.handleRoundEnd(r));
@@ -423,9 +423,9 @@ class GameView extends Component {
         });
     }
 
-    handleTurnStart(t, notify) {
+    handleTurnStart(t) {
         let overlay = null;
-        if (notify && t.currentPlayer === sessionManager.username) {
+        if (t.currentPlayer === sessionManager.username) {
             overlay = {
                 title: "it's your turn!",
                 duration: 1
@@ -440,6 +440,14 @@ class GameView extends Component {
             actionResponse: null,
             timebombRounds: t.timebombRounds,
             overlay: overlay,
+        });
+    }
+
+    handleAttackTurn(t) {
+        this.setState({
+            activePlayer: t.currentPlayer,
+            turnTime: t.time,
+            turnKey: t.turn,
         });
     }
 
