@@ -34,40 +34,40 @@
     transform: translateX(10em) translateY(-3em);
     animation-name: hole-appear;
     animation-duration: 0.001s;
-    animation-delay: 1.9s;
+    animation-delay: 1.8s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
 
     &:nth-child(2) {
       transform: translateX(15em) translateY(-2.2em);
-      animation-delay: 2.35s;
+      animation-delay: 2.3s;
     }
 
     &:nth-child(3) {
       transform: translateX(13em) translateY(0.3em);
-      animation-delay: 2.6s;
+      animation-delay: 2.55s;
     }
   }
 
   & .muzzle-flash {
     position: absolute;
-    transform: translateX(-12.5em) translateY(-8em);
-    width: 23em;
+    transform: translateX(-5.5em) translateY(-7.5em);
+    width: 13em;
     height: 13em;
     opacity: 0;
     animation-name: muzzle-flash-appear;
     animation-duration: 0.1s;
-    animation-delay: 1.7s;
+    animation-delay: 1.75s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
   }
 
   & .muzzle2 {
-    animation-delay: 2.15s;
+    animation-delay: 2.25s;
   }
 
   & .muzzle3 {
-    animation-delay: 2.4s;
+    animation-delay: 2.5s;
   }
 
   & .smoke{

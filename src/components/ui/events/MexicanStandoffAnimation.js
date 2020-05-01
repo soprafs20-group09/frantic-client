@@ -3,7 +3,7 @@ import MexicanStandoffLogo from "assets/icons/mexican-standoff-animation.svg";
 import MexicanStandoffHole1 from "assets/icons/bullet-hole-1.svg";
 import MexicanStandoffHole2 from "assets/icons/bullet-hole-2.svg";
 import MexicanStandoffHole3 from "assets/icons/bullet-hole-3.svg";
-import MexicanStandoffFlash from "assets/icons/muzzle-flash2.svg";
+import MexicanStandoffFlash from "assets/icons/muzzle-flash-png.svg";
 import InlineSVG from "react-inlinesvg";
 import "styles/ui/events/MexicanStandoffAnimation.scss";
 
