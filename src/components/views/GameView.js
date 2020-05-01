@@ -109,7 +109,7 @@ class GameView extends Component {
         sockClient.onLobbyMessage('/event', e => this.handleEvent(e));
         sockClient.onLobbyMessage('/attack-window', r => this.handleAttackOpportunity(r));
         sockClient.onLobbyMessage('/nice-try-window', r => this.handleAttackOpportunity(r));
-        sockClient.onLobbyMessage('/attack-window', t => this.handleTurnStart(t, false));
+        sockClient.onLobbyMessage('/attack-turn', t => this.handleTurnStart(t, false));
         sockClient.onLobbyMessage('/recession', r => this.handleRecessionAR(r));
         sockClient.onLobbyMessage('/overlay', o => this.handleOverlay(o));
         sockClient.onLobbyMessage('/end-round', r => this.handleRoundEnd(r));
