@@ -7,7 +7,7 @@
   height: 10.2em;
 }
 
-.mexican-standoff-body{
+.mexican-standoff-body {
   position: absolute;
 
   & .revolver {
@@ -25,7 +25,7 @@
     animation-fill-mode: forwards;
   }
 
-  & .shot-hole{
+  & .shot-hole {
     position: absolute;
     height: 3em;
     width: 3em;
@@ -70,7 +70,7 @@
     animation-delay: 2.5s;
   }
 
-  & .smoke{
+  & .smoke {
     position: absolute;
     transform: translateX(-5em) translateY(-1em);
     width: 0.5em;
@@ -89,14 +89,14 @@
       &:nth-of-type(#{$i}) {
         animation-delay: $animationDelay * $i + 2s;
       }
+    }
 
-      &:nth-of-type(even) {
-        animation-name: smoke-move-even;
-      }
+    &:nth-of-type(even) {
+      animation-name: smoke-move-even;
+    }
 
-      &:nth-of-type(odd) {
-        animation-name: smoke-move-odd;
-      }
+    &:nth-of-type(odd) {
+      animation-name: smoke-move-odd;
     }
   }
 }
@@ -134,7 +134,7 @@
     top: -3.2em;
     transform: rotate(-10deg);
   }
-  42%{
+  42% {
     left: -20em;
     top: -3em;
     transform: rotate(0deg);
@@ -149,12 +149,12 @@
     top: -3.2em;
     transform: rotate(-10deg);
   }
-  51.5%{
+  51.5% {
     left: -20em;
     top: -3em;
     transform: rotate(1deg);
   }
-  52.5%{
+  52.5% {
     left: -20em;
     top: -3em;
     transform: rotate(0deg);
@@ -164,7 +164,7 @@
     top: -3.2em;
     transform: rotate(-10deg);
   }
-  56.5%{
+  56.5% {
     left: -20em;
     top: -3em;
     transform: rotate(0deg);
