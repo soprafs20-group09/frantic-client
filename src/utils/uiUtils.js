@@ -7,6 +7,7 @@ import FridayThe13ThAnimation from "components/ui/events/FridayThe13thAnimation"
 import FinishLineAnimation from "components/ui/events/FinishLineAnimation";
 import VandalismAnimation from "components/ui/events/VandalismAnimation";
 import MexicanStandoffAnimation from "components/ui/events/MexicanStandoffAnimation";
+import ThirdTimeLuckyAnimation from "../components/ui/events/ThirdTimeLuckyAnimation";
 
 function parseChatObject(msg) {
     let newItem;
@@ -97,6 +98,9 @@ function getEventAnimation(event) {
 
         case 'mexican-standoff':
             return <MexicanStandoffAnimation/>
+
+        case 'third-time-lucky':
+            return <ThirdTimeLuckyAnimation/>;
 
         default:
             return 'coming soon™';
