@@ -2,5 +2,117 @@
 @import 'ui/cards/colors';
 
 .third-time-lucky-animation {
+  position: relative;
+  @include center;
+  flex-direction: row;
 
+  & .board-first-circle {
+    position: relative;
+    @include  center;
+    border: 0.2em solid $terracotta;
+    width: 3.5em;
+    height: 11em;
+    border-radius: 50%;
+    right: -9em;
+    bottom: 1.5em;
+
+
+    & .board-second-circle {
+      position: relative;
+      @include center;
+      border: 0.2em solid $terracotta;
+      width: 1.7em;
+      height: 7em;
+      left: -0.15em;
+      border-radius: 50%;
+
+      & .board-center {
+        position: relative;
+        @include center;
+        background: $terracotta;
+        width: 0.6em;
+        height: 2.7em;
+        left: -0.13em;
+        border-radius: 50%;
+
+        &::before {
+          content: '';
+          display: block;
+          @include center;
+          background: $black;
+          width: 0.25em;
+          height: 1.3em;
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+
+  & .dart {
+    position: absolute;
+    left: -10em;
+    top: 7em;
+    transform: rotate(-35deg);
+
+
+    & .dart-body {
+      position: relative;
+      background: $terracotta;
+      height: 0.15em;
+      width: 1.8em;
+
+      &::before {
+        position: absolute;
+        content: '';
+        display: block;
+        width: 0.5em;
+        height: 0.2em;
+        top: 0.1em;
+        left: -0.1em;
+        transform: skew(-40deg);
+        background: $terracotta;
+      }
+
+      &::after {
+        position: absolute;
+        content: '';
+        display: block;
+        background: $terracotta;
+        width: 0.5em;
+        height: 0.2em;
+        transform: skew(40deg);
+        top: -0.15em;
+        left: -0.1em;
+      }
+    }
+
+    & .dart-head {
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-top: 0.09em solid transparent;
+      border-left: 0.15em solid $terracotta;
+      border-bottom: 0.09em solid transparent;
+      right: -0.12em;
+      top: -0.01em;
+    }
+
+    &:nth-child(1) {
+      animation: first-dart 1s forwards;
+      animation-delay: 1s;
+      animation-timing-function: linear;
+    }
+  }
+}
+
+@keyframes first-dart {
+  0% {
+    transform: rotate(-35deg) translate(12em, -5.3em);
+  }
+  //70% {
+  //  transform: rotate(0deg) translate(12em, -5.3em) ;
+  //}
+  100% {
+    transform: rotate(5deg) translate(17.8em, -5.3em) ;
+  }
 }
