@@ -5,7 +5,7 @@ import ChooseUsernameWindow from "components/ui/ChooseUsernameWindow";
 import {WindowTransition} from "components/ui/Transitions";
 import {api, parseCommonErrors} from "utils/api";
 import Spinner from "components/ui/Spinner";
-import LobbyWindow from "components/ui/LobbyWindow";
+import LobbyWindow from "components/ui/lobby/LobbyWindow";
 import sessionManager from "utils/sessionManager";
 import ErrorBox from "components/ui/ErrorBox";
 

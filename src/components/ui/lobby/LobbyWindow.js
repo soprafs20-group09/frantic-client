@@ -5,7 +5,7 @@ import Input from "components/ui/Input";
 import SingleSelect from "components/ui/SingleSelect";
 import Switch from "components/ui/Switch";
 import Button from "components/ui/Button";
-import PlayerList from "components/ui/PlayerList";
+import PlayerList from "components/ui/lobby/PlayerList";
 import ChatWindow from "components/ui/ChatWindow";
 import Spinner from "components/ui/Spinner";
 import sessionManager from "utils/sessionManager";

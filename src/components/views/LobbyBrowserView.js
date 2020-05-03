@@ -4,7 +4,7 @@ import AppContainer from "components/ui/AppContainer";
 import {WindowTransition} from "components/ui/Transitions";
 import Window from "components/ui/Window";
 import SearchBar from "components/ui/SearchBar";
-import LobbyList from "components/ui/LobbyList";
+import LobbyList from "components/ui/lobby/LobbyList";
 import Spinner from "components/ui/Spinner";
 import "styles/views/LobbyBrowserView.scss";
 import {api, parseCommonErrors} from "utils/api";
