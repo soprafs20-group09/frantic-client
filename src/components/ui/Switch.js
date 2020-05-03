@@ -38,7 +38,6 @@ class Switch extends Component {
                 <div className={`switch-rail ${this.props.disabled && 'disabled'}`}
                      onClick={() => this.switch()}>
                     <Spring
-                        native
                         config={{tension: 200, friction: 15}}
                         from={from}
                         to={to}>
