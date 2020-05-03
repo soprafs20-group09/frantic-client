@@ -577,7 +577,7 @@ class GameView extends Component {
         }
         // set the active player to null in order to prevent the user
         // from clicking anything until next turn starts
-        this.setState({actionResponse: null, activePlayer: null});
+        this.setState({actionResponse: null, activePlayer: null, hasDrawn: false});
     }
 
     // endregion
