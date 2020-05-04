@@ -16,6 +16,7 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
     "react-spring": "^8.0.27",
+    "react-string-replace": "^0.4.4",
     "sockjs-client": "^1.4.0",
     "stompjs": "^2.3.3",
     "typeface-montserrat": "0.0.75"

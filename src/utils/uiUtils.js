@@ -9,9 +9,20 @@ import VandalismAnimation from "components/ui/events/VandalismAnimation";
 import MexicanStandoffAnimation from "components/ui/events/MexicanStandoffAnimation";
 import ThirdTimeLuckyAnimation from "../components/ui/events/ThirdTimeLuckyAnimation";
 import CharityAnimation from "components/ui/events/CharityAnimation";
+import reactStringReplace from "react-string-replace";
+import sessionManager from "utils/sessionManager";
 
 function parseChatObject(msg) {
     let newItem;
+    let text = msg.message;
+    if (sessionManager.username) {
+        let regex = new RegExp(`\\b(${sessionManager.username})\\b`);
+        text = reactStringReplace(
+            text,
+            regex,
+            (match, i) => <span key={i} className="chat-username-highlight">{match}</span>);
+    }
+
     switch (msg.type) {
         case 'msg':
             newItem =
@@ -21,7 +32,7 @@ function parseChatObject(msg) {
                     icon={getPlayerAvatar(msg.username)}
                     key={new Date().getTime()}
                 >
-                    {msg.message}
+                    {text}
                 </ChatItem>;
             break;
 
@@ -41,7 +52,7 @@ function parseChatObject(msg) {
                     svgIcon={svg}
                     key={new Date().getTime()}
                 >
-                    {msg.message}
+                    {text}
                 </ChatItem>;
             break;
     }

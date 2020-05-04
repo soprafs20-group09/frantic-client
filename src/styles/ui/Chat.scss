@@ -97,3 +97,8 @@ $chatItemSize: $fontSizeChat;
   line-height: $chatItemSize;
   word-break: break-all;
 }
+
+.chat-username-highlight {
+  color: $terracotta;
+  font-weight: 500;
+}
