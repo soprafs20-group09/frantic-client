@@ -5,7 +5,9 @@ class ThirdTimeLuckyAnimation extends Component {
     render() {
         return (
             <div className='third-time-lucky-animation'>
-               <Dart/>
+                <Dart/>
+                <Dart/>
+                <Dart/>
                 <div className="board-first-circle">
                     <div className="board-second-circle">
                         <div className="board-center"/>

@@ -8,13 +8,16 @@
 
   & .board-first-circle {
     position: relative;
-    @include  center;
+    @include center;
     border: 0.2em solid $terracotta;
     width: 3.5em;
     height: 11em;
     border-radius: 50%;
     right: -9em;
     bottom: 1.5em;
+    animation: bullseye-circle 1s forwards;
+    animation-delay: 3.6s;
+    animation-iteration-count: 2;
 
 
     & .board-second-circle {
@@ -25,6 +28,9 @@
       height: 7em;
       left: -0.15em;
       border-radius: 50%;
+      animation: bullseye-circle 1s forwards;
+      animation-delay: 3.4s;
+      animation-iteration-count: 2;
 
       & .board-center {
         position: relative;
@@ -34,6 +40,10 @@
         height: 2.7em;
         left: -0.13em;
         border-radius: 50%;
+        animation: bullseye 1s forwards;
+        animation-delay: 3.3s;
+        animation-iteration-count: 2;
+
 
         &::before {
           content: '';
@@ -49,16 +59,39 @@
   }
 
   & .dart {
+    $dartWidth: 0.15em;
     position: absolute;
-    left: -10em;
-    top: 7em;
-    transform: rotate(-35deg);
+    color: $terracotta;
+    animation-name: dart-throw;
+    animation-duration: 1s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+    z-index: 1;
+    transform-origin: 50% 50em;
+    opacity: 0;
 
+    &:nth-child(1) {
+      top: -2em;
+      right: 3.5em;
+      animation-delay: 0.5s;
+    }
+
+    &:nth-child(2) {
+      top: 7.5em;
+      right: 1.5em;
+      animation-delay: 1.5s;
+    }
+
+    &:nth-child(3) {
+      top: 3.3em;
+      right: 2em;
+      animation-delay: 2.5s;
+    }
 
     & .dart-body {
       position: relative;
-      background: $terracotta;
-      height: 0.15em;
+      background: currentColor;
+      height: $dartWidth;
       width: 1.8em;
 
       &::before {
@@ -70,14 +103,14 @@
         top: 0.1em;
         left: -0.1em;
         transform: skew(-40deg);
-        background: $terracotta;
+        background: currentColor;
       }
 
       &::after {
         position: absolute;
         content: '';
         display: block;
-        background: $terracotta;
+        background: currentColor;
         width: 0.5em;
         height: 0.2em;
         transform: skew(40deg);
@@ -90,29 +123,45 @@
       position: absolute;
       width: 0;
       height: 0;
-      border-top: 0.09em solid transparent;
-      border-left: 0.15em solid $terracotta;
-      border-bottom: 0.09em solid transparent;
-      right: -0.12em;
-      top: -0.01em;
-    }
-
-    &:nth-child(1) {
-      animation: first-dart 1s forwards;
-      animation-delay: 1s;
-      animation-timing-function: linear;
+      border-top: ($dartWidth / 2) solid transparent;
+      border-left: $dartWidth solid currentColor;
+      border-bottom: ($dartWidth / 2) solid transparent;
+      right: -$dartWidth;
+      top: 0;
     }
   }
 }
 
-@keyframes first-dart {
+@keyframes dart-throw {
   0% {
-    transform: rotate(-35deg) translate(12em, -5.3em);
+    opacity: 0;
+    transform: rotate(-20deg);
   }
-  //70% {
-  //  transform: rotate(0deg) translate(12em, -5.3em) ;
-  //}
+  20% {
+    opacity: 1;
+    transform: rotate(-20deg);
+  }
   100% {
-    transform: rotate(5deg) translate(17.8em, -5.3em) ;
+    opacity: 1;
+    transform: rotate(10deg);
   }
 }
+
+@keyframes bullseye {
+  50% {
+    background-color: $white;
+  }
+  100% {
+    background-color: $terracotta;
+  }
+}
+
+@keyframes bullseye-circle {
+  50% {
+    border-color: $white;
+  }
+  100% {
+    border-color: $terracotta;
+  }
+}
+
