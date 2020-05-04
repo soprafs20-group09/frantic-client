@@ -5,6 +5,7 @@ import {HandTransition, WindowTransition} from "components/ui/Transitions";
 import Skip from "assets/frantic/special-cards/skip.svg";
 import InlineSVG from "react-inlinesvg";
 import PlayerAvatar from "components/ui/PlayerAvatar";
+import IconTitle from "components/ui/IconTitle";
 
 /**
  * This component renders the hand (cards) of an opponent.
@@ -86,6 +87,7 @@ class OpponentHand extends Component {
                     cards={infoOverride ? infoOverride.cards : opponent.cards.length}
                     points={infoOverride ? infoOverride.points : opponent.points}
                     skipped={opponent.skipped}
+                    admin={opponent.admin}
                     active={active}
                 />
             </div>
@@ -105,8 +107,13 @@ class OpponentInfo extends Component {
     }
 
     render() {
+        let name = this.props.username;
+        if (this.props.admin) {
+            name = <IconTitle icon="misc:crown">{name}</IconTitle>;
+        }
+
         const stats = <div className={"opponent-stats-container " + this.props.mode} key="player-stats">
-            <h2 className="opponent-username">{this.props.username}</h2>
+            <h2 className="opponent-username">{name}</h2>
             <table className="opponent-stats">
                 <tbody>
                 <tr>

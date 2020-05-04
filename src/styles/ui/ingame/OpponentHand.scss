@@ -136,6 +136,7 @@ $infoSize: 10em;
   font-weight: 600;
   text-align: center;
   word-break: break-all;
+  @include center;
 }
 
 .opponent-stats {
