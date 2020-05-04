@@ -1,0 +1,263 @@
+@import 'theme';
+@import 'ui/cards/colors';
+
+.charity-container {
+  position: relative;
+  @include center;
+  height: 10.2em;
+}
+
+.charity-box {
+  z-index: 3;
+  align-self: flex-end;
+  opacity: 0;
+  animation-name: charity-box-appear, charity-box-disappear;
+  animation-duration: 1.5s, 1s;
+  animation-delay: 0s, 4.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+
+  & .bot {
+    z-index: 3;
+    position: relative;
+    width: 12em;
+    height: 7em;
+    background-color: $terracotta;
+    filter: brightness(80%);
+  }
+
+  & .charity-logo {
+    width: 3em;
+    height: 3em;
+    z-index: 3;
+    position: absolute;
+    fill: $terracotta;
+    filter: brightness(50%);
+    transform: translateX(4.55em) translateY(-5em);
+  }
+
+  & .top-side {
+    z-index: 3;
+    position: absolute;
+    transform: translateX(-0.5em) translateY(-8.4em);
+    width: 13em;
+    height: 1.4em;
+    background-color: $terracotta;
+    filter: brightness(90%);
+  }
+
+  & .top-side-shadow1 {
+    z-index: 3;
+    position: absolute;
+    transform: translateY(-8.4em);
+    width: 13em;
+    height: 0.1em;
+    filter: blur(0.2em);
+    background-color: $black;
+  }
+
+  & .top-side-shadow2 {
+    z-index: 3;
+    position: absolute;
+    transform: translateY(-7em);
+    width: 12em;
+    height: 0.18em;
+    background-color: $black;
+    opacity: 50%;
+  }
+
+  & .top-front {
+    z-index: 5;
+    position: absolute;
+    transform: translateX(-0.5em) translateY(-9.475em);
+    border-bottom: 1.1em solid $terracotta;
+    border-left: 1.1em solid transparent;
+    border-right: 1.1em solid transparent;
+    width: 10.8em;
+    filter: brightness(100%);
+  }
+
+  & .opening{
+    z-index: 6;
+    position: absolute;
+    transform: translateX(4.5em) translateY(-9.6em);
+    width: 3em;
+    height: 0.1em;
+    background-color: $black;
+    opacity: 100%;
+  }
+}
+
+.top-back {
+  z-index: 1;
+  position: absolute;
+  transform: translateX(0em) translateY(-4.88em);
+  border-bottom: 1.1em solid $terracotta;
+  border-left: 1.1em solid transparent;
+  border-right: 1.1em solid transparent;
+  width: 8.7em;
+  filter: brightness(100%);
+  animation-name: appear, disappear;
+  animation-duration: 1.5s, 1s;
+  animation-delay: 0s, 4.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+.charity-coin {
+  z-index: 2;
+  position: absolute;
+  transform: translateX(-5.5em) translateY(-3em);
+  opacity: 0;
+  animation-name: charity-coin-animation;
+  animation-duration: 1s;
+  animation-delay: 1s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+
+  $animationDelay: 0.7s;
+
+  @for $i from 1 through 4 {
+    &:nth-of-type(#{$i}) {
+      animation-delay: $animationDelay * $i + 0.5s;
+    }
+  }
+
+  & .outer-coin {
+    z-index: 3;
+    position: absolute;
+    transform: translateX(4.5em) translateY(-9.6em);
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    background-color: #dbb52a;
+    opacity: 100%;
+  }
+
+  & .inner-coin {
+    z-index: 3;
+    position: absolute;
+    transform: translateX(4.8em) translateY(-9.3em);
+    width: 1.4em;
+    height: 1.4em;
+    border-radius: 50%;
+    background-color: $black;
+    opacity: 20%;
+  }
+}
+
+.big-charity-logo {
+  width: 3em;
+  height: 3em;
+  z-index: 6;
+  position: absolute;
+  fill: $terracotta;
+  filter: brightness(50%);
+  opacity: 0;
+  transform: translateX(0.05em) translateY(1.6em);
+  animation-name: big-charity-logo-expand;
+  animation-duration: 2s;
+  animation-delay: 4.6s;
+}
+
+@keyframes charity-box-appear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+
+@keyframes charity-box-disappear {
+  0% {
+    opacity: 100%;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+
+@keyframes disappear {
+  0% {
+    opacity: 100%;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes charity-coin-animation {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 100;
+    transform: translateX(-5.5em) translateY(-3em);
+  }
+  90% {
+    opacity: 100;
+    transform: translateX(-5.5em) translateY(10em);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-5.5em) translateY(10em);
+  }
+}
+
+@keyframes big-charity-logo-expand {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    transform: translateY(0em);
+    opacity: 100%;
+    filter: brightness(100%);
+    width: 15em;
+    height: 15em;
+  }
+  20% {
+    transform: translateY(0em);
+    opacity: 100%;
+    filter: brightness(100%);
+    width: 10em;
+    height: 10em;
+  }
+  30% {
+    transform: translateY(0em);
+    opacity: 100%;
+    filter: brightness(100%);
+    width: 13em;
+    height: 13em;
+  }
+  40% {
+    transform: translateY(0em);
+    opacity: 100%;
+    filter: brightness(100%);
+    width: 12em;
+    height: 12em;
+  }
+  50% {
+    transform: translateY(0em);
+    opacity: 100%;
+    filter: brightness(100%);
+    width: 12.5em;
+    height: 12.5em;
+  }
+  100% {
+    transform: translateY(0em);
+    width: 10em;
+    filter: brightness(100%);
+    height: 10em;
+    opacity: 0;
+  }
+}
