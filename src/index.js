@@ -4,11 +4,15 @@ import 'styles/index.scss';
 import App from 'components/App';
 
 import "typeface-montserrat";
+import settingsManager from "utils/settingsManager";
 
 // if the screen is smaller than what I deem usable with normal scale
 if (window.innerHeight < 860) {
     calibrateFontSize();
 }
+
+// load the user-selected theme
+settingsManager.applyTheme();
 
 ReactDOM.render(<App/>, document.getElementById('root'));
 
