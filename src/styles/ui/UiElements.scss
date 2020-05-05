@@ -16,7 +16,7 @@ $uiBorderRadius: 0.3em;
 }
 
 .input-input {
-  background-color: $blueLightGray;
+  background-color: $bgLighter;
   border: none;
   border-radius: $uiBorderRadius;
   color: white;
@@ -50,7 +50,7 @@ $uiBorderRadius: 0.3em;
   min-width: 5.5em;
   border: none;
   background-color: $accent;
-  color: $blueGray;
+  color: $bgMedium;
   font-family: $themeFont;
   font-size: $fontSizeDefault;
   text-transform: lowercase;
@@ -89,7 +89,7 @@ $buttonHeight: 1.75em;
 
   &.primary {
     background-color: $accent;
-    color: $blueGray;
+    color: $bgMedium;
     font-weight: 600;
     box-shadow: $dropShadow;
   }
@@ -102,7 +102,7 @@ $buttonHeight: 1.75em;
 
   &.end-turn {
     background-color: $accent;
-    color: $blueBlack;
+    color: $bgDark;
     font-weight: 600;
     box-shadow: $dropShadow;
   }
@@ -127,7 +127,7 @@ $buttonHeight: 1.75em;
   font-size: $fontSizeDefault * 2;
   height: 1.4em;
   font-weight: 600;
-  border-bottom: 0.09em solid $blueLightGray;
+  border-bottom: 0.09em solid $bgLighter;
   text-transform: lowercase;
 
   &.small {
@@ -161,7 +161,7 @@ $buttonHeight: 1.75em;
 .step-number {
   width: 2em;
   height: 2em;
-  color: $blueGray;
+  color: $bgMedium;
   background-color: $accent;
   border-radius: 50%;
   font-weight: 700;
@@ -203,7 +203,7 @@ $buttonHeight: 1.75em;
 }
 
 .singleselect-item {
-  background-color: $blueLightGray;
+  background-color: $bgLighter;
   border: none;
   color: white;
   height: 1.65em;
@@ -225,7 +225,7 @@ $buttonHeight: 1.75em;
 
   &.active {
     background-color: $accent;
-    color: $blueGray;
+    color: $bgMedium;
     font-weight: 400;
   }
 }
@@ -270,7 +270,7 @@ $buttonHeight: 1.75em;
   width: 3em;
   height: 1.5em;
   border-radius: 1.5em;
-  background-color: $blueLightGray;
+  background-color: $bgLighter;
 }
 
 .switch-nob {
@@ -305,7 +305,7 @@ $buttonHeight: 1.75em;
   height: 1em;
   border-radius: 50%;
   padding: calc(1em / 7);
-  background-color: $blueLightGray;
+  background-color: $bgLighter;
   pointer-events: all;
   transition: 0.3s;
   box-sizing: border-box;
@@ -337,7 +337,7 @@ $buttonHeight: 1.75em;
   padding: 0.3em 0.8em 0.3em 0.5em;
   border-radius: 0.3em;
   background-color: $accent;
-  color: $blueGray;
+  color: $bgMedium;
   font-weight: 500;
   box-shadow: $dropShadow;
 }

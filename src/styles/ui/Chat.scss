@@ -30,7 +30,7 @@ $inputHeight: 1.9em;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  background-color: $blueLightGray;
+  background-color: $bgLighter;
 }
 
 
@@ -75,7 +75,7 @@ $chatItemSize: $fontSizeChat;
 
   &.event {
     font-weight: 500;
-    background-color: $blueMediumGray;
+    background-color: $bgLight;
   }
 }
 

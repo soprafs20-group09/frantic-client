@@ -52,11 +52,11 @@
   pointer-events: all;
   transition: 0.3s;
   box-sizing: border-box;
-  border: 0.1em solid $blueLightGray;
+  border: 0.1em solid $bgLighter;
   @include center;
 
   &.number {
-    background-color: $blueLightGray;
+    background-color: $bgLighter;
   }
 
   &.active {

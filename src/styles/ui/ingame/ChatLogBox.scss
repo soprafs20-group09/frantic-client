@@ -7,7 +7,7 @@
   flex-direction: column;
   align-items: center;
   color: white;
-  background-color: $blueGray;
+  background-color: $bgMedium;
   border-radius: 0.3em 0.3em 0 0;
   box-shadow: $dropShadow;
   overflow: hidden;
@@ -34,7 +34,7 @@
 }
 
 .chat-expand-container {
-  background-color: $blueGray;
+  background-color: $bgMedium;
   width: 110%;
   @include center;
   @include clickable;

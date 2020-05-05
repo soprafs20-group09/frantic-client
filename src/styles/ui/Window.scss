@@ -2,7 +2,7 @@
 
 .window-container {
   color: white;
-  background-color: $blueGray;
+  background-color: $bgMedium;
   border-radius: 0.8em;
   overflow: hidden;
   box-shadow: $dropShadow;
@@ -12,7 +12,7 @@
 .window-header {
   background-color: $accent;
   font-size: $fontSizeHeader;
-  color: $blueGray;
+  color: $bgMedium;
   height: 1.8em;
   margin: 0;
 }

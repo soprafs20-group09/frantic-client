@@ -15,7 +15,7 @@
 .tab-header {
   fill: $accent;
   color: $accent;
-  background-color: $blueMediumGray;
+  background-color: $bgLight;
   font-size: $fontSizeSmallHeader;
   font-weight: 500;
   text-transform: lowercase;
@@ -28,8 +28,8 @@
   @include clickable;
 
   &.selected {
-    fill: $blueGray;
-    color: $blueGray;
+    fill: $bgMedium;
+    color: $bgMedium;
     background-color: $accent;
     flex-grow: 2;
   }

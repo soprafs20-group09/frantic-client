@@ -3,7 +3,7 @@
 .toolwindow-container {
   position: relative;
   color: white;
-  background-color: $blueGray;
+  background-color: $bgMedium;
   border-radius: 0.6em;
   overflow: hidden;
   box-shadow: $dropShadow;
@@ -13,7 +13,7 @@
 .toolwindow-header {
   font-size: $fontSizeSmallHeader;
   background-color: $accent;
-  color: $blueGray;
+  color: $bgMedium;
   height: 2em;
   margin: 0;
 }
@@ -31,7 +31,7 @@
 .toolwindow-close {
   width: 0.75em;
   height: 0.75em;
-  fill: $blueGray;
+  fill: $bgMedium;
   position: absolute;
   right: 0.75em;
   top: 0.64em;
