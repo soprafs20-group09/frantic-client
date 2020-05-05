@@ -9,24 +9,7 @@ import Card from "components/ui/cards/Card";
 import settingsManager from "utils/settingsManager";
 import ToastMessage from "components/ui/ToastMessage";
 import ThemePicker from "components/ui/pickers/ThemePicker";
-
-const multicolorStyles = [
-    {name: "Matte", value: 'matte'},
-    {name: "Opaque", value: 'opaque'},
-    {name: "Colorful", value: 'colorful'}
-];
-const availableThemes = [
-    {
-        name: "Terracotta",
-        colors: {
-            accent: '#E0745C',
-            bgDark: '#333840',
-            bgMedium: '#484D59',
-            bgLight: '#5B6171',
-            bgLighter: '#676E80'
-        }
-    }
-];
+import uiUtils from "utils/uiUtils";
 
 class SettingsWindow extends Component {
     constructor(props) {
@@ -35,19 +18,31 @@ class SettingsWindow extends Component {
     }
 
     render() {
+        const availableThemes = settingsManager.available.themes;
+        const multicolorStyles = settingsManager.available.multicolorStyles;
+        let currentThemeIndex = availableThemes.indexOf(
+            availableThemes.find(t => t.name === settingsManager.theme.name));
+
+        // we have to calculate height manually, because otherwise the content
+        // won't scroll :(
+        let height = Math.min(window.innerHeight * 0.9, uiUtils.getRem() * 49.8);
 
         return (
             <ToolWindow
                 withClose
                 onClose={this.props.onClose}
                 title={<IconTitle icon="misc:gear">Settings</IconTitle>}
-                style={{width: "30em", maxHeight: "45em"}}
+                style={{width: "30em", height: height}}
             >
                 <Header>Theme</Header>
                 <p>
                     Choose global theme that this site should use:
                 </p>
-                <ThemePicker themes={availableThemes}/>
+                <ThemePicker
+                    themes={availableThemes}
+                    initialTheme={currentThemeIndex}
+                    onSelectionChange={t => this.handleThemeChange(t)}
+                />
                 <Header>Multicolor Card Style</Header>
                 <p>
                     Choose the style for multicolor cards
@@ -88,8 +83,23 @@ class SettingsWindow extends Component {
         );
     }
 
+    handleThemeChange(newTheme) {
+        settingsManager.theme = newTheme;
+        settingsManager.applyTheme();
+
+        this.setState({showMsg: false});
+        if (this.msgTimeout) {
+            clearTimeout(this.msgTimeout);
+        }
+        this.msgTimeout = setTimeout(() => {
+            this.msgTimeout = null;
+            this.setState({showMsg: true});
+        }, 1000);
+    }
+
     handleMulticolorChange(newVal) {
         settingsManager.multicolorStyle = newVal;
+
         this.setState({showMsg: false});
         if (this.msgTimeout) {
             clearTimeout(this.msgTimeout);
