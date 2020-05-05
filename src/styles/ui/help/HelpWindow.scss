@@ -9,7 +9,7 @@
 }
 
 .help-logo {
-  fill: $terracotta;
+  fill: $accent;
   filter: drop-shadow($dropShadow);
   height: 10em;
   width: 20em;
@@ -22,7 +22,7 @@
 
 .help-container h3 {
   text-align: left;
-  color: $terracotta;
+  color: $accent;
   font-size: $fontSizeDefault * 2;
   font-weight: 500;
   margin: 0;
@@ -42,7 +42,7 @@
 .help-container th {
   text-align: left;
   font-weight: 500;
-  color: $terracotta;
+  color: $accent;
 }
 
 .switcher-container {
@@ -69,7 +69,7 @@
 .help-nav-button {
   height: 1em;
   width: 1em;
-  fill: $terracotta;
+  fill: $accent;
   @include clickable;
   margin-left: 0.5em;
 

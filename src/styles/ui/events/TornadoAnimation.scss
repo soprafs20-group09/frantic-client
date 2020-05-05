@@ -16,11 +16,11 @@
     border-radius: 1em;
     background: linear-gradient(
                     90deg,
-                    $terracotta,
-                    $terracotta,
-                    lighten($terracotta, 5),
-                    $terracotta,
-                    $terracotta
+                    $accent,
+                    $accent,
+                    //lighten($accent, 5),
+                    $accent,
+                    $accent
     );
     background-size: 400%;
     animation-name: tornado-whirl, tornado-whirl-fadein;
@@ -58,7 +58,7 @@
   & .ground {
     height: 0.1em;
     width: 13em;
-    background-color: $terracotta;
+    background-color: $accent;
   }
 
   & .rubble-container {

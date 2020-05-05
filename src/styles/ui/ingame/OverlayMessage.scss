@@ -5,7 +5,7 @@
   height: 100%;
   width: 120vw;
   background-color: $black;
-  color: $terracotta;
+  color: $accent;
   transform: rotate(-10deg);
   overflow: hidden;
   @include center;
@@ -37,7 +37,7 @@
 }
 
 .overlay-message {
-  color: $terracotta;
+  color: $accent;
   max-width: 25em;
   @include center;
   flex-direction: column;
@@ -64,7 +64,7 @@
 .overlay-message-icon {
   height: $fontSizeHeader;
   width: $fontSizeHeader;
-  fill: $terracotta;
+  fill: $accent;
   margin-right: 1em;
 }
 

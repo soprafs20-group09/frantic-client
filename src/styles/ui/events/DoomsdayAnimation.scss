@@ -22,7 +22,7 @@ $cloudAnimation: 3s forwards 1.25s;
 
   & .ring {
     position: relative;
-    border-top: 0.2em solid $terracotta;
+    border-top: 0.2em solid $accent;
     width: 20em;
     height: 1em;
     border-radius: 50%;
@@ -37,7 +37,7 @@ $cloudAnimation: 3s forwards 1.25s;
       width: 100%;
       height: 100%;
       border-radius: 50%;
-      border-bottom: 0.2em solid $terracotta;
+      border-bottom: 0.2em solid $accent;
       filter: brightness(50%);
     }
 
@@ -70,13 +70,13 @@ $cloudAnimation: 3s forwards 1.25s;
       width: 11em;
       height: 10em;
       border-radius: 50%;
-      background-color: $terracotta;
+      background-color: $accent;
     }
   }
 
   & .stem {
     width: 0.5em;
-    background-color: $terracotta;
+    background-color: $accent;
 
     &.top {
       height: 2.9em;
@@ -100,7 +100,7 @@ $cloudAnimation: 3s forwards 1.25s;
   & .splash {
     width: 0.5em;
     height: 2em;
-    background-color: $terracotta;
+    background-color: $accent;
     margin: -0.6em 0.09em;
     border-radius: 0.25em;
 
@@ -119,7 +119,7 @@ $cloudAnimation: 3s forwards 1.25s;
     margin-top: 0.1em;
     height: 0.1em;
     width: 13em;
-    background-color: $terracotta;
+    background-color: $accent;
   }
 
   & .cover {
@@ -136,7 +136,7 @@ $cloudAnimation: 3s forwards 1.25s;
   width: 1em;
   height: 1em;
   border-radius: 50%;
-  background-color: $terracotta;
+  background-color: $accent;
   animation: doomsday-explosion 3s ease-out forwards;
 }
 
@@ -144,10 +144,10 @@ $cloudAnimation: 3s forwards 1.25s;
   0% {
     width: 1em;
     height: 1em;
-    background-color: $terracotta;
+    background-color: $accent;
   }
   20% {
-    background-color: $terracotta;
+    background-color: $accent;
   }
   40% {
     width: 0.5em;

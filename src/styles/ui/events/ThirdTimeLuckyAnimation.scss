@@ -9,7 +9,7 @@
   & .board-first-circle {
     position: relative;
     @include center;
-    border: 0.2em solid $terracotta;
+    border: 0.2em solid $accent;
     width: 3.5em;
     height: 11em;
     border-radius: 50%;
@@ -23,7 +23,7 @@
     & .board-second-circle {
       position: relative;
       @include center;
-      border: 0.2em solid $terracotta;
+      border: 0.2em solid $accent;
       width: 1.7em;
       height: 7em;
       left: -0.15em;
@@ -35,7 +35,7 @@
       & .board-center {
         position: relative;
         @include center;
-        background: $terracotta;
+        background: $accent;
         width: 0.6em;
         height: 2.7em;
         left: -0.13em;
@@ -61,7 +61,7 @@
   & .dart {
     $dartWidth: 0.15em;
     position: absolute;
-    color: $terracotta;
+    color: $accent;
     animation-name: dart-throw;
     animation-duration: 1s;
     animation-timing-function: ease;
@@ -152,7 +152,7 @@
     background-color: $white;
   }
   100% {
-    background-color: $terracotta;
+    background-color: $accent;
   }
 }
 
@@ -161,7 +161,7 @@
     border-color: $white;
   }
   100% {
-    border-color: $terracotta;
+    border-color: $accent;
   }
 }
 

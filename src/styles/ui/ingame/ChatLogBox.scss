@@ -48,7 +48,7 @@
   height: $arrowSize;
   border-left: $arrowSize solid transparent;
   border-right: $arrowSize solid transparent;
-  border-bottom: $arrowSize solid $terracotta;
+  border-bottom: $arrowSize solid $accent;
 
   &.expanded {
     transform: rotate(180deg);

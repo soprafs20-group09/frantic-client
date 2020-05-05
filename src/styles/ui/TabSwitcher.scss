@@ -13,8 +13,8 @@
 }
 
 .tab-header {
-  fill: $terracotta;
-  color: $terracotta;
+  fill: $accent;
+  color: $accent;
   background-color: $blueMediumGray;
   font-size: $fontSizeSmallHeader;
   font-weight: 500;
@@ -30,7 +30,7 @@
   &.selected {
     fill: $blueGray;
     color: $blueGray;
-    background-color: $terracotta;
+    background-color: $accent;
     flex-grow: 2;
   }
 }

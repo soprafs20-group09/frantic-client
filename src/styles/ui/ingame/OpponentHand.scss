@@ -89,7 +89,7 @@ $infoSize: 10em;
   position: absolute;
   width: 4.5em;
   height: 4.5em;
-  fill: $terracotta;
+  fill: $accent;
   pointer-events: none;
   filter: drop-shadow($dropShadow);
 }
@@ -131,7 +131,7 @@ $infoSize: 10em;
   padding: 0.1em;
   box-sizing: border-box;
   border-radius: 0.3em 0.3em 0 0;
-  background-color: $terracotta;
+  background-color: $accent;
   color: $blueGray;
   font-weight: 600;
   text-align: center;
@@ -146,7 +146,7 @@ $infoSize: 10em;
   box-sizing: border-box;
 
   th {
-    color: $terracotta;
+    color: $accent;
     font-weight: 500;
     text-align: left;
   }

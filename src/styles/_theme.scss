@@ -1,5 +1,9 @@
 /* Theme Colors */
-$terracotta: #E0745C;
+:root {
+  --terracotta: #E0745C;
+}
+
+$accent: var(--terracotta);
 $blueBlack: #333840;
 $blueGray: #484D59;
 $blueMediumGray: #5B6171;

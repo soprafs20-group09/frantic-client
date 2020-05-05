@@ -49,7 +49,7 @@ $uiBorderRadius: 0.3em;
   padding: 0 0.5em;
   min-width: 5.5em;
   border: none;
-  background-color: $terracotta;
+  background-color: $accent;
   color: $blueGray;
   font-family: $themeFont;
   font-size: $fontSizeDefault;
@@ -68,7 +68,7 @@ $uiBorderRadius: 0.3em;
 .search-refresh {
   width: 2.2em;
   height: 2.2em;
-  fill: $terracotta;
+  fill: $accent;
   margin-left: 1em;
   filter: drop-shadow($dropShadow);
 
@@ -88,7 +88,7 @@ $buttonHeight: 1.75em;
   @include clickable;
 
   &.primary {
-    background-color: $terracotta;
+    background-color: $accent;
     color: $blueGray;
     font-weight: 600;
     box-shadow: $dropShadow;
@@ -96,12 +96,12 @@ $buttonHeight: 1.75em;
 
   &.secondary {
     background-color: transparent;
-    color: $terracotta;
+    color: $accent;
     font-weight: 300;
   }
 
   &.end-turn {
-    background-color: $terracotta;
+    background-color: $accent;
     color: $blueBlack;
     font-weight: 600;
     box-shadow: $dropShadow;
@@ -122,7 +122,7 @@ $buttonHeight: 1.75em;
   display: block;
   margin-top: 0;
   margin-bottom: 0.7em;
-  color: $terracotta;
+  color: $accent;
   font-family: $themeFont;
   font-size: $fontSizeDefault * 2;
   height: 1.4em;
@@ -162,14 +162,14 @@ $buttonHeight: 1.75em;
   width: 2em;
   height: 2em;
   color: $blueGray;
-  background-color: $terracotta;
+  background-color: $accent;
   border-radius: 50%;
   font-weight: 700;
   @include center;
 }
 
 .step-title {
-  color: $terracotta;
+  color: $accent;
   font-size: $fontSizeSmallHeader;
   font-weight: 500;
   margin: 0;
@@ -179,7 +179,7 @@ $buttonHeight: 1.75em;
 }
 
 .step-separator {
-  border-bottom: 0.12em solid $terracotta;
+  border-bottom: 0.12em solid $accent;
   flex-grow: 1;
   margin: 0.5em;
 
@@ -224,7 +224,7 @@ $buttonHeight: 1.75em;
   }
 
   &.active {
-    background-color: $terracotta;
+    background-color: $accent;
     color: $blueGray;
     font-weight: 400;
   }
@@ -241,7 +241,7 @@ $buttonHeight: 1.75em;
 }
 
 .switch-description {
-  color: $terracotta;
+  color: $accent;
   flex-shrink: 0;
   height: 1.5em;
   line-height: 1.5em;
@@ -277,7 +277,7 @@ $buttonHeight: 1.75em;
   height: 1.5em;
   width: 1.5em;
   border-radius: 50%;
-  background-color: $terracotta;
+  background-color: $accent;
   box-shadow: $dropShadow;
   transition: filter 0.3s;
 
@@ -291,7 +291,7 @@ $buttonHeight: 1.75em;
 .spinner {
   width: 5em;
   height: 5em;
-  fill: $terracotta;
+  fill: $accent;
 
   &.center {
     @include fillCenter;
@@ -311,8 +311,8 @@ $buttonHeight: 1.75em;
   box-sizing: border-box;
 
   &.active {
-    border: 0.04em solid $terracotta;
-    box-shadow: 0 0 0.2em $terracotta;
+    border: 0.04em solid $accent;
+    box-shadow: 0 0 0.2em $accent;
   }
 }
 
@@ -336,7 +336,7 @@ $buttonHeight: 1.75em;
 .toast-message {
   padding: 0.3em 0.8em 0.3em 0.5em;
   border-radius: 0.3em;
-  background-color: $terracotta;
+  background-color: $accent;
   color: $blueGray;
   font-weight: 500;
   box-shadow: $dropShadow;

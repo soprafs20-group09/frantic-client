@@ -6,7 +6,7 @@
 
 .error-box {
   color: $blueGray;
-  background-color: $terracotta;
+  background-color: $accent;
   display: flex;
   justify-content: space-between;
   padding: 1em;
@@ -54,7 +54,7 @@
   float: left;
   box-sizing: border-box;
   background-color: $blueGray;
-  color: $terracotta;
+  color: $accent;
   border-radius: 0.3em;
   padding: 0.3em;
 }

@@ -32,12 +32,12 @@ $timerSize: 2em;
 
 .turn-timer-spinner {
   flex-shrink: 0;
-  fill: $terracotta;
+  fill: $accent;
 }
 
 .turn-timer-seconds {
   flex-shrink: 0;
-  color: $terracotta;
+  color: $accent;
   margin: 0 0 0 0.5em;
   font-size: 1.5em;
   line-height: 1em;
@@ -52,7 +52,7 @@ $timerSize: 2em;
 .turn-timer-bomb {
   width: 3em;
   height: 3em;
-  fill: $terracotta;
+  fill: $accent;
   filter: drop-shadow($dropShadow);
   margin-left: -0.25em;
   margin-right: -0.6em;

@@ -21,7 +21,7 @@
 
   &.active {
     font-weight: 500;
-    color: $terracotta;
+    color: $accent;
   }
 
   & .opponent-transition-container {
@@ -60,9 +60,9 @@
   }
 
   &.active {
-    border: 0.04em solid $terracotta;
-    box-shadow: 0 0 0.2em $terracotta;
-    color: $terracotta;
+    border: 0.04em solid $accent;
+    box-shadow: 0 0 0.2em $accent;
+    color: $accent;
     font-weight: 500;
   }
 }
@@ -81,8 +81,8 @@
   border: 0.28em solid transparent;
 
   &.active {
-    border: 0.28em solid $terracotta;
-    box-shadow: 0 0 1.4em $terracotta;
+    border: 0.28em solid $accent;
+    box-shadow: 0 0 1.4em $accent;
   }
 }
 
@@ -93,13 +93,13 @@
 }
 
 .picker-separator {
-  color: $terracotta;
+  color: $accent;
   font-weight: 500;
   text-align: center;
   flex-grow: 0;
 
   &.line {
-    border-bottom: 0.1em solid $terracotta;
+    border-bottom: 0.1em solid $accent;
     flex-grow: 1;
     margin: 1em;
   }

@@ -11,7 +11,7 @@
 .mainmenu-logo {
   width: 16em;
   height: 16em;
-  fill: $terracotta;
+  fill: $accent;
   animation: mainmenu-logo-spin infinite 20s linear;
 }
 
@@ -27,7 +27,7 @@
 
 .mainmenu-item {
   margin: 0;
-  color: $terracotta;
+  color: $accent;
   font-size: $fontSizeDefault * 2;
   font-weight: 300;
   font-style: normal;
@@ -39,7 +39,7 @@
 
 .madewith {
   font-family: $themeFont;
-  color: $terracotta;
+  color: $accent;
   margin: 0;
   overflow: visible;
 

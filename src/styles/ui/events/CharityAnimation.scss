@@ -22,7 +22,7 @@
     position: relative;
     width: 12em;
     height: 7em;
-    background-color: $terracotta;
+    background-color: $accent;
     filter: brightness(80%);
   }
 
@@ -31,7 +31,7 @@
     height: 3em;
     z-index: 3;
     position: absolute;
-    fill: $terracotta;
+    fill: $accent;
     filter: brightness(50%);
     transform: translateX(4.55em) translateY(-5em);
   }
@@ -42,7 +42,7 @@
     transform: translateX(-0.5em) translateY(-8.4em);
     width: 13em;
     height: 1.4em;
-    background-color: $terracotta;
+    background-color: $accent;
     filter: brightness(90%);
   }
 
@@ -70,7 +70,7 @@
     z-index: 5;
     position: absolute;
     transform: translateX(-0.5em) translateY(-9.475em);
-    border-bottom: 1.1em solid $terracotta;
+    border-bottom: 1.1em solid $accent;
     border-left: 1.1em solid transparent;
     border-right: 1.1em solid transparent;
     width: 10.8em;
@@ -92,7 +92,7 @@
   z-index: 1;
   position: absolute;
   transform: translateX(0em) translateY(-4.88em);
-  border-bottom: 1.1em solid $terracotta;
+  border-bottom: 1.1em solid $accent;
   border-left: 1.1em solid transparent;
   border-right: 1.1em solid transparent;
   width: 8.7em;
@@ -151,7 +151,7 @@
   height: 3em;
   z-index: 6;
   position: absolute;
-  fill: $terracotta;
+  fill: $accent;
   filter: brightness(50%);
   opacity: 0;
   transform: translateX(0.05em) translateY(1.6em);

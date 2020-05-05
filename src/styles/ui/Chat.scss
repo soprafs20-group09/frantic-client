@@ -48,7 +48,7 @@ $inputHeight: 1.9em;
 }
 
 .chat-send-button {
-  fill: $terracotta;
+  fill: $accent;
   height: 1.4em;
   width: 1.4em;
   margin: 0 0.2em;
@@ -99,6 +99,6 @@ $chatItemSize: $fontSizeChat;
 }
 
 .chat-username-highlight {
-  color: $terracotta;
+  color: $accent;
   font-weight: 500;
 }
