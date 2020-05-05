@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import "styles/ui/Chat.scss";
 import InlineSVG from "react-inlinesvg";
+import sessionManager from "utils/sessionManager";
 
 /**
  * This component renders a chat message or announcement.
@@ -19,10 +20,15 @@ class ChatItem extends Component {
     render() {
         let style = this.props.style || 'msg';
         let sender, icon;
+        let youAddition = " ";
+        if (this.props.sender === sessionManager.username) {
+            youAddition += "chat-username-highlight";
+        }
+
         if (this.props.sender) {
             sender =
                 <p
-                    className="chat-item-sender"
+                    className={"chat-item-sender" + youAddition}
                     style={{color: this.props.color}}
                 >
                     {this.props.sender}:
