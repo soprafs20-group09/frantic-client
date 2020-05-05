@@ -8,6 +8,25 @@ import Separator from "components/ui/Separator";
 import Card from "components/ui/cards/Card";
 import settingsManager from "utils/settingsManager";
 import ToastMessage from "components/ui/ToastMessage";
+import ThemePicker from "components/ui/pickers/ThemePicker";
+
+const multicolorStyles = [
+    {name: "Matte", value: 'matte'},
+    {name: "Opaque", value: 'opaque'},
+    {name: "Colorful", value: 'colorful'}
+];
+const availableThemes = [
+    {
+        name: "Terracotta",
+        colors: {
+            accent: '#E0745C',
+            bgDark: '#333840',
+            bgMedium: '#484D59',
+            bgLight: '#5B6171',
+            bgLighter: '#676E80'
+        }
+    }
+];
 
 class SettingsWindow extends Component {
     constructor(props) {
@@ -16,19 +35,19 @@ class SettingsWindow extends Component {
     }
 
     render() {
-        const multicolorStyles = [
-            {name: "Matte", value: 'matte'},
-            {name: "Opaque", value: 'opaque'},
-            {name: "Colorful", value: 'colorful'}
-        ];
 
         return (
             <ToolWindow
                 withClose
                 onClose={this.props.onClose}
                 title={<IconTitle icon="misc:gear">Settings</IconTitle>}
-                style={{width: "30em", maxHeight: "40em"}}
+                style={{width: "30em", maxHeight: "45em"}}
             >
+                <Header>Theme</Header>
+                <p>
+                    Choose global theme that this site should use:
+                </p>
+                <ThemePicker themes={availableThemes}/>
                 <Header>Multicolor Card Style</Header>
                 <p>
                     Choose the style for multicolor cards
