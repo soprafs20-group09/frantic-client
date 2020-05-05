@@ -1,0 +1,91 @@
+@import 'theme';
+@import 'ui/cards/colors';
+
+.expansion-animation {
+  position: relative;
+  @include center;
+
+
+  & .grid {
+    /*background: linear-gradient(to bottom,
+            transparent 45%, $terracotta 45%,
+            $terracotta 55%, transparent 55%),
+    linear-gradient(to right, transparent 45%, $terracotta 45%,
+                    $terracotta 55%, transparent 55%);*/
+    width: 20em;
+    height: 14em;
+    background: linear-gradient(to bottom, transparent 19.5%, $accent 19.5%,
+            $accent 20.5%, transparent 20.5%, transparent 39.5%, $accent 39.5%,
+            $accent 41%, transparent 41%, transparent 59%, $accent 59%,
+            $accent 60.5%, transparent 60.5%, transparent 79.5%, $accent 79.5%,
+            $accent 80.5%, transparent 80.5%),
+            linear-gradient(to right, transparent 19.5%, $accent 19.5%,
+                    $accent 20%, transparent 20%, transparent 39.5%, $accent 39.5%,
+                    $accent 40.5%, transparent 40.5%, transparent 59.5%, $accent 59.5%,
+                    $accent 60.5%, transparent 60.5%, transparent 80%, $accent 80%,
+                    $accent 80.5%, transparent 80.5%);
+
+  }
+
+  & .arrow {
+    position: relative;
+    @include center;
+    flex-direction: row;
+
+    & .arrow-1st {
+      position: absolute;
+      width: 0.5em;
+      height: 6em;
+      background: $accent;
+      transform: rotate(40deg);
+      left: -18em;
+      bottom: -7em;
+    }
+    & .arrow-2nd {
+      position: absolute;
+      width: 0.5em;
+      height: 3em;
+      background: $accent;
+      transform: rotate(130deg);
+      left: -15em;
+      bottom: -4.42em;
+    }
+    & .arrow-3rd {
+      position: absolute;
+      width: 0.5em;
+      height: 5em;
+      background: $accent;
+      transform: rotate(40deg);
+      bottom: -4.4em;
+      left: -12.51em;
+    }
+    & .arrow-4th {
+      position: absolute;
+      width: 0.5em;
+      height: 2em;
+      background: $accent;
+      transform: rotate(130deg);
+      left: -10.3em;
+      bottom: -1.82em;
+    }
+    & .arrow-5th {
+      position: absolute;
+      width: 0.5em;
+      height: 6em;
+      background: $accent;
+      transform: rotate(40deg);
+      left: -7.7em;
+      bottom: -2.4em;
+    }
+    & .arrow-head {
+      position: absolute;
+      border-left: 1.5em solid $accent;
+      border-top: 1em solid transparent;
+      border-bottom: 1em solid transparent;
+      transform: rotate(-50deg);
+      left: -5.9em;
+      bottom: 2.3em;
+
+    }
+  }
+}
