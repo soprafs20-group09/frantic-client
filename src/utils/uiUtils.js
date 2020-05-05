@@ -126,8 +126,17 @@ function getEventAnimation(event) {
     }
 }
 
+function getRem() {
+    return parseInt(
+        window.getComputedStyle(document.getElementsByTagName('html')[0])
+            .getPropertyValue('font-size')
+            .slice(0, -2)
+    );
+}
+
 export default {
     parseChatObject,
     resolveIconString,
-    getEventAnimation
+    getEventAnimation,
+    getRem
 }
