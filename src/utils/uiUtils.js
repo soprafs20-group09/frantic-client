@@ -11,6 +11,7 @@ import ThirdTimeLuckyAnimation from "../components/ui/events/ThirdTimeLuckyAnima
 import CharityAnimation from "components/ui/events/CharityAnimation";
 import reactStringReplace from "react-string-replace";
 import sessionManager from "utils/sessionManager";
+import ExpansionAnimation from "../components/ui/events/ExpansionAnimation";
 
 function parseChatObject(msg) {
     let newItem;
@@ -116,6 +117,9 @@ function getEventAnimation(event) {
 
         case 'charity':
             return <CharityAnimation/>;
+
+        case 'expansion':
+            return <ExpansionAnimation/>;
 
         default:
             return 'coming soon™';
