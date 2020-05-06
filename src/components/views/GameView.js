@@ -40,7 +40,8 @@ class GameView extends Component {
             activePlayer: undefined,
             turnTime: 0,
             turnKey: 0,
-            hasDrawn: false,
+            canDraw: false,
+            canEnd: false,
             actionResponse: null,
             recessionAmount: 0,
             timebombRounds: 0,
@@ -105,7 +106,7 @@ class GameView extends Component {
         sockClient.onLobbyMessage('/game-state', s => this.handleGameState(s));
         sockClient.onLobbyMessage('/start-turn', t => this.handleTurnStart(t));
         sockClient.onLobbyMessage('/hand', h => this.handleNewHand(h));
-        sockClient.onLobbyMessage('/playable-cards', pc => this.handlePlayableCards(pc));
+        sockClient.onLobbyMessage('/playable', pc => this.handlePlayable(pc));
         sockClient.onLobbyMessage('/draw', a => this.handleNewDraw(a));
         sockClient.onLobbyMessage('/action-response', r => this.handleActionResponse(r));
         sockClient.onLobbyMessage('/event', e => this.handleEvent(e));
@@ -230,7 +231,7 @@ class GameView extends Component {
 
                     <DrawStack
                         animated
-                        interactive={isPlayerTurn && !this.state.hasDrawn}
+                        interactive={isPlayerTurn && this.state.canDraw}
                         drawAmount={this.state.drawAmount}
                         drawKey={this.state.drawKey}
                         onClick={() => this.handleCardDraw()}
@@ -238,7 +239,7 @@ class GameView extends Component {
                     <div className="end-turn-container">
                         <EndTurnTransition>
                             {
-                                this.state.hasDrawn &&
+                                this.state.canEnd &&
                                 <Button type="end-turn" onClick={() => this.handleTurnEnd()}>
                                     End Turn
                                 </Button>
@@ -412,9 +413,11 @@ class GameView extends Component {
         });
     }
 
-    handlePlayableCards(playableCards) {
+    handlePlayable(playable) {
         this.setState({
-            availableCards: playableCards.playable
+            availableCards: playable.cards,
+            canDraw: playable.canDraw,
+            canEnd: playable.canEnd
         });
     }
 
@@ -438,7 +441,6 @@ class GameView extends Component {
             activePlayer: t.currentPlayer,
             turnTime: t.time,
             turnKey: t.turn,
-            hasDrawn: false,
             actionResponse: null,
             timebombRounds: t.timebombRounds,
             overlay: overlay,
@@ -544,17 +546,11 @@ class GameView extends Component {
                     index: i
                 });
             }
-            if (this.state.hasDrawn && this.props.playerCards[i].value === 'second-chance') {
-                this.setState({hasDrawn: false});
-            }
         } catch {
         }
     }
 
     handleCardDraw() {
-        if (!this.state.hasDrawn) {
-            this.setState({hasDrawn: true});
-        }
         try {
             if (sockClient.isConnected()) {
                 sockClient.sendToLobby('/draw');
@@ -581,7 +577,7 @@ class GameView extends Component {
         }
         // set the active player to null in order to prevent the user
         // from clicking anything until next turn starts
-        this.setState({actionResponse: null, activePlayer: null, hasDrawn: false});
+        this.setState({actionResponse: null, activePlayer: null});
     }
 
     // endregion
