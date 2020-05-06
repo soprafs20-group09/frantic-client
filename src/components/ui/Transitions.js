@@ -11,17 +11,20 @@ class WindowTransition extends Component {
         const fromStyle = {
             position: this.props.mode,
             opacity: 0,
-            transform: 'scale(0.8)'
+            transform: 'scale(0.8)',
+            pointerEvents: 'all'
         };
         const enterStyle = {
             position: this.props.mode,
             opacity: 1,
-            transform: 'scale(1)'
+            transform: 'scale(1)',
+            pointerEvents: 'all'
         };
         const leaveStyle = {
             position: this.props.mode,
             opacity: 0,
-            transform: 'scale(0.8)'
+            transform: 'scale(0.8)',
+            pointerEvents: 'none'
         };
 
         return (
