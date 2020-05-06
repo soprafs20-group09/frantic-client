@@ -19,7 +19,7 @@ $uiBorderRadius: 0.3em;
   background-color: $bgLighter;
   border: none;
   border-radius: $uiBorderRadius;
-  color: white;
+  color: $textColor;
   height: 1.9em;
   width: 100%;
   padding: 0 0.5em;
@@ -205,7 +205,7 @@ $buttonHeight: 1.75em;
 .singleselect-item {
   background-color: $bgLighter;
   border: none;
-  color: white;
+  color: $textColor;
   height: 1.65em;
   width: 100%;
   font-family: $themeFont;

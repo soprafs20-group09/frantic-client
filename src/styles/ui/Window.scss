@@ -1,7 +1,7 @@
 @import 'theme';
 
 .window-container {
-  color: white;
+  color: $textColor;
   background-color: $bgMedium;
   border-radius: 0.8em;
   overflow: hidden;

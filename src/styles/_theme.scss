@@ -11,6 +11,8 @@
   --bg-medium: var(--blue-gray);
   --bg-light: var(--blue-medium-gray);
   --bg-lighter: var(--blue-light-gray);
+
+  --text-color: white;
 }
 
 $accent: var(--accent-color);
@@ -18,6 +20,8 @@ $bgDark: var(--bg-dark);
 $bgMedium: var(--bg-medium);
 $bgLight: var(--bg-light);
 $bgLighter: var(--bg-lighter);
+
+$textColor: var(--text-color);
 
 $availableCardColor: #43de43;
 
