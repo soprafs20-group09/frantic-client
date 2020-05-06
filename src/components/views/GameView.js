@@ -47,6 +47,9 @@ class GameView extends Component {
             timebombRounds: 0,
             overlay: null,
             event: null,
+            animationTrail: {
+                hand: 500
+            },
             chatItems: []
         };
     }
@@ -116,6 +119,7 @@ class GameView extends Component {
         sockClient.onLobbyMessage('/attack-turn', t => this.handleAttackTurn(t));
         sockClient.onLobbyMessage('/recession', r => this.handleRecessionAR(r));
         sockClient.onLobbyMessage('/overlay', o => this.handleOverlay(o));
+        sockClient.onLobbyMessage('/animation-speed', s => this.handleAnimationSpeed(s));
         sockClient.onLobbyMessage('/end-round', r => this.handleRoundEnd(r));
         sockClient.onLobbyMessage('/end-game', r => this.handleGameEnd(r));
     }
@@ -165,6 +169,7 @@ class GameView extends Component {
                         mode="right"
                         opponent={opp}
                         active={opp.username === this.state.activePlayer}
+                        trail={this.state.animationTrail.hand}
                         key={i}
                     />
                 );
@@ -178,6 +183,7 @@ class GameView extends Component {
                     mode="top"
                     opponent={opp}
                     active={opp.username === this.state.activePlayer}
+                    trail={this.state.animationTrail.hand}
                     key={i}
                 />
             );
@@ -189,6 +195,7 @@ class GameView extends Component {
                     mode="left"
                     opponent={opp}
                     active={opp.username === this.state.activePlayer}
+                    trail={this.state.animationTrail.hand}
                     key={remaining.length}
                 />
             );
@@ -256,6 +263,7 @@ class GameView extends Component {
                             cards={this.state.playerCards}
                             available={this.state.availableCards}
                             onCardClick={i => this.handleCardClick(i)}
+                            trail={this.state.animationTrail.hand}
                         />
                     </div>
 
@@ -481,6 +489,10 @@ class GameView extends Component {
 
     handleOverlay(o) {
         this.setState({overlay: o});
+    }
+
+    handleAnimationSpeed(speed) {
+        this.setState({animationTrail: speed});
     }
 
     handleRoundEnd(r) {
