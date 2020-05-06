@@ -25,7 +25,7 @@ class SettingsWindow extends Component {
 
         // we have to calculate height manually, because otherwise the content
         // won't scroll :(
-        let height = Math.min(window.innerHeight * 0.9, uiUtils.getRem() * 49.8);
+        let height = Math.min(window.innerHeight * 0.9, uiUtils.getRem() * 53.5);
 
         return (
             <ToolWindow
@@ -36,7 +36,7 @@ class SettingsWindow extends Component {
             >
                 <Header>Theme</Header>
                 <p>
-                    Choose global theme that this site should use:
+                    Choose a global theme that this site should use:
                 </p>
                 <ThemePicker
                     themes={availableThemes}

@@ -52,8 +52,8 @@ class ThemePicker extends Component {
     }
 }
 
-ThemePicker.defaultProps ={
-  initialTheme: 0
+ThemePicker.defaultProps = {
+    initialTheme: 0
 };
 
 
@@ -75,7 +75,12 @@ class ThemeItem extends Component {
                 <div className="themepicker-theme">
                     <div className="themepicker-color" style={{backgroundColor: theme.colors.accent}}/>
                     <div className="themepicker-color" style={{backgroundColor: theme.colors.bgDark}}/>
-                    <div className="themepicker-color" style={{backgroundColor: theme.colors.bgMedium}}/>
+                    <div className="themepicker-color" style={{
+                        backgroundColor: theme.colors.bgMedium,
+                        color: theme.colors.text
+                    }}>
+                        abc
+                    </div>
                     <div className="themepicker-color" style={{backgroundColor: theme.colors.bgLight}}/>
                     <div className="themepicker-color" style={{backgroundColor: theme.colors.bgLighter}}/>
                 </div>
@@ -86,7 +91,7 @@ class ThemeItem extends Component {
 }
 
 ThemeItem.defaultProps = {
-  active: false
+    active: false
 };
 
 export default ThemePicker;
