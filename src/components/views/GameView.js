@@ -38,8 +38,8 @@ class GameView extends Component {
             drawAmount: 0,
             drawKey: 0,
             activePlayer: undefined,
-            turnTime: 0,
-            turnKey: 0,
+            timerSeconds: 0,
+            timerKey: 0,
             canDraw: false,
             canEnd: false,
             actionResponse: null,
@@ -105,6 +105,7 @@ class GameView extends Component {
         sockClient.onLobbyMessage('/chat', r => this.handleChatMessage(r));
         sockClient.onLobbyMessage('/game-state', s => this.handleGameState(s));
         sockClient.onLobbyMessage('/start-turn', t => this.handleTurnStart(t));
+        sockClient.onLobbyMessage('/timer', t => this.handleTimer(t));
         sockClient.onLobbyMessage('/hand', h => this.handleNewHand(h));
         sockClient.onLobbyMessage('/playable', pc => this.handlePlayable(pc));
         sockClient.onLobbyMessage('/draw', a => this.handleNewDraw(a));
@@ -261,8 +262,8 @@ class GameView extends Component {
                     <div className="timer-container">
                         <TurnTimer
                             start
-                            seconds={this.state.turnTime}
-                            turn={this.state.turnKey}
+                            seconds={this.state.timerSeconds}
+                            turn={this.state.timerKey}
                             timebomb={this.state.timebombRounds}
                         />
                     </div>
@@ -408,9 +409,7 @@ class GameView extends Component {
     }
 
     handleNewHand(newHand) {
-        this.setState({
-            playerCards: newHand.cards
-        });
+        this.setState({playerCards: newHand.cards});
     }
 
     handlePlayable(playable) {
@@ -428,6 +427,13 @@ class GameView extends Component {
         });
     }
 
+    handleTimer(t) {
+        this.setState({
+            timerSeconds: t.seconds,
+            timerKey: (this.state.timerKey + 1) % 2
+        });
+    }
+
     handleTurnStart(t) {
         let overlay = null;
         if (t.currentPlayer === sessionManager.username) {
@@ -439,20 +445,14 @@ class GameView extends Component {
 
         this.setState({
             activePlayer: t.currentPlayer,
-            turnTime: t.time,
-            turnKey: t.turn,
             actionResponse: null,
             timebombRounds: t.timebombRounds,
-            overlay: overlay,
+            overlay: overlay
         });
     }
 
     handleAttackTurn(t) {
-        this.setState({
-            activePlayer: t.currentPlayer,
-            turnTime: t.time,
-            turnKey: t.turn,
-        });
+        this.setState({activePlayer: t.currentPlayer});
     }
 
     handleActionResponse(r) {
@@ -467,16 +467,7 @@ class GameView extends Component {
     }
 
     handleAttackOpportunity(r) {
-        let newKey = this.state.turnKey;
-        if (!isNaN(newKey)) {
-            newKey = 'attacc';
-        }
-        newKey += 'a';
-        this.setState({
-            availableCards: r.playable,
-            turnTime: r.time,
-            turnKey: newKey
-        });
+        this.setState({availableCards: r.playable});
     }
 
     handleEvent(e) {
@@ -489,9 +480,7 @@ class GameView extends Component {
     }
 
     handleOverlay(o) {
-        this.setState({
-            overlay: o
-        });
+        this.setState({overlay: o});
     }
 
     handleRoundEnd(r) {
