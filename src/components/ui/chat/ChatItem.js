@@ -55,8 +55,10 @@ class ChatItem extends Component {
         return (
             <div className={`chat-item ${style}`}>
                 {icon}
-                {sender}
-                <p className="chat-item-text">{this.props.children}</p>
+                <p className="chat-item-text">
+                    {sender}
+                    {this.props.children}
+                </p>
             </div>
         );
     }

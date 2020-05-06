@@ -63,15 +63,10 @@ $chatItemSize: $fontSizeChat;
 
 .chat-item {
   width: 100%;
-  padding: 0.35em;
+  padding: 0.25em 0.35em;
   display: flex;
-  align-items: flex-start;
   font-family: $themeFont;
   font-size: $chatItemSize;
-
-  &:first-of-type {
-    margin-top: auto;
-  }
 
   &.event {
     font-weight: 500;
@@ -80,13 +75,16 @@ $chatItemSize: $fontSizeChat;
 }
 
 .chat-item-icon {
+  display: inline;
   fill: currentColor;
   width: $chatItemSize;
   height: $chatItemSize;
   margin: 0 0.35em 0 0;
+  transform: translateY(10%);
 }
 
 .chat-item-sender {
+  display: inline;
   margin: 0 0.35em 0 0;
   font-weight: 500;
   line-height: $chatItemSize;
@@ -94,7 +92,7 @@ $chatItemSize: $fontSizeChat;
 
 .chat-item-text {
   margin: 0;
-  line-height: $chatItemSize;
+  line-height: 1.25em;
   word-break: break-word;
 }
 
