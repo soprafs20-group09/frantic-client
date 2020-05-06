@@ -61,7 +61,7 @@ class LobbyView extends Component {
         }
 
         return (
-            <AppContainer withBack withHelp>
+            <AppContainer withBack withHelp withSettings>
                 {content}
             </AppContainer>
         );

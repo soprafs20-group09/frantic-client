@@ -68,7 +68,7 @@ class LobbyBrowserView extends Component {
         }
 
         return (
-            <AppContainer withBack withHelp>
+            <AppContainer withBack withHelp withSettings>
                 <WindowTransition>
                     <Window title="Join a Lobby" width="70vw" height="80vh">
                         <SearchBar
