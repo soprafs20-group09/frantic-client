@@ -44,6 +44,8 @@ class GameView extends Component {
             actionResponse: null,
             recessionAmount: 0,
             timebombRounds: 0,
+            overlay: null,
+            event: null,
             chatItems: []
         };
     }
@@ -462,13 +464,6 @@ class GameView extends Component {
         });
     }
 
-    handleEvent(e) {
-        this.setState({
-            name: e.event,
-            message: e.message
-        });
-    }
-
     handleAttackOpportunity(r) {
         let newKey = this.state.turnKey;
         if (!isNaN(newKey)) {
@@ -479,6 +474,15 @@ class GameView extends Component {
             availableCards: r.playable,
             turnTime: r.time,
             turnKey: newKey
+        });
+    }
+
+    handleEvent(e) {
+        this.setState({
+            event: {
+                name: e.event,
+                message: e.message
+            }
         });
     }
 
