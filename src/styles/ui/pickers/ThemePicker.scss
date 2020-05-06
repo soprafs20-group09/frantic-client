@@ -26,7 +26,8 @@
 
     & > .themepicker-theme {
       border: 0.1em solid $accent;
-      box-shadow: 0 0 0.5em $accent;
+      box-shadow: 0 0 1em $accent;
+      background-color: $accent;
     }
   }
 }
@@ -38,7 +39,7 @@
   height: 5em;
   width: 5em;
   overflow: hidden;
-  border-radius: 0.3em;
+  border-radius: 0.4em;
   box-shadow: $dropShadow;
 }
 
@@ -65,5 +66,4 @@
 
 .themepicker-color-text {
   position: absolute;
-
 }
