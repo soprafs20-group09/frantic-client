@@ -13,11 +13,15 @@ import reactStringReplace from "react-string-replace";
 import sessionManager from "utils/sessionManager";
 import ExpansionAnimation from "../components/ui/events/ExpansionAnimation";
 
+function escapeRegExp(string) {
+    return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
+}
+
 function parseChatObject(msg) {
     let newItem;
     let text = msg.message;
     if (sessionManager.username) {
-        let regex = new RegExp(`\\b(${sessionManager.username})\\b`);
+        let regex = new RegExp(`\\b(${escapeRegExp(sessionManager.username)})\\b`);
         text = reactStringReplace(
             text,
             regex,
