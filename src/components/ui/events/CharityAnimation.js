@@ -19,10 +19,6 @@ class CharityAnimation extends Component {
                     <div className="outer-coin"/>
                     <div className="inner-coin"/>
                 </div>
-                <div className="charity-coin">
-                    <div className="outer-coin"/>
-                    <div className="inner-coin"/>
-                </div>
                 <div className="charity-box">
                     <div className="bot"/>
                     <InlineSVG src={CharityLogo} className="charity-logo"/>
