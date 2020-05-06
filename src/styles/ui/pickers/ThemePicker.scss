@@ -35,8 +35,8 @@
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  height: 3em;
-  width: 6em;
+  height: 5em;
+  width: 5em;
   overflow: hidden;
   border-radius: 0.3em;
   box-shadow: $dropShadow;
@@ -51,10 +51,19 @@
 
 .themepicker-color {
   &:nth-child(1) {
-    width: 3em;
-    height: 3em;
+    width: 2em;
+    height: 100%;
+  }
+  &:nth-child(3) {
+    @include center;
+    font-weight: 300;
   }
 
-  width: 1.5em;
-  height: 1.5em;
+  width: 3em;
+  height: 1.25em;
+}
+
+.themepicker-color-text {
+  position: absolute;
+
 }

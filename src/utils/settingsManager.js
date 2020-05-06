@@ -4,7 +4,7 @@
 
 const defaultValues = {
     multicolorStyle: 'opaque',
-    theme: "{\"name\":\"Terracotta\",\"colors\":{\"accent\":\"#E0745C\",\"bgDark\":\"#333840\",\"bgMedium\":\"#484D59\",\"bgLight\":\"#5B6171\",\"bgLighter\":\"#676E80\"}}"
+    theme: "{\"name\":\"Terracotta\",\"colors\":{\"accent\":\"#E0745C\",\"bgDark\":\"#333840\",\"bgMedium\":\"#484D59\",\"bgLight\":\"#5B6171\",\"bgLighter\":\"#676E80\",\"text\":\"white\"}}"
 };
 
 function getItem(name) {
@@ -46,6 +46,7 @@ export default {
         root.style.setProperty('--bg-medium', colors.bgMedium);
         root.style.setProperty('--bg-light', colors.bgLight);
         root.style.setProperty('--bg-lighter', colors.bgLighter);
+        root.style.setProperty('--text-color', colors.text);
     },
 
     available: {
@@ -62,7 +63,19 @@ export default {
                     bgDark: '#333840',
                     bgMedium: '#484D59',
                     bgLight: '#5B6171',
-                    bgLighter: '#676E80'
+                    bgLighter: '#676E80',
+                    text: 'white'
+                }
+            },
+            {
+                name: "Lavender",
+                colors: {
+                    accent: '#735dde',
+                    bgDark: '#cdcdcd',
+                    bgMedium: '#ffffff',
+                    bgLight: '#e6e6e6',
+                    bgLighter: '#d9d9d9',
+                    text: 'black'
                 }
             },
             {
@@ -72,7 +85,8 @@ export default {
                     bgDark: '#1d3e53',
                     bgMedium: '#254b62',
                     bgLight: '#476d7c',
-                    bgLighter: '#4c7485'
+                    bgLighter: '#4c7485',
+                    text: 'white'
                 }
             },
             {
@@ -82,7 +96,8 @@ export default {
                     bgDark: '#1c1f29',
                     bgMedium: '#1f2833',
                     bgLight: '#2b3847',
-                    bgLighter: '#415669'
+                    bgLighter: '#415669',
+                    text: 'white'
                 }
             },
             {
@@ -92,7 +107,8 @@ export default {
                     bgDark: '#022c43',
                     bgMedium: '#053f5e',
                     bgLight: '#115173',
-                    bgLighter: '#125578'
+                    bgLighter: '#125578',
+                    text: 'white'
                 }
             },
             {
@@ -102,17 +118,8 @@ export default {
                     bgDark: '#202040',
                     bgMedium: '#543864',
                     bgLight: '#ff6363',
-                    bgLighter: '#ff7878'
-                }
-            },
-            {
-                name: "Red'n'black",
-                colors: {
-                    accent: '#c3073f',
-                    bgDark: '#1a1a1d',
-                    bgMedium: '#4e4e50',
-                    bgLight: '#5a5a5c',
-                    bgLighter: '#69696b'
+                    bgLighter: '#ff7878',
+                    text: 'white'
                 }
             }
         ]

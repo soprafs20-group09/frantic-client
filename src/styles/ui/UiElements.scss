@@ -40,7 +40,7 @@ $uiBorderRadius: 0.3em;
 
     &::placeholder {
       text-transform: lowercase;
-      color: rgba(229, 229, 229, 0.44);
+      color: $textColor;
     }
   }
 }
