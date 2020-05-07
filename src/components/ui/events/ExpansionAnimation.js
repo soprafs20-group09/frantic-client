@@ -5,7 +5,7 @@ class ExpansionAnimation extends Component {
     render() {
         return (
             <div className="expansion-animation">
-                <div className="grid"/>
+
                 <div className="arrow">
                     <div className="arrow-1st"/>
                     <div className="arrow-2nd"/>
@@ -13,7 +13,9 @@ class ExpansionAnimation extends Component {
                     <div className="arrow-4th"/>
                     <div className="arrow-5th"/>
                     <div className="arrow-head"/>
+                    <div className="hide-box"/>
                 </div>
+                <div className="grid"/>
             </div>
         );
     }
