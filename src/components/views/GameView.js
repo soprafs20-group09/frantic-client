@@ -15,7 +15,7 @@ import ErrorBox from "components/ui/ErrorBox";
 import sessionManager from "utils/sessionManager";
 import Button from "components/ui/Button";
 import {EndTurnTransition, EventOverlayTransition, WindowTransition} from "components/ui/Transitions";
-import GiftExchangePicker from "components/ui/pickers/GiftExchangePicker";
+import GiftAndCoPicker from "components/ui/pickers/GiftAndCoPicker";
 import SkipPicker from "components/ui/pickers/SkipPicker";
 import FantasticPicker from "components/ui/pickers/FantasticPicker";
 import EqualityPicker from "components/ui/pickers/EqualityPicker";
@@ -232,7 +232,7 @@ class GameView extends Component {
 
         return (
             <AppContainer withHelp>
-                <div className={"game-opponents"  + ((overlay || event) ? " overlayed" : "")}>
+                <div className={"game-opponents" + ((overlay || event) ? " overlayed" : "")}>
                     <div className="game-opponent-container right">
                         {rightOpps}
                     </div>
@@ -307,7 +307,7 @@ class GameView extends Component {
         switch (ar) {
             case 'gift':
                 return (
-                    <GiftExchangePicker
+                    <GiftAndCoPicker
                         mode="gift"
                         players={this.state.opponents}
                         cards={this.state.playerCards}
@@ -317,7 +317,7 @@ class GameView extends Component {
 
             case 'exchange':
                 return (
-                    <GiftExchangePicker
+                    <GiftAndCoPicker
                         mode="exchange"
                         players={this.state.opponents}
                         cards={this.state.playerCards}
@@ -380,6 +380,20 @@ class GameView extends Component {
                         cards={this.state.playerCards}
                         amount={this.state.recessionAmount}
                         onFinish={p => this.handleFinishActionResponse(ar, {cards: p})}
+                    />
+                );
+
+            case 'surprise-party':
+                return (
+                    <GiftAndCoPicker
+                        mode="surprise-party"
+                        players={this.state.opponents}
+                        cards={this.state.playerCards}
+                        onFinish={p => this.handleFinishActionResponse(ar,
+                            {
+                                card: p.cards[0],
+                                target: p.target
+                            })}
                     />
                 );
 
