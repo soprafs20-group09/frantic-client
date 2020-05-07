@@ -54,56 +54,61 @@ class GameView extends Component {
         };
     }
 
-    componentDidMount() {
+    loadFakePlayers(cardAmount) {
         this.setState({
             loading: false,
-            playerCards: franticUtils.generateRandomCards(7, true),
+            playerCards: franticUtils.generateRandomCards(cardAmount, true),
             opponents: [
                 {
                     username: "jan",
                     points: 12,
                     skipped: false,
-                    cards: franticUtils.generateBackCards(7)
+                    cards: franticUtils.generateBackCards(cardAmount)
                 },
                 {
                     username: "jon",
                     points: 69,
                     skipped: false,
-                    cards: franticUtils.generateBackCards(9)
+                    cards: franticUtils.generateBackCards(cardAmount)
                 },
                 {
                     username: "sina",
                     points: 69,
                     skipped: false,
-                    cards: franticUtils.generateBackCards(3)
+                    cards: franticUtils.generateBackCards(cardAmount)
                 },
                 {
                     username: "kyrill",
                     points: 69,
                     skipped: true,
-                    cards: franticUtils.generateBackCards(5)
+                    cards: franticUtils.generateBackCards(cardAmount)
                 },
                 {
                     username: "remy",
                     points: 69,
                     skipped: false,
-                    cards: franticUtils.generateBackCards(10)
+                    cards: franticUtils.generateBackCards(cardAmount)
                 },
                 {
                     username: "davide",
                     points: 69,
                     skipped: false,
-                    cards: franticUtils.generateBackCards(5)
+                    cards: franticUtils.generateBackCards(cardAmount)
                 },
                 {
                     username: "joe",
                     points: 69,
                     skipped: false,
-                    cards: franticUtils.generateBackCards(1)
+                    cards: franticUtils.generateBackCards(cardAmount)
                 }
             ],
             activePlayer: "jan"
         });
+    }
+
+    componentDidMount() {
+        this.loadFakePlayers(7);
+
         sockClient.onDisconnect(r => this.handleDisconnect(r));
         sockClient.onLobbyMessage('/chat', r => this.handleChatMessage(r));
         sockClient.onLobbyMessage('/game-state', s => this.handleGameState(s));
@@ -226,7 +231,7 @@ class GameView extends Component {
 
         return (
             <AppContainer withHelp>
-                <div className={"game-table" + ((overlay || event) ? " overlayed" : "")}>
+                <div className={"game-opponents"  + ((overlay || event) ? " overlayed" : "")}>
                     <div className="game-opponent-container right">
                         {rightOpps}
                     </div>
@@ -236,7 +241,8 @@ class GameView extends Component {
                     <div className="game-opponent-container left">
                         {leftOpps}
                     </div>
-
+                </div>
+                <div className={"game-table" + ((overlay || event) ? " overlayed" : "")}>
                     <DrawStack
                         animated
                         interactive={isPlayerTurn && this.state.canDraw}

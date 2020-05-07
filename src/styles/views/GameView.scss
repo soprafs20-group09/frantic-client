@@ -39,6 +39,19 @@
   bottom: -4em;
 }
 
+.game-opponents {
+  position: absolute;
+  top: 0;
+  left: 0;
+  @include fullscreen;
+  transition: 0.5s;
+
+  &.overlayed {
+    filter: blur(0.3em);
+    pointer-events: none !important;
+  }
+}
+
 .game-opponent-container {
   position: absolute;
   display: flex;
@@ -46,11 +59,13 @@
   align-items: flex-end;
 
   &.top, &.bottom {
+    left: 10vw;
     width: 80vw;
     height: 10em;
   }
 
   &.left, &.right {
+    top: 10vh;
     height: 80vh;
     width: 10em;
   }
