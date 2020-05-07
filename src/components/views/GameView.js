@@ -406,7 +406,7 @@ class GameView extends Component {
                     <GamblingPicker
                         cards={this.state.playerCards}
                         available={this.state.gamblingCards}
-                        onFinish={p => this.handleFinishActionResponse(ar, {bet: p})}
+                        onFinish={p => this.handleFinishActionResponse(ar, {card: p})}
                     />
                 );
 
