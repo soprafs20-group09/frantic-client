@@ -139,7 +139,6 @@ class CardsToPlayersPicker extends Component {
 
     handleDragStart(i) {
         this.draggedCard = i;
-        console.log('external drag start', i);
     }
 
     handleDragStop() {

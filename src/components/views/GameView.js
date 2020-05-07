@@ -26,6 +26,7 @@ import TextOverlay from "components/ui/ingame/TextOverlay";
 import {withRouter} from "react-router-dom";
 import RecessionPicker from "components/ui/pickers/RecessionPicker";
 import GamblingPicker from "components/ui/pickers/GamblingPicker";
+import MerryChristmasPicker from "components/ui/pickers/MerryChristmasPicker";
 
 class GameView extends Component {
     constructor(props) {
@@ -409,6 +410,15 @@ class GameView extends Component {
                     />
                 );
 
+            case 'merry-christmas':
+                return (
+                    <MerryChristmasPicker
+                        cards={this.state.playerCards}
+                        players={this.state.opponents}
+                        onFinish={p => this.handleFinishActionResponse(ar, {targets: p})}
+                    />
+                );
+
             default:
                 return null;
         }
@@ -509,8 +519,8 @@ class GameView extends Component {
 
     handleGamblingManAR(r) {
         this.setState({
-           actionResponse: 'gambling-man',
-           gamblingCards: r.playable
+            actionResponse: 'gambling-man',
+            gamblingCards: r.playable
         });
     }
 
