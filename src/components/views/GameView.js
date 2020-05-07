@@ -25,6 +25,7 @@ import EventOverlay from "components/ui/ingame/EventOverlay";
 import TextOverlay from "components/ui/ingame/TextOverlay";
 import {withRouter} from "react-router-dom";
 import RecessionPicker from "components/ui/pickers/RecessionPicker";
+import GamblingPicker from "components/ui/pickers/GamblingPicker";
 
 class GameView extends Component {
     constructor(props) {
@@ -44,6 +45,7 @@ class GameView extends Component {
             canEnd: false,
             actionResponse: null,
             recessionAmount: 0,
+            gamblingCards: [],
             timebombRounds: 0,
             overlay: null,
             event: null,
@@ -124,6 +126,7 @@ class GameView extends Component {
         sockClient.onLobbyMessage('/nice-try-window', r => this.handleAttackOpportunity(r));
         sockClient.onLobbyMessage('/attack-turn', t => this.handleAttackTurn(t));
         sockClient.onLobbyMessage('/recession', r => this.handleRecessionAR(r));
+        sockClient.onLobbyMessage('/gambling-man-window', r => this.handleGamblingManAR(r));
         sockClient.onLobbyMessage('/overlay', o => this.handleOverlay(o));
         sockClient.onLobbyMessage('/animation-speed', s => this.handleAnimationSpeed(s));
         sockClient.onLobbyMessage('/end-round', r => this.handleRoundEnd(r));
@@ -397,6 +400,15 @@ class GameView extends Component {
                     />
                 );
 
+            case 'gambling-man':
+                return (
+                    <GamblingPicker
+                        cards={this.state.playerCards}
+                        available={this.state.gamblingCards}
+                        onFinish={p => this.handleFinishActionResponse(ar, {bet: p})}
+                    />
+                );
+
             default:
                 return null;
         }
@@ -492,6 +504,13 @@ class GameView extends Component {
         this.setState({
             actionResponse: 'recession',
             recessionAmount: r.amount
+        });
+    }
+
+    handleGamblingManAR(r) {
+        this.setState({
+           actionResponse: 'gambling-man',
+           gamblingCards: r.playable
         });
     }
 
