@@ -59,7 +59,10 @@ class RecessionPicker extends Component {
         let cards = [];
 
         for (let c of this.state.cards) {
-            cards.push(this.props.cards.indexOf(c));
+            let i = this.props.cards.indexOf(c);
+            if (i >= 0) {
+                cards.push(i);
+            }
         }
 
         if (this.props.onFinish) {
