@@ -53,7 +53,7 @@ class LobbyView extends Component {
                 />;
         }
 
-        if (!this.state.authToken) {
+        if (!this.state.authToken && this.props.mode !== 'rematch') {
             content =
                 <WindowTransition>
                     {content}
