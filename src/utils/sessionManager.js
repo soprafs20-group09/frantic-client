@@ -22,7 +22,11 @@ export default {
         sessionStorage.setItem('username', value);
     },
     get inGame() {
-        return sessionStorage.getItem('ingame');
+        let val = sessionStorage.getItem('ingame');
+        if (val) {
+            return val === 'true';
+        }
+        return val;
     },
     set inGame(value) {
         if (value === undefined) {
