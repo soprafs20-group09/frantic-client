@@ -438,7 +438,7 @@ class GameView extends Component {
     handleTimer(t) {
         this.setState({
             timerSeconds: t.seconds,
-            timerKey: ((this.state.timerKey + 1) % 2) + 1
+            timerKey: (this.state.timerKey + 1) % 2
         });
     }
 
