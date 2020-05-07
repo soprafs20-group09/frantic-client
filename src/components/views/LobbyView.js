@@ -37,7 +37,7 @@ class LobbyView extends Component {
                 </ErrorBox>;
         } else if (this.state.loading) {
             content = <Spinner key="spinner"/>;
-        } else if (this.state.authToken) {
+        } else if (this.state.authToken || this.props.mode === 'rematch') {
             content =
                 <LobbyWindow
                     key="lobby-window"
