@@ -29,8 +29,8 @@ class RecessionPicker extends Component {
             >
                 <div className="concrete-picker-container">
                     <p>
-                        Due to the current recession, you need to discard
-                        {this.props.amount} cards!
+                        Due to the current recession,
+                        you need to discard {this.props.amount} cards!
                     </p>
                     <Separator>Choose {this.props.amount} cards to discard</Separator>
                     <CardPicker
@@ -41,8 +41,8 @@ class RecessionPicker extends Component {
                     <div className="concrete-picker-spacer"/>
                     <Button
                         width="10em"
-                        disabled={this.state.cards.length === this.props.amount}
-                        onClick={this.handleFinish()}
+                        disabled={this.state.cards.length !== this.props.amount}
+                        onClick={() => this.handleFinish()}
                     >
                         Done
                     </Button>
