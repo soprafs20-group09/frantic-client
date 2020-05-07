@@ -1,6 +1,10 @@
 @import 'theme';
 @import 'ui/cards/colors';
 
+.recession {
+  transform: scale(1, -1);
+}
+
 .expansion-animation {
   position: relative;
   @include center;
@@ -30,7 +34,7 @@
 
   & .arrow {
     position: absolute;
-    right: -10em;
+    right: -10.5em;
     @include center;
     flex-direction: row;
 

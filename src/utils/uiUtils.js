@@ -8,6 +8,7 @@ import FinishLineAnimation from "components/ui/events/FinishLineAnimation";
 import VandalismAnimation from "components/ui/events/VandalismAnimation";
 import MexicanStandoffAnimation from "components/ui/events/MexicanStandoffAnimation";
 import ThirdTimeLuckyAnimation from "../components/ui/events/ThirdTimeLuckyAnimation";
+import RecessionAnimation from "components/ui/events/RecessionAnimation";
 import CharityAnimation from "components/ui/events/CharityAnimation";
 import reactStringReplace from "react-string-replace";
 import sessionManager from "utils/sessionManager";
@@ -124,6 +125,9 @@ function getEventAnimation(event) {
 
         case 'expansion':
             return <ExpansionAnimation/>;
+
+        case 'recession':
+            return <RecessionAnimation/>;
 
         default:
             return 'coming soon™';
