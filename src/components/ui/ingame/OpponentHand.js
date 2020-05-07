@@ -17,6 +17,7 @@ import IconTitle from "components/ui/IconTitle";
  *  - cards: array of card objects
  *  -skipped: boolean
  *  -active: boolean - highlights the player
+ *  -admin: boolean
  * infoOverride: object     - an optional override for the displayed information.
  *  - points: number
  *  - cards: number

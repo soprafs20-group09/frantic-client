@@ -30,6 +30,11 @@ class AppRouter extends React.Component {
                             <LobbyView mode="join"/>
                         </LobbyGuard>
                     </Route>
+                    <Route exact path="/rematch">
+                        <LobbyGuard>
+                            <LobbyView mode="rematch"/>
+                        </LobbyGuard>
+                    </Route>
                     <Route exact path="/join/:id">
                         <JoinLobbyView/>
                     </Route>

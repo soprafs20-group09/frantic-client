@@ -41,7 +41,14 @@ class LobbyWindow extends Component {
         sockClient.onLobbyMessage('/chat', r => this.handleChatMessage(r));
         sockClient.onLobbyMessage('/lobby-state', r => this.handleLobbyUpdate(r));
         sockClient.onLobbyMessage('/start-game', () => this.handleGameStart());
-        sockClient.connectAndRegister(this.props.authToken);
+
+        // if we're rematching, we should still be connected
+        if (sockClient.isConnected()) {
+            sockClient.sendToLobby('/rematch');
+        }
+        else {
+            sockClient.connectAndRegister(this.props.authToken);
+        }
     }
 
     componentWillUnmount() {
