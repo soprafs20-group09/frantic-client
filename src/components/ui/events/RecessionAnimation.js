@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import "styles/ui/events/ExpansionRecessionAnimation.scss";
 
-class ExpansionAnimation extends Component {
+class RecessionAnimation extends Component {
     render() {
         return (
-            <div className="expansion-animation">
+            <div className="expansion-animation recession">
 
                 <div className="arrow">
                     <div className="arrow-1st"/>
@@ -21,4 +21,4 @@ class ExpansionAnimation extends Component {
     }
 }
 
-export default ExpansionAnimation;
+export default RecessionAnimation;

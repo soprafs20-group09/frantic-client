@@ -10,16 +10,18 @@ import IconTitle from "components/ui/IconTitle";
 /**
  * This component renders the hand (cards) of an opponent.
  * PROPS:
- * mode: string         - controls how the component is shown, possibilities: top, left, right,
- * opponent: object     - an opponent object which contains the following:
+ * mode: string             - controls how the component is shown, possibilities: top, left, right,
+ * opponent: object         - an opponent object which contains the following:
  *  - username: string
  *  - points: number
  *  - cards: array of card objects
  *  -skipped: boolean
  *  -active: boolean - highlights the player
- * infoOverride: object - an optional override for the displayed information.
+ *  -admin: boolean
+ * infoOverride: object     - an optional override for the displayed information.
  *  - points: number
  *  - cards: number
+ *  trail: number           - how long it should take between each card add/remove animation
  */
 class OpponentHand extends Component {
     render() {

@@ -146,6 +146,25 @@ class CardsToPlayersPicker extends Component {
             this.draggedCard = null;
         }
     }
+
+    updateDebug() {
+        let name = null;
+        if (this.hoveredPlayer) {
+            name = this.hoveredPlayer.username;
+        }
+        this.setDebugLog('draggedCard: ' + this.draggedCard + '\nhoveredPlayer: ' + name);
+    }
+
+    setDebugLog(msg) {
+        if (!this.debug) {
+            this.debug = document.createElement('div');
+            this.debug.style.setProperty('position', 'absolute');
+            this.debug.style.setProperty('top', 0);
+            this.debug.style.setProperty('left', 0);
+            document.getElementsByClassName('ctp-container')[0].append(this.debug);
+        }
+        this.debug.innerText = msg;
+    }
 }
 
 /**
@@ -205,7 +224,7 @@ class DraggableCard extends Component {
 
     handleDragStart() {
         this.setState({dragging: true});
-        if (this.props.onDragStart && !this.state.from.x && !this.state.from.y) {
+        if (this.props.onDragStart) {
             this.props.onDragStart();
         }
     }

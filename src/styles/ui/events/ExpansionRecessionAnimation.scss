@@ -1,12 +1,17 @@
 @import 'theme';
 @import 'ui/cards/colors';
 
+.recession {
+  transform: scale(1, -1);
+}
+
 .expansion-animation {
   position: relative;
   @include center;
 
 
   & .grid {
+    position: absolute;
     /*background: linear-gradient(to bottom,
             transparent 45%, $terracotta 45%,
             $terracotta 55%, transparent 55%),
@@ -28,9 +33,23 @@
   }
 
   & .arrow {
-    position: relative;
+    position: absolute;
+    right: -10.5em;
     @include center;
     flex-direction: row;
+
+
+    & .hide-box {
+      position: absolute;
+      width: 20em;
+      height: 14em;
+      background: $black;
+      left: -20em;
+      animation: reveal-arrow 2s forwards;
+      animation-delay: 1.5s;
+      animation-timing-function: linear;
+
+    }
 
     & .arrow-1st {
       position: absolute;
@@ -87,5 +106,11 @@
       bottom: 2.3em;
 
     }
+  }
+}
+
+@keyframes reveal-arrow {
+  100% {
+    left: -4.5em;
   }
 }

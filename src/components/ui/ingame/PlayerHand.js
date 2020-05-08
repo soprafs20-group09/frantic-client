@@ -9,6 +9,7 @@ import {HandTransition} from "components/ui/Transitions";
  * cards: array      - array of card objects (type, value, color)
  * available: array  - array of indices to be displayed as available (all others will not be clickable)
  * onCardClick(card) - function that is called when the user clicks on an (available) card.
+ * trail: number     - how long it should take between each card add/remove animation
  */
 class PlayerHand extends Component {
     constructor(props) {
@@ -86,7 +87,7 @@ class PlayerHand extends Component {
                  onMouseOver={e => this.handleMouseOver(e)}
                  onMouseLeave={e => this.handleMouseLeave(e)}
             >
-                <HandTransition containerClass="hand-card-container">
+                <HandTransition trail={this.props.trail} containerClass="hand-card-container">
                     {cards}
                 </HandTransition>
             </div>
@@ -148,5 +149,9 @@ class PlayerHand extends Component {
         return (vwPx < emPx) ? vw + 'vw' : em + 'em';
     }
 }
+
+PlayerHand.defaultProps = {
+  trail: 500
+};
 
 export default PlayerHand;

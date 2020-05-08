@@ -1,6 +1,6 @@
 import SockJS from 'sockjs-client';
 import Stomp from 'stompjs';
-import {getDomain} from "utils/DomainUtils";
+import {getDomain, isProduction} from "utils/DomainUtils";
 import sessionManager from "utils/sessionManager";
 
 class SockClient {
@@ -27,6 +27,7 @@ class SockClient {
         }
         this.sock = new SockJS(`${getDomain()}/ws`);
         this.stomp = Stomp.over(this.sock);
+        this.stomp.debug = this._debug;
         this.stomp.connect({}, () => {
             this._connected = true;
             this.subscribe('/user/queue/register', r => this._handleRegister(r));
@@ -134,6 +135,13 @@ class SockClient {
 
     _stripResponse(response) {
         return JSON.parse(response.body);
+    }
+
+    _debug(message) {
+        // only output debug messages if we're not in the production environment
+        if (!isProduction()) {
+            console.log(message);
+        }
     }
 }
 

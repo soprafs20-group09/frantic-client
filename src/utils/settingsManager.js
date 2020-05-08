@@ -90,17 +90,6 @@ export default {
                 }
             },
             {
-                name: "Teal 2",
-                colors: {
-                    accent: '#66fcf1',
-                    bgDark: '#1c1f29',
-                    bgMedium: '#1f2833',
-                    bgLight: '#2b3847',
-                    bgLighter: '#415669',
-                    text: 'white'
-                }
-            },
-            {
                 name: "IKEA",
                 colors: {
                     accent: '#ffd700',
@@ -108,6 +97,17 @@ export default {
                     bgMedium: '#053f5e',
                     bgLight: '#115173',
                     bgLighter: '#125578',
+                    text: 'white'
+                }
+            },
+            {
+                name: "Mulberry",
+                colors: {
+                    accent: '#cc5079',
+                    bgDark: '#2c3040',
+                    bgMedium: '#3e4359',
+                    bgLight: '#505773',
+                    bgLighter: '#596180',
                     text: 'white'
                 }
             },

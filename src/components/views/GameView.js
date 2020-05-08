@@ -15,7 +15,7 @@ import ErrorBox from "components/ui/ErrorBox";
 import sessionManager from "utils/sessionManager";
 import Button from "components/ui/Button";
 import {EndTurnTransition, EventOverlayTransition, WindowTransition} from "components/ui/Transitions";
-import GiftExchangePicker from "components/ui/pickers/GiftExchangePicker";
+import GiftAndCoPicker from "components/ui/pickers/GiftAndCoPicker";
 import SkipPicker from "components/ui/pickers/SkipPicker";
 import FantasticPicker from "components/ui/pickers/FantasticPicker";
 import EqualityPicker from "components/ui/pickers/EqualityPicker";
@@ -24,7 +24,9 @@ import IconTitle from "components/ui/IconTitle";
 import EventOverlay from "components/ui/ingame/EventOverlay";
 import TextOverlay from "components/ui/ingame/TextOverlay";
 import {withRouter} from "react-router-dom";
-import RecessionPicker from "components/ui/pickers/RecessionPicker";
+import RecessionMarketPicker from "components/ui/pickers/RecessionMarketPicker";
+import GamblingPicker from "components/ui/pickers/GamblingPicker";
+import MerryChristmasPicker from "components/ui/pickers/MerryChristmasPicker";
 
 class GameView extends Component {
     constructor(props) {
@@ -38,74 +40,87 @@ class GameView extends Component {
             drawAmount: 0,
             drawKey: 0,
             activePlayer: undefined,
-            turnTime: 0,
-            turnKey: 0,
-            hasDrawn: false,
+            timerSeconds: 0,
+            timerKey: 0,
+            canDraw: false,
+            canEnd: false,
             actionResponse: null,
             recessionAmount: 0,
+            gamblingCards: [],
+            marketCards: [],
             timebombRounds: 0,
             overlay: null,
             event: null,
+            animationTrail: {
+                hand: 500
+            },
             chatItems: []
         };
     }
 
-    componentDidMount() {
+    loadFakePlayers(cardAmount) {
         this.setState({
             loading: false,
-            playerCards: franticUtils.generateRandomCards(7, true),
+            playerCards: franticUtils.generateRandomCards(cardAmount, true),
             opponents: [
                 {
                     username: "jan",
                     points: 12,
                     skipped: false,
-                    cards: franticUtils.generateBackCards(7)
+                    cards: franticUtils.generateBackCards(cardAmount),
+                    admin: true
                 },
                 {
                     username: "jon",
                     points: 69,
                     skipped: false,
-                    cards: franticUtils.generateBackCards(9)
+                    cards: franticUtils.generateBackCards(cardAmount)
                 },
                 {
                     username: "sina",
                     points: 69,
                     skipped: false,
-                    cards: franticUtils.generateBackCards(3)
+                    cards: franticUtils.generateBackCards(cardAmount)
                 },
                 {
                     username: "kyrill",
                     points: 69,
                     skipped: true,
-                    cards: franticUtils.generateBackCards(5)
+                    cards: franticUtils.generateBackCards(cardAmount)
                 },
                 {
                     username: "remy",
                     points: 69,
                     skipped: false,
-                    cards: franticUtils.generateBackCards(10)
+                    cards: franticUtils.generateBackCards(cardAmount)
                 },
                 {
                     username: "davide",
                     points: 69,
                     skipped: false,
-                    cards: franticUtils.generateBackCards(5)
+                    cards: franticUtils.generateBackCards(cardAmount)
                 },
                 {
                     username: "joe",
                     points: 69,
                     skipped: false,
-                    cards: franticUtils.generateBackCards(1)
+                    cards: franticUtils.generateBackCards(cardAmount)
                 }
             ],
             activePlayer: "jan"
         });
+    }
+
+    componentDidMount() {
+        this.loadFakePlayers(7);
+
         sockClient.onDisconnect(r => this.handleDisconnect(r));
         sockClient.onLobbyMessage('/chat', r => this.handleChatMessage(r));
         sockClient.onLobbyMessage('/game-state', s => this.handleGameState(s));
         sockClient.onLobbyMessage('/start-turn', t => this.handleTurnStart(t));
+        sockClient.onLobbyMessage('/timer', t => this.handleTimer(t));
         sockClient.onLobbyMessage('/hand', h => this.handleNewHand(h));
-        sockClient.onLobbyMessage('/playable-cards', pc => this.handlePlayableCards(pc));
+        sockClient.onLobbyMessage('/playable', pc => this.handlePlayable(pc));
         sockClient.onLobbyMessage('/draw', a => this.handleNewDraw(a));
         sockClient.onLobbyMessage('/action-response', r => this.handleActionResponse(r));
         sockClient.onLobbyMessage('/event', e => this.handleEvent(e));
@@ -113,7 +128,10 @@ class GameView extends Component {
         sockClient.onLobbyMessage('/nice-try-window', r => this.handleAttackOpportunity(r));
         sockClient.onLobbyMessage('/attack-turn', t => this.handleAttackTurn(t));
         sockClient.onLobbyMessage('/recession', r => this.handleRecessionAR(r));
+        sockClient.onLobbyMessage('/gambling-man-window', r => this.handleGamblingManAR(r));
+        sockClient.onLobbyMessage('/market-window', r => this.handleMarketAR(r));
         sockClient.onLobbyMessage('/overlay', o => this.handleOverlay(o));
+        sockClient.onLobbyMessage('/animation-speed', s => this.handleAnimationSpeed(s));
         sockClient.onLobbyMessage('/end-round', r => this.handleRoundEnd(r));
         sockClient.onLobbyMessage('/end-game', r => this.handleGameEnd(r));
     }
@@ -163,6 +181,7 @@ class GameView extends Component {
                         mode="right"
                         opponent={opp}
                         active={opp.username === this.state.activePlayer}
+                        trail={this.state.animationTrail.hand}
                         key={i}
                     />
                 );
@@ -176,6 +195,7 @@ class GameView extends Component {
                     mode="top"
                     opponent={opp}
                     active={opp.username === this.state.activePlayer}
+                    trail={this.state.animationTrail.hand}
                     key={i}
                 />
             );
@@ -187,6 +207,7 @@ class GameView extends Component {
                     mode="left"
                     opponent={opp}
                     active={opp.username === this.state.activePlayer}
+                    trail={this.state.animationTrail.hand}
                     key={remaining.length}
                 />
             );
@@ -217,7 +238,7 @@ class GameView extends Component {
 
         return (
             <AppContainer withHelp>
-                <div className={"game-table" + ((overlay || event) ? " overlayed" : "")}>
+                <div className={"game-opponents" + ((overlay || event) ? " overlayed" : "")}>
                     <div className="game-opponent-container right">
                         {rightOpps}
                     </div>
@@ -227,10 +248,11 @@ class GameView extends Component {
                     <div className="game-opponent-container left">
                         {leftOpps}
                     </div>
-
+                </div>
+                <div className={"game-table" + ((overlay || event) ? " overlayed" : "")}>
                     <DrawStack
                         animated
-                        interactive={isPlayerTurn && !this.state.hasDrawn}
+                        interactive={isPlayerTurn && this.state.canDraw}
                         drawAmount={this.state.drawAmount}
                         drawKey={this.state.drawKey}
                         onClick={() => this.handleCardDraw()}
@@ -238,7 +260,7 @@ class GameView extends Component {
                     <div className="end-turn-container">
                         <EndTurnTransition>
                             {
-                                this.state.hasDrawn &&
+                                this.state.canEnd &&
                                 <Button type="end-turn" onClick={() => this.handleTurnEnd()}>
                                     End Turn
                                 </Button>
@@ -254,14 +276,15 @@ class GameView extends Component {
                             cards={this.state.playerCards}
                             available={this.state.availableCards}
                             onCardClick={i => this.handleCardClick(i)}
+                            trail={this.state.animationTrail.hand}
                         />
                     </div>
 
                     <div className="timer-container">
                         <TurnTimer
                             start
-                            seconds={this.state.turnTime}
-                            turn={this.state.turnKey}
+                            seconds={this.state.timerSeconds}
+                            turn={this.state.timerKey}
                             timebomb={this.state.timebombRounds}
                         />
                     </div>
@@ -290,7 +313,7 @@ class GameView extends Component {
         switch (ar) {
             case 'gift':
                 return (
-                    <GiftExchangePicker
+                    <GiftAndCoPicker
                         mode="gift"
                         players={this.state.opponents}
                         cards={this.state.playerCards}
@@ -300,7 +323,7 @@ class GameView extends Component {
 
             case 'exchange':
                 return (
-                    <GiftExchangePicker
+                    <GiftAndCoPicker
                         mode="exchange"
                         players={this.state.opponents}
                         cards={this.state.playerCards}
@@ -359,10 +382,52 @@ class GameView extends Component {
 
             case 'recession':
                 return (
-                    <RecessionPicker
+                    <RecessionMarketPicker
+                        mode="recession"
                         cards={this.state.playerCards}
                         amount={this.state.recessionAmount}
                         onFinish={p => this.handleFinishActionResponse(ar, {cards: p})}
+                    />
+                );
+
+            case 'surprise-party':
+                return (
+                    <GiftAndCoPicker
+                        mode="surprise-party"
+                        players={this.state.opponents}
+                        cards={this.state.playerCards}
+                        onFinish={p => this.handleFinishActionResponse(ar,
+                            {
+                                card: p.cards[0],
+                                target: p.target
+                            })}
+                    />
+                );
+
+            case 'gambling-man':
+                return (
+                    <GamblingPicker
+                        cards={this.state.playerCards}
+                        available={this.state.gamblingCards}
+                        onFinish={p => this.handleFinishActionResponse(ar, {card: p})}
+                    />
+                );
+
+            case 'merry-christmas':
+                return (
+                    <MerryChristmasPicker
+                        cards={this.state.playerCards}
+                        players={this.state.opponents}
+                        onFinish={p => this.handleFinishActionResponse(ar, {targets: p})}
+                    />
+                );
+
+            case 'market':
+                return (
+                    <RecessionMarketPicker
+                        mode="market"
+                        cards={this.state.marketCards}
+                        onFinish={p => this.handleFinishActionResponse(ar, {card: p[0]})}
                     />
                 );
 
@@ -407,14 +472,14 @@ class GameView extends Component {
     }
 
     handleNewHand(newHand) {
-        this.setState({
-            playerCards: newHand.cards
-        });
+        this.setState({playerCards: newHand.cards});
     }
 
-    handlePlayableCards(playableCards) {
+    handlePlayable(playable) {
         this.setState({
-            availableCards: playableCards.playable
+            availableCards: playable.cards,
+            canDraw: playable.canDraw,
+            canEnd: playable.canEnd
         });
     }
 
@@ -422,6 +487,13 @@ class GameView extends Component {
         this.setState({
             drawAmount: newAmount.amount,
             drawKey: this.state.drawKey + 1
+        });
+    }
+
+    handleTimer(t) {
+        this.setState({
+            timerSeconds: t.seconds,
+            timerKey: (this.state.timerKey + 1) % 2
         });
     }
 
@@ -436,21 +508,14 @@ class GameView extends Component {
 
         this.setState({
             activePlayer: t.currentPlayer,
-            turnTime: t.time,
-            turnKey: t.turn,
-            hasDrawn: false,
             actionResponse: null,
             timebombRounds: t.timebombRounds,
-            overlay: overlay,
+            overlay: overlay
         });
     }
 
     handleAttackTurn(t) {
-        this.setState({
-            activePlayer: t.currentPlayer,
-            turnTime: t.time,
-            turnKey: t.turn,
-        });
+        this.setState({activePlayer: t.currentPlayer});
     }
 
     handleActionResponse(r) {
@@ -464,17 +529,22 @@ class GameView extends Component {
         });
     }
 
-    handleAttackOpportunity(r) {
-        let newKey = this.state.turnKey;
-        if (!isNaN(newKey)) {
-            newKey = 'attacc';
-        }
-        newKey += 'a';
+    handleGamblingManAR(r) {
         this.setState({
-            availableCards: r.playable,
-            turnTime: r.time,
-            turnKey: newKey
+            actionResponse: 'gambling-man',
+            gamblingCards: r.playable
         });
+    }
+
+    handleMarketAR(r) {
+        this.setState({
+            actionResponse: 'market',
+            marketCards: r.cards
+        })
+    }
+
+    handleAttackOpportunity(r) {
+        this.setState({availableCards: r.playable});
     }
 
     handleEvent(e) {
@@ -487,9 +557,11 @@ class GameView extends Component {
     }
 
     handleOverlay(o) {
-        this.setState({
-            overlay: o
-        });
+        this.setState({overlay: o});
+    }
+
+    handleAnimationSpeed(speed) {
+        this.setState({animationTrail: speed});
     }
 
     handleRoundEnd(r) {
@@ -544,17 +616,11 @@ class GameView extends Component {
                     index: i
                 });
             }
-            if (this.state.hasDrawn && this.props.playerCards[i].value === 'second-chance') {
-                this.setState({hasDrawn: false});
-            }
         } catch {
         }
     }
 
     handleCardDraw() {
-        if (!this.state.hasDrawn) {
-            this.setState({hasDrawn: true});
-        }
         try {
             if (sockClient.isConnected()) {
                 sockClient.sendToLobby('/draw');
@@ -581,7 +647,7 @@ class GameView extends Component {
         }
         // set the active player to null in order to prevent the user
         // from clicking anything until next turn starts
-        this.setState({actionResponse: null, activePlayer: null, hasDrawn: false});
+        this.setState({actionResponse: null, activePlayer: null});
     }
 
     // endregion

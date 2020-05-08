@@ -114,7 +114,7 @@ class EndView extends Component {
     }
 
     handleRematch() {
-        this.props.history.push('/join');
+        this.props.history.push('/rematch');
     }
 
     handleChatMessage(msg) {
