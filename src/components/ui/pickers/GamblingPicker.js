@@ -50,7 +50,7 @@ class GamblingPicker extends Component {
                     <div className="concrete-picker-spacer"/>
                     <Button
                         width="10em"
-                        disabled={this.state.cards.length !== this.props.amount}
+                        disabled={this.state.selectedCard !== null}
                         onClick={() => this.handleFinish()}
                     >
                         Place Bet
