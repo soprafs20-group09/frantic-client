@@ -50,7 +50,7 @@ class GamblingPicker extends Component {
                     <div className="concrete-picker-spacer"/>
                     <Button
                         width="10em"
-                        disabled={this.state.selectedCard !== null}
+                        disabled={this.state.selectedCard === null}
                         onClick={() => this.handleFinish()}
                     >
                         Place Bet
@@ -63,6 +63,9 @@ class GamblingPicker extends Component {
     handleSelectionChange(selection) {
         if (selection.length > 0) {
             this.setState({selectedCard: this.props.cards.indexOf(selection[0])});
+        }
+        else {
+            this.setState({selectedCard: null});
         }
     }
 
