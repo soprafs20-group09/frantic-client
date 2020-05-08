@@ -13,6 +13,7 @@ import CharityAnimation from "components/ui/events/CharityAnimation";
 import reactStringReplace from "react-string-replace";
 import sessionManager from "utils/sessionManager";
 import ExpansionAnimation from "../components/ui/events/ExpansionAnimation";
+import MerryChristmasAnimation from "components/ui/events/MerryChristmasAnimation";
 
 function escapeRegExp(string) {
     return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
@@ -128,6 +129,9 @@ function getEventAnimation(event) {
 
         case 'recession':
             return <RecessionAnimation/>;
+
+        case 'merry-christmas':
+            return <MerryChristmasAnimation/>;
 
         default:
             return 'coming soon™';
