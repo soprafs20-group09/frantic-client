@@ -24,7 +24,7 @@ import IconTitle from "components/ui/IconTitle";
 import EventOverlay from "components/ui/ingame/EventOverlay";
 import TextOverlay from "components/ui/ingame/TextOverlay";
 import {withRouter} from "react-router-dom";
-import RecessionPicker from "components/ui/pickers/RecessionPicker";
+import RecessionMarketPicker from "components/ui/pickers/RecessionMarketPicker";
 import GamblingPicker from "components/ui/pickers/GamblingPicker";
 import MerryChristmasPicker from "components/ui/pickers/MerryChristmasPicker";
 
@@ -47,6 +47,7 @@ class GameView extends Component {
             actionResponse: null,
             recessionAmount: 0,
             gamblingCards: [],
+            marketCards: [],
             timebombRounds: 0,
             overlay: null,
             event: null,
@@ -128,6 +129,7 @@ class GameView extends Component {
         sockClient.onLobbyMessage('/attack-turn', t => this.handleAttackTurn(t));
         sockClient.onLobbyMessage('/recession', r => this.handleRecessionAR(r));
         sockClient.onLobbyMessage('/gambling-man-window', r => this.handleGamblingManAR(r));
+        sockClient.onLobbyMessage('/market-window', r => this.handleMarketAR(r));
         sockClient.onLobbyMessage('/overlay', o => this.handleOverlay(o));
         sockClient.onLobbyMessage('/animation-speed', s => this.handleAnimationSpeed(s));
         sockClient.onLobbyMessage('/end-round', r => this.handleRoundEnd(r));
@@ -380,7 +382,8 @@ class GameView extends Component {
 
             case 'recession':
                 return (
-                    <RecessionPicker
+                    <RecessionMarketPicker
+                        mode="recession"
                         cards={this.state.playerCards}
                         amount={this.state.recessionAmount}
                         onFinish={p => this.handleFinishActionResponse(ar, {cards: p})}
@@ -416,6 +419,15 @@ class GameView extends Component {
                         cards={this.state.playerCards}
                         players={this.state.opponents}
                         onFinish={p => this.handleFinishActionResponse(ar, {targets: p})}
+                    />
+                );
+
+            case 'market':
+                return (
+                    <RecessionMarketPicker
+                        mode="market"
+                        cards={this.state.marketCards}
+                        onFinish={p => this.handleFinishActionResponse(ar, {card: p[0]})}
                     />
                 );
 
@@ -522,6 +534,13 @@ class GameView extends Component {
             actionResponse: 'gambling-man',
             gamblingCards: r.playable
         });
+    }
+
+    handleMarketAR(r) {
+        this.setState({
+            actionResponse: 'market',
+            marketCards: r.cards
+        })
     }
 
     handleAttackOpportunity(r) {
