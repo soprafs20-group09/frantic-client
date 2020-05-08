@@ -63,8 +63,19 @@ class GiftAndCoPicker extends Component {
     }
 
     enableButton() {
-        return (this.state.selectedCards.length === Math.min(2, this.props.cards.length)
-            && this.state.selectedPlayer);
+        switch (this.props.mode) {
+            case 'gift':
+            case 'exchange':
+                return (this.state.selectedCards.length === Math.min(2, this.props.cards.length)
+                    && this.state.selectedPlayer);
+
+            case 'surprise-party':
+                return (this.state.selectedCards.length === 1 && this.state.selectedPlayer);
+
+            default:
+                return false;
+        }
+
     }
 
     getTitle() {

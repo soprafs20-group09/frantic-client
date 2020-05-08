@@ -21,7 +21,7 @@ class GamblingPicker extends Component {
 
         let cards = this.props.cards.slice();
         for (let i in cards) {
-            cards[i].disabled = !this.props.available.includes(i);
+            cards[i].disabled = !this.props.available.includes(parseInt(i));
         }
 
         this.state = {cards: cards, selectedCard: null};
@@ -32,6 +32,7 @@ class GamblingPicker extends Component {
             <ToolWindow
                 noScroll
                 title={<IconTitle icon="event:gambling-man">Gambling Man</IconTitle>}
+                style={{maxWidth: '30em'}}
             >
                 <div className="concrete-picker-container">
                     <p>
