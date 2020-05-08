@@ -5,6 +5,13 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+
+  &.scrolling {
+    max-height: 40vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    @include scrollbar;
+  }
 }
 
 .picker-item {

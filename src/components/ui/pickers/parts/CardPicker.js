@@ -41,7 +41,7 @@ class CardPicker extends Component {
         }
 
         return (
-            <div className="picker-container">
+            <div className="picker-container scrolling">
                 {cardItems}
             </div>
         );
