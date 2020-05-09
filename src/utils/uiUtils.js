@@ -10,6 +10,7 @@ import MexicanStandoffAnimation from "components/ui/events/MexicanStandoffAnimat
 import ThirdTimeLuckyAnimation from "../components/ui/events/ThirdTimeLuckyAnimation";
 import RecessionAnimation from "components/ui/events/RecessionAnimation";
 import CharityAnimation from "components/ui/events/CharityAnimation";
+import AllSeeingEyeAnimation from "../components/ui/events/AllSeeingEyeAnimation";
 import reactStringReplace from "react-string-replace";
 import sessionManager from "utils/sessionManager";
 import ExpansionAnimation from "../components/ui/events/ExpansionAnimation";
@@ -136,6 +137,9 @@ function getEventAnimation(event) {
 
         case 'earthquake':
             return <EarthquakeAnimation/>;
+
+        case 'the-all-seeing-eye':
+            return <AllSeeingEyeAnimation/>;
 
         default:
             return 'coming soon™';

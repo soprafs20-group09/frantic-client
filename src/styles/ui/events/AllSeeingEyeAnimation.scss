@@ -1,0 +1,34 @@
+@import 'theme';
+@import 'ui/cards/colors';
+
+.all-seeing-eye-animation{
+  @include center;
+
+  & .eye{
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    fill: $accent;
+    height: 8em;
+    width: auto;
+    left: 25%;
+    top: -1em;
+    z-index: 1;
+  }
+
+  & .rays {
+    position: relative;
+    stroke: $accent !important;
+    right: 25%;
+    animation: rotate-rays 5s infinite;
+    animation-timing-function: linear;
+  }
+
+
+}
+
+@keyframes rotate-rays {
+  100% {
+    transform: rotate(180deg);
+  }
+}
