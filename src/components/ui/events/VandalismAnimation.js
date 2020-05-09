@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import VandalismLogo from "assets/icons/vandalism-animation.svg";
+import VandalismLogo from "assets/animations/vandalism-animation.svg";
 import Logo from "assets/frantic/logo-text.svg";
 import InlineSVG from "react-inlinesvg";
 import "styles/ui/events/VandalismAnimation.scss";
