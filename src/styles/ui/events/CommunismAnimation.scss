@@ -1,0 +1,159 @@
+@import 'theme';
+@import 'ui/cards/colors';
+
+.communism-animation {
+  .communism-card {
+    font-size: 0.8em;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+    @include center;
+    animation: communism-card-flip 1s 2s forwards;
+
+    &:hover {
+      transform: rotateY(180deg);
+    }
+
+    & .card-face {
+      position: absolute;
+
+      &.front {
+        z-index: 2;
+      }
+
+      &.back {
+        transform: rotateY(180deg);
+      }
+    }
+  }
+
+  & .hat {
+    position: absolute;
+    height: 3em;
+    fill: white;
+    filter: drop-shadow($dropShadow);
+    transform: translate(0, -16em) rotate(25deg);
+    animation: communism-hat-drop 1s 2.5s forwards;
+    z-index: 5;
+  }
+
+  & .exclamation {
+    position: absolute;
+    font-size: 5em;
+    font-weight: 500;
+    text-shadow: 0 0 0.2em currentColor;
+    transform: translate(-1.5em, -1.5em);
+    animation:
+            communism-idea 0.5s 0.5s forwards,
+            communism-idea-out 0.5s 1.5s forwards;
+    opacity: 0;
+  }
+
+  & .fist {
+    position: absolute;
+    width: 2.5em;
+    height: 2.5em;
+    fill: white;
+    transform: translate(-7em, -2em) scale(-1, 1);
+    opacity: 0;
+    animation: communism-fist-raise 2s 3.5s forwards;
+  }
+
+  & .communism-logo {
+    position: absolute;
+    transform: translate(12em, -5em);
+    @include center;
+    animation: communism-logo-fade 1s 4s forwards;
+    opacity: 0;
+
+    & .rays {
+      position: absolute;
+      width: 10em;
+      height: 10em;
+      stroke: $accent;
+      animation: communism-rays-rotate 10s linear infinite;
+    }
+
+    & .communism {
+      position: absolute;
+      width: 3em;
+      height: 3em;
+      overflow: visible;
+      border-radius: 50%;
+      background-color: $black;
+      padding: 1em;
+      fill: $accent
+    }
+  }
+}
+
+@keyframes communism-idea {
+  0% {
+    opacity: 0;
+    transform: translate(-1.5em, -1.5em) scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-1.5em, -1.5em) scale(1.2);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-1.5em, -1.5em) scale(1);
+  }
+}
+
+@keyframes communism-idea-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes communism-card-flip {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(180deg);
+  }
+}
+
+@keyframes communism-hat-drop {
+  0% {
+    transform: translate(0, -16em) rotate(-325deg);
+  }
+  100% {
+    transform: translate(0, -6em) rotate(25deg);
+  }
+}
+
+@keyframes communism-fist-raise {
+  0% {
+    opacity: 0;
+    transform: translate(-7em, -2em) scale(-1, 1);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-7em, -5em) scale(-1, 1);
+  }
+}
+
+@keyframes communism-rays-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+@keyframes communism-logo-fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

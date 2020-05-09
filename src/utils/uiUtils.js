@@ -16,6 +16,7 @@ import sessionManager from "utils/sessionManager";
 import ExpansionAnimation from "../components/ui/events/ExpansionAnimation";
 import MerryChristmasAnimation from "components/ui/events/MerryChristmasAnimation";
 import EarthquakeAnimation from "components/ui/events/EarthquakeAnimation";
+import CommunismAnimation from "components/ui/events/CommunismAnimation";
 
 function escapeRegExp(string) {
     return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
@@ -137,6 +138,9 @@ function getEventAnimation(event) {
 
         case 'earthquake':
             return <EarthquakeAnimation/>;
+
+        case 'communism':
+            return <CommunismAnimation/>;
 
         case 'the-all-seeing-eye':
             return <AllSeeingEyeAnimation/>;
