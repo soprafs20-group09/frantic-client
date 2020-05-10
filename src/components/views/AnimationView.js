@@ -10,8 +10,8 @@ class AnimationView extends Component {
         return (
             <AppContainer>
                 <EventOverlayTransition>
-                    <div className="event-overlay-container" style={{overflow: 'visible'}}>
-                        <div className="event-overlay-content" style={{border: "1px solid black", overflow: 'hidden'}}>
+                    <div className="event-overlay-container" style={{overflow: 'hidden'}}>
+                        <div className="event-overlay-content" style={{overflow: 'hidden'}}>
                             {uiUtils.getEventAnimation(this.props.match.params.event)}
                         </div>
                     </div>
