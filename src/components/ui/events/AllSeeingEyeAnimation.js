@@ -11,6 +11,13 @@ class AllSeeingEyeAnimation extends Component {
             <div className="all-seeing-eye-animation">
                 <InlineSVG src={AllSeeingEye} className="eye"/>
                 <InlineSVG src={LightRays} className="rays"/>
+                <div className="cloud">
+                    <div className="cloud1"/>
+                    <div className="cloud2"/>
+                    <div className="cloud3"/>
+                    <div className="cloud4"/>
+                    <div className="cloud5"/>
+                </div>
             </div>
         );
     }
