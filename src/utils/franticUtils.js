@@ -162,7 +162,7 @@ const eventCardHelp = {
         </p>,
     "finish-line":
         <p>
-            The game round is immediately over and the the players points are counted according
+            The game round is immediately over and the players points are counted according
             to their hand cards.
         </p>,
     "friday-the-13th":
