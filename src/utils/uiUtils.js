@@ -17,6 +17,7 @@ import ExpansionAnimation from "../components/ui/events/ExpansionAnimation";
 import MerryChristmasAnimation from "components/ui/events/MerryChristmasAnimation";
 import EarthquakeAnimation from "components/ui/events/EarthquakeAnimation";
 import CommunismAnimation from "components/ui/events/CommunismAnimation";
+import SurprisePartyAnimation from "components/ui/events/SurprisePartyAnimation";
 
 function escapeRegExp(string) {
     return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
@@ -144,6 +145,9 @@ function getEventAnimation(event) {
 
         case 'the-all-seeing-eye':
             return <AllSeeingEyeAnimation/>;
+
+        case 'surprise-party':
+            return <SurprisePartyAnimation/>;
 
         default:
             return 'coming soon™';
