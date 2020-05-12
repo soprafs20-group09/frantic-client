@@ -23,7 +23,7 @@ import GenericColorPicker from "components/ui/pickers/GenericColorPicker";
 import IconTitle from "components/ui/IconTitle";
 import EventOverlay from "components/ui/ingame/EventOverlay";
 import TextOverlay from "components/ui/ingame/TextOverlay";
-import {withRouter} from "react-router-dom";
+import {Prompt, Route, withRouter} from "react-router-dom";
 import RecessionMarketPicker from "components/ui/pickers/RecessionMarketPicker";
 import GamblingPicker from "components/ui/pickers/GamblingPicker";
 import MerryChristmasPicker from "components/ui/pickers/MerryChristmasPicker";
@@ -238,6 +238,10 @@ class GameView extends Component {
 
         return (
             <AppContainer withHelp>
+                <Prompt
+                    when={sessionManager.inGame}
+                    message="If you leave the game, you won't be able to rejoin it!"
+                />
                 <div className={"game-opponents" + ((overlay || event) ? " overlayed" : "")}>
                     <div className="game-opponent-container right">
                         {rightOpps}

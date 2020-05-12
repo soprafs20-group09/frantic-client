@@ -34,6 +34,6 @@ function calibrateFontSize() {
 function handleUnload(e) {
     if (sessionManager.inGame) {
         e.preventDefault();
-        e.returnValue = '';
+        e.returnValue = "If you leave the game, you won't be able to rejoin it!";
     }
 }
