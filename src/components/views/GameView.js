@@ -565,17 +565,25 @@ class GameView extends Component {
     }
 
     handleRoundEnd(r) {
-        sessionManager.inGame = false;
-        sessionManager.endPlayers = r.players;
-        sessionManager.pointLimit = r.pointLimit;
+        this.saveEndStuff(r);
         this.props.history.push('/end/round');
     }
 
     handleGameEnd(r) {
+        this.saveEndStuff(r);
+        this.props.history.push('/end/game');
+    }
+
+    saveEndStuff(r) {
         sessionManager.inGame = false;
         sessionManager.endPlayers = r.players;
+        sessionManager.endChanges = r.changes;
+        sessionManager.endSeconds = r.seconds;
+        sessionManager.endMessage = {
+            icon: r.icon,
+            message: r.message
+        };
         sessionManager.pointLimit = r.pointLimit;
-        this.props.history.push('/end/game');
     }
 
     handleDisconnect(reason) {

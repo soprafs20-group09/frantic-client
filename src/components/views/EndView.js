@@ -28,7 +28,16 @@ class EndView extends Component {
 
     componentDidMount() {
         sessionManager.inGame = false;
-        this.setState({players: sessionManager.endPlayers});
+        let msg = sessionManager.endMessage;
+        if (!msg) {
+            msg = {};
+        }
+        this.setState({
+            players: sessionManager.endPlayers,
+            changes: sessionManager.endChanges,
+            icon: msg.icon,
+            message: msg.message
+        });
         sockClient.onDisconnect(r => this.handleDisconnect(r));
         sockClient.onLobbyMessage('/chat', r => this.handleChatMessage(r));
         sockClient.onLobbyMessage('/start-round', () => this.handleRoundStart());
@@ -56,8 +65,14 @@ class EndView extends Component {
             content =
                 <div className="end-container" key="end-container">
                     <div className="end-column">
-                        <EndWindow mode={this.props.mode} players={this.state.players}
-                                   pointLimit={sessionManager.pointLimit}>
+                        <EndWindow
+                            mode={this.props.mode}
+                            players={this.state.players}
+                            changes={this.state.changes}
+                            pointLimit={sessionManager.pointLimit}
+                            icon={this.state.icon}
+                            message={this.state.message}
+                        >
                             {this.getActions()}
                         </EndWindow>
                     </div>
@@ -84,7 +99,7 @@ class EndView extends Component {
         if (this.props.mode === 'round') {
             return [
                 <p className="end-actions-text" key="d">next round in</p>,
-                <TurnTimer key="t" start seconds={30}/>
+                <TurnTimer key="t" start seconds={sessionManager.endSeconds}/>
             ];
         } else {
             return [

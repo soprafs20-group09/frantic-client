@@ -43,6 +43,24 @@ export default {
         }
         sessionStorage.setItem('endPlayers', JSON.stringify(value));
     },
+    get endChanges() {
+        return JSON.parse(sessionStorage.getItem('endChanges'));
+    },
+    set endChanges(value) {
+        if (value === undefined) {
+            sessionStorage.removeItem('endChanges');
+        }
+        sessionStorage.setItem('endChanges', JSON.stringify(value));
+    },
+    get endMessage() {
+        return JSON.parse(sessionStorage.getItem('endMessage'));
+    },
+    set endMessage(value) {
+        if (value === undefined) {
+            sessionStorage.removeItem('endMessage');
+        }
+        sessionStorage.setItem('endMessage', JSON.stringify(value));
+    },
     get pointLimit() {
         return sessionStorage.getItem('pointLimit');
     },
@@ -52,7 +70,18 @@ export default {
         }
         sessionStorage.setItem('pointLimit', value);
     },
-
+    get endSeconds() {
+        let val = parseInt(sessionStorage.getItem('endSeconds'));
+        if (!isNaN(val)) {
+            return val;
+        }
+    },
+    set endSeconds(value) {
+        if (value === undefined) {
+            sessionStorage.removeItem('endSeconds');
+        }
+        sessionStorage.setItem('endSeconds', value);
+    },
     reset() {
         sessionStorage.clear();
     }
