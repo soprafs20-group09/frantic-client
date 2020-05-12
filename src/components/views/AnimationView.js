@@ -5,6 +5,7 @@ import {withRouter} from "react-router-dom";
 import {EventOverlayTransition} from "components/ui/Transitions";
 import uiUtils from "utils/uiUtils";
 import Button from "components/ui/Button";
+import TurnTimer from "components/ui/ingame/TurnTimer";
 
 class AnimationView extends Component {
     constructor(props) {
@@ -24,6 +25,9 @@ class AnimationView extends Component {
                 </EventOverlayTransition>
                 <div style={{position: 'absolute', bottom: '0.5em', right: '0.5em'}}>
                     <Button style='end-turn' onClick={() => this.toggleOverflow()}>toggle overflow</Button>
+                </div>
+                <div style={{position: 'absolute', bottom: '0.5em', left: '0.5em'}}>
+                    <TurnTimer start seconds={5}/>
                 </div>
             </AppContainer>
         );
