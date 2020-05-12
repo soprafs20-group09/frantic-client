@@ -9,6 +9,16 @@ class MatingSeasonAnimation extends Component {
             <div className="mating-season-animation">
                 <div className="egg"/>
                 <Sperm/>
+                <Sperm/>
+                <Sperm/>
+                <Sperm/>
+                <Sperm/>
+                <Sperm/>
+                <Sperm/>
+                <Sperm/>
+                <Sperm/>
+                <Sperm/>
+                <Sperm/>
             </div>
         );
     }
@@ -17,9 +27,11 @@ class MatingSeasonAnimation extends Component {
 class Sperm extends Component {
     render() {
         return (
-            <div className="sperm">
-                <div className="tail">
-                    <InlineSVG src={Wave} className="tail-inner"/>
+            <div className="sperm-outer">
+                <div className="sperm">
+                    <div className="tail">
+                        <InlineSVG src={Wave} className="tail-inner"/>
+                    </div>
                 </div>
             </div>
         );
