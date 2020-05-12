@@ -515,7 +515,10 @@ class GameView extends Component {
     }
 
     handleAttackTurn(t) {
-        this.setState({activePlayer: t.currentPlayer});
+        this.setState({
+            activePlayer: t.currentPlayer,
+            actionResponse: null
+        });
     }
 
     handleActionResponse(r) {
