@@ -11,6 +11,7 @@ import GameView from "components/views/GameView";
 import EndView from "components/views/EndView";
 import LobbyGuard from "components/routing/guards/LobbyGuard";
 import AnimationView from "components/views/AnimationView";
+import GameGuard from "components/routing/guards/GameGuard";
 
 class AppRouter extends React.Component {
     render() {
@@ -42,7 +43,9 @@ class AppRouter extends React.Component {
                         <LobbyBrowserView mode="join"/>
                     </Route>
                     <Route exact path="/game">
-                        <GameView/>
+                        <GameGuard>
+                            <GameView/>
+                        </GameGuard>
                     </Route>
                     <Route exact path="/help">
                         <HelpView/>
