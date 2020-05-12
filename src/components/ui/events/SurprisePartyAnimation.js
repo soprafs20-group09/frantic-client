@@ -10,10 +10,12 @@ class SurprisePartyAnimation extends Component {
                     <div className="right"/>
                     <div className="left-shadow"/>
                     <div className="right-shadow"/>
-                    <div className="left-cover"/>
-                    <div className="right-cover"/>
-                    <div className="top-cover">
-                        <div className="top-cover1"/>
+                    <div className="cover">
+                        <div className="left-cover"/>
+                        <div className="right-cover"/>
+                        <div className="top-cover">
+                            <div className="top-cover1"/>
+                        </div>
                     </div>
                     <div className="present-ribbon">
                         <div className="top-left-ribbon"/>
