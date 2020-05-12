@@ -1,0 +1,48 @@
+@import 'theme';
+
+.mating-season-animation {
+  @include fillCenter;
+
+  & .egg {
+    width: 10em;
+    height: 10em;
+    border: 0.5em solid $accent;
+    border-radius: 50%;
+  }
+
+  & .sperm {
+    position: absolute;
+    font-size: 1em;
+    width: 1em;
+    height: 0.5em;
+    border-radius: 50%;
+    background-color: white;
+
+    & .tail {
+      position: absolute;
+      left: -1em;
+      //border: 2px solid $accent;
+      width: 1.2em;
+      height: 0.4em;
+      margin-top: 0.05em;
+      overflow: hidden;
+      z-index: -1;
+
+      & .tail-inner {
+        position: absolute;
+        width: 3em;
+        animation: ms-sperm-tail 0.75s linear infinite;
+        fill: white;
+      }
+    }
+  }
+}
+
+@keyframes ms-sperm-tail {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-67%);
+  }
+}

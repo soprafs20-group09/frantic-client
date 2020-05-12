@@ -18,6 +18,7 @@ import MerryChristmasAnimation from "components/ui/events/MerryChristmasAnimatio
 import EarthquakeAnimation from "components/ui/events/EarthquakeAnimation";
 import CommunismAnimation from "components/ui/events/CommunismAnimation";
 import SurprisePartyAnimation from "components/ui/events/SurprisePartyAnimation";
+import MatingSeasonAnimation from "components/ui/events/MatingSeasonAnimation";
 
 function escapeRegExp(string) {
     return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
@@ -148,6 +149,9 @@ function getEventAnimation(event) {
 
         case 'surprise-party':
             return <SurprisePartyAnimation/>;
+
+        case 'mating-season':
+            return <MatingSeasonAnimation/>;
 
         default:
             return 'coming soon™';
