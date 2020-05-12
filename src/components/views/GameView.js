@@ -441,10 +441,15 @@ class GameView extends Component {
     }
 
     resetOverlayIn(seconds) {
-        setTimeout(
-            () => this.setState({event: null, overlay: null}),
-            seconds * 1000
-        );
+        if (!this.overlayTimeout) {
+            this.overlayTimeout = setTimeout(
+                () => {
+                    this.overlayTimeout = null;
+                    this.setState({event: null, overlay: null});
+                },
+                seconds * 1000
+            );
+        }
     }
 
     // endregion
@@ -502,12 +507,13 @@ class GameView extends Component {
     }
 
     handleTurnStart(t) {
-        let overlay = null;
+        let overlay = this.state.overlay;
         if (t.currentPlayer === sessionManager.username) {
             overlay = {
                 title: "it's your turn!",
                 duration: 1
-            }
+            };
+            this.overlayTimeout = null;
         }
 
         this.setState({
@@ -564,6 +570,7 @@ class GameView extends Component {
     }
 
     handleOverlay(o) {
+        this.overlayTimeout = null;
         this.setState({overlay: o});
     }
 
