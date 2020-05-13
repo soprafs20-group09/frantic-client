@@ -37,11 +37,15 @@ function parseChatObject(msg) {
 
     switch (msg.type) {
         case 'msg':
+            let senderIcon;
+            if (!sessionManager.avatarBlacklist.includes(msg.username)) {
+                senderIcon = getPlayerAvatar(msg.username);
+            }
             newItem =
                 <ChatItem
                     style={msg.type}
                     sender={msg.username}
-                    icon={getPlayerAvatar(msg.username)}
+                    icon={senderIcon}
                     key={new Date().getTime()}
                 >
                     {text}

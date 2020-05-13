@@ -309,6 +309,18 @@ $buttonHeight: 1.75em;
   pointer-events: all;
   transition: 0.3s;
   box-sizing: border-box;
+  fill: $accent;
+  line-height: 1em;
+
+  &.text {
+    @include center;
+    color: $accent;
+    font-weight: 500;
+
+    & > span {
+      font-size: 0.8em;
+    }
+  }
 
   &.active {
     border: 0.04em solid $accent;
