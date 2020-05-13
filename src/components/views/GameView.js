@@ -580,12 +580,16 @@ class GameView extends Component {
 
     handleRoundEnd(r) {
         this.saveEndStuff(r);
-        this.props.history.push('/end/round');
+        this.setState({loading: true}, () =>
+            this.props.history.push('/end/round')
+        );
     }
 
     handleGameEnd(r) {
         this.saveEndStuff(r);
-        this.props.history.push('/end/game');
+        this.setState({loading: true}, () =>
+            this.props.history.push('/end/game')
+        );
     }
 
     saveEndStuff(r) {
@@ -601,6 +605,7 @@ class GameView extends Component {
     }
 
     handleDisconnect(reason) {
+        sessionManager.inGame = false;
         this.setState({
             error: {
                 title: "Disconnected!",
