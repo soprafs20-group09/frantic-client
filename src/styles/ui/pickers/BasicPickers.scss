@@ -5,6 +5,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  z-index: 1;
 
   &.scrolling {
     max-height: 40vh;
@@ -39,7 +40,7 @@
   & .opponent-stats-container {
     font-size: 0.8em;
     position: absolute;
-    top: -13.5em;
+    bottom: -5em;
   }
 }
 
