@@ -82,6 +82,19 @@ export default {
         }
         sessionStorage.setItem('endSeconds', value);
     },
+    get avatarBlacklist() {
+        const item = sessionStorage.getItem('avatarBlacklist');
+        if (!item) {
+            return [];
+        }
+        return JSON.parse(item);
+    },
+    set avatarBlacklist(value) {
+        if (value === undefined) {
+            sessionStorage.removeItem('avatarBlacklist');
+        }
+        sessionStorage.setItem('avatarBlacklist', JSON.stringify(value));
+    },
     reset() {
         sessionStorage.clear();
     }
