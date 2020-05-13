@@ -34,11 +34,15 @@
     animation-play-state: running;
     animation-direction: reverse;
   }
+
+  & > .overlay-message {
+    max-width: 30em;
+  }
 }
 
 .overlay-message {
   color: $accent;
-  max-width: 25em;
+  max-width: 75vw;
   @include center;
   flex-direction: column;
 
