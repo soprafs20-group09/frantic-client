@@ -11,6 +11,11 @@ import PlayerAvatar from "../PlayerAvatar";
  *      "jan": 12,
  *      "jon": 15
  *  }
+ * changes: object       - object of following structure:
+ *  {
+ *      "jan": 0,
+ *      "jon": 5
+ *  }
  *  showWinners: boolean - whether to highlight winners.
  */
 class Scoreboard extends Component {
@@ -20,50 +25,47 @@ class Scoreboard extends Component {
     }
 
     render() {
-        let playerContainers = [];
+        //calculate ranks
+        let points = [];
+
+        for (let username in this.props.players) {
+            points.push(this.props.players[username]);
+        }
+
+        let sorted = points.slice().sort(function(a,b){return a-b});
+        let ranks = points.map(function(v){ return sorted.indexOf(v)+1 });
+
+        //separate player information and add ranks & round-points
         let players = [];
-        let podium = [];
-
-        function giveRank() {
-            let same = false;
-
-            for (let i = 0; i < players.length; i++) {
-                if (same) {
-                    players[i].rank = i;
-                    same = false;
-                } else {
-                    players[i].rank = i + 1;
-                }
-                if (i + 1 < players.length &&
-                    players[i].points === players[i + 1].points) {
-                    same = true;
-                }
-            }
-        }
-
-        function reOrderPodium() {
-            let third = podium.pop();
-            let second = podium.pop();
-            let first = podium.pop();
-            podium.push(second);
-            podium.push(first);
-            podium.push(third);
-        }
+        let i = 0;
 
         for (let username in this.props.players) {
             players.push({
                 username: username,
-                points: this.props.players[username]
+                points: this.props.players[username],
+                rank: ranks[i],
+                change: this.props.changes[username]
             });
+            i++;
         }
 
-        //sort players by points
-        players.sort((a, b) => {
-            return a.points - b.points;
-        });
+        //sort based on rank (may contain duplicates)
+        function compare(a,b) {
+            if (a.rank < b.rank)
+                return -1;
+            if (a.rank > b.rank)
+                return 1;
+            return 0;
+        }
+        players.sort(compare);
 
-        //give each player a rank
-        giveRank();
+        //give unique rank (no duplicates)
+        for (i = 0; i < players.length; i++) {
+            players[i].absoluteRank = i;
+        }
+
+        let playerContainers = [];
+        let podium = [];
 
         if (!this.props.showWinners) {
             playerContainers.push(
@@ -89,6 +91,36 @@ class Scoreboard extends Component {
                             <div className="points-text">
                                 {p.points}
                             </div>
+                            {p.change >= 50 &&
+                                <div className="change-text-over-50">
+                                    {"+" + p.change}
+                                </div>
+                            }
+                            {50 > p.change && p.change >= 30 &&
+                                <div className="change-text-over-30">
+                                    {"+" + p.change}
+                                </div>
+                            }
+                            {30 > p.change && p.change >= 15 &&
+                                <div className="change-text-over-15">
+                                    {"+" + p.change}
+                                </div>
+                            }
+                            {15 > p.change && p.change >= 1 &&
+                                <div className="change-text-over-0">
+                                    {"+" + p.change}
+                                </div>
+                            }
+                            {(p.change === 0) &&
+                                <div className="change-text-0">
+                                    {"+" + p.change}
+                                </div>
+                            }
+                            {0 > p.change &&
+                                <div className="change-text-under-0">
+                                    {p.change}
+                                </div>
+                            }
                         </div>
                     </li>
                 );
@@ -100,7 +132,7 @@ class Scoreboard extends Component {
             );
         } else {
             for (let p of players) {
-                if (p.rank === 1) {
+                if (p.rank === 1 && p.absoluteRank < 3) {
                     podium.push(
                         <li className="podium-item">
                             <div className="avatar-container">
@@ -120,10 +152,20 @@ class Scoreboard extends Component {
                                 <div className="podium-text-bottom">
                                     {p.points + " points"}
                                 </div>
+                                {0 > p.change &&
+                                <div className="podium-text">
+                                    {p.change}
+                                </div>
+                                }
+                                {p.change >= 0 &&
+                                <div className="podium-text">
+                                    {"+" + p.change}
+                                </div>
+                                }
                             </li>
                         </li>
                     );
-                } else if (p.rank === 2) {
+                } else if (p.rank === 2 && p.absoluteRank < 3) {
                     podium.push(
                         <li className="podium-item">
                             <div className="avatar-container">
@@ -143,10 +185,20 @@ class Scoreboard extends Component {
                                 <div className="podium-text-bottom">
                                     {p.points + " points"}
                                 </div>
+                                {0 > p.change &&
+                                <div className="podium-text">
+                                    {p.change}
+                                </div>
+                                }
+                                {p.change >= 0 &&
+                                <div className="podium-text">
+                                    {"+" + p.change}
+                                </div>
+                                }
                             </li>
                         </li>
                     );
-                } else if (p.rank === 3) {
+                } else if (p.rank === 3 && p.absoluteRank < 3) {
                     podium.push(
                         <li className="podium-item">
                             <div className="avatar-container">
@@ -166,6 +218,16 @@ class Scoreboard extends Component {
                                 <div className="podium-text-bottom">
                                     {p.points + " points"}
                                 </div>
+                                {0 > p.change &&
+                                <div className="podium-text">
+                                    {p.change}
+                                </div>
+                                }
+                                {p.change >= 0 &&
+                                <div className="podium-text">
+                                    {"+" + p.change}
+                                </div>
+                                }
                             </li>
                         </li>
                     );
@@ -187,12 +249,50 @@ class Scoreboard extends Component {
                                 <div className="points-text">
                                     {p.points}
                                 </div>
+                                {p.change >= 50 &&
+                                <div className="change-text-over-50">
+                                    {"+" + p.change}
+                                </div>
+                                }
+                                {50 > p.change && p.change >= 30 &&
+                                <div className="change-text-over-30">
+                                    {"+" + p.change}
+                                </div>
+                                }
+                                {30 > p.change && p.change >= 15 &&
+                                <div className="change-text-over-15">
+                                    {"+" + p.change}
+                                </div>
+                                }
+                                {15 > p.change && p.change >= 1 &&
+                                <div className="change-text-over-0">
+                                    {"+" + p.change}
+                                </div>
+                                }
+                                {(p.change === 0) &&
+                                <div className="change-text-0">
+                                    {"+" + p.change}
+                                </div>
+                                }
+                                {0 > p.change &&
+                                <div className="change-text-under-0">
+                                    {p.change}
+                                </div>
+                                }
                             </div>
                         </li>
                     );
                 }
             }
-            reOrderPodium();
+
+            //reorder podium
+            let third = podium.pop();
+            let second = podium.pop();
+            let first = podium.pop();
+            podium.push(second);
+            podium.push(first);
+            podium.push(third);
+
             return (
                 <ul className="scoreboard-container">
                     <div className="podium-container">
