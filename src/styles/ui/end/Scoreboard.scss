@@ -58,18 +58,18 @@
 
 .username-text {
   margin-left: 1em;
-  width: 70%;
+  width: 48%;
   font-weight: 500;
 }
 
 .points-text {
-  width: 6%;
+  width: 19%;
   font-weight: 500;
   text-align: right;
 }
 
 .change-text-over-50 {
-  width: 10%;
+  width: 19%;
   white-space: nowrap;
   font-weight: 500;
   color: #ff3d3d;
@@ -77,7 +77,7 @@
 }
 
 .change-text-over-30 {
-  width: 10%;
+  width: 19%;
   white-space: nowrap;
   font-weight: 500;
   color: #ff6666;
@@ -85,7 +85,7 @@
 }
 
 .change-text-over-15 {
-  width: 10%;
+  width: 19%;
   white-space: nowrap;
   font-weight: 500;
   color: #ff9494;
@@ -93,7 +93,7 @@
 }
 
 .change-text-over-0 {
-  width: 10%;
+  width: 19%;
   white-space: nowrap;
   font-weight: 500;
   color: #ffbfbf;
@@ -101,7 +101,7 @@
 }
 
 .change-text-0 {
-  width: 10%;
+  width: 19%;
   white-space: nowrap;
   font-weight: 500;
   color: #fcc603;
@@ -109,7 +109,7 @@
 }
 
 .change-text-under-0 {
-  width: 10%;
+  width: 19%;
   white-space: nowrap;
   font-weight: 500;
   color: #85c771;
@@ -204,4 +204,34 @@
 
 .bronze-height {
   height: 6em;
+}
+
+@mixin captionWidth {
+  &.c1 {
+    width: 10%;
+  }
+  &.c2 {
+    width: 62%;
+  }
+  &.c3 {
+    width: 14%;
+  }
+  &.c4 {
+    width: 14%;
+  }
+}
+
+.player-list-caption-container {
+  width: 100%;
+  margin-bottom: 0.3em;
+}
+
+.player-list-caption {
+  display: inline-block;
+  font-family: $themeFont;
+  font-size: 1rem;
+  font-weight: 500;
+  text-transform: lowercase;
+  margin: 0.7em 0 0;
+  @include captionWidth;
 }

@@ -73,6 +73,14 @@ class Scoreboard extends Component {
                     {"point limit: " + this.props.pointLimit}
                 </div>
             );
+            playerContainers.push(
+                <div className="player-list-caption-container">
+                    <p className="player-list-caption c1">rank</p>
+                    <p className="player-list-caption c2">player</p>
+                    <p className="player-list-caption c3">total</p>
+                    <p className="player-list-caption c4">round</p>
+                </div>
+            );
             for (let p of players) {
                 playerContainers.push(
                     <li className="scoreboard-item-container" key={p.username}>
@@ -131,6 +139,14 @@ class Scoreboard extends Component {
                 </ul>
             );
         } else {
+            playerContainers.push(
+                <div className="player-list-caption-container">
+                    <p className="player-list-caption c1">rank</p>
+                    <p className="player-list-caption c2">player</p>
+                    <p className="player-list-caption c3">total</p>
+                    <p className="player-list-caption c4">round</p>
+                </div>
+            );
             for (let p of players) {
                 if (p.rank === 1 && p.absoluteRank < 3) {
                     podium.push(
