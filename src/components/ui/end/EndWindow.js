@@ -26,6 +26,7 @@ class EndWindow extends Component {
                 <div className="end-scoreboard-container">
                     <Scoreboard
                         players={this.props.players}
+                        changes={this.props.changes}
                         showWinners={this.props.mode === 'game'}
                         pointLimit={this.props.pointLimit}
                     />
