@@ -75,10 +75,10 @@ class Scoreboard extends Component {
             );
             playerContainers.push(
                 <div className="player-list-caption-container">
-                    <p className="player-list-caption c1">rank</p>
-                    <p className="player-list-caption c2">player</p>
-                    <p className="player-list-caption c3">total</p>
-                    <p className="player-list-caption c4">round</p>
+                    <div className="player-list-caption c1">rank</div>
+                    <div className="player-list-caption c2">player</div>
+                    <div className="player-list-caption c3">total</div>
+                    <div className="player-list-caption c4">change</div>
                 </div>
             );
             for (let p of players) {
@@ -141,10 +141,10 @@ class Scoreboard extends Component {
         } else {
             playerContainers.push(
                 <div className="player-list-caption-container">
-                    <p className="player-list-caption c1">rank</p>
-                    <p className="player-list-caption c2">player</p>
-                    <p className="player-list-caption c3">total</p>
-                    <p className="player-list-caption c4">round</p>
+                    <div className="player-list-caption c1">rank</div>
+                    <div className="player-list-caption c2">player</div>
+                    <div className="player-list-caption c3">total</div>
+                    <div className="player-list-caption c4">change</div>
                 </div>
             );
             for (let p of players) {

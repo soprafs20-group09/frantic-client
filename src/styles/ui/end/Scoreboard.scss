@@ -214,10 +214,10 @@
     width: 62%;
   }
   &.c3 {
-    width: 14%;
+    width: 13%;
   }
   &.c4 {
-    width: 14%;
+    width: 15%;
   }
 }
 
@@ -232,6 +232,5 @@
   font-size: 1rem;
   font-weight: 500;
   text-transform: lowercase;
-  margin: 0.7em 0 0;
   @include captionWidth;
 }
