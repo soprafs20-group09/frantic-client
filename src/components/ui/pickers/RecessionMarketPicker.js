@@ -61,9 +61,8 @@ class RecessionMarketPicker extends Component {
     getDescription() {
         switch (this.props.mode) {
             case 'recession':
-                let cards = this.props.amount > 1 ? 'cards' : 'card';
                 return "Due to the current recession," +
-                    ` you need to discard ${this.props.amount} ${cards}!`;
+                    ` you need to discard ${this.props.amount} ${this.getCardsWord()}!`;
 
             case 'market':
                 return "The market has opened! Choose a fresh card to buy!";
@@ -73,10 +72,14 @@ class RecessionMarketPicker extends Component {
         }
     }
 
+    getCardsWord() {
+        return this.props.amount > 1 ? 'cards' : 'card';
+    }
+
     getSeparatorText() {
         switch (this.props.mode) {
             case 'recession':
-                return `Choose ${this.props.amount} cards to discard`;
+                return `Choose ${this.props.amount} ${this.getCardsWord()} to discard`;
 
             case 'market':
                 return "Pick one card";
