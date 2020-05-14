@@ -149,18 +149,18 @@ class Scoreboard extends Component {
                                 <div className="podium-text">
                                     {p.username}
                                 </div>
-                                <div className="podium-text-bottom">
+                                <div className="podium-text">
                                     {p.points + " points"}
                                 </div>
                                 {0 > p.change &&
-                                <div className="podium-text">
-                                    {p.change}
-                                </div>
+                                    <div className="podium-text-bottom">
+                                        {p.change}
+                                    </div>
                                 }
                                 {p.change >= 0 &&
-                                <div className="podium-text">
-                                    {"+" + p.change}
-                                </div>
+                                    <div className="podium-text-bottom">
+                                        {"+" + p.change}
+                                    </div>
                                 }
                             </li>
                         </li>
@@ -182,18 +182,18 @@ class Scoreboard extends Component {
                                 <div className="podium-text">
                                     {p.username}
                                 </div>
-                                <div className="podium-text-bottom">
+                                <div className="podium-text">
                                     {p.points + " points"}
                                 </div>
                                 {0 > p.change &&
-                                <div className="podium-text">
-                                    {p.change}
-                                </div>
+                                    <div className="podium-text-bottom">
+                                        {p.change}
+                                    </div>
                                 }
                                 {p.change >= 0 &&
-                                <div className="podium-text">
-                                    {"+" + p.change}
-                                </div>
+                                    <div className="podium-text-bottom">
+                                        {"+" + p.change}
+                                    </div>
                                 }
                             </li>
                         </li>
@@ -215,18 +215,18 @@ class Scoreboard extends Component {
                                 <div className="podium-text">
                                     {p.username}
                                 </div>
-                                <div className="podium-text-bottom">
+                                <div className="podium-text">
                                     {p.points + " points"}
                                 </div>
                                 {0 > p.change &&
-                                <div className="podium-text">
-                                    {p.change}
-                                </div>
+                                    <div className="podium-text-bottom">
+                                        {p.change}
+                                    </div>
                                 }
                                 {p.change >= 0 &&
-                                <div className="podium-text">
-                                    {"+" + p.change}
-                                </div>
+                                    <div className="podium-text-bottom">
+                                        {"+" + p.change}
+                                    </div>
                                 }
                             </li>
                         </li>
@@ -250,34 +250,34 @@ class Scoreboard extends Component {
                                     {p.points}
                                 </div>
                                 {p.change >= 50 &&
-                                <div className="change-text-over-50">
-                                    {"+" + p.change}
-                                </div>
+                                    <div className="change-text-over-50">
+                                        {"+" + p.change}
+                                    </div>
                                 }
                                 {50 > p.change && p.change >= 30 &&
-                                <div className="change-text-over-30">
-                                    {"+" + p.change}
-                                </div>
+                                    <div className="change-text-over-30">
+                                        {"+" + p.change}
+                                    </div>
                                 }
                                 {30 > p.change && p.change >= 15 &&
-                                <div className="change-text-over-15">
-                                    {"+" + p.change}
-                                </div>
+                                    <div className="change-text-over-15">
+                                        {"+" + p.change}
+                                    </div>
                                 }
                                 {15 > p.change && p.change >= 1 &&
-                                <div className="change-text-over-0">
-                                    {"+" + p.change}
-                                </div>
+                                    <div className="change-text-over-0">
+                                        {"+" + p.change}
+                                    </div>
                                 }
                                 {(p.change === 0) &&
-                                <div className="change-text-0">
-                                    {"+" + p.change}
-                                </div>
+                                    <div className="change-text-0">
+                                        {"+" + p.change}
+                                    </div>
                                 }
                                 {0 > p.change &&
-                                <div className="change-text-under-0">
-                                    {p.change}
-                                </div>
+                                    <div className="change-text-under-0">
+                                        {p.change}
+                                    </div>
                                 }
                             </div>
                         </li>
