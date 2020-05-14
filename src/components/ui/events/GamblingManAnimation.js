@@ -29,15 +29,26 @@ class Slot extends Component {
         icons.push(<Icon from="event" className="slot">doomsday</Icon>);
         icons.push(<Icon from="event" className="slot">robin-hood</Icon>);
         icons.push(<Icon from="event" className="slot">surprise-party</Icon>);
-        icons.push(<Icon from="event" className="slot">gambling-man</Icon>);
         icons.push(<Icon from="event" className="slot">the-all-seeing-eye</Icon>);
         icons.push(<Icon from="event" className="slot">time-bomb</Icon>);
+        this.shuffleArray(icons);
+
+        icons.splice(icons.length - 2, 0, <Icon from="event" className="slot">gambling-man</Icon>);
 
         return (
             <div className="slot-container">
                 {icons}
             </div>
         )
+    }
+
+    shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            let j = Math.floor(Math.random() * (i + 1));
+            let temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
     }
 }
 
