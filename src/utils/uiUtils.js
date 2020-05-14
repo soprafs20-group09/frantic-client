@@ -21,6 +21,7 @@ import SurprisePartyAnimation from "components/ui/events/SurprisePartyAnimation"
 import MatingSeasonAnimation from "components/ui/events/MatingSeasonAnimation";
 import RobinHoodAnimation from "components/ui/events/RobinHoodAnimation";
 import MarketAnimation from "components/ui/events/MarketAnimation";
+import GamblingManAnimation from "../components/ui/events/GamblingManAnimation";
 
 function escapeRegExp(string) {
     return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
@@ -164,6 +165,9 @@ function getEventAnimation(event) {
 
         case 'market':
             return <MarketAnimation/>;
+
+        case 'gambling-man':
+            return <GamblingManAnimation/>;
 
         default:
             return 'coming soon™';

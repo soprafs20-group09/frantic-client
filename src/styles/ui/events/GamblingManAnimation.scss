@@ -1,0 +1,24 @@
+@import 'theme';
+@import 'ui/cards/colors';
+
+.gambling-man-animation {
+  @include center;
+  position: relative;
+
+  & .slot-machine {
+    @include center;
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    border: 0.5em solid $accent;
+    width: 20em;
+    height: 8em;
+    border-radius: 1em;
+
+    & .slot {
+      fill: $accent;
+      width: 20%;
+      height: auto;
+    }
+  }
+}
