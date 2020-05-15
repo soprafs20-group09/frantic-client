@@ -9,7 +9,7 @@ class EarthquakeAnimation extends Component {
     componentDidMount() {
         // we hack the container and append a class to make it shake
         try {
-            let container = document.getElementsByClassName('event-overlay-container')[0].parentElement;
+            let container = document.getElementsByClassName('earthquake-animation')[0].parentElement.parentElement.parentElement;
             container.classList.add('earthquake-shaker');
         } catch {
         }
