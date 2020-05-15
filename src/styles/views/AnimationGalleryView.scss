@@ -1,0 +1,125 @@
+@import 'theme';
+@import 'ui/cards/colors';
+
+.animation-gallery {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  @include scrollbar;
+}
+
+.animation-gallery-item {
+  position: relative;
+  height: 20em;
+  margin: 5em 0;
+  flex-shrink: 0;
+  @include center;
+}
+
+.animation-gallery-title-outer {
+  position: absolute;
+  top: -3.2em;
+}
+
+.animation-gallery-title {
+  line-height: 1em;
+  margin: 0;
+  transform: translateX(50%) rotate(-10deg) translateX(-45vw);
+  transform-origin: 0 0;
+  color: $black;
+  background-color: $accent;
+  padding: 0.25em 0.5em;
+  border-top-left-radius: 0.3em;
+  border-top-right-radius: 0.3em;
+}
+
+.animation-gallery-intro {
+  position: relative;
+  height: 45em;
+  width: 50em;
+  margin: 5em 0;
+  flex-shrink: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+
+  & .inner {
+    position: absolute;
+    top: 6em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  & .logo {
+    fill: $accent;
+    height: 10em;
+    width: 20em;
+    transform: rotate(-1deg);
+  }
+
+  & .subtitle {
+    position: absolute;
+    top: 7em;
+    right: -2.7em;
+    color: $black;
+    font-weight: 700;
+    text-transform: lowercase;
+    margin: 0.5em 0 0;
+    text-align: center;
+    padding: 0.25em 0.5em;
+    background-color: $accent;
+    border-radius: 0.3em;
+    transform-origin: 50% -100%;
+
+    &::before {
+      display: block;
+      content: '';
+      position: absolute;
+      background-color: inherit;
+      height: 4em;
+      width: 0.1em;
+      bottom: 0.5em;
+      left: 3.4em;
+      transform: rotate(60deg);
+    }
+
+    &::after {
+      display: block;
+      content: '';
+      position: absolute;
+      background-color: inherit;
+      height: 4em;
+      width: 0.1em;
+      bottom: 0.5em;
+      right: 3.3em;
+      transform: rotate(-60deg);
+    }
+  }
+
+  &::before {
+    position: absolute;
+    top: 0;
+    left: -15%;
+    display: block;
+    content: '';
+    background-color: $black;
+    width: 120%;
+    height: 70%;
+    transform: rotate(-10deg);
+    transform-origin: 100% 0;
+  }
+
+  & .description {
+    position: absolute;
+    top: 15em;
+    transform: translateX(1em);
+    width: 20em;
+    text-align: justify;
+  }
+}

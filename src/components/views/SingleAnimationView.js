@@ -7,7 +7,7 @@ import uiUtils from "utils/uiUtils";
 import Button from "components/ui/Button";
 import TurnTimer from "components/ui/ingame/TurnTimer";
 
-class AnimationView extends Component {
+class SingleAnimationView extends Component {
     constructor(props) {
         super(props);
         this.state = {overflow: 'hidden'}
@@ -38,4 +38,4 @@ class AnimationView extends Component {
     }
 }
 
-export default withRouter(AnimationView);
+export default withRouter(SingleAnimationView);

@@ -16,6 +16,7 @@
     background-color: $black;
     transform: rotate(-90deg);
     z-index: 3;
+    border-radius: 0.2em;
 
     & .display {
       position: absolute;
