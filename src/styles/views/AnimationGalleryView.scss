@@ -30,8 +30,9 @@
   transform: translateX(50%) rotate(-10deg) translateX(-45vw);
   transform-origin: 0 0;
   color: $black;
+  font-weight: 600;
   background-color: $accent;
-  padding: 0.25em 0.5em;
+  padding: 0.25em 0.75em 0.25em 0.5em;
   border-top-left-radius: 0.3em;
   border-top-right-radius: 0.3em;
 }
