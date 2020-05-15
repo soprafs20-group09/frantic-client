@@ -112,7 +112,7 @@ class GameView extends Component {
     }
 
     componentDidMount() {
-        this.loadFakePlayers(7);
+        // this.loadFakePlayers(7);
 
         sockClient.onDisconnect(r => this.handleDisconnect(r));
         sockClient.onLobbyMessage('/chat', r => this.handleChatMessage(r));
