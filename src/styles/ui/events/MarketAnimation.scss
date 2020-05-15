@@ -16,13 +16,14 @@
     animation-duration: 1.4s;
     animation-fill-mode: forwards;
     animation-timing-function: ease-in-out;
+    color: white;
 
     .handle {
       z-index: 2;
       position: absolute;
       width: 1.2em;
       height: 0.3em;
-      background-color: $bgLighter;
+      background-color: currentColor;
       border-radius: 0.15em;
     }
 
@@ -31,7 +32,7 @@
       position: absolute;
       width: 0.3em;
       height: 4em;
-      background-color: $bgLighter;
+      background-color: currentColor;
       border-radius: 0.15em;
       transform: rotate(-10deg) translateY(0.3em) translateX(1.2em);
     }
@@ -41,7 +42,7 @@
       position: absolute;
       width: 5em;
       height: 0.3em;
-      background-color: $bgLighter;
+      background-color: currentColor;
       border-radius: 0.15em;
       transform: translateX(1.6em) translateY(3.85em);
     }
@@ -51,7 +52,7 @@
       position: absolute;
       width: 0.3em;
       height: 3.7em;
-      background-color: $bgLighter;
+      background-color: currentColor;
       border-radius: 0.15em;
       transform: rotate(10deg) translateX(6.55em) translateY(-0.7em);
     }
@@ -61,7 +62,7 @@
       position: absolute;
       width: 6em;
       height: 0.3em;
-      background-color: $bgLighter;
+      background-color: currentColor;
       border-radius: 0.15em;
       transform:  translateX(1.05em) translateY(0.45em);
     }
@@ -73,7 +74,7 @@
         position: absolute;
         width: 0.3em;
         height: 1.2em;
-        background-color: $bgLighter;
+        background-color: currentColor;
         border-radius: 0.15em;
         transform: rotate(10deg) translateX(2.15em) translateY(3.6em);
       }
@@ -83,7 +84,7 @@
         position: absolute;
         width: 5em;
         height: 0.3em;
-        background-color: $bgLighter;
+        background-color: currentColor;
         border-radius: 0.15em;
         transform: translateX(1.4em) translateY(4.85em);
       }
@@ -94,7 +95,7 @@
         width: 1em;
         height: 1em;
         border-radius: 50%;
-        background-color: $bgLighter;
+        background-color: currentColor;
         transform: translateY(5.1em) translateX(1.5em);
       }
 
@@ -114,7 +115,7 @@
         width: 1em;
         height: 1em;
         border-radius: 50%;
-        background-color: $bgLighter;
+        background-color: currentColor;
         transform: translateY(5.1em) translateX(5.2em);
       }
 
