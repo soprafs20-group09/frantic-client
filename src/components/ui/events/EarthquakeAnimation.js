@@ -11,6 +11,11 @@ class EarthquakeAnimation extends Component {
         try {
             let container = document.getElementsByClassName('earthquake-animation')[0].parentElement.parentElement.parentElement;
             container.classList.add('earthquake-shaker');
+            setTimeout(() => {
+                if (container.classList.contains('earthquake-shaker')) {
+                    container.classList.remove('earthquake-shaker');
+                }
+            }, 5000);
         } catch {
         }
     }

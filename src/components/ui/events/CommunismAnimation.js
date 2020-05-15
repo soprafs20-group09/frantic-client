@@ -55,10 +55,11 @@ class CommunismFlowPart extends Component {
 
     render() {
         let cards = [];
+        let i = 0;
 
         for (let c of this.state.cards) {
             cards.push(
-                <div className="soldier">
+                <div className="soldier" key={i++}>
                     <Card
                         type={c.type}
                         value={c.value}
