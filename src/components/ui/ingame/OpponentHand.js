@@ -1,11 +1,8 @@
 import React, {Component} from 'react';
 import "styles/ui/ingame/OpponentHand.scss";
 import Card from "components/ui/cards/Card";
-import {HandTransition, WindowTransition} from "components/ui/Transitions";
-import Skip from "assets/frantic/special-cards/skip.svg";
-import InlineSVG from "react-inlinesvg";
-import PlayerAvatar from "components/ui/PlayerAvatar";
-import IconTitle from "components/ui/IconTitle";
+import {HandTransition} from "components/ui/Transitions";
+import PlayerInfo from "components/ui/ingame/PlayerInfo";
 
 /**
  * This component renders the hand (cards) of an opponent.
@@ -83,7 +80,7 @@ class OpponentHand extends Component {
                         {cards}
                     </HandTransition>
                 </div>
-                <OpponentInfo
+                <PlayerInfo
                     mode={mode}
                     username={opponent.username}
                     cards={infoOverride ? infoOverride.cards : opponent.cards.length}
@@ -101,74 +98,5 @@ OpponentHand.defaultProps = {
     mode: 'bottom',
     trail: 500
 };
-
-class OpponentInfo extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {showStats: false};
-    }
-
-    render() {
-        let name = this.props.username;
-        if (this.props.admin) {
-            name = <IconTitle icon="misc:crown">{name}</IconTitle>;
-        }
-
-        const stats = <div className={"opponent-stats-container " + this.props.mode} key="player-stats">
-            <h2 className="opponent-username">{name}</h2>
-            <table className="opponent-stats">
-                <tbody>
-                <tr>
-                    <th>Cards</th>
-                    <td>{this.props.cards}</td>
-                </tr>
-                <tr>
-                    <th>Points</th>
-                    <td>{this.props.points}</td>
-                </tr>
-                </tbody>
-            </table>
-        </div>;
-
-        return (
-            <div
-                className={"opponent-info " + this.props.mode}
-                onMouseOver={() => this.handleMouseOver()}
-                onMouseLeave={() => this.handleMouseLeave()}
-            >
-                <div className="opponent-avatar-container">
-                    <PlayerAvatar
-                        size="4.5em"
-                        name={this.props.username}
-                        active={this.props.active}
-                    />
-                    {this.props.skipped && <InlineSVG className="opponent-skip" src={Skip}/>}
-                </div>
-                <WindowTransition mode='relative' trail={0}>
-                    {this.state.showStats && stats}
-                </WindowTransition>
-            </div>
-        );
-    }
-
-    handleMouseOver() {
-        if (this.leaveTimeout) {
-            clearTimeout(this.leaveTimeout);
-            this.leaveTimeout = null;
-        }
-        if (!this.state.showStats) {
-            this.setState({showStats: true});
-        }
-    }
-
-    handleMouseLeave() {
-        if (!this.leaveTimeout) {
-            this.leaveTimeout = setTimeout(() => {
-                this.leaveTimeout = null;
-                this.setState({showStats: false});
-            }, 500);
-        }
-    }
-}
 
 export default OpponentHand;
