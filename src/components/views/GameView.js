@@ -23,10 +23,11 @@ import GenericColorPicker from "components/ui/pickers/GenericColorPicker";
 import IconTitle from "components/ui/IconTitle";
 import EventOverlay from "components/ui/ingame/EventOverlay";
 import TextOverlay from "components/ui/ingame/TextOverlay";
-import {Prompt, Route, withRouter} from "react-router-dom";
+import {Prompt, withRouter} from "react-router-dom";
 import RecessionMarketPicker from "components/ui/pickers/RecessionMarketPicker";
 import GamblingPicker from "components/ui/pickers/GamblingPicker";
 import MerryChristmasPicker from "components/ui/pickers/MerryChristmasPicker";
+import PlayerInfo from "components/ui/ingame/PlayerInfo";
 
 class GameView extends Component {
     constructor(props) {
@@ -36,6 +37,7 @@ class GameView extends Component {
             playerCards: [],
             availableCards: [],
             discardPileTopCard: undefined,
+            player: null,
             opponents: [],
             drawAmount: 0,
             drawKey: 0,
@@ -59,9 +61,17 @@ class GameView extends Component {
     }
 
     loadFakePlayers(cardAmount) {
+        sessionManager.username = "jon";
+
         this.setState({
             loading: false,
             playerCards: franticUtils.generateRandomCards(cardAmount, true),
+            player: {
+                username: "mama",
+                points: 69,
+                skipped: false,
+                cards: franticUtils.generateBackCards(cardAmount)
+            },
             opponents: [
                 {
                     username: "jan",
@@ -291,6 +301,19 @@ class GameView extends Component {
                             turn={this.state.timerKey}
                             timebomb={this.state.timebombRounds}
                         />
+                        <div className="player-info-container">
+                            {this.state.player &&
+                            <PlayerInfo
+                                avatarSize="2em"
+                                mode="bottom"
+                                username={this.state.player.username}
+                                cards={this.state.player.cards.length}
+                                points={this.state.player.points}
+                                skipped={this.state.player.skipped}
+                                admin={this.state.player.admin}
+                                active={isPlayerTurn}
+                            />}
+                        </div>
                     </div>
 
                     <div className="game-chat-container">
@@ -467,15 +490,17 @@ class GameView extends Component {
 
     handleGameState(newState) {
         let opps = newState.players.slice();
+        let current = null;
         if (opps.length > 0) {
             while (opps[0].username !== sessionManager.username) {
                 opps.unshift(opps.pop());
             }
-            opps.shift();
+            current = opps.shift();
         }
         this.setState({
             loading: false,
             discardPileTopCard: newState.discardPile,
+            player: current,
             opponents: opps
         });
     }
