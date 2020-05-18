@@ -90,7 +90,7 @@ export default {
                 }
             },
             {
-                name: "IKEA",
+                name: "Royal blue",
                 colors: {
                     accent: '#ffd700',
                     bgDark: '#022c43',
@@ -117,8 +117,8 @@ export default {
                     accent: '#ffbd69',
                     bgDark: '#202040',
                     bgMedium: '#543864',
-                    bgLight: '#ff6363',
-                    bgLighter: '#ff7878',
+                    bgLight: '#424263',
+                    bgLighter: '#676791',
                     text: 'white'
                 }
             }
