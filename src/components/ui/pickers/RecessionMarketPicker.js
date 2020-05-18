@@ -32,8 +32,9 @@ class RecessionMarketPicker extends Component {
                     <Separator>{this.getSeparatorText()}</Separator>
                     <CardPicker
                         cards={this.props.cards}
+                        disableFuckYous={this.props.mode !== 'market'} // don't disable fuck-you cards in market
                         maxAmount={this.props.mode === 'recession' ? this.props.amount : 1}
-                        onSelectionChange={s => this.handleSelectionChange(s)}
+                        onSelectionChange={(s, a) => this.handleSelectionChange(s, a)}
                     />
                     <div className="concrete-picker-spacer"/>
                     <Button
@@ -92,7 +93,7 @@ class RecessionMarketPicker extends Component {
     getButtonDisabled() {
         switch (this.props.mode) {
             case 'recession':
-                return this.state.cards.length !== this.props.amount;
+                return this.state.cards.length !== Math.min(this.props.amount, this.state.availableAmount);
 
             case 'market':
                 return this.state.cards.length !== 1;
@@ -102,8 +103,8 @@ class RecessionMarketPicker extends Component {
         }
     }
 
-    handleSelectionChange(selection) {
-        this.setState({cards: selection});
+    handleSelectionChange(selection, available) {
+        this.setState({cards: selection, availableAmount: available});
     }
 
     handleFinish() {

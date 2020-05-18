@@ -6,6 +6,7 @@
   flex-wrap: wrap;
   justify-content: space-evenly;
   z-index: 1;
+  padding: 0.5em;
 
   &.scrolling {
     max-height: 40vh;

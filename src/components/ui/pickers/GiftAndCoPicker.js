@@ -23,7 +23,7 @@ import IconTitle from "components/ui/IconTitle";
 class GiftAndCoPicker extends Component {
     constructor(props) {
         super(props);
-        this.state = {selectedCards: [], selectedPlayer: null}
+        this.state = {selectedCards: [], availableAmount: this.props.cards.length, selectedPlayer: null}
     }
 
     render() {
@@ -36,9 +36,10 @@ class GiftAndCoPicker extends Component {
                         {this.getText1()}
                     </Separator>
                     <CardPicker
+                        disableFuckYous={false}
                         cards={this.props.cards}
                         maxAmount={this.getAmount()}
-                        onSelectionChange={c => this.handleCardChange(c)}
+                        onSelectionChange={(c, a) => this.handleCardChange(c, a)}
                     />
                     <br/>
                     <Separator step={2}>
@@ -66,7 +67,7 @@ class GiftAndCoPicker extends Component {
         switch (this.props.mode) {
             case 'gift':
             case 'exchange':
-                return (this.state.selectedCards.length === Math.min(2, this.props.cards.length)
+                return (this.state.selectedCards.length === Math.min(2, this.state.availableAmount)
                     && this.state.selectedPlayer);
 
             case 'surprise-party':
@@ -150,8 +151,8 @@ class GiftAndCoPicker extends Component {
         }
     }
 
-    handleCardChange(c) {
-        this.setState({selectedCards: c});
+    handleCardChange(c, a) {
+        this.setState({selectedCards: c, availableAmount: a});
     }
 
     handlePlayerChange(p) {
