@@ -76,6 +76,7 @@ class LobbyWindow extends Component {
         } else if (this.state.loading) {
             content = <Spinner key="spinner"/>;
         } else {
+            document.title = this.state.settings.lobbyName + " - Frantic";
             content = (
                 <div className="lobby-container" key="lobby-window">
                     <div className="lobby-column main">

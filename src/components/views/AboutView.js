@@ -5,10 +5,13 @@ import AppContainer from "components/ui/AppContainer";
 import {WindowTransition} from "components/ui/Transitions";
 import "styles/views/AboutView.scss";
 import Header from "components/ui/Header";
-import IconTitle from "components/ui/IconTitle";
 import uiUtils from "utils/uiUtils";
 
 class AboutView extends Component {
+    componentDidMount() {
+        document.title = "About - Frantic";
+    }
+
     render() {
         return (
             <AppContainer withBack>

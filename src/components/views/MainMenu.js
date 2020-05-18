@@ -49,6 +49,7 @@ class MainMenu extends React.Component {
             }
         } catch {
         }
+        document.title = "Frantic";
     }
 
     render() {

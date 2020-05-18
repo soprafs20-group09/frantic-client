@@ -10,6 +10,10 @@ import InlineSVG from "react-inlinesvg";
 import {animated, Spring} from "react-spring/renderprops";
 
 class AnimationGalleryView extends Component {
+    componentDidMount() {
+        document.title = "Animation Gallery - Frantic";
+    }
+
     render() {
         let events = [];
         for (let event of franticUtils.constants.events) {

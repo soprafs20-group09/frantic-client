@@ -41,6 +41,8 @@ class EndView extends Component {
         sockClient.onDisconnect(r => this.handleDisconnect(r));
         sockClient.onLobbyMessage('/chat', r => this.handleChatMessage(r));
         sockClient.onLobbyMessage('/start-round', () => this.handleRoundStart());
+
+        document.title = "End of " + (this.props.mode === 'game' ? 'Game' : 'Round') + " - Frantic";
     }
 
     render() {
