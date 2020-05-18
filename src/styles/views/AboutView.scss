@@ -2,8 +2,9 @@
 
 .about-content {
   width: 45em;
-  @include center;
+  display: flex;
   flex-direction: column;
+  align-items: center;
   padding-top: 3em;
   max-height: 100%;
   overflow-y: auto;
@@ -16,7 +17,6 @@
   filter: drop-shadow($dropShadow);
   height: 10em;
   width: 20em;
-  margin-top: 13em;
   margin-bottom: 2em;
   flex-shrink: 0;
 }
@@ -41,6 +41,7 @@
 
 .about-team {
   width: 28em;
+  margin-top: 1em;
 
   & .team-container {
     display: flex;
@@ -61,13 +62,11 @@
       align-items: center;
       flex-grow: 0;
       flex-shrink: 0;
-      //margin-right: 1em;
     }
 
     & .member-roles-container {
       display: flex;
       flex-direction: column;
-      //flex-grow: 1;
     }
 
     & .member-name {
@@ -77,11 +76,6 @@
       color: $textColor;
       font-weight: 600;
       line-height: 1.5em;
-      //color: $bgMedium;
-      //font-weight: 600;
-      //background-color: $bgLight;
-      //padding: 0.1em 0.5em;
-      //border-radius: 0.3em;
       border-bottom: 0.1em solid $bgLighter;
       margin: 0.25em;
     }
@@ -96,16 +90,50 @@
     }
 
     & .member-role {
-      //width: fit-content;
       display: inline-block;
       text-transform: lowercase;
       color: $accent;
-      //color: $bgMedium;
       font-weight: 500;
       background-color: $bgDark;
       padding: 0.25em 0.5em;
       border-radius: 0.3em;
       margin: 0.25em;
+    }
+  }
+}
+
+.about-explore {
+  width: 28em;
+
+  & .explore-list {
+    padding: 0;
+    list-style-type: none;
+  }
+
+  & .explore-item {
+    margin-left: 0;
+    color: $bgMedium;
+    text-transform: lowercase;
+    background-color: $accent;
+    padding: 0.3em 0.5em;
+    border-radius: 0.5em;
+    box-shadow: $dropShadow;
+    @include clickable;
+    margin-bottom: 1em;
+
+    & .explore-item-inner {
+      display: flex;
+      align-items: center;
+      font-size: 1.2em;
+      font-weight: 600;
+      color: currentColor;
+    }
+
+    & .explore-item-icon {
+      fill: currentColor;
+      width: 1.5em;
+      height: 1.5em;
+      margin-right: 0.5em;
     }
   }
 }
