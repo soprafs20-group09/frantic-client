@@ -77,11 +77,9 @@ class EndView extends Component {
                         </EndWindow>
                     </div>
                     <div className="end-column rest">
-                        <div className="chat">
-                            <ChatWindow onSend={msg => this.handleChatSend(msg)}>
-                                {this.state.chatItems}
-                            </ChatWindow>
-                        </div>
+                        <ChatWindow onSend={msg => this.handleChatSend(msg)}>
+                            {this.state.chatItems}
+                        </ChatWindow>
                     </div>
                 </div>;
         }

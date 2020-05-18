@@ -2,7 +2,7 @@
 
 .end-container {
   max-height: 41.2em;
-  @include fillCenter;
+  @include center;
 }
 
 .end-column {
@@ -27,10 +27,6 @@
     display: flex;
     flex-direction: column;
     width: 14.5em;
-
-    & .chat {
-      flex-grow: 1;
-    }
   }
 
   & .rest-spacer {
