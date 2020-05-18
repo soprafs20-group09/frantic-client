@@ -6,11 +6,18 @@
   @include center;
   height: 10.2em;
 
-  .bow {
-    width: 18em;
+  & .bow {
+    //width: 18em;
     height: 18em;
-    transform: scale(-1) rotate(-2deg) translateX(10em) translateY(-2em);
+    transform: scale(-1) translateX(15.5em) translateY(-2.1em) rotate(-10deg);
     fill: $bgLighter;
+  }
+
+  & .bow-string {
+    fill: none;
+    stroke: $accent;
+    stroke-width: 0.1em;
+    stroke-miterlimit: 10;
   }
 
   .bow-cover {
