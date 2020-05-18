@@ -13,6 +13,7 @@ import LobbyGuard from "components/routing/guards/LobbyGuard";
 import SingleAnimationView from "components/views/SingleAnimationView";
 import GameGuard from "components/routing/guards/GameGuard";
 import AnimationGalleryView from "components/views/AnimationGalleryView";
+import AboutView from "components/views/AboutView";
 
 class AppRouter extends React.Component {
     render() {
@@ -59,6 +60,9 @@ class AppRouter extends React.Component {
                     </Route>
                     <Route exact path="/end/game">
                         <EndView mode="game"/>
+                    </Route>
+                    <Route exact path="/about">
+                        <AboutView/>
                     </Route>
                     <Route exact path="/animations">
                         <AnimationGalleryView/>

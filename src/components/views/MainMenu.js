@@ -25,6 +25,20 @@ const madeWithIcons = [
 ];
 
 class MadeWithLabel extends React.Component {
+    render() {
+        return (
+            <p className="madewith label">
+                <MainMenuMadeWithTransition>
+                    <a href="/about" className="madewith link">
+                        made with <Twemoji svg text={this.props.symbol}/> by sopra-fs20 group 9
+                    </a>
+                </MainMenuMadeWithTransition>
+            </p>
+        );
+    }
+}
+
+class MainMenu extends React.Component {
     componentDidMount() {
         sessionManager.reset();
         try {
@@ -33,26 +47,10 @@ class MadeWithLabel extends React.Component {
                 sockClient.clearMessageSubscriptions();
                 sockClient.disconnect();
             }
-        }
-        catch {
-
+        } catch {
         }
     }
 
-    render() {
-        return (
-            <p className="madewith label">
-                <MainMenuMadeWithTransition>
-                    <span className="madewith">
-                        made with <Twemoji svg text={this.props.symbol}/> by sopra-fs20 group 9
-                    </span>
-                </MainMenuMadeWithTransition>
-            </p>
-        );
-    }
-}
-
-class MainMenu extends React.Component {
     render() {
         return (
             <AppContainer withHelp withSettings>

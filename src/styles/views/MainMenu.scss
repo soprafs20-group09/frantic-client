@@ -46,6 +46,7 @@
   &.label {
     position: absolute;
     bottom: 0.5em;
+    @include clickable;
   }
 }
 

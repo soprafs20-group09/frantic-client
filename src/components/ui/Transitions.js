@@ -167,7 +167,7 @@ class MainMenuMadeWithTransition extends Component {
                 leave={down}
                 trail={1000}
             >
-                {item => style => <animated.span style={style}>{item}</animated.span>}
+                {item => style => <animated.span style={{display: 'block', ...style}}>{item}</animated.span>}
             </Transition>
         );
     }
