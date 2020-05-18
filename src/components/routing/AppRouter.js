@@ -1,6 +1,6 @@
 import React from 'react';
 import 'components/routing/AppRouter';
-import {BrowserRouter, Route, Switch} from "react-router-dom";
+import {BrowserRouter, Redirect, Route, Switch} from "react-router-dom";
 import MainMenu from "components/views/MainMenu";
 import LobbyView from "components/views/LobbyView";
 import LobbyBrowserView from "components/views/LobbyBrowserView";
@@ -65,6 +65,9 @@ class AppRouter extends React.Component {
                     </Route>
                     <Route exact path="/animations/:event">
                         <SingleAnimationView/>
+                    </Route>
+                    <Route>
+                        <Redirect to="/"/>
                     </Route>
                 </Switch>
             </BrowserRouter>
