@@ -36,6 +36,14 @@ class AboutView extends Component {
                                     <br/><br/>
                                     <strong>Thanks for playing!</strong>
                                 </p>
+                                <p>
+                                    Frantic © is a card game made by Rulefactory, a Swiss playing cards company.
+                                    The concept was created by Fabian Engeler, Pascal Frick and
+                                    Stefan Weisskopf, and designed by Pierre Lippuner.
+                                    If you enjoy the game, please consider buying the original
+                                    or spice things up even more with add-ons
+                                    on <a href="https://www.rulefactory.ch" target="_blank">rulefactory.ch</a>.
+                                </p>
                             </div>
                             <div className="about-explore">
                                 <Header>Explore the Project</Header>
