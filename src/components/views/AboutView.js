@@ -38,7 +38,7 @@ class AboutView extends Component {
                                 <Header>Explore the Project</Header>
                                 <ul className="explore-list">
                                     <ExploreItem icon="event:earthquake" target="/animations">Visit the Animation Gallery!</ExploreItem>
-                                    <ExploreItem icon="misc:github" newTab target="https://github.com/soprafs20-group09/frantic-client">Dig through our code on GitHub!</ExploreItem>
+                                    <ExploreItem icon="misc:github" newTab target="https://github.com/soprafs20-group09">Dig through our code on GitHub!</ExploreItem>
                                 </ul>
                             </div>
                             <div className="about-team">
