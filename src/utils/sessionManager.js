@@ -1,6 +1,7 @@
 /**
  * This file manages our sessionStorage in a more centralized way.
  */
+import settingsManager from "utils/settingsManager";
 
 export default {
     get lobbyId() {
@@ -95,6 +96,29 @@ export default {
         }
         sessionStorage.setItem('avatarBlacklist', JSON.stringify(value));
     },
+
+    chat: {
+        getCurrent() {
+            if (!this.items) {
+                this.items = [];
+            }
+            return this.items;
+        },
+        addMessage(item) {
+            if (!this.items) {
+                this.items = [];
+            }
+            this.items = this.items.concat(item);
+            if (this.items.length >= settingsManager.constants.maxChatItems) {
+                this.items.shift();
+            }
+            return this.items;
+        },
+        clear() {
+            this.items = [];
+        }
+    },
+
     reset() {
         sessionStorage.clear();
     }

@@ -22,7 +22,7 @@ class EndView extends Component {
         super(props);
         this.state = {
             players: {},
-            chatItems: []
+            chatItems: sessionManager.chat.getCurrent()
         };
     }
 
@@ -136,7 +136,7 @@ class EndView extends Component {
         let newItem = uiUtils.parseChatObject(msg);
         if (newItem) {
             this.setState({
-                chatItems: this.state.chatItems.concat(newItem)
+                chatItems: sessionManager.chat.addMessage(newItem)
             });
         }
     }

@@ -56,7 +56,7 @@ class GameView extends Component {
             animationTrail: {
                 hand: 500
             },
-            chatItems: []
+            chatItems: sessionManager.chat.getCurrent()
         };
     }
 
@@ -485,7 +485,7 @@ class GameView extends Component {
         let newItem = uiUtils.parseChatObject(msg);
         if (newItem) {
             this.setState({
-                chatItems: this.state.chatItems.concat(newItem)
+                chatItems: sessionManager.chat.addMessage(newItem)
             });
         }
     }

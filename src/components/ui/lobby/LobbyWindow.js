@@ -14,6 +14,7 @@ import {withRouter} from "react-router-dom";
 import ErrorBox from "components/ui/ErrorBox";
 import {WindowTransition} from "components/ui/Transitions";
 import uiUtils from "utils/uiUtils";
+import settingsManager from "utils/settingsManager";
 
 /**
  * This component renders the lobby settings window,
@@ -36,6 +37,8 @@ class LobbyWindow extends Component {
     }
 
     componentDidMount() {
+        sessionManager.chat.clear();
+
         sockClient.onRegister(r => this.handleSocketRegister(r));
         sockClient.onDisconnect(r => this.handleDisconnect(r));
         sockClient.onLobbyMessage('/chat', r => this.handleChatMessage(r));
@@ -169,7 +172,6 @@ class LobbyWindow extends Component {
 
     handleSettingsTimeout() {
         try {
-            // console.log(this.state.settings);
             sockClient.sendToLobby('/settings', {
                 lobbyName: this.state.settings.lobbyName,
                 duration: this.state.settings.duration,
@@ -201,7 +203,7 @@ class LobbyWindow extends Component {
         let newItem = uiUtils.parseChatObject(msg);
         if (newItem) {
             this.setState({
-                chatItems: this.state.chatItems.concat(newItem)
+                chatItems: sessionManager.chat.addMessage(newItem)
             });
         }
     }

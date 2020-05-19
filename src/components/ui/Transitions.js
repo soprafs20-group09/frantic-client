@@ -58,10 +58,12 @@ class ChatItemTransition extends Component {
     render() {
         const fromStyle = {
             opacity: 0,
+            height: 0,
             transform: 'translateY(50%) scale(0.7)'
         };
         const toStyle = {
             opacity: 1,
+            height: 'auto',
             transform: 'translateY(0%) scale(1)'
         };
 
@@ -73,12 +75,16 @@ class ChatItemTransition extends Component {
                 from={fromStyle}
                 enter={toStyle}
                 leave={fromStyle}
-                trail={this.props.trail || 200}>
+                trail={this.props.trail}>
                 {item => style => <animated.div style={style}>{item}</animated.div>}
             </Transition>
         );
     }
 }
+
+ChatItemTransition.defaultProps = {
+    trail: 200
+};
 
 class MainMenuLogoTransition extends Component {
     render() {

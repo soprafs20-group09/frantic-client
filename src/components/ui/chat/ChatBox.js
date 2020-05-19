@@ -9,15 +9,28 @@ const animationTrail = 200;
  * Add ChatItems as children to display them.
  */
 class ChatBox extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {trail: 0};
+    }
+
+
     render() {
         return (
             <div className="chat-box">
-                <ChatItemTransition trail={animationTrail}>
+                <ChatItemTransition trail={this.state.trail}>
                     {this.props.children}
                 </ChatItemTransition>
                 <div ref={e => this.msgDummy = e}/>
             </div>
         );
+    }
+
+    componentDidMount() {
+        setTimeout(() => {
+            this.setState({trail: animationTrail});
+            this.scrollToBottom();
+        }, animationTrail + 200);
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -33,7 +46,7 @@ class ChatBox extends Component {
                     block: 'nearest'
                 });
             }
-        }, animationTrail);
+        }, this.state.trail + 200);
     }
 }
 

@@ -123,5 +123,8 @@ export default {
                 }
             }
         ]
+    },
+    constants: {
+        maxChatItems: 512
     }
 };
