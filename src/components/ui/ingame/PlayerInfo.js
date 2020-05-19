@@ -57,7 +57,15 @@ class PlayerInfo extends Component {
                         name={this.props.username}
                         active={this.props.active}
                     />
-                    {this.props.skipped && <InlineSVG className="opponent-skip" src={Skip}/>}
+                    {this.props.skipped &&
+                    <InlineSVG
+                        className="opponent-skip"
+                        src={Skip}
+                        style={{
+                            width: this.props.avatarSize,
+                            height: this.props.avatarSize
+                        }}
+                    />}
                 </div>
                 <WindowTransition mode='relative' trail={0}>
                     {this.state.showStats && stats}
