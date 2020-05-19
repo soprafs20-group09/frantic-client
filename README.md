@@ -53,9 +53,9 @@ Listed below are the main components of the frontend:
   
   ## Roadmap
   
-  1. Implement the expansion pack
-  2. Minor bug fixes
-  3. Moblie version?
+  1.Implement the expansion pack  
+  2.Minor bug fixes   
+  3.Moblie version?
   
   ## Authors and Aknowledgements
   
