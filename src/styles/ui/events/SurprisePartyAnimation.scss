@@ -149,6 +149,7 @@
         position: relative;
         background-color: $bgLighter;
         text-align: left;
+        transform: rotate(-60deg) skewX(-30deg) scale(1,.866);
       }
 
       .triangle:before,
@@ -164,10 +165,6 @@
         width:  1.5em;
         height: 1.5em;
         border-top-right-radius: 30%;
-      }
-
-      .triangle {
-        transform: rotate(-60deg) skewX(-30deg) scale(1,.866);
       }
 
       .triangle:before {
