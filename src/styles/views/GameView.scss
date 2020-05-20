@@ -11,7 +11,7 @@
 
 .game-table {
   & > :not(.timer-container):not(.game-chat-container){
-    transition: 0.5s;
+    transition: filter 0.5s;
   }
 
   &.overlayed > :not(.timer-container):not(.game-chat-container) {
@@ -44,7 +44,7 @@
   top: 0;
   left: 0;
   @include fullscreen;
-  transition: 0.5s;
+  transition: filter 0.5s;
 
   &.overlayed {
     filter: blur(0.3em);

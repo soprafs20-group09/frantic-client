@@ -35,7 +35,6 @@ $white: invert($black);
 }
 
 .special {
-  transition: 0.5s;
 
   &.matte {
     background-color: $black;

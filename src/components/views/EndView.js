@@ -45,6 +45,11 @@ class EndView extends Component {
         document.title = "End of " + (this.props.mode === 'game' ? 'Game' : 'Round') + " - Frantic";
     }
 
+    componentWillUnmount() {
+        sockClient.clearMessageSubscriptions();
+        sockClient.clearDisconnectSubscriptions();
+    }
+
     render() {
         let appContainerProps = {withHelp: true};
         if (this.props.mode === 'game') {
