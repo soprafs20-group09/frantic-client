@@ -26,7 +26,7 @@ ReactDOM.render(<App/>, document.getElementById('root'));
 // for the case of smaller screens
 function calibrateFontSize() {
     const root = document.getElementsByTagName('html')[0];
-    root.removeAttribute('style');
+    root.style.setProperty('font-size', '');
     const rootStyle = window.getComputedStyle(root);
     const remRatio = 860 / parseInt(rootStyle.getPropertyValue('font-size').slice(0, -2));
     const height = parseInt(rootStyle.getPropertyValue('height').slice(0, -2));

@@ -103,11 +103,17 @@ class AppContainer extends Component {
     }
 
     handleResize() {
+        if ((window.innerHeight >= 860 && this.lastWindowSize >= 860) || this.lastWindowSize === window.innerHeight) {
+            this.lastWindowSize = window.innerHeight;
+            return;
+        }
+
         if (this.resizeTimeout) {
             clearTimeout(this.resizeTimeout);
         }
 
         this.resizeTimeout = setTimeout(() => {
+            this.lastWindowSize = window.innerHeight;
             this.setState({overlay: 'resize'});
             this.resizeTimeout = setTimeout(() =>
                     this.setState({overlay: false}),
