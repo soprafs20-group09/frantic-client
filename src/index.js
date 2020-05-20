@@ -17,6 +17,8 @@ settingsManager.applyTheme();
 
 // add listener to warn user when trying to leave game
 window.addEventListener("beforeunload", handleUnload);
+// add listener to re-calibrate on window resize
+window.addEventListener("resize", handleResize);
 
 ReactDOM.render(<App/>, document.getElementById('root'));
 
@@ -24,11 +26,14 @@ ReactDOM.render(<App/>, document.getElementById('root'));
 // for the case of smaller screens
 function calibrateFontSize() {
     const root = document.getElementsByTagName('html')[0];
+    root.removeAttribute('style');
     const rootStyle = window.getComputedStyle(root);
     const remRatio = 860 / parseInt(rootStyle.getPropertyValue('font-size').slice(0, -2));
     const height = parseInt(rootStyle.getPropertyValue('height').slice(0, -2));
 
-    root.style.setProperty("font-size", (height / remRatio).toString() + "px");
+    root.style.setProperty(
+        "font-size",
+        Math.min((height / remRatio), settingsManager.constants.maxFontSize).toString() + "px");
 }
 
 function handleUnload(e) {
@@ -36,4 +41,14 @@ function handleUnload(e) {
         e.preventDefault();
         e.returnValue = "If you leave the game, you won't be able to rejoin it!";
     }
+}
+
+function handleResize() {
+    if (this.resizeTimeout) {
+        clearTimeout(this.resizeTimeout);
+    }
+    this.resizeTimeout = setTimeout(() => {
+        console.log('calibrating font size...');
+        calibrateFontSize();
+    }, 500);
 }

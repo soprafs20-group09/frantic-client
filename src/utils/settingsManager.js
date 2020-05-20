@@ -125,6 +125,7 @@ export default {
         ]
     },
     constants: {
+        maxFontSize: 18,
         maxChatItems: 512
     }
 };
