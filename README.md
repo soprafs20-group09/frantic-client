@@ -17,9 +17,9 @@ To establish a connection between the front- and backend REST is used. When furt
 
 ## High-level Components
 
-The [LobbyBrowserView](src/components/LobbyBrowserView.js) displays all public lobbies. It only uses REST-requests to update the list. Internally, the lobby elements are anchors to their individual join links. When the user clicks on the lobby, they get redirected to the LobbyView, which then sends the corresponding requests and then establishes a WebSocks connection.
+The [LobbyBrowserView](src/components/views/LobbyBrowserView.js) displays all public lobbies. It only uses REST-requests to update the list. Internally, the lobby elements are anchors to their individual join links. When the user clicks on the lobby, they get redirected to the LobbyView, which then sends the corresponding requests and then establishes a WebSocks connection.
 
-The [LobbyView](src/components/view/LobbyView.js) sends a POST-Request to create a lobby, then opens a WebSocket connection. It contains the [LobbyWindow](src/components/ui/lobby/LobbyWindow.js), which contains everything lobby related (chat, settings etc). To start the game, the LobbyWindow sends a package to the Backend and upon confirmation redirects the user to the GameView.
+The [LobbyView](src/components/views/LobbyView.js) sends a POST-Request to create a lobby, then opens a WebSocket connection. It contains the [LobbyWindow](src/components/ui/lobby/LobbyWindow.js), which contains everything lobby related (chat, settings etc). To start the game, the LobbyWindow sends a package to the Backend and upon confirmation redirects the user to the GameView.
 
 The [GameView](src/components/views/GameView.js) handles all in-game packages (card effects, events etc). It recieves the game state and renders the view accordingly. An example of this is the [PlayerHand](src/components/ui/ingame/PlayerHand.js). It displays the cards of the player. The PlayerHand notifies the GameView when a card has been played, in return the GameView determines which cards the PlayerHand displays. It gets rendered according to the game state. 
 
