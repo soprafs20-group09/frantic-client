@@ -1,10 +1,7 @@
 import React, {Component} from 'react';
 import Card from 'components/ui/cards/Card.js';
-import Logo from "assets/frantic/logo-text.svg";
-import InlineSVG from "react-inlinesvg";
 import "styles/ui/events/MarketAnimation.scss";
 import franticUtils from "utils/franticUtils";
-import Icon from "components/ui/Icon";
 
 class MarketAnimation extends Component {
     constructor(props) {

@@ -14,7 +14,6 @@ import {withRouter} from "react-router-dom";
 import ErrorBox from "components/ui/ErrorBox";
 import {WindowTransition} from "components/ui/Transitions";
 import uiUtils from "utils/uiUtils";
-import settingsManager from "utils/settingsManager";
 
 /**
  * This component renders the lobby settings window,
