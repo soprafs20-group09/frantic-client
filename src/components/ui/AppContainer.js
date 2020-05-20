@@ -7,6 +7,7 @@ import HelpWindow from "components/ui/help/HelpWindow";
 import {WindowTransition} from "components/ui/Transitions";
 import Icon from "./Icon";
 import SettingsWindow from "./SettingsWindow";
+import settingsManager from "utils/settingsManager";
 
 /**
  * This is a container that holds most app contents,
@@ -22,6 +23,14 @@ class AppContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {overlay: false};
+    }
+
+    componentDidMount() {
+        window.addEventListener('resize', () => this.handleResize());
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('resize', () => this.handleResize());
     }
 
     render() {
@@ -69,6 +78,9 @@ class AppContainer extends Component {
                     key="settings"
                 />;
 
+            case 'resize':
+                return <CalibrateMessage key="resize"/>;
+
             default:
                 return false;
         }
@@ -77,8 +89,7 @@ class AppContainer extends Component {
     toggleSettings() {
         if (this.state.overlay === 'settings') {
             this.setState({overlay: false});
-        }
-        else {
+        } else {
             this.setState({overlay: 'settings'});
         }
     }
@@ -86,10 +97,38 @@ class AppContainer extends Component {
     toggleHelp() {
         if (this.state.overlay === 'help') {
             this.setState({overlay: false});
-        }
-        else {
+        } else {
             this.setState({overlay: 'help'})
         }
+    }
+
+    handleResize() {
+        if (this.resizeTimeout) {
+            clearTimeout(this.resizeTimeout);
+        }
+
+        this.resizeTimeout = setTimeout(() => {
+            this.setState({overlay: 'resize'});
+            this.resizeTimeout = setTimeout(() =>
+                    this.setState({overlay: false}),
+                1500);
+        }, 100);
+    }
+}
+
+class CalibrateMessage extends Component {
+    render() {
+        return (
+            <div className="overlay-message">
+                <h1
+                    style={{
+                        fontSize: `${settingsManager.constants.maxFontSize * 2}px`
+                    }}
+                >
+                    calibrating...
+                </h1>
+            </div>
+        );
     }
 }
 
