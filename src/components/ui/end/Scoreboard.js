@@ -139,14 +139,16 @@ class Scoreboard extends Component {
                 </ul>
             );
         } else {
-            playerContainers.push(
-                <div className="player-list-caption-container">
-                    <div className="player-list-caption c1">rank</div>
-                    <div className="player-list-caption c2">player</div>
-                    <div className="player-list-caption c3">total</div>
-                    <div className="player-list-caption c4">change</div>
-                </div>
-            );
+            if (players.length > 3) {
+                playerContainers.push(
+                    <div className="player-list-caption-container">
+                        <div className="player-list-caption c1">rank</div>
+                        <div className="player-list-caption c2">player</div>
+                        <div className="player-list-caption c3">total</div>
+                        <div className="player-list-caption c4">change</div>
+                    </div>
+                );
+            }
             for (let p of players) {
                 if (p.rank === 1 && p.absoluteRank < 3) {
                     podium.push(
