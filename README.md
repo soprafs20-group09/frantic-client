@@ -43,11 +43,19 @@ Listed below are the main components of the frontend:
   
   When visiting the site, the menu screen appears where one can choose either to create or join a game. 
   
+  ![alt text](markdown/main_menu.jpg)
+  
   When creating a game, the player is asked to enter a username and choose the settings for the game.
+  
+  ![alt text](markdown/lobby-host.jpg)
   
   When joining a game a player is redirected to the lobby browser, where a lobby can be joined.
   
-  Once there are enough player in a lobby the host can start the game. 
+  ![alt text](markdown/lobby-browser.jpg)
+  
+  Once there are enough players (more than one) in a lobby the host can start the game.
+  
+  ![alt text](markdown/ingame.jpg)
   
   During every phase of this process a player can visit the help page to read the rule set or special effects of cards.
   
@@ -65,7 +73,4 @@ Listed below are the main components of the frontend:
   
   ### Aknowledgements
   
-  First of all we want to thank our tutor Moritz Eck, who always provided useful advice to get cleaner code and more user friendlyness.   Further, we would like to say thank you to our friends and families, who tested our game extensively and also provided improvements in   terms of user friendlyness
-  
-  ## License
-  
+  First of all we want to thank our tutor Moritz Eck, who always provided useful advice to get cleaner code and more user friendlyness.   Further, we would like to say thank you to our friends and families, who tested our game extensively and also provided improvements in   terms of user friendlyness.
