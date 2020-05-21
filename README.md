@@ -73,7 +73,7 @@ All views are embedded in an [AppContainer](src/components/ui/AppContainer.js). 
   
  Once there are enough players (more than one) in a lobby the host can start the game.
   
- ![Ingame](markdown/ingame.jpg)
+ ![Ingame](markdown/ingame.gif)
   
  During every phase of this process a player can visit the help page to read the rule set or special effects of cards.
   
