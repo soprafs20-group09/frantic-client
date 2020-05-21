@@ -47,8 +47,5 @@ function handleResize() {
     if (this.resizeTimeout) {
         clearTimeout(this.resizeTimeout);
     }
-    this.resizeTimeout = setTimeout(() => {
-        console.log('calibrating font size...');
-        calibrateFontSize();
-    }, 500);
+    this.resizeTimeout = setTimeout(() => calibrateFontSize(), 500);
 }
