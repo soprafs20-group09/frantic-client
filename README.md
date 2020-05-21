@@ -1,9 +1,21 @@
-![Logo](src/assets/frantic/logo-hollow.svg)
+<h1 align="center">
+  <br>
+  <a href="https://github.com/soprafs20-group09"><img src="src/assets/frantic/logo-hollow.svg" alt="Frantic" width="200"></a>
+  <br>
+  Frantic-Client
+  <br>
+</h1>
 
-# Frantic-Client
-[![Deployment Status](https://github.com/soprafs20-group09/frantic-client/workflows/Deploy%20Project/badge.svg)](https://github.com/soprafs20-group09/frantic-client/actions)
-![Heroku](https://heroku-badge.herokuapp.com/?app=sopra-fs20-group-09-client)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=soprafs20-group09_frantic-client&metric=alert_status)](https://sonarcloud.io/dashboard?id=soprafs20-group09_frantic-client)
+<p align="center">
+  <a href="https://github.com/soprafs20-group09/frantic-client/actions">
+    <img src="https://github.com/soprafs20-group09/frantic-client/workflows/Deploy%20Project/badge.svg"
+         alt="Deployment Status">
+  </a>
+  <a href="https://heroku-badge.herokuapp.com/?app=sopra-fs20-group-09-client"><img src="https://heroku-badge.herokuapp.com/?app=sopra-fs20-group-09-client"></a>
+  <a href="https://sonarcloud.io/dashboard?id=soprafs20-group09_frantic-client">
+      <img src="https://sonarcloud.io/api/project_badges/measure?project=soprafs20-group09_frantic-client&metric=alert_status">
+  </a>
+</p>
 
 ## Introduction
 
@@ -49,35 +61,35 @@ All views are embedded in an [AppContainer](src/components/ui/AppContainer.js). 
   
  When visiting the site, the menu screen appears where one can choose either to create or join a game. 
   
- ![alt text](markdown/main_menu.jpg)
+ ![Main Menu](markdown/main_menu.jpg)
   
  When creating a game, the player is asked to enter a username and choose the settings for the game.
   
- ![alt text](markdown/lobby-host.jpg)
+ ![Lobby List](markdown/lobby-host.jpg)
   
  When joining a game a player is redirected to the lobby browser, where a lobby can be joined.
   
- ![alt text](markdown/lobby-browser.jpg)
+ ![Lobby Browser](markdown/lobby-browser.jpg)
   
  Once there are enough players (more than one) in a lobby the host can start the game.
   
- ![alt text](markdown/ingame.jpg)
+ ![Ingame](markdown/ingame.jpg)
   
  During every phase of this process a player can visit the help page to read the rule set or special effects of cards.
   
  ## Roadmap
   
  1.Implement the expansion pack  
- 2.Minor bug fixes   
- 3.Moblie version?
+ 2.Minor bug fixes
+ 3.Mobile version?
   
- ## Authors and Aknowledgements
+ ## Authors and Acknowledgements
   
  ### Members of the SoPra-group 09 2020:
   
- Kyrill Hux, Jan Willi, Davide Fontanella, Remy Egloff, Sina Krumhard
+ [Kyrill Hux](https://github.com/realChesta), [Jan Willi](https://github.com/JaanWilli), [Davide Fontanella](https://github.com/Davfon), [Remy Egloff](https://github.com/regloff), [Sina Krumhard](https://github.com/sei-nah)
   
- ### Aknowledgements
+ ### Acknowledgements
   
 First of all we want to thank Rulefactory for creating such an amazing game. We all had a fun time implementing the game, and also learned a lot.  
-Further we would like to thank our tutor Moritz Eck, who always provided useful advice to get cleaner code and more user friendlyness. We are also very grateful for our friends and families for testing our game extensively and also providing improvements in terms of user friendlyness.
+Further we would like to thank our tutor Moritz Eck, who always provided useful advice to get cleaner code and more user-friendliness. We are also very grateful for our friends and families for testing our game extensively and also providing improvements in terms of user friendlyness.
