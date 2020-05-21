@@ -79,9 +79,9 @@ All views are embedded in an [AppContainer](src/components/ui/AppContainer.js). 
   
  ## Roadmap
   
- 1.Implement the expansion pack  
- 2.Minor bug fixes
- 3.Mobile version?
+  1. Implement the expansion pack
+  2. Minor bug fixes
+  3. Mobile version?
   
  ## Authors and Acknowledgements
   
