@@ -30,7 +30,7 @@ class ChatBox extends Component {
         setTimeout(() => {
             this.setState({trail: animationTrail});
             this.scrollToBottom();
-        }, animationTrail + 200);
+        }, animationTrail + 300);
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -46,7 +46,7 @@ class ChatBox extends Component {
                     block: 'nearest'
                 });
             }
-        }, this.state.trail + 200);
+        }, this.state.trail + 300);
     }
 }
 

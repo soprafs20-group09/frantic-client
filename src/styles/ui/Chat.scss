@@ -81,6 +81,7 @@ $chatItemSize: $fontSizeChat;
   height: $chatItemSize;
   margin: 0 0.35em 0 0;
   transform: translateY(10%);
+  flex-shrink: 0;
 }
 
 .chat-item-sender {
