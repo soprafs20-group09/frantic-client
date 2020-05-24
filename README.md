@@ -25,7 +25,7 @@ Please find the current build under http://frantic.online/.
 
 ## Technologies
 
-The client is written in JavaScript using React.
+The client is written in JavaScript using React. For styling, Sass is used.
 
 To establish a connection between the front- and backend REST is used. When further proceeding in the game (joining a lobby), a websocket connection gets established.
 
