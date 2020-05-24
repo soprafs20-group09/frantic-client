@@ -37,7 +37,8 @@ function calibrateFontSize() {
 }
 
 function handleUnload(e) {
-    if (sessionManager.inGame) {
+    if (sessionManager.inGame &&
+        ['/game', '/end/round', '/end/game'].includes(window.location.pathname)) {
         e.preventDefault();
         e.returnValue = "If you leave the game, you won't be able to rejoin it!";
     }
