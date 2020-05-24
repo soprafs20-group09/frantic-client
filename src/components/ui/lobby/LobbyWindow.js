@@ -259,6 +259,7 @@ class LobbyWindow extends Component {
 
     handleGameStart() {
         sessionManager.inGame = true;
+        sessionManager.blockReload = true;
         this.props.history.push('/game');
     }
 }

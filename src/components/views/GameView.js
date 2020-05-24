@@ -633,6 +633,7 @@ class GameView extends Component {
 
     handleDisconnect(reason) {
         sessionManager.inGame = false;
+        sessionManager.blockReload = false;
         this.setState({
             error: {
                 title: "Disconnected!",

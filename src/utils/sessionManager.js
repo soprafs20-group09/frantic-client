@@ -27,13 +27,26 @@ export default {
         if (val) {
             return val === 'true';
         }
-        return val;
+        return false;
     },
     set inGame(value) {
         if (value === undefined) {
             sessionStorage.removeItem('ingame');
         }
         sessionStorage.setItem('ingame', value);
+    },
+    set blockReload(value) {
+        if (value === undefined) {
+            sessionStorage.removeItem('blockReload');
+        }
+        sessionStorage.setItem('blockReload', value);
+    },
+    get blockReload() {
+        let val = sessionStorage.getItem('blockReload');
+        if (val) {
+            return val === 'true';
+        }
+        return false;
     },
     get endPlayers() {
         return JSON.parse(sessionStorage.getItem('endPlayers'));
