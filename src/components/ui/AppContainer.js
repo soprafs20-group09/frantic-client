@@ -87,7 +87,7 @@ class AppContainer extends Component {
     }
 
     toggleSettings() {
-        if (this.state.overlay === 'settings') {
+        if (this.state.overlay == 'settings') {
             this.setState({overlay: false});
         } else {
             this.setState({overlay: 'settings'});
@@ -95,7 +95,7 @@ class AppContainer extends Component {
     }
 
     toggleHelp() {
-        if (this.state.overlay === 'help') {
+        if (this.state.overlay == 'help') {
             this.setState({overlay: false});
         } else {
             this.setState({overlay: 'help'})
