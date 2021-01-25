@@ -29,9 +29,20 @@ class MadeWithLabel extends React.Component {
         return (
             <p className="madewith label">
                 <MainMenuMadeWithTransition>
-                    <a href="/about" className="madewith link">
-                        made with <Twemoji svg text={this.props.symbol}/> by sopra-fs20 group 9
-                    </a>
+                    <div className="madewith" key="madewith">
+                        a fan project made with <Twemoji svg text={this.props.symbol}/> by students @ UZH
+                    </div>
+                    <div className="copyright-disclaimer" key="copyright">
+                        The card game Frantic, the associated logo
+                        and game assets are under copyright by the original
+                        creators <a
+                        href="https://rulefactory.ch"
+                        className="copyright-disclaimer link"
+                        target="_blank"
+                    >
+                        Rulefactory
+                    </a>.
+                    </div>
                 </MainMenuMadeWithTransition>
             </p>
         );
@@ -54,7 +65,7 @@ class MainMenu extends React.Component {
 
     render() {
         return (
-            <AppContainer withHelp withSettings>
+            <AppContainer withHelp withSettings withAbout>
                 <div className="mainmenu-container">
                     <MainMenuLogoTransition containerClass="mainmenu-logo-shadow-container">
                         <InlineSVG src={Logo} className="mainmenu-logo"/>

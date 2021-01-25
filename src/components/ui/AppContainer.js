@@ -8,6 +8,7 @@ import {WindowTransition} from "components/ui/Transitions";
 import Icon from "./Icon";
 import SettingsWindow from "./SettingsWindow";
 import settingsManager from "utils/settingsManager";
+import AboutWindow from "./AboutWindow";
 
 /**
  * This is a container that holds most app contents,
@@ -41,17 +42,25 @@ class AppContainer extends Component {
                 </MainMenuItem>
             </div>;
         const helpButton = <MainMenuItem onClick={() => this.toggleHelp()}>?</MainMenuItem>;
+        const aboutButton =
+            <MainMenuItem onClick={() => this.toggleAbout()}>
+                <Icon className="top-icon" from="misc">info</Icon>
+            </MainMenuItem>;
         const settingsButton =
             <MainMenuItem onClick={() => this.toggleSettings()}>
-                <Icon className="settings-button" from="misc">gear</Icon>
+                <Icon className="top-icon" from="misc">gear</Icon>
             </MainMenuItem>;
         return (
             <div className="app-container">
-                <div className={`app-container ${this.state.overlay && 'blur'}`}>
+                <div
+                    className={`app-container ${this.state.overlay && 'blur'}`}
+                    onClick={() => this.handleOutsideClick()}
+                >
                     {this.props.children}
                     <div className="ac-top-right-buttons">
                         {this.props.withHelp && helpButton}
                         {this.props.withSettings && settingsButton}
+                        {this.props.withAbout && aboutButton}
                     </div>
                     {this.props.withBack && backButton}
                 </div>
@@ -78,6 +87,13 @@ class AppContainer extends Component {
                     key="settings"
                 />;
 
+            case 'about':
+                return <AboutWindow
+                    withClose
+                    onClose={() => this.toggleAbout()}
+                    key="about"
+                />;
+
             case 'resize':
                 return <CalibrateMessage key="resize"/>;
 
@@ -87,7 +103,7 @@ class AppContainer extends Component {
     }
 
     toggleSettings() {
-        if (this.state.overlay == 'settings') {
+        if (this.state.overlay === 'settings') {
             this.setState({overlay: false});
         } else {
             this.setState({overlay: 'settings'});
@@ -95,10 +111,24 @@ class AppContainer extends Component {
     }
 
     toggleHelp() {
-        if (this.state.overlay == 'help') {
+        if (this.state.overlay === 'help') {
             this.setState({overlay: false});
         } else {
-            this.setState({overlay: 'help'})
+            this.setState({overlay: 'help'});
+        }
+    }
+
+    toggleAbout() {
+        if (this.state.overlay === 'about') {
+            this.setState({overlay: false});
+        } else {
+            this.setState({overlay: 'about'});
+        }
+    }
+
+    handleOutsideClick() {
+        if (this.state.overlay) {
+            this.setState({overlay: false});
         }
     }
 

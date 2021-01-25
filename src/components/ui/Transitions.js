@@ -167,11 +167,11 @@ class MainMenuMadeWithTransition extends Component {
             <Transition
                 native
                 items={this.props.children}
-                keys={item => item}
+                keys={item => item.key}
                 from={down}
                 enter={neutral}
                 leave={down}
-                trail={1000}
+                trail={500}
             >
                 {item => style => <animated.span style={{display: 'block', ...style}}>{item}</animated.span>}
             </Transition>
