@@ -12,17 +12,18 @@ import "styles/views/MainMenu.scss";
  */
 class MainMenuItem extends Component {
     render() {
+        const className = this.props.secondary ? "mainmenu-item secondary" : "mainmenu-item";
         return (
             this.props.to ?
                 <Link
-                    className="mainmenu-item"
+                    className={className}
                     style={this.props.style}
                     to={this.props.to}
                     onClick={this.props.onClick}>
                     {this.props.children}
                 </Link> :
                 <a
-                    className="mainmenu-item"
+                    className={className}
                     style={this.props.style}
                     onClick={this.props.onClick}>
                     {this.props.children}

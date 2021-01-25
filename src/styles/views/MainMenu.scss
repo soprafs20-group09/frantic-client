@@ -35,6 +35,12 @@
   text-transform: lowercase;
   text-shadow: $dropShadow;
   @include clickable;
+
+  &.secondary {
+    font-size: $fontSizeDefault * 1.5;
+    color: $textColor;
+    opacity: 70%;
+  }
 }
 
 .madewith {
