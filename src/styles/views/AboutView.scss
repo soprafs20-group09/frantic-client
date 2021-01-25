@@ -23,6 +23,7 @@
 
 .about-text {
   width: 28em;
+  margin-bottom: 0.5em;
 
   & > h2 {
     color: $accent;
@@ -40,6 +41,8 @@
     & > a {
       color: $accent;
       font-weight: 500;
+      display: inline-block;
+      @include clickable;
     }
   }
 }
