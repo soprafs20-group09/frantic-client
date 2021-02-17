@@ -623,7 +623,7 @@ class GameView extends Component {
         sessionManager.inGame = false;
         sessionManager.endPlayers = r.players;
         sessionManager.endChanges = r.changes;
-        sessionManager.endSeconds = r.seconds;
+        sessionManager.endAdmin = r.admin;
         sessionManager.endMessage = {
             icon: r.icon,
             message: r.message

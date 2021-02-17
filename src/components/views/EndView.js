@@ -35,12 +35,15 @@ class EndView extends Component {
         this.setState({
             players: sessionManager.endPlayers,
             changes: sessionManager.endChanges,
+            adminMode: sessionManager.username === sessionManager.endAdmin,
             icon: msg.icon,
-            message: msg.message
+            message: msg.message,
+            endTimer: false
         });
         sockClient.onDisconnect(r => this.handleDisconnect(r));
         sockClient.onLobbyMessage('/chat', r => this.handleChatMessage(r));
         sockClient.onLobbyMessage('/start-round', () => this.handleRoundStart());
+        sockClient.onLobbyMessage('/timer',  t => this.handleTimer(t));
 
         document.title = "End of " + (this.props.mode === 'game' ? 'Game' : 'Round') + " - Frantic";
     }
@@ -102,10 +105,27 @@ class EndView extends Component {
 
     getActions() {
         if (this.props.mode === 'round') {
-            return [
-                <p className="end-actions-text" key="d">next round in</p>,
-                <TurnTimer key="t" start seconds={sessionManager.endSeconds}/>
-            ];
+            if (this.state.endTimer) {
+                return [
+                    <p className="end-actions-text" key="d">next round in</p>,
+                    <TurnTimer key="t" start seconds={sessionManager.endSeconds}/>
+                ];
+            }
+            else if (this.state.adminMode) {
+                return (
+                  <Button
+                      style={{paddingLeft: '1em', paddingRight: '1em'}}
+                      onClick={() => this.handleContinueClick()}
+                  >
+                      continue to next round
+                  </Button>
+                );
+            }
+            else {
+                return (
+                    <p className="end-actions-text" key="d">Please wait for the host to continue...</p>
+                );
+            }
         } else {
             return [
                 <Button
@@ -146,6 +166,10 @@ class EndView extends Component {
         }
     }
 
+    handleTimer(t) {
+        this.setState({endTimer: t.seconds});
+    }
+
     handleRoundStart() {
         sessionManager.endPlayers = undefined;
         sessionManager.inGame = true;
@@ -169,6 +193,10 @@ class EndView extends Component {
         sockClient.clearMessageSubscriptions();
         sockClient.clearDisconnectSubscriptions();
         sessionManager.reset();
+    }
+
+    handleContinueClick() {
+        sockClient.sendToLobby('start-round');
     }
 }
 
