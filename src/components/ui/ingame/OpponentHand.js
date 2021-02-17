@@ -19,6 +19,8 @@ import PlayerInfo from "components/ui/ingame/PlayerInfo";
  *  - points: number
  *  - cards: number
  *  trail: number           - how long it should take between each card add/remove animation
+ *  enableKick: bool        - whether to show the kick button.
+ *  onKick: func
  */
 class OpponentHand extends Component {
     render() {
@@ -88,9 +90,17 @@ class OpponentHand extends Component {
                     skipped={opponent.skipped}
                     admin={opponent.admin}
                     active={active}
+                    enableKick={this.props.enableKick}
+                    onKick={() => this.handleKick()}
                 />
             </div>
         );
+    }
+
+    handleKick() {
+        if (this.props.onKick) {
+            this.props.onKick();
+        }
     }
 }
 

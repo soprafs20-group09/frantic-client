@@ -4,6 +4,7 @@ import PlayerAvatar from "components/ui/PlayerAvatar";
 import InlineSVG from "react-inlinesvg";
 import Skip from "assets/frantic/special-cards/skip.svg";
 import {WindowTransition} from "components/ui/Transitions";
+import Button from "../Button";
 
 /**
  * Renders a player avatar with more info on hover.
@@ -16,6 +17,8 @@ import {WindowTransition} from "components/ui/Transitions";
  * admin: bool
  * active: bool
  * avatarSize: string   - the size of the shown avatar icon.
+ * enableKick: bool     - whether to show the kick button.
+ * onKick: func
  */
 class PlayerInfo extends Component {
     constructor(props) {
@@ -29,21 +32,32 @@ class PlayerInfo extends Component {
             name = <IconTitle icon="misc:crown">{name}</IconTitle>;
         }
 
-        const stats = <div className={"opponent-stats-container " + this.props.mode} key="player-stats">
-            <h2 className="opponent-username">{name}</h2>
-            <table className="opponent-stats">
-                <tbody>
-                <tr>
-                    <th>Cards</th>
-                    <td>{this.props.cards}</td>
-                </tr>
-                <tr>
-                    <th>Points</th>
-                    <td>{this.props.points}</td>
-                </tr>
-                </tbody>
-            </table>
-        </div>;
+        const kickable = !this.props.admin && this.props.enableKick;
+
+        const kickButton = (
+            <Button type="secondary" onClick={() => this.handleKick()}>
+                <IconTitle icon="misc:cross">kick</IconTitle>
+            </Button>
+        );
+
+        const stats = (
+            <div className={"opponent-stats-container " + this.props.mode} key="player-stats">
+                <h2 className="opponent-username">{name}</h2>
+                <table className="opponent-stats">
+                    <tbody>
+                    <tr>
+                        <th>Cards</th>
+                        <td>{this.props.cards}</td>
+                    </tr>
+                    <tr>
+                        <th>Points</th>
+                        <td>{this.props.points}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                {kickable && kickButton}
+            </div>
+        );
 
         return (
             <div
@@ -72,6 +86,12 @@ class PlayerInfo extends Component {
                 </WindowTransition>
             </div>
         );
+    }
+
+    handleKick() {
+        if (this.props.onKick) {
+            this.props.onKick();
+        }
     }
 
     handleMouseOver() {

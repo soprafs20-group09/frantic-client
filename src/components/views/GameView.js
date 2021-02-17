@@ -194,6 +194,8 @@ class GameView extends Component {
                         opponent={opp}
                         active={opp.username === this.state.activePlayer}
                         trail={this.state.animationTrail.hand}
+                        enableKick={this.state.player.admin}
+                        onKick={() => this.handleKick(opp.username)}
                         key={i}
                     />
                 );
@@ -208,6 +210,8 @@ class GameView extends Component {
                     opponent={opp}
                     active={opp.username === this.state.activePlayer}
                     trail={this.state.animationTrail.hand}
+                    enableKick={this.state.player.admin}
+                    onKick={() => this.handleKick(opp.username)}
                     key={i}
                 />
             );
@@ -220,6 +224,8 @@ class GameView extends Component {
                     opponent={opp}
                     active={opp.username === this.state.activePlayer}
                     trail={this.state.animationTrail.hand}
+                    enableKick={this.state.player.admin}
+                    onKick={() => this.handleKick(opp.username)}
                     key={remaining.length}
                 />
             );
@@ -654,6 +660,15 @@ class GameView extends Component {
     // endregion
 
     // region outgoing
+
+    handleKick(username) {
+        try {
+            if (sockClient.isConnected()) {
+                sockClient.sendToLobby('/kick', {username});
+            }
+        } catch {
+        }
+    }
 
     handleChatSend(msg) {
         try {
