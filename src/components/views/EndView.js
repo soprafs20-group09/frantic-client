@@ -196,7 +196,7 @@ class EndView extends Component {
     }
 
     handleContinueClick() {
-        sockClient.sendToLobby('start-round');
+        sockClient.sendToLobby('/start-round');
     }
 }
 
