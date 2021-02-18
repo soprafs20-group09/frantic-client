@@ -7,6 +7,7 @@ import {animated, Spring} from "react-spring/renderprops";
 import OpponentHand from "components/ui/ingame/OpponentHand";
 import {CTPCardTransition} from "components/ui/Transitions";
 import Button from "components/ui/Button";
+import uiUtils from "utils/uiUtils";
 
 /**
  * This component allows the player to distribute
@@ -21,17 +22,21 @@ class CardsToPlayersPicker extends Component {
     constructor(props) {
         super(props);
         this.state = {players: [], cards: [], init: true};
-        this.draggedCard = null
+        this.draggedCard = null;
+        this.playerRefs = {};
     }
 
     componentDidMount() {
         let players = JSON.parse(JSON.stringify(this.props.players));
+        let playersByUsername = {};
         for (let p of players) {
             p.cards = [];
             p.skipped = false;
+            playersByUsername[p.username] = p;
         }
         this.setState({
-            players: players,
+            players,
+            playersByUsername,
             cards: this.props.cards.slice()
         });
     }
@@ -48,6 +53,7 @@ class CardsToPlayersPicker extends Component {
                     color={c.color}
                     onDragStart={() => this.handleDragStart(i)}
                     onDragStop={() => this.handleDragStop()}
+                    onDrag={(e, d) => this.handleCardDrag(i, c, e.target, d)}
                     key={c.key}
                 />
             );
@@ -58,9 +64,8 @@ class CardsToPlayersPicker extends Component {
             playerItems.push(
                 <div
                     className="ctp-player-item"
-                    onMouseUp={() => this.handleCardDrop(p)}
-                    onMouseOver={() => this.handlePlayerEnter(p)}
                     onClick={() => this.handlePlayerClick(p)}
+                    ref={r => this.playerRefs[op.username] = r}
                     key={p.username}
                 >
                     <OpponentHand
@@ -68,10 +73,6 @@ class CardsToPlayersPicker extends Component {
                         active={this.draggedCard !== null && p === this.state.hoveredPlayer}
                         trail={0}
                         infoOverride={{cards: op.cards.length, points: op.points}}
-                    />
-                    <div
-                        className="ctp-player-mousecapture"
-                        onMouseLeave={() => this.handlePlayerLeave()}
                     />
                 </div>
             );
@@ -116,9 +117,38 @@ class CardsToPlayersPicker extends Component {
         }
     }
 
-    handleCardDrop(player) {
-        if (this.draggedCard !== null) {
-            player.cards.push(this.state.cards[this.draggedCard]);
+    handleDragStart(i) {
+        this.draggedCard = i;
+    }
+
+    handleCardDrag(i, card, cardRef, data) {
+        // the players are always above the cards,
+        // so ignore everything below starting line
+        if (data.y >= 0) return;
+
+        let intersect = false;
+        for (let username in this.playerRefs) {
+            if (uiUtils.rectIntersection(cardRef.getBoundingClientRect(), this.playerRefs[username].getBoundingClientRect())) {
+                intersect = username;
+                break;
+            }
+        }
+        if (intersect) {
+            if (this.state.hoveredPlayer && this.state.hoveredPlayer.username === intersect) {
+                return;
+            }
+            console.log(`hovering over ${intersect}!`);
+            this.setState({hoveredPlayer: this.state.playersByUsername[intersect]});
+        } else if (this.state.hoveredPlayer !== null) {
+            this.setState({hoveredPlayer: null});
+        }
+    }
+
+    handleDragStop() {
+        if (this.state.hoveredPlayer == null) {
+            this.draggedCard = null;
+        } else if (this.draggedCard !== null) {
+            this.state.hoveredPlayer.cards.push(this.state.cards[this.draggedCard]);
             this.state.cards.splice(this.draggedCard, 1);
             this.setState({
                 init: false,
@@ -127,43 +157,6 @@ class CardsToPlayersPicker extends Component {
             });
             this.draggedCard = null;
         }
-    }
-
-    handlePlayerEnter(p) {
-        this.hoveredPlayer = p;
-    }
-
-    handlePlayerLeave() {
-        this.hoveredPlayer = null;
-    }
-
-    handleDragStart(i) {
-        this.draggedCard = i;
-    }
-
-    handleDragStop() {
-        if (this.hoveredPlayer == null) {
-            this.draggedCard = null;
-        }
-    }
-
-    updateDebug() {
-        let name = null;
-        if (this.hoveredPlayer) {
-            name = this.hoveredPlayer.username;
-        }
-        this.setDebugLog('draggedCard: ' + this.draggedCard + '\nhoveredPlayer: ' + name);
-    }
-
-    setDebugLog(msg) {
-        if (!this.debug) {
-            this.debug = document.createElement('div');
-            this.debug.style.setProperty('position', 'absolute');
-            this.debug.style.setProperty('top', 0);
-            this.debug.style.setProperty('left', 0);
-            document.getElementsByClassName('ctp-container')[0].append(this.debug);
-        }
-        this.debug.innerText = msg;
     }
 }
 
@@ -174,6 +167,7 @@ class CardsToPlayersPicker extends Component {
  * value: string
  * onDragStop: func()
  * onDragStart: func()
+ * onDrag: func()
  */
 class DraggableCard extends Component {
     constructor(props) {
@@ -200,6 +194,7 @@ class DraggableCard extends Component {
                         defaultClassNameDragging="ctp-card-dragging"
                         onStart={() => this.handleDragStart()}
                         onStop={(e, p) => this.handleDragStop(e, p)}
+                        onDrag={this.props.onDrag}
                         position={this.state.dragging ? null : style}
                     >
                         <animated.div className="ctp-card-item">
