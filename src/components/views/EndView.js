@@ -43,7 +43,8 @@ class EndView extends Component {
         sockClient.onDisconnect(r => this.handleDisconnect(r));
         sockClient.onLobbyMessage('/chat', r => this.handleChatMessage(r));
         sockClient.onLobbyMessage('/start-round', () => this.handleRoundStart());
-        sockClient.onLobbyMessage('/timer',  t => this.handleTimer(t));
+        sockClient.onLobbyMessage('/timer', t => this.handleTimer(t));
+        sockClient.onLobbyMessage('/lobby-state', s => this.handleLobbyUpdate(s));
 
         document.title = "End of " + (this.props.mode === 'game' ? 'Game' : 'Round') + " - Frantic";
     }
@@ -71,7 +72,8 @@ class EndView extends Component {
                 >
                     {this.state.error.description}
                 </ErrorBox>;
-        } else {
+        }
+        else {
             content =
                 <div className="end-container" key="end-container">
                     <div className="end-column">
@@ -113,12 +115,12 @@ class EndView extends Component {
             }
             else if (this.state.adminMode) {
                 return (
-                  <Button
-                      style={{paddingLeft: '1em', paddingRight: '1em'}}
-                      onClick={() => this.handleContinueClick()}
-                  >
-                      continue to next round
-                  </Button>
+                    <Button
+                        style={{paddingLeft: '1em', paddingRight: '1em'}}
+                        onClick={() => this.handleContinueClick()}
+                    >
+                        continue to next round
+                    </Button>
                 );
             }
             else {
@@ -126,7 +128,8 @@ class EndView extends Component {
                     <p className="end-actions-text" key="d">Please wait for the host to continue...</p>
                 );
             }
-        } else {
+        }
+        else {
             return [
                 <Button
                     key="leave"
@@ -149,7 +152,8 @@ class EndView extends Component {
             if (sockClient.isConnected()) {
                 sockClient.sendToLobby('/chat', {message: msg});
             }
-        } catch {
+        }
+        catch {
         }
     }
 
@@ -168,6 +172,19 @@ class EndView extends Component {
 
     handleTimer(t) {
         this.setState({endTimer: t.seconds});
+    }
+
+    handleLobbyUpdate(state) {
+        // update admin
+        for (let player of state.players) {
+            if (player.admin) {
+                sessionManager.endAdmin = player.username;
+                this.setState({
+                    adminMode: sessionManager.username === sessionManager.endAdmin
+                });
+                break;
+            }
+        }
     }
 
     handleRoundStart() {
