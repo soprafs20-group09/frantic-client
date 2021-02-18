@@ -11,6 +11,7 @@ import 'styles/ui/UiElements.scss';
  * type: string: 'primary', secondary' or 'end-turn'. default: primary
  *                          - defines the button-style
  * disabled: bool           - sets whether the button should be enabled.
+ * style:                   - passed to button component
  *
  */
 class Button extends Component {
@@ -18,7 +19,7 @@ class Button extends Component {
         return (
             <button
                 className={`button-container ${this.props.type || 'primary'} button-text ${this.props.disabled && 'disabled'}`}
-                style={{width: this.props.width}}
+                style={{width: this.props.width, ...this.props.style}}
                 onClick={() => this.handleClick()}>
                 {this.props.children}
             </button>

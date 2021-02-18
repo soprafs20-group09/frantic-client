@@ -96,6 +96,15 @@ export default {
         }
         sessionStorage.setItem('endSeconds', value);
     },
+    get endAdmin() {
+        return sessionStorage.getItem('endAdmin');
+    },
+    set endAdmin(value) {
+        if (value === undefined) {
+            sessionStorage.removeItem('endAdmin');
+        }
+        sessionStorage.setItem('endAdmin', value);
+    },
     get avatarBlacklist() {
         const item = sessionStorage.getItem('avatarBlacklist');
         if (!item) {
