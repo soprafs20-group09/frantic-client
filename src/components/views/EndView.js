@@ -108,7 +108,7 @@ class EndView extends Component {
             if (this.state.endTimer) {
                 return [
                     <p className="end-actions-text" key="d">next round in</p>,
-                    <TurnTimer key="t" start seconds={sessionManager.endSeconds}/>
+                    <TurnTimer key="t" start seconds={this.state.endSeconds}/>
                 ];
             }
             else if (this.state.adminMode) {
