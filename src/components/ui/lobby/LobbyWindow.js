@@ -75,9 +75,11 @@ class LobbyWindow extends Component {
                     {this.state.error.description}
                 </ErrorBox>
             );
-        } else if (this.state.loading) {
+        }
+        else if (this.state.loading) {
             content = <Spinner key="spinner"/>;
-        } else {
+        }
+        else {
             document.title = this.state.settings.lobbyName + " - Frantic";
             content = (
                 <div className="lobby-container" key="lobby-window">
@@ -104,10 +106,18 @@ class LobbyWindow extends Component {
                                     <SingleSelect
                                         style={spacingStyle}
                                         title="Game Duration"
-                                        items={this.state.settings.durationItems}
+                                        items={this.state.settings.gameDurationItems}
                                         disabled={!this.state.adminMode}
-                                        initialValue={this.state.settings.duration}
-                                        onValueChanged={v => this.handleSettingsUpdate({duration: v})}
+                                        initialValue={this.state.settings.gameDuration}
+                                        onValueChanged={v => this.handleSettingsUpdate({gameDuration: v})}
+                                    />
+                                    <SingleSelect
+                                        style={spacingStyle}
+                                        title="Turn Timer"
+                                        items={this.state.settings.turnDurationItems}
+                                        disabled={!this.state.adminMode}
+                                        initialValue={this.state.settings.turnDuration}
+                                        onValueChanged={v => this.handleSettingsUpdate({turnDuration: v})}
                                     />
                                     <Switch
                                         style={spacingStyle}
@@ -156,7 +166,8 @@ class LobbyWindow extends Component {
     handleKick(player) {
         try {
             sockClient.sendToLobby('/kick', {username: player});
-        } catch {
+        }
+        catch {
         }
     }
 
@@ -176,7 +187,8 @@ class LobbyWindow extends Component {
                 duration: this.state.settings.duration,
                 publicLobby: this.state.settings.publicLobby
             });
-        } catch {
+        }
+        catch {
         }
     }
 
@@ -194,7 +206,8 @@ class LobbyWindow extends Component {
             if (sockClient.isConnected()) {
                 sockClient.sendToLobby('/chat', {message: msg});
             }
-        } catch {
+        }
+        catch {
         }
     }
 
@@ -253,7 +266,8 @@ class LobbyWindow extends Component {
             if (sockClient.isConnected()) {
                 sockClient.sendToLobby('/start-game');
             }
-        } catch {
+        }
+        catch {
         }
     }
 
