@@ -184,7 +184,8 @@ class LobbyWindow extends Component {
         try {
             sockClient.sendToLobby('/settings', {
                 lobbyName: this.state.settings.lobbyName,
-                duration: this.state.settings.duration,
+                gameDuration: this.state.settings.gameDuration,
+                turnDuration: this.state.settings.turnDuration,
                 publicLobby: this.state.settings.publicLobby
             });
         }
