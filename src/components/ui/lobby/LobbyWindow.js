@@ -113,7 +113,7 @@ class LobbyWindow extends Component {
                                     />
                                     <SingleSelect
                                         style={spacingStyle}
-                                        title="Turn Timer"
+                                        title="Turn Duration"
                                         items={this.state.settings.turnDurationItems}
                                         disabled={!this.state.adminMode}
                                         initialValue={this.state.settings.turnDuration}
