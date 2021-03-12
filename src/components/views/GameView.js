@@ -299,6 +299,7 @@ class GameView extends Component {
                     <div className="timer-container">
                         <TurnTimer
                             start
+                            visible={!!this.state.timerSeconds}
                             seconds={this.state.timerSeconds}
                             turn={this.state.timerKey}
                             timebomb={this.state.timebombRounds}
