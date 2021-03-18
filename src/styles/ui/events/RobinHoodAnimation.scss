@@ -1,0 +1,365 @@
+@import 'theme';
+@import 'ui/cards/colors';
+
+.robin-hood-container {
+  position: relative;
+  @include center;
+  height: 10.2em;
+
+  & .bow {
+    //width: 18em;
+    height: 18em;
+    transform: scale(-1) translateX(15.5em) translateY(-2.1em) rotate(-10deg);
+    fill: $bgLighter;
+  }
+
+  & .bow-string {
+    fill: none;
+    stroke: $accent;
+    stroke-width: 0.1em;
+    stroke-miterlimit: 10;
+  }
+
+  .bow-cover {
+    width: 0.2em;
+    height: 15em;
+    background-color: $black;
+    transform: rotate(-1.8deg) translateX(-20.7em) translateY(1.65em);
+    animation-name: bow-cover-disappear;
+    animation-delay: 2.495s;
+    animation-duration: 0.005s;
+    animation-fill-mode: forwards;
+  }
+
+  .bow-string-stretched1 {
+    width: 0.1em;
+    height: 11.5em;
+    background-color: $bgLighter;
+    transform: rotate(45deg) translateX(-18.6em) translateY(16.75em);
+    animation-name: bow-string-disappear;
+    animation-delay: 2.495s;
+    animation-duration: 0.005s;
+    animation-fill-mode: forwards;
+  }
+
+  .bow-string-stretched2 {
+    width: 0.1em;
+    height: 11.3em;
+    background-color: $bgLighter;
+    transform: rotate(-50deg) translateX(-20.8em) translateY(-14.9em);
+    animation-name: bow-string-disappear-1;
+    animation-delay: 2.495s;
+    animation-duration: 0.005s;
+    animation-fill-mode: forwards;
+  }
+
+  .wall {
+    position: absolute;
+    width: 20em;
+    height: 50em;
+    background-color: $bgMedium;
+    transform: translateX(20em);
+  }
+
+  .arrow {
+    z-index: 1;
+    position: absolute;
+    transform: rotate(-10deg) translateX(8.7em) translateY(-2.5em);
+    animation-name: arrow-shot;
+    animation-delay: 2.49s;
+    animation-duration: 0.01s;
+    animation-fill-mode: forwards;
+
+    .point{
+      z-index: 1;
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-top: 0.5em solid transparent;
+      border-left: 1em solid $accent;
+      border-bottom: 0.5em solid transparent;
+      transform: translateX(-16.5em) translateY(1.57em);
+    }
+
+    .shaft {
+      z-index: 1;
+      position: absolute;
+      width: 12em;
+      height: 0.15em;
+      background-color: $accent;
+      transform: translateX(-28em) translateY(2em);
+    }
+
+    .tail {
+
+      .upper{
+        width: 0.5em;
+        height: 0.1em;
+        background-color: $accent;
+        border-top: 0.1em solid transparent;
+        border-left: 0.5em solid $accent;
+        border-bottom: 0.1em solid transparent;
+        transform: skew(45deg) translateX(-29.6em) translateY(1.57em);
+        animation-name: tail-wiggle;
+        animation-delay: 2.5s;
+        animation-duration: 0.8s;
+        animation-fill-mode: forwards;
+      }
+
+      .lower {
+        width: 0.5em;
+        height: 0.1em;
+        background-color: $accent;
+        border-top: 0.1em solid transparent;
+        border-left: 0.5em solid $accent;
+        border-bottom: 0.1em solid transparent;
+        transform: skew(-45deg) translateX(-26.05em) translateY(1.97em);
+        animation-name: tail-wiggle-1;
+        animation-delay: 2.5s;
+        animation-duration: 0.8s;
+        animation-fill-mode: forwards;
+      }
+
+    }
+
+  }
+
+  .sack-of-gold {
+    position: absolute;
+    transform: translateX(17em) translateY(-21em);
+    animation-name: sack-fall;
+    animation-delay: 1.5s;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in;
+
+    .upper {
+
+      .circle1 {
+        position: absolute;
+        width: 1em;
+        height: 1em;
+        background-color: $bgLighter;
+        border-radius: 50%;
+      }
+
+      .circle2 {
+        position: absolute;
+        width: 1em;
+        height: 1em;
+        background-color: $bgLighter;
+        border-radius: 50%;
+        transform: translateX(0.9em);
+      }
+
+      .circle3 {
+        position: absolute;
+        width: 1em;
+        height: 1em;
+        background-color: $bgLighter;
+        border-radius: 50%;
+        transform: translateX(1.8em);
+      }
+
+      .triangle-left {
+        z-index: 0;
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-top: 2.8em solid $bgLighter;
+        border-left: 1.4em solid transparent;
+        transform: translateX(0em) translateY(0.6em);
+      }
+
+      .triangle-right {
+        z-index: 2;
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-top: 2.8em solid $bgLighter;
+        border-right: 1.4em solid transparent;
+        transform: translateX(1.4em) translateY(0.6em);
+      }
+
+    }
+
+    .middle {
+      z-index: 3;
+      position: absolute;
+      width: 2em;
+      height: 0.3em;
+      background-color: $accent;
+      filter: brightness(0.9);
+      border-radius: 0.15em;
+      transform: translateY(1.5em) translateX(0.4em);
+    }
+
+    .lower {
+      z-index: 2;
+      position: absolute;
+      width: 5em;
+      height: 5em;
+      background-color: $bgLighter;
+      border-radius: 50%;
+      transform: translateY(1.6em) translateX(-1.1em);
+    }
+
+    .dollar-sign {
+      z-index: 3;
+      position: absolute;
+      width: 2.5em;
+      height: 2.5em;
+      fill: $accent;
+      transform: translateY(2.8em) translateX(0.2em);
+    }
+
+  }
+
+  .arrow-cover1 {
+    z-index: 2;
+    position: absolute;
+    width: 1em;
+    height: 1em;
+    background-color: $bgLighter;
+    transform: translateX(18.9em) translateY(-20em);
+    animation-name: sack-fall-1;
+    animation-delay: 1.5s;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in;
+  }
+  .arrow-cover2 {
+    z-index: 2;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-top: 1em solid $bgLighter;
+    border-right: 0.5em solid transparent;
+    transform: translateX(19.55em) translateY(-20em);
+    animation-name: sack-fall-2;
+    animation-delay: 1.5s;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in;
+  }
+
+  @keyframes sack-fall {
+    0% {
+      transform: translateX(17em) translateY(-21em);
+    }
+    100% {
+      transform: translateX(17em) translateY(-5em);
+    }
+  }
+
+  @keyframes sack-fall-1 {
+    0% {
+      transform: translateX(18.9em) translateY(-20em);
+    }
+    100% {
+      transform: translateX(18.9em) translateY(-4em);
+    }
+  }
+
+  @keyframes sack-fall-2 {
+    0% {
+      transform: translateX(19.55em) translateY(-20em);
+    }
+    100% {
+      transform: translateX(19.55em) translateY(-4em);
+    }
+  }
+
+  @keyframes arrow-shot {
+    0% {
+      transform: rotate(-10deg) translateX(8.7em) translateY(-2.5em);
+    }
+    100% {
+      transform: rotate(-10deg) translateX(38em) translateY(-2.5em);
+    }
+  }
+
+  @keyframes bow-cover-disappear {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes bow-string-disappear {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes bow-string-disappear-1 {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes tail-wiggle {
+    0% {
+      transform: skew(45deg) translateX(-29.6em) translateY(1.57em)
+    }
+    4% {
+      transform: skew(10deg) translateX(-28.2em) translateY(1.57em)
+    }
+    10% {
+      transform: skew(55deg) translateX(-30.3em) translateY(1.57em)
+    }
+    18% {
+      transform: skew(20deg) translateX(-28.5em) translateY(1.57em)
+    }
+    28% {
+      transform: skew(45deg) translateX(-29.6em) translateY(1.57em)
+    }
+    40% {
+      transform: skew(30deg) translateX(-28.85em) translateY(1.57em)
+    }
+    54% {
+      transform: skew(45deg) translateX(-29.6em) translateY(1.57em)
+    }
+    100% {
+      transform: skew(45deg) translateX(-29.6em) translateY(1.57em)
+    }
+  }
+
+  @keyframes tail-wiggle-1 {
+    0% {
+      transform: skew(-45deg) translateX(-26.05em) translateY(1.97em)
+    }
+    4% {
+      transform: skew(-10deg) translateX(-27.45em) translateY(1.97em)
+    }
+    10% {
+      transform: skew(-55deg) translateX(-25.3em) translateY(1.97em)
+    }
+    18% {
+      transform: skew(-20deg) translateX(-27.2em) translateY(1.97em)
+    }
+    28% {
+      transform: skew(-45deg) translateX(-26.05em) translateY(1.97em)
+    }
+    40% {
+      transform: skew(-30deg) translateX(-26.9em) translateY(1.97em)
+    }
+    54% {
+      transform: skew(-45deg) translateX(-26.05em) translateY(1.97em)
+    }
+    100% {
+      transform: skew(-45deg) translateX(-26.05em) translateY(1.97em)
+    }
+  }
+}
+
+
+

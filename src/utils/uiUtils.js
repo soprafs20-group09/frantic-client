@@ -10,10 +10,19 @@ import MexicanStandoffAnimation from "components/ui/events/MexicanStandoffAnimat
 import ThirdTimeLuckyAnimation from "../components/ui/events/ThirdTimeLuckyAnimation";
 import RecessionAnimation from "components/ui/events/RecessionAnimation";
 import CharityAnimation from "components/ui/events/CharityAnimation";
+import AllSeeingEyeAnimation from "../components/ui/events/AllSeeingEyeAnimation";
 import reactStringReplace from "react-string-replace";
 import sessionManager from "utils/sessionManager";
 import ExpansionAnimation from "../components/ui/events/ExpansionAnimation";
 import MerryChristmasAnimation from "components/ui/events/MerryChristmasAnimation";
+import EarthquakeAnimation from "components/ui/events/EarthquakeAnimation";
+import CommunismAnimation from "components/ui/events/CommunismAnimation";
+import SurprisePartyAnimation from "components/ui/events/SurprisePartyAnimation";
+import MatingSeasonAnimation from "components/ui/events/MatingSeasonAnimation";
+import RobinHoodAnimation from "components/ui/events/RobinHoodAnimation";
+import MarketAnimation from "components/ui/events/MarketAnimation";
+import GamblingManAnimation from "../components/ui/events/GamblingManAnimation";
+import TimeBombAnimation from "components/ui/events/TimeBombAnimation";
 
 function escapeRegExp(string) {
     return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
@@ -32,11 +41,15 @@ function parseChatObject(msg) {
 
     switch (msg.type) {
         case 'msg':
+            let senderIcon;
+            if (!sessionManager.avatarBlacklist.includes(msg.username)) {
+                senderIcon = getPlayerAvatar(msg.username);
+            }
             newItem =
                 <ChatItem
                     style={msg.type}
                     sender={msg.username}
-                    icon={getPlayerAvatar(msg.username)}
+                    icon={senderIcon}
                     key={new Date().getTime()}
                 >
                     {text}
@@ -133,6 +146,33 @@ function getEventAnimation(event) {
         case 'merry-christmas':
             return <MerryChristmasAnimation/>;
 
+        case 'earthquake':
+            return <EarthquakeAnimation/>;
+
+        case 'communism':
+            return <CommunismAnimation/>;
+
+        case 'the-all-seeing-eye':
+            return <AllSeeingEyeAnimation/>;
+
+        case 'surprise-party':
+            return <SurprisePartyAnimation/>;
+
+        case 'mating-season':
+            return <MatingSeasonAnimation/>;
+
+        case 'robin-hood':
+            return <RobinHoodAnimation/>;
+
+        case 'market':
+            return <MarketAnimation/>;
+
+        case 'gambling-man':
+            return <GamblingManAnimation/>;
+
+        case 'time-bomb':
+            return <TimeBombAnimation/>;
+
         default:
             return 'coming soon™';
     }
@@ -146,9 +186,19 @@ function getRem() {
     );
 }
 
+function rectIntersection(rect1, rect2) {
+    return (
+        rect1.top + rect1.height > rect2.top
+        && rect1.left + rect1.width > rect2.left
+        && rect1.bottom - rect1.height < rect2.bottom
+        && rect1.right - rect1.width < rect2.right
+    );
+}
+
 export default {
     parseChatObject,
     resolveIconString,
     getEventAnimation,
-    getRem
+    getRem,
+    rectIntersection
 }

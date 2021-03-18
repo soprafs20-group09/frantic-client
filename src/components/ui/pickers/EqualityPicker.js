@@ -21,15 +21,11 @@ import IconTitle from "components/ui/IconTitle";
 class EqualityPicker extends Component {
     constructor(props) {
         super(props);
-        this.state = {players: [], wish: null, selectedPlayer: null};
-    }
-
-    componentDidMount() {
         let players = JSON.parse(JSON.stringify(this.props.players));
         for (let p of players) {
             p.disabled = p.cards.length >= this.props.maxCards;
         }
-        this.setState({players: players});
+        this.state = {players: players, wish: null, selectedPlayer: null};
     }
 
     render() {
@@ -93,8 +89,7 @@ class EqualityPicker extends Component {
     buildWishObject() {
         if (isNaN(parseInt(this.state.wish))) {
             return {color: this.state.wish};
-        }
-        else {
+        } else {
             return {number: parseInt(this.state.wish)};
         }
     }

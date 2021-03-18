@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import "styles/ui/ingame/StacksAndPiles.scss";
-import franticUtils from "utils/franticUtils";
 import Card from "components/ui/cards/Card";
 import {BaseStackTransition, DiscardPileTransition} from "components/ui/Transitions";
 

@@ -1,0 +1,147 @@
+@import 'theme';
+
+.about-content {
+  width: 45em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 3em;
+  max-height: 100%;
+  overflow-y: auto;
+  @include scrollbar;
+  box-sizing: border-box;
+}
+
+.about-logo {
+  fill: $accent;
+  filter: drop-shadow($dropShadow);
+  height: 10em;
+  width: 20em;
+  margin-bottom: 2em;
+  flex-shrink: 0;
+}
+
+.about-text {
+  width: 28em;
+  margin-bottom: 0.5em;
+
+  & > h2 {
+    color: $accent;
+    font-weight: 600;
+  }
+
+  & > p {
+    line-height: 1.5em;
+
+    & > strong {
+      color: $accent;
+      font-weight: 500;
+    }
+
+    & > a {
+      color: $accent;
+      font-weight: 500;
+      display: inline-block;
+      @include clickable;
+    }
+  }
+}
+
+.about-team {
+  width: 28em;
+  margin-top: 1em;
+
+  & .team-container {
+    display: flex;
+    //flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+
+  & .team-item {
+    margin-bottom: 1em;
+    margin-left: 0.2em;
+    width: 8em;
+
+    & .member-name-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-grow: 0;
+      flex-shrink: 0;
+    }
+
+    & .member-roles-container {
+      display: flex;
+      flex-direction: column;
+    }
+
+    & .member-name {
+      width: 100%;
+      text-align: center;
+      font-size: 1.5em;
+      color: $textColor;
+      font-weight: 600;
+      line-height: 1.5em;
+      border-bottom: 0.1em solid $bgLighter;
+      margin: 0.25em;
+    }
+
+    & .member-img {
+      width: 6em;
+      height: 6em;
+      border-radius: 50%;
+      border: 0.2em solid $bgLighter;
+      box-shadow: $dropShadow;
+      box-sizing: border-box;
+    }
+
+    & .member-role {
+      display: inline-block;
+      text-transform: lowercase;
+      color: $accent;
+      font-weight: 500;
+      background-color: $bgDark;
+      padding: 0.25em 0.5em;
+      border-radius: 0.3em;
+      margin: 0.25em;
+    }
+  }
+}
+
+.about-explore {
+  width: 28em;
+
+  & .explore-list {
+    padding: 0;
+    list-style-type: none;
+  }
+
+  & .explore-item {
+    margin-left: 0;
+    color: $bgMedium;
+    text-transform: lowercase;
+    background-color: $accent;
+    padding: 0.3em 0.5em;
+    border-radius: 0.5em;
+    box-shadow: $dropShadow;
+    @include clickable;
+    margin-bottom: 1em;
+
+    & .explore-item-inner {
+      display: flex;
+      align-items: center;
+      font-size: 1.2em;
+      font-weight: 600;
+      color: currentColor;
+    }
+
+    & .explore-item-icon {
+      fill: currentColor;
+      width: 1.5em;
+      height: 1.5em;
+      margin-right: 0.5em;
+    }
+  }
+}

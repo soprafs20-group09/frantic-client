@@ -1,0 +1,147 @@
+@import 'theme';
+@import 'ui/cards/colors';
+
+.communism-animation {
+  position: relative;
+
+  .communism-card {
+    font-size: 0.8em;
+    transform-style: preserve-3d;
+  }
+
+  & .hat {
+    position: absolute;
+    height: 3em;
+    fill: white;
+    filter: drop-shadow($dropShadow);
+    transform: translate(1em, -12em);
+    z-index: 3;
+  }
+
+  & .dear-leader {
+    transform-style: preserve-3d;
+    transform: rotateY(40deg) rotateX(10deg);
+  }
+
+  & .fist {
+    position: absolute;
+    width: 2.5em;
+    height: 2.5em;
+    fill: white;
+    transform: translate(7em, -2em);
+    opacity: 0;
+    animation: communism-fist-raise 2s 1s forwards;
+  }
+
+  & .communism-logo {
+    position: absolute;
+    transform: translate(15em, -10em);
+    @include center;
+    animation: communism-logo-fade 1s 1s forwards;
+    opacity: 0;
+
+    & .rays {
+      position: absolute;
+      width: 10em;
+      height: 10em;
+      stroke: $accent;
+      animation: communism-rays-rotate 10s linear infinite;
+    }
+
+    & .communism {
+      position: absolute;
+      width: 3em;
+      height: 3em;
+      overflow: visible;
+      border-radius: 50%;
+      background-color: $black;
+      padding: 1em;
+      fill: $accent
+    }
+  }
+}
+
+.communism-flow-container {
+  transform-style: preserve-3d;
+  transform: translate(-10em, -2em) rotate(-10deg) rotate3d(-1, -1, -1, 40deg);
+}
+
+.communism-flow {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  top: -45em;
+  left: -10em;
+  animation: communism-flow 3s linear infinite;
+
+  & .part {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 0.5rem;
+    width: 30em;
+  }
+
+  & .soldier {
+    position: relative;
+    overflow: visible;
+    margin: 1em;
+
+    & .soldier-fist {
+      position: absolute;
+      fill: white;
+      height: 3em;
+      top: 2em;
+      right: -1em;
+      animation: cm-soldier-fist 1s infinite;
+      z-index: 2;
+    }
+  }
+}
+
+@keyframes cm-soldier-fist {
+  0%, 100% {
+    transform: rotate(30deg) translateY(0);
+  }
+  50% {
+    transform: rotate(30deg) translateY(-3em);
+  }
+}
+
+@keyframes communism-flow {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(50%);
+  }
+}
+
+@keyframes communism-fist-raise {
+  0% {
+    opacity: 0;
+    transform: translate(-5em, -9em) scale(-1, 1);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-5em, -11em) scale(-1, 1);
+  }
+}
+
+@keyframes communism-rays-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes communism-logo-fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

@@ -5,9 +5,15 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  max-height: 40vh;
-  overflow-y: auto;
-  @include scrollbar;
+  z-index: 1;
+  padding: 0.5em;
+
+  &.scrolling {
+    max-height: 40vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    @include scrollbar;
+  }
 }
 
 .picker-item {
@@ -35,7 +41,7 @@
   & .opponent-stats-container {
     font-size: 0.8em;
     position: absolute;
-    top: -13.5em;
+    bottom: -5em;
   }
 }
 

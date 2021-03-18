@@ -94,7 +94,7 @@ class SettingsWindow extends Component {
         this.msgTimeout = setTimeout(() => {
             this.msgTimeout = null;
             this.setState({showMsg: true});
-        }, 1000);
+        }, 500);
     }
 
     handleMulticolorChange(newVal) {
@@ -107,7 +107,7 @@ class SettingsWindow extends Component {
         this.msgTimeout = setTimeout(() => {
             this.msgTimeout = null;
             this.setState({showMsg: true});
-        }, 1000);
+        }, 500);
     }
 }
 

@@ -32,6 +32,7 @@ class SockClient {
             this._connected = true;
             this.subscribe('/user/queue/register', r => this._handleRegister(r));
             this.subscribe('/user/queue/disconnect', r => this.disconnect(r.reason));
+            this.subscribe('/user/queue/reconnect', r => this.reconnect(r.token));
             if (callback) {
                 callback();
             }
@@ -58,6 +59,21 @@ class SockClient {
 
     register(token) {
         this.send('/app/register', {token: token});
+    }
+
+    reconnect(token) {
+        // remove disconnect callbacks so we don't
+        // trigger anything while reconnecting
+
+        let callbacks = this._disconnectCallbacks.slice();
+        this._disconnectCallbacks = [];
+
+        this.disconnect("Reconnecting");
+
+        setTimeout(() => {
+            this._disconnectCallbacks = callbacks;
+            this.connectAndRegister(token);
+        }, 500);
     }
 
     subscribe(channel, callback) {

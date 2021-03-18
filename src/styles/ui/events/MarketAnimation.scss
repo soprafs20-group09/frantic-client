@@ -1,0 +1,199 @@
+@import 'theme';
+@import 'ui/cards/colors';
+
+.market-container {
+  position: relative;
+  @include center;
+  width: 25em;
+  height: 13em;
+  overflow: hidden;
+
+  .shopping-cart {
+    z-index: 2;
+    transform: translateX(-27.5em) translateY(0em);
+    animation-name: move1, move2;
+    animation-delay: 0.5s, 3s;
+    animation-duration: 1.4s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+    color: white;
+
+    .handle {
+      z-index: 2;
+      position: absolute;
+      width: 1.2em;
+      height: 0.3em;
+      background-color: currentColor;
+      border-radius: 0.15em;
+    }
+
+    .basket-left {
+      z-index: 2;
+      position: absolute;
+      width: 0.3em;
+      height: 4em;
+      background-color: currentColor;
+      border-radius: 0.15em;
+      transform: rotate(-10deg) translateY(0.3em) translateX(1.2em);
+    }
+
+    .basket-bottom {
+      z-index: 2;
+      position: absolute;
+      width: 5em;
+      height: 0.3em;
+      background-color: currentColor;
+      border-radius: 0.15em;
+      transform: translateX(1.6em) translateY(3.85em);
+    }
+
+    .basket-right {
+      z-index: 2;
+      position: absolute;
+      width: 0.3em;
+      height: 3.7em;
+      background-color: currentColor;
+      border-radius: 0.15em;
+      transform: rotate(10deg) translateX(6.55em) translateY(-0.7em);
+    }
+
+    .basket-top {
+      z-index: 2;
+      position: absolute;
+      width: 6em;
+      height: 0.3em;
+      background-color: currentColor;
+      border-radius: 0.15em;
+      transform:  translateX(1.05em) translateY(0.45em);
+    }
+
+    .wheel-base {
+
+      .landing-gear1 {
+        z-index: 2;
+        position: absolute;
+        width: 0.3em;
+        height: 1.2em;
+        background-color: currentColor;
+        border-radius: 0.15em;
+        transform: rotate(10deg) translateX(2.15em) translateY(3.6em);
+      }
+
+      .landing-gear2 {
+        z-index: 2;
+        position: absolute;
+        width: 5em;
+        height: 0.3em;
+        background-color: currentColor;
+        border-radius: 0.15em;
+        transform: translateX(1.4em) translateY(4.85em);
+      }
+
+      .wheel-outer1 {
+        z-index: 2;
+        position: absolute;
+        width: 1em;
+        height: 1em;
+        border-radius: 50%;
+        background-color: currentColor;
+        transform: translateY(5.1em) translateX(1.5em);
+      }
+
+      .wheel-inner1 {
+        z-index: 2;
+        position: absolute;
+        width: 0.6em;
+        height: 0.6em;
+        border-radius: 50%;
+        background-color: $black;
+        transform: translateY(5.3em) translateX(1.69em);
+      }
+
+      .wheel-outer2 {
+        z-index: 2;
+        position: absolute;
+        width: 1em;
+        height: 1em;
+        border-radius: 50%;
+        background-color: currentColor;
+        transform: translateY(5.1em) translateX(5.2em);
+      }
+
+      .wheel-inner2 {
+        z-index: 2;
+        position: absolute;
+        width: 0.6em;
+        height: 0.6em;
+        border-radius: 50%;
+        background-color: $black;
+        transform: translateY(5.3em) translateX(5.39em);
+      }
+
+    }
+
+  }
+
+  .market-card-container {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    width: 20em;
+    height: 13em;
+
+    .market-card {
+      font-size: 0.5em;
+      margin-bottom: 1em;
+      margin-right: 1em;
+    }
+
+    .market-card-taken {
+      z-index: 1;
+      font-size: 0.5em;
+      margin-bottom: 1em;
+      margin-right: 1em;
+      animation-name: get-inside-shopping-cart, follow-shopping-cart;
+      animation-delay: 2.1s, 3s;
+      animation-duration: 0.7s, 1.4s;
+      animation-fill-mode: forwards;
+      animation-timing-function: ease-in-out;
+    }
+
+  }
+
+  @keyframes move1 {
+    0% {
+      transform: translateX(-12.5em) translateY(0em);
+    }
+    100% {
+      transform: translateX(3em) translateY(0em);
+    }
+  }
+
+  @keyframes move2 {
+    0% {
+      transform: translateX(3em) translateY(0em);
+    }
+    100% {
+      transform: translateX(23em) translateY(0em);
+    }
+  }
+
+  @keyframes get-inside-shopping-cart {
+    0% {
+      transform: translateX(0em) translateY(0em);
+    }
+    100% {
+      transform: translateX(0em) translateY(7em);
+    }
+  }
+  
+  @keyframes follow-shopping-cart {
+    0% {
+      transform: translateX(0em) translateY(7em);
+    }
+    100% {
+      transform: translateX(40em) translateY(7em);
+    }
+  }
+
+}

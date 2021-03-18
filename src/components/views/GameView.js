@@ -23,10 +23,11 @@ import GenericColorPicker from "components/ui/pickers/GenericColorPicker";
 import IconTitle from "components/ui/IconTitle";
 import EventOverlay from "components/ui/ingame/EventOverlay";
 import TextOverlay from "components/ui/ingame/TextOverlay";
-import {withRouter} from "react-router-dom";
+import {Prompt, withRouter} from "react-router-dom";
 import RecessionMarketPicker from "components/ui/pickers/RecessionMarketPicker";
 import GamblingPicker from "components/ui/pickers/GamblingPicker";
 import MerryChristmasPicker from "components/ui/pickers/MerryChristmasPicker";
+import PlayerInfo from "components/ui/ingame/PlayerInfo";
 
 class GameView extends Component {
     constructor(props) {
@@ -36,6 +37,7 @@ class GameView extends Component {
             playerCards: [],
             availableCards: [],
             discardPileTopCard: undefined,
+            player: null,
             opponents: [],
             drawAmount: 0,
             drawKey: 0,
@@ -54,14 +56,22 @@ class GameView extends Component {
             animationTrail: {
                 hand: 500
             },
-            chatItems: []
+            chatItems: sessionManager.chat.getCurrent()
         };
     }
 
     loadFakePlayers(cardAmount) {
+        sessionManager.username = "jon";
+
         this.setState({
             loading: false,
             playerCards: franticUtils.generateRandomCards(cardAmount, true),
+            player: {
+                username: "mama",
+                points: 69,
+                skipped: false,
+                cards: franticUtils.generateBackCards(cardAmount)
+            },
             opponents: [
                 {
                     username: "jan",
@@ -112,7 +122,9 @@ class GameView extends Component {
     }
 
     componentDidMount() {
-        this.loadFakePlayers(7);
+        // this.loadFakePlayers(7);
+
+        document.title = "In-Game - Frantic";
 
         sockClient.onDisconnect(r => this.handleDisconnect(r));
         sockClient.onLobbyMessage('/chat', r => this.handleChatMessage(r));
@@ -238,6 +250,10 @@ class GameView extends Component {
 
         return (
             <AppContainer withHelp>
+                <Prompt
+                    when={sessionManager.inGame}
+                    message="If you leave the game, you won't be able to rejoin it!"
+                />
                 <div className={"game-opponents" + ((overlay || event) ? " overlayed" : "")}>
                     <div className="game-opponent-container right">
                         {rightOpps}
@@ -287,6 +303,19 @@ class GameView extends Component {
                             turn={this.state.timerKey}
                             timebomb={this.state.timebombRounds}
                         />
+                        <div className="player-info-container">
+                            {this.state.player &&
+                            <PlayerInfo
+                                avatarSize="2em"
+                                mode="bottom"
+                                username={this.state.player.username}
+                                cards={this.state.player.cards.length}
+                                points={this.state.player.points}
+                                skipped={this.state.player.skipped}
+                                admin={this.state.player.admin}
+                                active={isPlayerTurn}
+                            />}
+                        </div>
                     </div>
 
                     <div className="game-chat-container">
@@ -437,10 +466,15 @@ class GameView extends Component {
     }
 
     resetOverlayIn(seconds) {
-        setTimeout(
-            () => this.setState({event: null, overlay: null}),
-            seconds * 1000
-        );
+        if (!this.overlayTimeout) {
+            this.overlayTimeout = setTimeout(
+                () => {
+                    this.overlayTimeout = null;
+                    this.setState({event: null, overlay: null});
+                },
+                seconds * 1000
+            );
+        }
     }
 
     // endregion
@@ -451,22 +485,24 @@ class GameView extends Component {
         let newItem = uiUtils.parseChatObject(msg);
         if (newItem) {
             this.setState({
-                chatItems: this.state.chatItems.concat(newItem)
+                chatItems: sessionManager.chat.addMessage(newItem)
             });
         }
     }
 
     handleGameState(newState) {
         let opps = newState.players.slice();
+        let current = null;
         if (opps.length > 0) {
             while (opps[0].username !== sessionManager.username) {
                 opps.unshift(opps.pop());
             }
-            opps.shift();
+            current = opps.shift();
         }
         this.setState({
             loading: false,
             discardPileTopCard: newState.discardPile,
+            player: current,
             opponents: opps
         });
     }
@@ -498,12 +534,13 @@ class GameView extends Component {
     }
 
     handleTurnStart(t) {
-        let overlay = null;
+        let overlay = this.state.overlay;
         if (t.currentPlayer === sessionManager.username) {
             overlay = {
                 title: "it's your turn!",
                 duration: 1
-            }
+            };
+            this.overlayTimeout = null;
         }
 
         this.setState({
@@ -515,7 +552,10 @@ class GameView extends Component {
     }
 
     handleAttackTurn(t) {
-        this.setState({activePlayer: t.currentPlayer});
+        this.setState({
+            activePlayer: t.currentPlayer,
+            actionResponse: null
+        });
     }
 
     handleActionResponse(r) {
@@ -557,6 +597,7 @@ class GameView extends Component {
     }
 
     handleOverlay(o) {
+        this.overlayTimeout = null;
         this.setState({overlay: o});
     }
 
@@ -565,20 +606,34 @@ class GameView extends Component {
     }
 
     handleRoundEnd(r) {
-        sessionManager.inGame = false;
-        sessionManager.endPlayers = r.players;
-        sessionManager.pointLimit = r.pointLimit;
-        this.props.history.push('/end/round');
+        this.saveEndStuff(r);
+        this.setState({loading: true}, () =>
+            this.props.history.push('/end/round')
+        );
     }
 
     handleGameEnd(r) {
+        this.saveEndStuff(r);
+        this.setState({loading: true}, () =>
+            this.props.history.push('/end/game')
+        );
+    }
+
+    saveEndStuff(r) {
         sessionManager.inGame = false;
         sessionManager.endPlayers = r.players;
+        sessionManager.endChanges = r.changes;
+        sessionManager.endAdmin = r.admin;
+        sessionManager.endMessage = {
+            icon: r.icon,
+            message: r.message
+        };
         sessionManager.pointLimit = r.pointLimit;
-        this.props.history.push('/end/game');
     }
 
     handleDisconnect(reason) {
+        sessionManager.inGame = false;
+        sessionManager.blockReload = false;
         this.setState({
             error: {
                 title: "Disconnected!",

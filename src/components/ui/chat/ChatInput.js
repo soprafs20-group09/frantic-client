@@ -23,6 +23,7 @@ class ChatInput extends Component {
                     onChange={e => this.handleInputChange(e)}
                     onKeyUp={e => this.handleKeyUp(e)}
                     value={this.state.value}
+                    maxLength={1024}
                 />
                 <InlineSVG
                     src={Send}

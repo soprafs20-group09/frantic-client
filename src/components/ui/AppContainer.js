@@ -7,6 +7,8 @@ import HelpWindow from "components/ui/help/HelpWindow";
 import {WindowTransition} from "components/ui/Transitions";
 import Icon from "./Icon";
 import SettingsWindow from "./SettingsWindow";
+import settingsManager from "utils/settingsManager";
+import AboutWindow from "./AboutWindow";
 
 /**
  * This is a container that holds most app contents,
@@ -24,6 +26,14 @@ class AppContainer extends Component {
         this.state = {overlay: false};
     }
 
+    componentDidMount() {
+        window.addEventListener('resize', () => this.handleResize());
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('resize', () => this.handleResize());
+    }
+
     render() {
         const backButton =
             <div className="back-button">
@@ -32,17 +42,25 @@ class AppContainer extends Component {
                 </MainMenuItem>
             </div>;
         const helpButton = <MainMenuItem onClick={() => this.toggleHelp()}>?</MainMenuItem>;
+        const aboutButton =
+            <MainMenuItem onClick={() => this.toggleAbout()}>
+                <Icon className="top-icon" from="misc">info</Icon>
+            </MainMenuItem>;
         const settingsButton =
             <MainMenuItem onClick={() => this.toggleSettings()}>
-                <Icon className="settings-button" from="misc">gear</Icon>
+                <Icon className="top-icon" from="misc">gear</Icon>
             </MainMenuItem>;
         return (
             <div className="app-container">
-                <div className={`app-container ${this.state.overlay && 'blur'}`}>
+                <div
+                    className={`app-container ${this.state.overlay && 'blur'}`}
+                    onClick={() => this.handleOutsideClick()}
+                >
                     {this.props.children}
                     <div className="ac-top-right-buttons">
                         {this.props.withHelp && helpButton}
                         {this.props.withSettings && settingsButton}
+                        {this.props.withAbout && aboutButton}
                     </div>
                     {this.props.withBack && backButton}
                 </div>
@@ -69,6 +87,16 @@ class AppContainer extends Component {
                     key="settings"
                 />;
 
+            case 'about':
+                return <AboutWindow
+                    withClose
+                    onClose={() => this.toggleAbout()}
+                    key="about"
+                />;
+
+            case 'resize':
+                return <CalibrateMessage key="resize"/>;
+
             default:
                 return false;
         }
@@ -77,8 +105,7 @@ class AppContainer extends Component {
     toggleSettings() {
         if (this.state.overlay === 'settings') {
             this.setState({overlay: false});
-        }
-        else {
+        } else {
             this.setState({overlay: 'settings'});
         }
     }
@@ -86,10 +113,58 @@ class AppContainer extends Component {
     toggleHelp() {
         if (this.state.overlay === 'help') {
             this.setState({overlay: false});
+        } else {
+            this.setState({overlay: 'help'});
         }
-        else {
-            this.setState({overlay: 'help'})
+    }
+
+    toggleAbout() {
+        if (this.state.overlay === 'about') {
+            this.setState({overlay: false});
+        } else {
+            this.setState({overlay: 'about'});
         }
+    }
+
+    handleOutsideClick() {
+        if (this.state.overlay) {
+            this.setState({overlay: false});
+        }
+    }
+
+    handleResize() {
+        if ((window.innerHeight >= 860 && this.lastWindowSize >= 860) || this.lastWindowSize === window.innerHeight) {
+            this.lastWindowSize = window.innerHeight;
+            return;
+        }
+
+        if (this.resizeTimeout) {
+            clearTimeout(this.resizeTimeout);
+        }
+
+        this.resizeTimeout = setTimeout(() => {
+            this.lastWindowSize = window.innerHeight;
+            this.setState({overlay: 'resize'});
+            this.resizeTimeout = setTimeout(() =>
+                    this.setState({overlay: false}),
+                1500);
+        }, 100);
+    }
+}
+
+class CalibrateMessage extends Component {
+    render() {
+        return (
+            <div className="overlay-message">
+                <h1
+                    style={{
+                        fontSize: `${settingsManager.constants.maxFontSize * 2}px`
+                    }}
+                >
+                    calibrating...
+                </h1>
+            </div>
+        );
     }
 }
 

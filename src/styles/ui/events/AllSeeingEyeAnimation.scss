@@ -1,0 +1,94 @@
+@import 'theme';
+@import 'ui/cards/colors';
+
+.all-seeing-eye-animation{
+  @include center;
+
+  & .eye{
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    fill: $accent;
+    height: 8em;
+    width: auto;
+    z-index: 1;
+  }
+
+  & .rays {
+    position: absolute;
+    stroke: $accent !important;
+    animation: rotate-rays 5s infinite;
+    animation-timing-function: linear;
+    width: auto;
+    height: 25em;
+  }
+
+  & .cloud {
+    @include center;
+    position: absolute;
+    transform: translateY(4.8em);
+    z-index: 2;
+
+    & .cloud1 {
+      position: absolute;
+      background: $accent;
+      filter: brightness(130%);
+      height: 5em;
+      width: 8em;
+      border-radius: 50%;
+      top: -2.5em;
+      left: -2.3em;
+    }
+    & .cloud2 {
+      position: absolute;
+      background: $accent;
+      filter: brightness(130%);
+      height: 3em;
+      width: 6em;
+      border-radius: 50%;
+      left: 1.5em;
+      top: -1em;
+    }
+
+    & .cloud3 {
+      position: absolute;
+      background: $accent;
+      filter: brightness(130%);
+      height: 3em;
+      width: 5.5em;
+      border-radius: 50%;
+      top: -2.9em;
+      left: -5em;
+    }
+
+    & .cloud4 {
+      position: absolute;
+      background: $accent;
+      filter: brightness(130%);
+      height: 3em;
+      width: 8em;
+      border-radius: 50%;
+      left: -7.3em;
+      top: -1.6em;
+    }
+
+    & .cloud5 {
+      position: absolute;
+      background: $accent;
+      filter: brightness(130%);
+      border-radius: 50%;
+      height: 2em;
+      width: 5.5em;
+      left: -5em;
+      top: 0.1em;
+    }
+  }
+
+
+}
+
+@keyframes rotate-rays {
+  100% {
+    transform: rotate(180deg);
+  }
+}

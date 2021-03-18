@@ -12,7 +12,7 @@ import uiUtils from "utils/uiUtils";
 class TextOverlay extends Component {
     render() {
         return (
-            <div className={"overlay-message"}>
+            <div className="overlay-message">
                 <div className="overlay-title-container">
                     {this.props.icon && <InlineSVG src={uiUtils.resolveIconString(this.props.icon)} className="overlay-message-icon"/>}
                     <h1>{this.props.title}</h1>

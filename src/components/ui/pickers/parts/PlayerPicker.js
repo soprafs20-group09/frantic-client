@@ -93,7 +93,7 @@ class PlayerItem extends Component {
 
     render() {
         const stats =
-            <div className={"opponent-stats-container"} key="player-stats">
+            <div className="opponent-stats-container" key="player-stats">
                 <h2 className="opponent-username">{this.props.username}</h2>
                 <table className="opponent-stats">
                     <tbody>
@@ -117,7 +117,7 @@ class PlayerItem extends Component {
                     + (this.props.disabled ? " disabled" : "")
                 }
                 onClick={() => this.handleClick()}
-                onMouseOver={() => this.handleMouseOver()}
+                onMouseOver={e => this.handleMouseOver(e)}
                 onMouseLeave={() => this.handleMouseLeave()}
             >
                 <PlayerAvatar
@@ -143,12 +143,17 @@ class PlayerItem extends Component {
         }
     }
 
-    handleMouseOver() {
+    handleMouseOver(e) {
         if (this.leaveTimeout) {
             clearTimeout(this.leaveTimeout);
             this.leaveTimeout = null;
         }
         if (!this.state.showStats) {
+            for (let element of document.getElementsByClassName('opponent-transition-container')) {
+                if (element.contains(e.target)) {
+                    return;
+                }
+            }
             this.setState({showStats: true});
         }
     }

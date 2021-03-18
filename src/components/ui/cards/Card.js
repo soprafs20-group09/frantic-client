@@ -155,6 +155,10 @@ class Card extends Component {
         if (color === 'multicolor') {
             innerColor = 'special ' + settingsManager.multicolorStyle;
         }
+        if (this.props.color === 'accent') {
+            innerColor = 'transparent';
+            color = 'accent';
+        }
 
         return (
             <div

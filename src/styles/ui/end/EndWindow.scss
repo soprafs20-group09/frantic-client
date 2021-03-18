@@ -1,7 +1,18 @@
 @import 'theme';
 
+.end-text-container {
+  display: flex;
+}
+
 .end-p {
   margin: 0 0 0.5em;
+}
+
+.end-icon {
+  fill: $accent;
+  height: 2em;
+  width: 2em;
+  margin-right: 1em;
 }
 
 .end-scoreboard-container {

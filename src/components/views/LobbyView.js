@@ -22,6 +22,15 @@ class LobbyView extends Component {
         this.state = {};
     }
 
+    componentDidMount() {
+        if (this.props.mode === 'join') {
+            document.title = "Join a Lobby - Frantic";
+        }
+        else {
+            document.title = "Create a Lobby - Frantic";
+        }
+    }
+
     render() {
         let closeRoute = this.props.mode === 'join' ? '/browse' : '/';
 

@@ -9,6 +9,9 @@ html {
   @include fullscreen;
   font-size: $rootFontSize;
   font-weight: 300;
+  overflow-x: auto;
+  overflow-y: hidden;
+  @include scrollbar;
 }
 
 body {

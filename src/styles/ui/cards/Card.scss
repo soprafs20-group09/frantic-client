@@ -38,6 +38,10 @@
     color: $black;
   }
 
+  &.accent > .ribbon {
+    color: $accent;
+  }
+
   &.white > .ribbon {
     color: $white;
     background-color: $black;

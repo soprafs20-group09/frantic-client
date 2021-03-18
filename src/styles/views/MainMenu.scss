@@ -35,6 +35,12 @@
   text-transform: lowercase;
   text-shadow: $dropShadow;
   @include clickable;
+
+  &.secondary {
+    font-size: $fontSizeDefault * 1.5;
+    color: $textColor;
+    opacity: 70%;
+  }
 }
 
 .madewith {
@@ -42,10 +48,31 @@
   color: $accent;
   margin: 0;
   overflow: visible;
+  text-align: center;
 
   &.label {
     position: absolute;
     bottom: 0.5em;
+  }
+  &.link {
+    display: block;
+    position: relative;
+    @include clickable;
+  }
+}
+
+.copyright-disclaimer {
+  display: block;
+  position: relative;
+  color: $textColor;
+  line-height: 1em;
+  margin-top: 1em;
+
+  &.link {
+    display: inline-block;
+    color: $accent;
+    margin: 0;
+    @include clickable;
   }
 }
 

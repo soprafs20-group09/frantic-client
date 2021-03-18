@@ -9,24 +9,34 @@ import Card from "components/ui/cards/Card";
  *                                 - cards can additionally have property "disabled: bool",
  *                                   which makes the card unselectable.
  * maxAmount: number               - the maximum amount of cards that should be selectable.
- * onSelectionChange: func(string) - a function that is called every time the selection changes.
- *                                   parameter is a list of currently selected card objects.
+ * disableFuckYous: bool           - automatically disables all fuck you cards if true. (default: true)
+ * onSelectionChange: func([], int) - a function that is called every time the selection changes.
+ *                                   parameters are:
+ *                                   []: a list of currently selected card objects,
+ *                                   int: the amount of available, non disabled cards
  */
 class CardPicker extends Component {
     constructor(props) {
         super(props);
-        this.state = {selectedCards: []}
+        this.state = {selectedCards: []};
     }
 
     render() {
         let cardItems = [];
-
+        this.availableCards = 0;
         for (let c of this.props.cards) {
+            let disabled = false;
+            if (c.disabled || (this.props.disableFuckYous && c.value === 'fuck-you')) {
+                disabled = true;
+            }
+            else {
+                this.availableCards++;
+            }
             cardItems.push(
                 <div className={
                     "picker-card-item"
                     + (this.state.selectedCards.includes(c) ? " active" : "")
-                    + ((c.disabled || c.value === 'fuck-you') ? " disabled" : "")}
+                    + (disabled ? " disabled" : "")}
                      onClick={() => this.handleCardClick(c)}
                      key={c.key}
                 >
@@ -41,14 +51,14 @@ class CardPicker extends Component {
         }
 
         return (
-            <div className="picker-container">
+            <div className="picker-container scrolling">
                 {cardItems}
             </div>
         );
     }
 
     handleCardClick(c) {
-        if (c.disabled || c.value === 'fuck-you') {
+        if (c.disabled) {
             return;
         }
 
@@ -68,13 +78,14 @@ class CardPicker extends Component {
         this.setState({selectedCards: newCards});
 
         if (this.props.onSelectionChange) {
-            this.props.onSelectionChange(newCards);
+            this.props.onSelectionChange(newCards, this.availableCards);
         }
     }
 }
 
 CardPicker.defaultProps = {
-  maxAmount: 1
+    maxAmount: 1,
+    disableFuckYous: true
 };
 
 export default CardPicker;

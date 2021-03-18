@@ -15,7 +15,7 @@
   transition: 0s;
 
   .transition > & > .hand-card {
-    transition: 0.3s;
+    transition: all 0.3s, font-size 0s;
   }
 
   & > .hand-card:hover {

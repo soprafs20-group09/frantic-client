@@ -40,6 +40,7 @@ class LobbyBrowserView extends Component {
     componentDidMount() {
         sessionManager.reset();
         this.refreshLobbies(this.state.filter);
+        document.title = "Join a Lobby - Frantic";
     }
 
     render() {

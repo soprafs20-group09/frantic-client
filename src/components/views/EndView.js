@@ -22,16 +22,36 @@ class EndView extends Component {
         super(props);
         this.state = {
             players: {},
-            chatItems: []
+            chatItems: sessionManager.chat.getCurrent()
         };
     }
 
     componentDidMount() {
         sessionManager.inGame = false;
-        this.setState({players: sessionManager.endPlayers});
+        let msg = sessionManager.endMessage;
+        if (!msg) {
+            msg = {};
+        }
+        this.setState({
+            players: sessionManager.endPlayers,
+            changes: sessionManager.endChanges,
+            adminMode: sessionManager.username === sessionManager.endAdmin,
+            icon: msg.icon,
+            message: msg.message,
+            endTimer: false
+        });
         sockClient.onDisconnect(r => this.handleDisconnect(r));
         sockClient.onLobbyMessage('/chat', r => this.handleChatMessage(r));
         sockClient.onLobbyMessage('/start-round', () => this.handleRoundStart());
+        sockClient.onLobbyMessage('/timer', t => this.handleTimer(t));
+        sockClient.onLobbyMessage('/lobby-state', s => this.handleLobbyUpdate(s));
+
+        document.title = "End of " + (this.props.mode === 'game' ? 'Game' : 'Round') + " - Frantic";
+    }
+
+    componentWillUnmount() {
+        sockClient.clearMessageSubscriptions();
+        sockClient.clearDisconnectSubscriptions();
     }
 
     render() {
@@ -52,21 +72,26 @@ class EndView extends Component {
                 >
                     {this.state.error.description}
                 </ErrorBox>;
-        } else {
+        }
+        else {
             content =
                 <div className="end-container" key="end-container">
                     <div className="end-column">
-                        <EndWindow mode={this.props.mode} players={this.state.players}
-                                   pointLimit={sessionManager.pointLimit}>
+                        <EndWindow
+                            mode={this.props.mode}
+                            players={this.state.players}
+                            changes={this.state.changes}
+                            pointLimit={sessionManager.pointLimit}
+                            icon={this.state.icon}
+                            message={this.state.message}
+                        >
                             {this.getActions()}
                         </EndWindow>
                     </div>
                     <div className="end-column rest">
-                        <div className="chat">
-                            <ChatWindow onSend={msg => this.handleChatSend(msg)}>
-                                {this.state.chatItems}
-                            </ChatWindow>
-                        </div>
+                        <ChatWindow onSend={msg => this.handleChatSend(msg)}>
+                            {this.state.chatItems}
+                        </ChatWindow>
                     </div>
                 </div>;
         }
@@ -82,11 +107,29 @@ class EndView extends Component {
 
     getActions() {
         if (this.props.mode === 'round') {
-            return [
-                <p className="end-actions-text" key="d">next round in</p>,
-                <TurnTimer key="t" start seconds={30}/>
-            ];
-        } else {
+            if (this.state.endTimer) {
+                return [
+                    <p className="end-actions-text" key="d">next round in</p>,
+                    <TurnTimer key="t" start seconds={this.state.endTimer}/>
+                ];
+            }
+            else if (this.state.adminMode) {
+                return (
+                    <Button
+                        style={{paddingLeft: '1em', paddingRight: '1em'}}
+                        onClick={() => this.handleContinueClick()}
+                    >
+                        continue to next round
+                    </Button>
+                );
+            }
+            else {
+                return (
+                    <p className="end-actions-text" key="d">Please wait for the host to continue...</p>
+                );
+            }
+        }
+        else {
             return [
                 <Button
                     key="leave"
@@ -109,7 +152,8 @@ class EndView extends Component {
             if (sockClient.isConnected()) {
                 sockClient.sendToLobby('/chat', {message: msg});
             }
-        } catch {
+        }
+        catch {
         }
     }
 
@@ -121,8 +165,25 @@ class EndView extends Component {
         let newItem = uiUtils.parseChatObject(msg);
         if (newItem) {
             this.setState({
-                chatItems: this.state.chatItems.concat(newItem)
+                chatItems: sessionManager.chat.addMessage(newItem)
             });
+        }
+    }
+
+    handleTimer(t) {
+        this.setState({endTimer: t.seconds});
+    }
+
+    handleLobbyUpdate(state) {
+        // update admin
+        for (let player of state.players) {
+            if (player.admin) {
+                sessionManager.endAdmin = player.username;
+                this.setState({
+                    adminMode: sessionManager.username === sessionManager.endAdmin
+                });
+                break;
+            }
         }
     }
 
@@ -149,6 +210,10 @@ class EndView extends Component {
         sockClient.clearMessageSubscriptions();
         sockClient.clearDisconnectSubscriptions();
         sessionManager.reset();
+    }
+
+    handleContinueClick() {
+        sockClient.sendToLobby('/start-round');
     }
 }
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import 'components/routing/AppRouter';
-import {BrowserRouter, Route, Switch} from "react-router-dom";
+import {BrowserRouter, Redirect, Route, Switch} from "react-router-dom";
 import MainMenu from "components/views/MainMenu";
 import LobbyView from "components/views/LobbyView";
 import LobbyBrowserView from "components/views/LobbyBrowserView";
@@ -10,7 +10,10 @@ import JoinLobbyView from "components/views/JoinLobbyView";
 import GameView from "components/views/GameView";
 import EndView from "components/views/EndView";
 import LobbyGuard from "components/routing/guards/LobbyGuard";
-import AnimationView from "components/views/AnimationView";
+import SingleAnimationView from "components/views/SingleAnimationView";
+import GameGuard from "components/routing/guards/GameGuard";
+import AnimationGalleryView from "components/views/AnimationGalleryView";
+import AboutView from "components/views/AboutView";
 
 class AppRouter extends React.Component {
     render() {
@@ -42,7 +45,9 @@ class AppRouter extends React.Component {
                         <LobbyBrowserView mode="join"/>
                     </Route>
                     <Route exact path="/game">
-                        <GameView/>
+                        <GameGuard>
+                            <GameView/>
+                        </GameGuard>
                     </Route>
                     <Route exact path="/help">
                         <HelpView/>
@@ -56,8 +61,17 @@ class AppRouter extends React.Component {
                     <Route exact path="/end/game">
                         <EndView mode="game"/>
                     </Route>
+                    <Route exact path="/about">
+                        <AboutView/>
+                    </Route>
+                    <Route exact path="/animations">
+                        <AnimationGalleryView/>
+                    </Route>
                     <Route exact path="/animations/:event">
-                        <AnimationView/>
+                        <SingleAnimationView/>
+                    </Route>
+                    <Route>
+                        <Redirect to="/"/>
                     </Route>
                 </Switch>
             </BrowserRouter>

@@ -15,15 +15,11 @@ import IconTitle from "components/ui/IconTitle";
 class SkipPicker extends Component {
     constructor(props) {
         super(props);
-        this.state = {players: [], selectedPlayer: null};
-    }
-
-    componentDidMount() {
         let players = JSON.parse(JSON.stringify(this.props.players));
         for (let p of players) {
             p.disabled = p.skipped;
         }
-        this.setState({players: players});
+        this.state = {players: players, selectedPlayer: null};
     }
 
     render() {

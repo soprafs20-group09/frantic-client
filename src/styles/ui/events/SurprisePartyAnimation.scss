@@ -1,0 +1,398 @@
+@import 'theme';
+@import 'ui/cards/colors';
+
+.surprise-party-container {
+  position: relative;
+  @include center;
+  height: 10.2em;
+}
+
+.present {
+  position: absolute;
+  transform: translateX(-2em);
+  animation-name: surprise-party-appear, surprise-party-short-shake, surprise-party-shake, surprise-party-disappear;
+  animation-delay: 0s, 1s, 2s, 3s;
+  animation-duration: 1.5s, 0.25s, 0.5s, 0.25s;
+  animation-iteration-count: 1, 1, 3, 1;
+  animation-fill-mode: forwards;
+
+  .left {
+    position: absolute;
+    width: 6em;
+    height: 6em;
+    transform: skewY(20deg) rotate(90deg) translateY(3em);
+    background-color: $accent;
+    filter: brightness(0.9);
+  }
+
+  .right {
+    position: absolute;
+    width: 6em;
+    height: 6em;
+    transform: skewY(-20deg) rotate(90deg) translateY(-3em);
+    background-color: $accent;
+    filter: brightness(0.9);
+  }
+
+  .left-shadow {
+    position: absolute;
+    width: 6.5em;
+    height: 0.1em;
+    transform: rotate(20deg) translateX(-3em) translateY(1.3em);
+    filter: blur(0.1em);
+    background-color: $black;
+  }
+
+  .right-shadow {
+    position: absolute;
+    width: 6.5em;
+    height: 0.1em;
+    transform: rotate(-20deg) translateX(2.6em) translateY(1.1em);
+    filter: blur(0.1em);
+    background-color: $black;
+  }
+
+  .cover {
+    position: absolute;
+    animation-name: cover-opens;
+    animation-delay: 3s;
+    animation-duration: 0.25s;
+    animation-fill-mode: forwards;
+
+    .left-cover {
+      position: absolute;
+      width: 1.3em;
+      height: 6.25em;
+      transform: skewY(20deg) rotate(90deg) translateY(0.75em) translateX(-3.4em);
+      background-color: $accent;
+      filter: brightness(0.95);
+    }
+
+    .right-cover {
+      position: absolute;
+      width: 1.3em;
+      height: 6.25em;
+      transform: skewY(-20deg) rotate(90deg) translateY(-5.5em) translateX(-1.7em);
+      background-color: $accent;
+      filter: brightness(0.95);
+    }
+
+    .top-cover{
+      position: absolute;
+      transform: rotate(90deg) translateX(-6.6em) translateY(-2.8em);
+
+      .top-cover1 {
+        width: 0;
+        height: 0;
+        border: 2.25em solid transparent;
+        border-bottom: 6.3em solid $accent;
+        position: relative;
+        top: -2.25em;
+      }
+
+      .top-cover1:after {
+        content: '';
+        position: absolute;
+        left: -2.25em;
+        top: 6.3em;
+        width: 0;
+        height: 0;
+        border: 2.25em solid transparent;
+        border-top: 6.3em solid $accent;
+      }
+
+    }
+
+  }
+
+  .present-ribbon {
+    animation-name: ribbon-disappear;
+    animation-delay: 2.8s;
+    animation-duration: 0.25s;
+    animation-fill-mode: forwards;
+
+    .left-ribbon {
+      position: absolute;
+      width: 6em;
+      height: 1em;
+      transform: skewY(20deg) rotate(90deg) translateY(3.3em) translateX(2.5em);
+      background-color: $bgLight;
+    }
+
+    .right-ribbon {
+      position: absolute;
+      width: 6em;
+      height: 1em;
+      transform: skewY(-20deg) rotate(90deg) translateY(-3.3em) translateX(2.5em);
+      background-color: $bgLight;
+    }
+
+    .top-left-ribbon {
+      position: absolute;
+      width: 6.75em;
+      height: 0.7em;
+      transform: rotate(-20deg) translateY(-2.72em) translateX(0.43em) skew(50deg);
+      background-color: $bgLight;
+    }
+
+    .top-right-ribbon {
+      position: absolute;
+      width: 6.75em;
+      height: 0.7em;
+      transform: rotate(20deg) translateY(-2.45em) translateX(-1.15em) skew(-50deg);
+      background-color: $bgLight;
+    }
+
+    .top-ribbon {
+
+      .triangle {
+        position: relative;
+        background-color: $bgLighter;
+        text-align: left;
+        transform: rotate(-60deg) skewX(-30deg) scale(1,.866);
+      }
+
+      .triangle:before,
+      .triangle:after {
+        content: '';
+        position: absolute;
+        background-color: inherit;
+      }
+
+      .triangle,
+      .triangle:before,
+      .triangle:after {
+        width:  1.5em;
+        height: 1.5em;
+        border-top-right-radius: 30%;
+      }
+
+      .triangle:before {
+        transform: rotate(-135deg) skewX(-45deg) scale(1.414,.707) translate(0,-50%);
+      }
+
+      .triangle:after {
+        transform: rotate(135deg) skewY(-45deg) scale(.707,1.414) translate(50%);
+      }
+
+      .rounded-triangle1 {
+        transform: rotate(10deg) translateY(-4.5em) translateX(0.2em);
+      }
+
+      .rounded-triangle2 {
+        transform: rotate(150deg) translateY(2em) translateX(-5em);
+      }
+
+      .circle {
+        position: absolute;
+        width: 1.2em;
+        height: 1.2em;
+        transform: translateX(2em) translateY(-6.2em);
+        border-radius: 50%;
+        background-color: $bgLight;
+      }
+    }
+
+  }
+
+}
+
+.surprise-text {
+  font-size: 2em;
+  animation-name: text-appear;
+  animation-delay: 3.25s;
+  animation-duration: 0.2s;
+  animation-fill-mode: backwards;
+}
+
+.confetti-container {
+  width: 100%;
+  height: 100%;
+}
+
+.confetti {
+  width: 0.5em;
+  height: 0.5em;
+  background-color: #f2d74e;
+  position: absolute;
+  animation-name: confetti;
+  animation-duration: 5s;
+  animation-timing-function: ease-in-out;
+  animation-delay: 3.25s;
+  animation-iteration-count: 1;
+  transform: translateY(-7em);
+}
+
+.confetti:nth-of-type(1) {
+  transform: translateY(-7em);
+  background-color: #f2d74e;
+  left: 10%;
+  animation-delay: 3.25s;
+}
+
+.confetti:nth-of-type(2) {
+  transform: translateY(-7em);
+  background-color: #95c3de;
+  left: 20%;
+  animation-delay: 4.3s;
+}
+
+.confetti:nth-of-type(3) {
+  transform: translateY(-7em);
+  background-color: #ff9a91;
+  left: 30%;
+  animation-delay: 3.9s;
+}
+
+.confetti:nth-of-type(4) {
+  transform: translateY(-7em);
+  background-color: #f2d74e;
+  left: 40%;
+  animation-delay: 4.8s;
+}
+
+.confetti:nth-of-type(5) {
+  transform: translateY(-7em);
+  background-color: #95c3de;
+  left: 50%;
+  animation-delay: 4.1s;
+}
+
+.confetti:nth-of-type(6) {
+  transform: translateY(-7em);
+  background-color: #ff9a91;
+  left: 60%;
+  animation-delay: 4.6s;
+}
+
+.confetti:nth-of-type(7) {
+  transform: translateY(-7em);
+  background-color: #f2d74e;
+  left: 70%;
+  animation-delay: 3.6s;
+}
+
+.confetti:nth-of-type(8) {
+  transform: translateY(-7em);
+  background-color: #95c3de;
+  left: 80%;
+  animation-delay: 4.7s;
+}
+
+.confetti:nth-of-type(9) {
+  transform: translateY(-7em);
+  background-color: #ff9a91;
+  left: 90%;
+  animation-delay: 4.2s;
+}
+
+.confetti:nth-of-type(10) {
+  transform: translateY(-7em);
+  background-color: #f2d74e;
+  left: 100%;
+  animation-delay: 3.8s;
+}
+
+@keyframes confetti {
+  0% { transform: rotateZ(15deg) rotateY(0deg) translate(0,0); }
+  25% { transform: rotateZ(5deg) rotateY(360deg) translate(-3vw,40vh); }
+  100% { transform: rotateZ(5deg) rotateY(360deg) translate(-3vw,40vh); }
+}
+
+@keyframes text-appear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+@keyframes surprise-party-appear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes surprise-party-short-shake {
+  0% {
+    transform: translate(-1.9em, 0.05em) rotate(0deg);
+  }
+  50% {
+    transform: translate(-2.05em, 0.1em) rotate(-1deg);
+  }
+  100% {
+    transform: translate(-1.95em, -0.1em) rotate(-1deg);
+  }
+}
+
+@keyframes surprise-party-shake {
+  0% {
+    transform: translate(-1.9em, 0.05em) rotate(0deg);
+  }
+  10% {
+    transform: translate(-2.05em, -0.1em) rotate(-1deg);
+  }
+  20% {
+    transform: translate(-2.15em, 0) rotate(1deg);
+  }
+  30% {
+    transform: translate(-2, 0.1em) rotate(0deg);
+  }
+  40% {
+    transform: translate(-1.95em, -0.05em) rotate(1deg);
+  }
+  50% {
+    transform: translate(-2.05em, 0.1em) rotate(-1deg);
+  }
+  60% {
+    transform: translate(-2.15em, 0.05em) rotate(0deg);
+  }
+  70% {
+    transform: translate(-1.9em, 0.05em) rotate(-1deg);
+  }
+  80% {
+    transform: translate(-2.05em, -0.05em) rotate(1deg);
+  }
+  90% {
+    transform: translate(-1.9em, 0.1em) rotate(0deg);
+  }
+  100% {
+    transform: translate(-1.95em, -0.1em) rotate(-1deg);
+  }
+}
+
+@keyframes surprise-party-disappear {
+  0% {
+    opacity: 1;
+    transform: translateX(-2em) translateY(0em);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-2em) translateY(6em);
+  }
+}
+
+@keyframes cover-opens {
+  0% {
+    opacity: 1;
+    transform: translateY(0em);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-12em);
+  }
+}
+
+@keyframes ribbon-disappear {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

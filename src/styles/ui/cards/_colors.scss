@@ -30,8 +30,11 @@ $white: invert($black);
   background-color: $white;
 }
 
+.accent {
+  background-color: $accent;
+}
+
 .special {
-  transition: 0.5s;
 
   &.matte {
     background-color: $black;
