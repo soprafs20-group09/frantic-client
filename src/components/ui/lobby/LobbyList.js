@@ -26,6 +26,8 @@ class LobbyList extends Component {
             transform: 'translateX(0%)'
         };
 
+        const activeLobbies = this.props.lobbies.filter(l => l.type === 'public' && !l.running);
+
         return (
             <div className="lobby-list-container">
                 <div className="lobby-list-caption-container">
@@ -36,7 +38,7 @@ class LobbyList extends Component {
                 <ul className="lobby-list">
                     <Transition
                         native
-                        items={this.props.lobbies}
+                        items={activeLobbies}
                         keys={lobby => lobby.lobbyId}
                         from={fromStyle}
                         enter={toStyle}
@@ -75,7 +77,7 @@ class LobbyItem extends Component {
                 <animated.li className="lobby-item" style={this.props.style}>
                     <p className="lobby-item-text c1">{this.props.name}</p>
                     <p className="lobby-item-text c2">{this.props.creator}</p>
-                    <p className="lobby-item-text c3">{this.props.players}</p>
+                    <p className="lobby-item-text c3">{this.props.players ? this.props.players.length : '-'}</p>
                 </animated.li>
             </animated.a>
         );
