@@ -40,7 +40,7 @@ class TurnTimer extends Component {
 
     render() {
         return (
-            this.props.visible &&
+            this.props.visible ?
             <div className="turn-timer-container">
                 <div className="turn-timer-inner">
                     <svg className="turn-timer" viewBox="0 0 250 250">
@@ -50,6 +50,7 @@ class TurnTimer extends Component {
                 </div>
                 {this.getTimeBombPart()}
             </div>
+                : null
         );
     }
 
