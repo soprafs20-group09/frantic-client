@@ -8,8 +8,9 @@ import Icon from "components/ui/Icon";
  * start: bool                  - timer will start on mount if true.
  * seconds: number              - how much time should be on the timer.
  * turn: any                    - a turn number or key that causes the timer to reste on change
- * timebomb: number            - if set, a timebomb icon will be displayed below the timer
+ * timebomb: number             - if set, a timebomb icon will be displayed below the timer
  *                                with a corresponding number next to it.
+ * visible: bool                - whether to show the timer.
  */
 class TurnTimer extends Component {
     constructor(props) {
@@ -25,9 +26,11 @@ class TurnTimer extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        if (prevProps.turn !== this.props.turn && this.props.start && this.props.seconds) {
+        if (prevProps.turn !== this.props.turn && this.props.start) {
             this.reset();
-            this.start();
+            if (this.props.seconds) {
+                this.start();
+            }
         }
     }
 
@@ -37,6 +40,7 @@ class TurnTimer extends Component {
 
     render() {
         return (
+            this.props.visible ?
             <div className="turn-timer-container">
                 <div className="turn-timer-inner">
                     <svg className="turn-timer" viewBox="0 0 250 250">
@@ -46,6 +50,7 @@ class TurnTimer extends Component {
                 </div>
                 {this.getTimeBombPart()}
             </div>
+                : null
         );
     }
 
@@ -55,14 +60,16 @@ class TurnTimer extends Component {
                 this.setState({
                     currentAngle: this.state.currentAngle - 2
                 });
-            } else {
+            }
+            else {
                 clearInterval(this.spinnerInterval);
             }
         }, ((this.props.seconds) / 180 * 1000));
         this.secondInterval = setInterval(() => {
             if (this.state.remainingSeconds > 0) {
                 this.setState({remainingSeconds: this.state.remainingSeconds - 1});
-            } else {
+            }
+            else {
                 clearInterval(this.secondInterval);
             }
         }, 1000);
@@ -115,7 +122,8 @@ class TurnTimer extends Component {
                     <p className="turn-timer-seconds bomb">{this.props.timebomb}</p>
                 </div>
             );
-        } else return false;
+        }
+        else return false;
     }
 }
 
