@@ -9,6 +9,7 @@
     "axios": "^0.21.1",
     "node-sass": "^4.14.1",
     "react": "^16.14.0",
+    "react-device-detect": "^1.17.0",
     "react-dom": "^16.14.0",
     "react-draggable": "^4.4.3",
     "react-emoji-render": "^1.2.4",

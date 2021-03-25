@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 import {animated, Transition} from "react-spring/renderprops";
+import settingsManager from "../../utils/settingsManager";
+
+
 
 /**
  * PROPS:
@@ -26,6 +29,11 @@ class WindowTransition extends Component {
             transform: 'scale(0.8)',
             pointerEvents: 'none'
         };
+
+        if (!settingsManager.animations) {
+            fromStyle.transform = 'scale(1)';
+            leaveStyle.transform = 'scale(1)';
+        }
 
         return (
             <Transition
@@ -75,7 +83,9 @@ class ChatItemTransition extends Component {
                 from={fromStyle}
                 enter={toStyle}
                 leave={fromStyle}
-                trail={this.props.trail}>
+                trail={this.props.trail}
+                immediate={!settingsManager.animations}
+            >
                 {item => style => <animated.div style={style}>{item}</animated.div>}
             </Transition>
         );
@@ -112,6 +122,7 @@ class MainMenuLogoTransition extends Component {
                 enter={enterStyle}
                 leave={leaveStyle}
                 trail={200}
+                immediate={!settingsManager.animations}
             >
                 {item => style =>
                     <animated.div className={this.props.containerClass} style={style}>
@@ -145,6 +156,7 @@ class MainMenuItemTransition extends Component {
                 enter={neutral}
                 leave={down}
                 trail={400}
+                immediate={!settingsManager.animations}
             >
                 {item => style => <animated.div style={style}>{item}</animated.div>}
             </Transition>
@@ -172,6 +184,7 @@ class MainMenuMadeWithTransition extends Component {
                 enter={neutral}
                 leave={down}
                 trail={500}
+                immediate={!settingsManager.animations}
             >
                 {item => style => <animated.span style={{display: 'block', ...style}}>{item}</animated.span>}
             </Transition>
@@ -198,6 +211,7 @@ class CardMultinumberTransition extends Component {
                 from={fromStyle}
                 enter={enterStyle}
                 leave={leaveStyle}
+                immediate={!settingsManager.animations}
             >
                 {item => style =>
                     <animated.p className={this.props.className}>
@@ -238,6 +252,7 @@ class TabSwitcherTransition extends Component {
                 from={fromStyle}
                 enter={enterStyle}
                 leave={leaveStyle}
+                immediate={!settingsManager.animations}
             >
                 {item => style =>
                     <animated.div
@@ -282,6 +297,7 @@ class HandTransition extends Component {
                 enter={enterStyle}
                 leave={leaveStyle}
                 trail={this.props.trail}
+                immediate={!settingsManager.animations}
             >
                 {item => style =>
                     <animated.div
@@ -322,6 +338,7 @@ class DiscardPileTransition extends Component {
                 enter={enterStyle}
                 leave={leaveStyle}
                 trail={500}
+                immediate={!settingsManager.animations}
             >
                 {item => style =>
                     <animated.div className={this.props.containerClass} style={style}>
@@ -357,6 +374,7 @@ class BaseStackTransition extends Component {
                 enter={enterStyle}
                 leave={leaveStyle}
                 trail={200}
+                immediate={!settingsManager.animations}
             >
                 {item => style =>
                     <animated.div className={this.props.containerClass} style={style}>
@@ -391,6 +409,7 @@ class EndTurnTransition extends Component {
                 enter={enterStyle}
                 leave={leaveStyle}
                 trail={200}
+                immediate={!settingsManager.animations}
             >
                 {item => style =>
                     <animated.div
@@ -463,7 +482,9 @@ class EventOverlayTransition extends Component {
                 from={fromStyle}
                 enter={toStyle}
                 leave={fromStyle}
-                trail={0}>
+                trail={0}
+                immediate={!settingsManager.animations}
+            >
                 {item => style => <animated.div style={style}>{item}</animated.div>}
             </Transition>
         );
@@ -489,7 +510,9 @@ class ToastMessageTransition extends Component {
                 from={fromStyle}
                 enter={toStyle}
                 leave={fromStyle}
-                trail={0}>
+                trail={0}
+                immediate={!settingsManager.animations}
+            >
                 {item => style =>
                     <animated.div
                         className={this.props.containerClass}

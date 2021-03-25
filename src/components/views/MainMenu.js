@@ -65,7 +65,7 @@ class MainMenu extends React.Component {
 
     render() {
         return (
-            <AppContainer withHelp withSettings withAbout>
+            <AppContainer withHelp withSettings withAbout withPopup>
                 <div className="mainmenu-container">
                     <MainMenuLogoTransition containerClass="mainmenu-logo-shadow-container">
                         <InlineSVG src={Logo} className="mainmenu-logo"/>
