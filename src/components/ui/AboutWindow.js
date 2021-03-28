@@ -46,6 +46,16 @@ class AboutWindow extends Component {
                             on <a href="https://www.rulefactory.ch" target="_blank">rulefactory.ch</a>.
                         </p>
 
+                        <div className="about-explore">
+                            <Header>Donate</Header>
+                            <p>
+                                If you enjoy playing the game and would like to support us, feel free to donate!
+                            </p>
+                            <ul className="explore-list">
+                                <ExploreItem icon="misc:bmc-logo" target="https://www.buymeacoffee.com/frantic.online">Buy Us a Coffee!</ExploreItem>
+                            </ul>
+                        </div>
+
                         <Header>Get in Contact</Header>
                         <p>
                             Found a bug? Love the game? Ruined friendships?
