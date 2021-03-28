@@ -43,10 +43,6 @@ class PerformanceModeWindow extends Component {
             </ToolWindow>
         );
     }
-
-    handleClick() {
-        settingsManager.performance = false;
-    }
 }
 
 export default PerformanceModeWindow;
