@@ -52,7 +52,7 @@ class AboutWindow extends Component {
                                 If you enjoy playing the game and would like to support us, feel free to donate!
                             </p>
                             <ul className="explore-list">
-                                <ExploreItem icon="misc:bmc-logo" target="https://www.buymeacoffee.com/frantic.online">Buy Us a Coffee!</ExploreItem>
+                                <ExploreItem icon="misc:bmc-logo" newTab target="https://www.buymeacoffee.com/frantic.online">Buy Us a Coffee!</ExploreItem>
                             </ul>
                         </div>
 
