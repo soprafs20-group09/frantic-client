@@ -5,7 +5,7 @@
 const defaultValues = {
     multicolorStyle: 'opaque',
     theme: "{\"name\":\"Terracotta\",\"colors\":{\"accent\":\"#E0745C\",\"bgDark\":\"#333840\",\"bgMedium\":\"#484D59\",\"bgLight\":\"#5B6171\",\"bgLighter\":\"#676E80\",\"text\":\"white\"}}",
-    animations: true
+    animations: 'true'
 };
 
 function getItem(name) {

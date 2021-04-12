@@ -32,7 +32,8 @@ class AppContainer extends Component {
     componentDidMount() {
         window.addEventListener('resize', () => this.handleResize());
 
-        if (this.props.withPopup && isMobile && settingsManager.performance !== true) {
+        if (this.props.withPopup && isMobile && settingsManager.animations) {
+            settingsManager.animations = false;
             setTimeout(() => this.setState({overlay: 'popup'}), 500);
         }
     }
