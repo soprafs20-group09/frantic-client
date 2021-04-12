@@ -195,10 +195,15 @@ function rectIntersection(rect1, rect2) {
     );
 }
 
+function isChrome() {
+    return navigator.userAgent.includes('Chrome');
+}
+
 export default {
     parseChatObject,
     resolveIconString,
     getEventAnimation,
     getRem,
-    rectIntersection
+    rectIntersection,
+    isChrome
 }
