@@ -10,6 +10,9 @@ import SettingsWindow from "./SettingsWindow";
 import settingsManager from "utils/settingsManager";
 import AboutWindow from "./AboutWindow";
 
+import {isMobile} from "react-device-detect";
+import PerformanceModeWindow from "./PerformanceModeWindow";
+
 /**
  * This is a container that holds most app contents,
  * and has the ability to show a help and back button.
@@ -28,6 +31,11 @@ class AppContainer extends Component {
 
     componentDidMount() {
         window.addEventListener('resize', () => this.handleResize());
+
+        if (this.props.withPopup && isMobile && settingsManager.animations) {
+            settingsManager.animations = false;
+            setTimeout(() => this.setState({overlay: 'popup'}), 500);
+        }
     }
 
     componentWillUnmount() {
@@ -92,6 +100,14 @@ class AppContainer extends Component {
                     withClose
                     onClose={() => this.toggleAbout()}
                     key="about"
+                />;
+
+            case 'popup':
+                return <PerformanceModeWindow
+                    withclose
+                    onClose={() => this.setState({overlay: false})}
+                    openSettings={() => this.toggleSettings()}
+                    key="popup"
                 />;
 
             case 'resize':

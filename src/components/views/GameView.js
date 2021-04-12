@@ -34,6 +34,7 @@ class GameView extends Component {
         super(props);
         this.state = {
             loading: true,
+            prefetch: true,
             playerCards: [],
             availableCards: [],
             discardPileTopCard: undefined,
@@ -146,6 +147,8 @@ class GameView extends Component {
         sockClient.onLobbyMessage('/animation-speed', s => this.handleAnimationSpeed(s));
         sockClient.onLobbyMessage('/end-round', r => this.handleRoundEnd(r));
         sockClient.onLobbyMessage('/end-game', r => this.handleGameEnd(r));
+
+        setTimeout(() => this.setState({prefetch: false}), 500);
     }
 
     componentWillUnmount() {
@@ -155,7 +158,7 @@ class GameView extends Component {
     }
 
     render() {
-        if (this.state.loading) {
+        if (this.state.loading || this.state.prefetch) {
             return (
                 <AppContainer>
                     <Spinner/>

@@ -4,7 +4,8 @@
 
 const defaultValues = {
     multicolorStyle: 'opaque',
-    theme: "{\"name\":\"Terracotta\",\"colors\":{\"accent\":\"#E0745C\",\"bgDark\":\"#333840\",\"bgMedium\":\"#484D59\",\"bgLight\":\"#5B6171\",\"bgLighter\":\"#676E80\",\"text\":\"white\"}}"
+    theme: "{\"name\":\"Terracotta\",\"colors\":{\"accent\":\"#E0745C\",\"bgDark\":\"#333840\",\"bgMedium\":\"#484D59\",\"bgLight\":\"#5B6171\",\"bgLighter\":\"#676E80\",\"text\":\"white\"}}",
+    animations: 'true'
 };
 
 function getItem(name) {
@@ -28,6 +29,12 @@ export default {
     },
     set multicolorStyle(value) {
         setItem('multicolorStyle', value);
+    },
+    get animations() {
+        return getItem('animations') === 'true';
+    },
+    set animations(value) {
+        setItem('animations', value)
     },
     get theme() {
         return JSON.parse(getItem('theme'));
@@ -122,7 +129,11 @@ export default {
                     text: 'white'
                 }
             }
-        ]
+        ],
+        animations: [
+            {name: "on", value: true},
+            {name: "off", value: false}
+        ],
     },
     constants: {
         maxFontSize: 18,

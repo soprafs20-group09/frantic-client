@@ -13,7 +13,13 @@ class DiscardPile extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {baseCards: [], topCard: {key: 'a'}};
+        this.state = {baseCards: [], topCard: this.props.topCard ? this.props.topCard : {key: 'a'}};
+    }
+
+    componentDidMount() {
+        if (this.props.topCard && this.props.topCard.key !== this.state.topCard.key) {
+            this.setState({topCard: this.props.topCard});
+        }
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -24,6 +30,9 @@ class DiscardPile extends Component {
 
     render() {
         let topCardObj = this.state.topCard;
+
+        console.log("props", this.props.topCard);
+        console.log("state", this.state.topCard);
 
         let baseStack = [];
         for (let c of this.state.baseCards) {
@@ -64,6 +73,7 @@ class DiscardPile extends Component {
     addNewCard(card) {
         let cards = this.state.baseCards.slice(0, this.props.stackSize - 1);
         cards.splice(0, 0, this.state.topCard);
+        console.log("adding new card");
         this.setState({baseCards: cards, topCard: card});
     }
 }

@@ -37,7 +37,7 @@ class ThemePicker extends Component {
         }
 
         return (
-            <div className="themepicker-container">
+            <div className="themepicker-container" style={this.props.style}>
                 {themes}
             </div>
         );

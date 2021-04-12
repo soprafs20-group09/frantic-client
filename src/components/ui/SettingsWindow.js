@@ -20,6 +20,7 @@ class SettingsWindow extends Component {
     render() {
         const availableThemes = settingsManager.available.themes;
         const multicolorStyles = settingsManager.available.multicolorStyles;
+        const animationOptions = settingsManager.available.animations;
         let currentThemeIndex = availableThemes.indexOf(
             availableThemes.find(t => t.name === settingsManager.theme.name));
 
@@ -39,9 +40,23 @@ class SettingsWindow extends Component {
                     Choose a global theme that this site should use:
                 </p>
                 <ThemePicker
+                    style={{marginBottom: '1.8em'}}
                     themes={availableThemes}
                     initialTheme={currentThemeIndex}
                     onSelectionChange={t => this.handleThemeChange(t)}
+                />
+                <Header>Animations</Header>
+                <p>
+                    If you are playing on a mobile device or the game is showing stutters,
+                    turn off animations for an improved experience:
+                </p>
+                <SingleSelect
+                    items={animationOptions}
+                    on={'on'}
+                    off={'off'}
+                    style={{marginBottom: '1.5em'}}
+                    onValueChanged={v => this.handleAnimationChange(v)}
+                    initialValue={settingsManager.animations}
                 />
                 <Header>Multicolor Card Style</Header>
                 <p>
@@ -51,6 +66,8 @@ class SettingsWindow extends Component {
                 </p>
                 <SingleSelect
                     items={multicolorStyles}
+                    on={'on'}
+                    off={'off'}
                     style={{marginBottom: '1.5em'}}
                     onValueChanged={v => this.handleMulticolorChange(v)}
                     initialValue={settingsManager.multicolorStyle}
@@ -99,6 +116,19 @@ class SettingsWindow extends Component {
 
     handleMulticolorChange(newVal) {
         settingsManager.multicolorStyle = newVal;
+
+        this.setState({showMsg: false});
+        if (this.msgTimeout) {
+            clearTimeout(this.msgTimeout);
+        }
+        this.msgTimeout = setTimeout(() => {
+            this.msgTimeout = null;
+            this.setState({showMsg: true});
+        }, 500);
+    }
+
+    handleAnimationChange(newBool) {
+        settingsManager.animations = newBool;
 
         this.setState({showMsg: false});
         if (this.msgTimeout) {
