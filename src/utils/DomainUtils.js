@@ -16,7 +16,7 @@ const isProduction = () => {
  * @returns {string}
  */
 const getDomain = () => {
-    const prodUrl = 'https://backend.frantic.online/';
+    const prodUrl = 'http://backend.frantic.online/';
     const devUrl = 'http://localhost:8080/';
 
     return isProduction() ? prodUrl : devUrl;
