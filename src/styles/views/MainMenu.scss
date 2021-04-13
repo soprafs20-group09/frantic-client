@@ -76,6 +76,14 @@
   }
 }
 
+.mainmenu-workswith {
+  display: block;
+  font-size: $fontSizeSmallHeader;
+  color: $textColor;
+  text-transform: lowercase;
+  opacity: 50%;
+}
+
 @keyframes mainmenu-logo-spin {
   from {
     transform: rotate(0deg);

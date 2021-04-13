@@ -9,6 +9,7 @@ import AppContainer from "components/ui/AppContainer";
 import {MainMenuItemTransition, MainMenuLogoTransition, MainMenuMadeWithTransition} from "components/ui/Transitions";
 import sessionManager from "utils/sessionManager";
 import sockClient from "utils/sockClient";
+import uiUtils from "../../utils/uiUtils";
 
 const madeWithIcons = [
     ':heart:',
@@ -58,12 +59,23 @@ class MainMenu extends React.Component {
                 sockClient.clearMessageSubscriptions();
                 sockClient.disconnect();
             }
-        } catch {
+        }
+        catch {
         }
         document.title = "Frantic";
     }
 
     render() {
+        const menuItems = [
+            <MainMenuItem key="create" to="/create">create</MainMenuItem>,
+            <MainMenuItem key="browse" to="/browse">join</MainMenuItem>
+        ];
+        if (!uiUtils.isChrome()) {
+            menuItems.unshift(
+                <label key="workswith" className="mainmenu-workswith">Works best with Google Chrome!</label>
+            );
+        }
+
         return (
             <AppContainer withHelp withSettings withAbout withPopup>
                 <div className="mainmenu-container">
@@ -72,8 +84,7 @@ class MainMenu extends React.Component {
                     </MainMenuLogoTransition>
                     <div className="mainmenu-items-container">
                         <MainMenuItemTransition>
-                            <MainMenuItem key="create" to="/create">create</MainMenuItem>
-                            <MainMenuItem key="browse" to="/browse">join</MainMenuItem>
+                            {menuItems}
                         </MainMenuItemTransition>
                     </div>
                     <MadeWithLabel symbol={this.getMadeWithSymbol()}/>
