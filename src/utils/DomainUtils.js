@@ -16,7 +16,7 @@ const isProduction = () => {
  * @returns {string}
  */
 const getDomain = () => {
-    const prodUrl = 'http://backend.frantic.online/';
+    const prodUrl = 'https://sopra-fs20-group-09-server.herokuapp.com/';
     const devUrl = 'http://localhost:8080/';
 
     return isProduction() ? prodUrl : devUrl;
